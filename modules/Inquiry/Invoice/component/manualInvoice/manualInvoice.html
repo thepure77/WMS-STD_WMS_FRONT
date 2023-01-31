@@ -1,0 +1,122 @@
+<div class="modal" dp-modal on-show="onShow">
+    <div class="modal-dialog" style="overflow:auto;width:0%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal"></a>
+                    </div>
+
+                    <h2 class="panel-title">Charge</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'CHARHE_TYPE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='dropDownServiceChargeFix.model'
+                                    ng-options="v.serviceCharge_Name for v in dropDownServiceChargeFix">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'REMARK' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <textarea rows="3" cols="50" class="form-control"
+                                    ng-model="filterModel.document_Remark"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'CHARHE_VALUE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                <input type="number" ng-model="filterModel.volumeCal" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'QTY' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                <input type="number" ng-model="filterModel.binBalance_QtyBal" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'Rate' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                <input type="number" ng-model="filterModel.rate" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'WEIGHT' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                <input type="number" ng-model="filterModel.binBalance_WeightBal" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'TOTAL_AMOUNT' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                <input type="number" ng-model="filterModel.amount" class="form-control" disabled/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'VOLUME' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                <input type="number" ng-model="filterModel.binBalance_VolumeBal" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'CLOSE' | translate }}</button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                    ng-click="addsItem(filterModel)">{{ 'ADD' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

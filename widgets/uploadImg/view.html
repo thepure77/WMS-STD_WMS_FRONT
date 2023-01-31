@@ -1,0 +1,64 @@
+<style>
+    div.ex3 {
+  width: 244.825px;
+  height: 200px;
+  overflow: auto;
+}
+</style>
+<input class="fileUpload" type="file" multiple />
+<div class="dropzone">
+    <a class="btn btn-success">
+        แนบรูปภาพ
+    </a>
+</div>
+
+<div class="preview ex3">
+    <div class="previewData clearfix" ng-repeat="data in previewData track by $index">
+        <img src={{data.src}}></img>
+        <a class="btn btn-success" ng-click="upload(data)" ng-hide="resultgr == true">
+            <span class="fa fa-check" aria-hidden="true"></span>
+        </a>
+        <a  ng-click="remove(data)">
+            <span class="fa fa-times " aria-hidden="true" style="color: red;"></span>
+        </a>
+    </div>
+</div>
+
+<!-- <div class="preview">
+    <div class="previewData clearfix" ng-repeat="data in previewData track by $index">
+        <img src={{data.src}}></img>
+        <div class="previewDetails">
+            <div class="detail">
+                <b>Name : </b>{{data.name}}</div>
+            <div class="detail">
+                <b>Type : </b>{{data.type}}</div>
+            <div class="detail">
+                <b>Size : </b> {{data.size}}</div>
+        </div>
+        <div class="previewControls">
+            <a class="btn btn-success" ng-click="upload(data)" ng-hide="resultgr == true">
+                <span class="fa fa-check" aria-hidden="true"></span>
+            </a>
+            <a class="btn btn-danger" ng-click="remove(data)">
+                <span class="fa fa-times" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div> -->
+
+<!-- <table>
+<tr >
+<td ng-repeat="data in previewData track by $index" class="previewData">
+    <img src={{data.src}}></img>
+    <a class="btn btn-success" ng-click="upload(data)" ng-hide="resultgr == true">
+        <span class="fa fa-check" aria-hidden="true"></span>
+    </a>
+    <a  ng-click="remove(data)">
+        <span class="fa fa-times " aria-hidden="true" style="color: red;"></span>
+    </a>
+    
+</td>
+</tr>
+</table> -->
+
+<!-- style="position: absolute;margin-left: 75px;border-radius: 50%;" -->

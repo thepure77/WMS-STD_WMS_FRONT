@@ -1,0 +1,89 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'OWNER' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12padd">
+                                    <div class="col-lg-12 col-md-12 col-sm-12padd">
+                                        <label>{{ 'CUSTOMER_ID_COMPANY' | translate }}</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-12 col-sm-12padd">                                       
+                                        <input type="text" ng-model="model.key" class="form-control" ng-keypress="$event.which === 13 && filter(model.key)">                                        
+                                    </div>
+                                    <div class="col-lg-2 col-md-12 col-sm-12padd">
+                                            <button ng-click="filter(model.key)" class="btn btn-filter">
+                                                <span class="kw-icon-button icon-magnify kw-pos-left"
+                                                    aria-hidden="true"></span>
+                                            </button>       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <div class="table" style="overflow: auto;height:200px;">
+                                    <table class="table table-striped table-fixed">
+                                        <thead>
+                                            <tr>
+                                                <td class="text-center" style="width: 100px;"><div>{{ 'ACTION' | translate }}</div></td>
+                                                <th>{{ 'OWNER_ID' | translate }}</th>
+                                                <th>{{ 'OWNER_NAME' | translate }}</th>                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in selectlist">                                                
+                                                <td class="text-center" style="width: 100px;">
+                                                    <input type="checkbox" ng-model="data.selected" ng-change="checkSelect_top(data,$index)"/>
+                                                </td>
+                                                <td>{{data.id}}</td>
+                                                <td>{{data.name}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <div class="table" style="overflow: auto;height:300px;">
+                                    <table class="table table-striped table-fixed">
+                                        <thead>
+                                            <tr>
+                                                <td class="text-center" style="width: 100px;"><div>{{ 'ACTION' | translate }}</div></td>
+                                                <th>{{ 'OWNER_ID' | translate }}</th>
+                                                <th>{{ 'OWNER_NAME' | translate }}</th>                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in items">                                                
+                                                <td class="text-center" style="width: 100px;">
+                                                    <input type="checkbox" ng-model="data.selected" ng-change="checkSelect(data)"/>
+                                                </td>
+                                                <td>{{data.id}}</td>
+                                                <td>{{data.name}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT BEGINS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-filter" ng-click="confirm()">{{ 'OK' | translate }}</button>
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+                <!--
+         <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

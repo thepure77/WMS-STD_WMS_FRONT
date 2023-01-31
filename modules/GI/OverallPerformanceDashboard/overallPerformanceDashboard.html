@@ -1,0 +1,318 @@
+<style>
+    .body {
+        width: 1450px;
+        background-color: white;
+    }
+
+    .card {
+        display: block;
+        float: left;
+        margin-left: 10px;
+        width: 130px;
+        height: 80px;
+        font-size: 15px;
+        border-radius: 15px 5px 15px 5px;
+        text-align: center;
+        font-weight: bold;
+        color: black;
+        box-shadow: 1px 1px 1px 1px #888888;
+    }
+
+    .card2 {
+        display: block;
+        float: left;
+        margin-left: 50px;
+        width: 515px;
+        height: 170px;
+        font-size: 25px;
+        border-radius: 20px 20px 20px 20px;
+        text-align: center;
+        font-weight: bold;
+        color: black;
+        box-shadow: 1px 1px 1px 1px #888888;
+        padding: 28px;
+    }
+
+    .card370 {
+        width: 370px;
+        display: block;
+        float: left;
+    }
+
+    .card380 {
+        width: 380px;
+        display: block;
+        float: left;
+    }
+
+    .Total_Order {
+        background-color: #C0C0C0;
+    }
+
+    .New_Order {
+        background-color: #FFBE7D;
+    }
+
+    .Preparing {
+        background-color: #FFDDDD;
+    }
+
+    .Picking-Marshal {
+        background-color: #FFFF88;
+    }
+
+    .POS {
+        background-color: #CBAB8D;
+    }
+
+    .Customer_Service {
+        background-color: #FF9797;
+    }
+
+    .Done {
+        background-color: #B9E3AE;
+    }
+
+    .Canceled {
+        background-color: #C0C0C0;
+    }
+
+    #table {
+        width: 90%;
+    }
+
+    #table td,
+    #table th {
+        border: 1px solid #ddd;
+        padding: 3px;
+    }
+
+    #table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* #table tr:hover {background-color: #ddd;} */
+
+    #table th {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        text-align: left;
+        background-color: #6666CC;
+        color: white;
+    }
+</style>
+
+<header class="page-header">
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2> {{ 'OUTBOUND' | translate }}</h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="indexS.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span> {{ 'OUTBOUND' | translate }} </span>
+                </li>
+                <li>
+                    <span>Overall Performance</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label">Overall Performance</label>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-12 kw-p-zero">
+
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 kw-p-zero" style="margin-bottom:10px;">
+    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+        <label>วันที่</label>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-10  kw-p-zero">
+        <dir-date-picker ng-model="filterModel.OverallDate"></dir-date-picker>
+    </div>
+</div>
+
+<table style="width: 1150px;" style="margin-top:10px;">
+    <tr>
+        <td>
+            <div class="col-md-12" style="margin-left: -30px">
+                <div class="col-md-6" style="margin-left: -30px">
+                    <div class="card2 New_Order">Normal
+                        <br>
+                        <br>
+                        <div class="card Total_Order" style="margin-left: 10px">Total Order
+                            <br>
+                            <h2>{{Total_Order}}</h2>
+                        </div>
+                        <div class="card Done" style="margin-left: 25px">Done
+                            <br>
+                            <h2>{{Done}}</h2>
+                        </div>
+                        <div class="card Customer_Service" style="margin-left: 25px">Canceled
+                            <br>
+                            <h2>{{Canceled}}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="margin-left: -30px">
+                    <div class="card2 Picking-Marshal">Express
+                        <br>
+                        <br>
+                        <div class="card Total_Order" style="margin-left: 10px">Total Order
+                            <br>
+                            <h2>{{Ex_Total_Order}}</h2>
+                        </div>
+                        <div class="card Done" style="margin-left: 25px">Done
+                            <br>
+                            <h2>{{Ex_Done}}</h2>
+                        </div>
+                        <div class="card Customer_Service" style="margin-left: 25px">Canceled
+                            <br>
+                            <h2>{{Ex_Canceled}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-12" style="margin-left: -30px">
+                <div class="card Total_Order">Total Order<br><h2>{{Total_Order}}</h2></div>
+                <div class="card New_Order">New Order<br><h2>{{New_Order}}</h2></div>
+                <div class="card Preparing">Preparing<br><h2>{{Preparing}}</h2></div>
+                <div class="card Picking-Marshal">Picking/Marshal<br><h2>{{PickingMarshal}}</h2></div>
+                <div class="card Customer_Service">CustomerService<br><h2>{{Customer_Service}}</h2></div>
+                <div class="card POS">POS<br><h2>{{POS}}</h2></div>
+                <div class="card Done">Done<br><h2>{{Done}}</h2></div>
+                <div class="card Canceled">Canceled<br><h2>{{Canceled}}</h2></div>
+            </div> -->
+
+            <!-- <div class="col-md-12">
+                <div class="card {{item.statusName}}" ng-repeat="item in model.overallStatusViewModel">{{item.statusName.replace("_"," ").replace("-","/")}}<br><h2>{{item.qty}}</h2></div>
+            </div> -->
+
+            <div class="col-md-12 text-center" style="margin-top: 10px;">
+                <div class="card370">
+                    <h4>Order Performance By Round</h4>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Round</th>
+                                <th>Order</th>
+                                <th>Done</th>
+                                <th>Canceled</th>
+                                <th>Remain</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in model.orderByRoundViewModel">
+                                <td>{{data.round}}</td>
+                                <td>{{data.order|number}}</td>
+                                <td>{{data.done|number}}</td>
+                                <td>{{data.canceled|number}}</td>
+                                <td>{{data.remain|number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{TotalOrderByRound_Order()|number}}</td>
+                                <td>{{TotalOrderByRound_Done()|number}}</td>
+                                <td>{{TotalOrderByRound_Canceled()|number}}</td>
+                                <td>{{TotalOrderByRound_Remain()|number}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card370">
+                    <h4>Picking Performance By Round</h4>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Round</th>
+                                <th>Pick QTY</th>
+                                <th>Fulfilled</th>
+                                <th>Unfulfilled/
+                                    <br>Canceled</th>
+                                <th>Remain</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in model.pickingByRoundViewModel">
+                                <td>{{data.round}}</td>
+                                <td>{{data.pickQty|number: 2}}</td>
+                                <td>{{data.fulfilled|number: 2}}</td>
+                                <td>{{data.unFulfilled|number: 2}}</td>
+                                <td>{{data.remain|number: 2}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{TotalPickingByRound_PickQty()|number}}</td>
+                                <td>{{TotalPickingByRound_Fulfilled()|number}}</td>
+                                <td>{{TotalPickingByRound_UnFulfilled()|number}}</td>
+                                <td>{{TotalPickingByRound_Remain()|number}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card370">
+                    <h4>Picking Performance By Zone</h4>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Zone</th>
+                                <th>Pick QTY</th>
+                                <th>Fulfilled</th>
+                                <th>Unfulfilled/
+                                    <br>Canceled</th>
+                                <th>Remain</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in model.pickingByZoneViewModel">
+                                <td>{{data.zone}}</td>
+                                <td>{{data.pickQty|number: 2}}</td>
+                                <td>{{data.fulfilled|number: 2}}</td>
+                                <td>{{data.unFulfilled|number: 2}}</td>
+                                <td>{{data.remain|number: 2}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{TotalPickingByZone_PickQty()|number}}</td>
+                                <td>{{TotalPickingByZone_Fulfilled()|number}}</td>
+                                <td>{{TotalPickingByZone_UnFulfilled()|number}}</td>
+                                <td>{{TotalPickingByZone_Remain()|number}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12 text-center" style="margin-top: 10px;margin-left: -10px">
+                <div class="card370">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <canvas style="height:120px; width:80px" id="orderByRoundChart"></canvas>
+                    </div>
+                </div>
+                <div class="card370">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <canvas style="height:120px; width:80px" id="pickingByRoundChart"></canvas>
+                    </div>
+                </div>
+                <div class="card370">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <canvas style="height:120px; width:80px" id="pickingByZoneChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>

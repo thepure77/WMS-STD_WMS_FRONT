@@ -1,0 +1,68 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <!-- <div class="table" style="overflow: auto"> -->
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="text-center k150">{{ 'ACTION' | translate }}</th>
+                <th class="k100">{{ 'NO' | translate }}</th>
+                <th class="k150">{{ 'SKU' | translate }}</th>
+                <th class="k250">{{ 'PRODUCT' | translate }}</th>
+                <th class="k200">{{ 'UNIT' | translate }}</th>
+                <th class="k250">{{ 'REMARK' | translate }}</th>
+                <th class="k200">{{ 'REF_NO1' | translate }}</th>
+                <th class="k200">{{ 'REF_NO2' | translate }}</th>
+                <th class="k200">{{ 'REF_NO3' | translate }}</th>
+                <th class="k200">{{ 'REF_NO4' | translate }}</th>
+                <th class="k200">{{ 'REF_NO5' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="k150 actions">
+                    <div class="text-center" style="margin:0px">
+                        <a ng-click="editItem(data)" data-toggle="tooltip" title="Edit">
+                            <span class="kw-size-icon-action glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a ng-click="delete(data)" data-toggle="tooltip" title="Delete">
+                            <span class="kw-size-icon-action glyphicon glyphicon-trash"></span>
+                        </a>
+                    </div>
+                </td>
+                <td class="k100">{{$index+1}}</td>
+                <td class="k150">{{data.product_Id}}</td>
+                <td class="k250">{{data.product_Name}}</td>
+                <td class="k200">{{data.productConversion_Name}}</td>
+                <td class="k250">{{data.remark}}</td>
+                <td class="k200">{{data.ref_No1}}</td>
+                <td class="k200">{{data.ref_No2}}</td>
+                <td class="k200">{{data.ref_No3}}</td>
+                <td class="k200">{{data.ref_No4}}</td>
+                <td class="k200">{{data.ref_No5}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination
+                total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="maxSize"
+                class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+
+<product-assembly-form on-show="onShow" ng-hide="$vm.isFilter"></product-assembly-form>

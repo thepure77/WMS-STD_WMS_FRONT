@@ -1,0 +1,81 @@
+﻿.pull-left {
+    float: left!important;
+}
+
+.pull-right {
+    float: right!important;
+}
+
+.table-col-9 {
+    width: 90%;
+    overflow-x: auto;
+}
+
+.table-col-8 {
+    width: 80%;
+    overflow-x: auto;
+}
+
+.table-col-7 {
+    width: 70%;
+    overflow-x: auto;
+}
+
+.table-col-6 {
+    width: 60%;
+    overflow-x: auto;
+}
+
+.table-col-5 {
+    width: 50%;
+    overflow-x: auto;
+}
+
+.table-col-4 {
+    width: 40%;
+    overflow-x: auto;
+}
+
+.table-col-3 {
+    width: 30%;
+    overflow-x: auto;
+}
+
+.table-col-2 {
+    width: 20%;
+    overflow-x: auto;
+}
+
+.table-col-1 {
+    width: 10%;
+    overflow-x: auto;
+}
+
+.col-fixed-right {
+    position: absolute !important;
+    width: 150px;
+    right: 0;
+    background: white;
+}
+.no-padding {
+    padding: 0px;
+}
+
+.ks-btn span {
+    padding: 4px 4px;
+}
+
+.btn-icon {
+    margin: 2px;
+    padding: 3px 4px 4px 4px;
+}
+.display-inline {
+    display: inline-block;
+}
+
+.default-bg {
+    background: #f5f5f5;
+}
+
+.col-100{ width: 100px;  }
+

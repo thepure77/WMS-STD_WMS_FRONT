@@ -1,0 +1,74 @@
+<div class="panel-body" ng-show="onShow">
+    <div class="col-md-12 kw-mg-tb">
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'RULE_ID' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.rule_Id" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label><span style="color:red">*</span>{{ 'RULE_NAME' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.rule_Name" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label><span style="color:red">*</span>{{ 'PROCESS' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.key" value="filterModel.process_Index">
+                        <span class="input-group-btn">
+                            <button ng-click='popupProcess.onClick()' class="btn btn-groub-Search" 
+                                type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'ISACTIVE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <div class="ig-control">
+                        <input type="checkbox" ng-model="filterModel.isActive" class="ig-control__cbx" ng-checked="getCheck" ng-true-value="1" ng-false-value="0"
+                            id="table_setting_1" />
+                        <label for="table_setting_1"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()" style="float: left;">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-primary previous" ng-show="create" ng-click="add()" style="float: right;">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-success" ng-show="update" ng-click="add()" style="float: right;">
+                    {{ 'UPDATE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<process-popup-v2 on-show='popupProcess.onShow' config='popupProcess.config' invokes='popupProcess.invokes' delegates='popupProcess.delegates'>
+</process-popup-v2>

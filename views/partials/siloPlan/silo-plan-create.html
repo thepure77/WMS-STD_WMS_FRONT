@@ -1,0 +1,133 @@
+<style>
+    .div-shadow {
+        -webkit-box-shadow: -1px 8px 10px -9px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 8px 10px -9px rgba(0,0,0,0.75);
+        box-shadow: -1px 8px 10px -9px rgba(0,0,0,0.75);
+    }
+    .btn span.glyphicon {    			
+	opacity: 0;				
+    }
+    .btn.active span.glyphicon {				
+	    opacity: 1;				
+    }
+</style>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div id="page-wrapper">
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <div class="panel panel-default" style="padding-bottom:15px;">
+                            <div class="panel-heading">
+                                <div class="panel-heading-text">{{ "SILO_TITLE" | translate }}</div>
+                            </div>
+
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "ORDER_NO" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "STATUS" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "CUSTOMER" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "PLAN_DATE" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <div class="col-md-12" style="padding-right: 0px; padding-left: 0px;">
+                                            <mydatepicker style="padding-right: 0px; padding-left: 0px;" class="col-md-12" ng-model="formData.date1" date-options="dateOptions" opened="opened" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "SILO_NO" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <select class="form-control">
+                                            <option>silo1234</option>
+                                            <option>silo1234</option>
+                                            <option>silo1234</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "REVISION" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "MAT_SAMI" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "SAP_MAT_DOC" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "QUATITY" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">{{ "CLEANNING" | translate }}:</div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12" data-toggle="buttons" style="vertical-align:middle;line-height:30px;">
+                                        <label class="btn btn-info" style="border-radius:3px;">
+                                            <input type="checkbox" autocomplete="off"/>
+                                            <span class="glyphicon glyphicon-ok"/>
+                                        </label>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pull-right" style="padding:10px 30px;">
+                    <button class="btn btn-filter" style="padding:10px;padding-left:20px;padding-right:20px;font-size:1em;border-radius:2px;">{{ "SAVE" | translate }}</button>
+                    <button class="btn btn-danger" style="padding:10px;padding-left:20px;padding-right:20px;font-size:1em;border-radius:2px;" ng-click="cancelCreate()">{{ "CANCEL" | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<modal visible="showModal2" backdrop="static">
+    <modal-header title="Add Bagging"></modal-header>
+    <modal-body>
+        <div class="col-md-12">
+            <span class="col-md-4">Item:</span>
+            <div class="col-md-8">
+                <select class="form-control">
+                    <option>Item1</option>
+                    <option>Item1</option>
+                    <option>Item1</option>
+                    <option>Item1</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+            <span class="col-md-4">QTY:</span>
+            <div class="col-md-8">
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+        <button style="margin-top:20px;" class="btn btn-filter" ng-click="hide(2)">Save</button>
+        <button style="margin-top:20px;" class="btn btn-danger" ng-click="hide(2)">Cancel</button>
+    </modal-body>
+</modal>
+-->

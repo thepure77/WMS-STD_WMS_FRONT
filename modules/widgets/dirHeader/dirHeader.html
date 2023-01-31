@@ -1,0 +1,254 @@
+﻿<script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+
+        if ($('html').hasClass('sidebar-left-opened')) {
+            $('html').toggleClass('sidebar-left-opened');
+        }
+        else {
+            $('html').toggleClass('sidebar-left-opened');
+            $('html').toggleClass('sidebar-left-opened');
+        }
+    });
+
+    // $(".close").hide();
+    // $(".menu2").hide();
+    // $(".hamburger").click(function () {
+    //     $(".menu2").slideToggle("slow", function () {
+    //         $(".hamburger").hide();
+    //         $(".close").show();
+    //     });
+    // });
+
+    // $(".close").click(function () {
+    //     $(".menu2").slideToggle("slow", function () {
+    //         $(".close").hide();
+    //         $(".hamburger").show();
+    //     });
+    // });
+</script>
+
+<style>
+    body:fullscreen {
+        overflow: scroll !important;
+    }
+
+    body:-ms-fullscreen {
+        overflow: scroll !important;
+    }
+
+    body:-webkit-full-screen {
+        overflow: scroll !important;
+    }
+
+    body:-moz-full-screen {
+        overflow: scroll !important;
+    }
+</style>
+
+<style>
+    #header-button {
+        background: #FFF;
+        border-radius: 50%;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+        display: inline-block;
+        height: 43px;
+        position: relative;
+        width: 43px;
+        text-align: center;
+        font-weight: 600;
+        color: #777777;
+        background-color: #EEEDF5;
+        margin-top: 4px;
+    }
+</style>
+
+
+
+<header class="header">
+    <div class="logo-container">
+
+        <div class="col-xs-4 col-sm-4 col-md-6 col-lg-6 visible-lg visible-sm visible-md" style="padding-left: 20px;">
+            <img src="assets/kasco-wing/images/logo_wms.png" class="img" height="78"></img>
+            <!-- <img src="img/logo_mobilyst.png" class="img" height="78"></img> -->
+
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 visible-xs visible-lg-block" style="padding-left: 10px;">
+            <img src="assets/kasco-wing/images/logo_wms.png" class="img" height="43"></img>
+            <button type="button" id="header-button-s" class="btn btnlang" ng-class="{'': !langSelected[$index], 'btn-selected': langSelected[$index]}"
+                ng-click="changLang(switLang.name)" title="Change Language">
+                <div class="switchlang ng-binding">
+                    {{switLang.name}}
+                </div>
+            </button>
+        </div>
+
+        <div class="header-right visible-sm">
+            <span class="separator"></span>
+            <ul class="notifications">
+                <li>
+                    <a href="#" class="notification-icon" data-toggle="dropdown">
+                        <i class="fa fa-home"></i>
+                        <span class="badge">0</span>
+                    </a>
+                    <div class="dropdown-menu notification-menu">
+                        <div class="notification-title">
+                            <span class="pull-right label label-default">0</span> Messages
+                        </div>
+                        <div class="content">
+                            <ul>
+                                No Messages
+                            </ul>
+                            <hr />
+                            <!-- <div class="text-right">
+                                <a href="#" class="view-more">View All</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <span class="separator"></span>
+            <button type="button" id="header-button" class="btn" ng-class="{'': !langSelected[$index], 'btn-selected': langSelected[$index]}"
+                ng-click="changLang(switLang.name)" title="Change Language">
+                <div class="switchlang ng-binding">
+                    {{switLang.name}}
+                </div>
+            </button>
+            <span class="separator"></span>
+            <div id="userbox" class="userbox">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <figure class="profile-picture">
+                        <img src="assets/kasco-wing/images/!logged-user.jpg" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg"
+                        />
+                    </figure>
+                    <div class="profile-info">
+                        <span class="name">{{data}}</span>
+                        <span class="role">{{userGroupName}}</span>
+                    </div>
+                    <i class="fa custom-caret"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <ul class="list-unstyled">
+                        <li class="divider"></li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" href="#" ng-click="logOut()">
+                                <i class="fa fa-power-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-right visible-lg visible-md">
+            <span class="separator"></span>
+            <ul class="notifications">
+                <!-- <li>
+                    <a href="#" class="notification-icon" data-toggle="dropdown">
+                        <i class="fa fa-star-o"></i>
+                        <span class="badge">3</span>
+                    </a>
+                    <div class="dropdown-menu notification-menu large">
+                        <div class="notification-title">
+                            <span class="pull-right label label-default">3</span> Tasks
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <p class="clearfix mb-xs">
+                                        <span class="message pull-left">Generating Sales Report</span>
+                                        <span class="message pull-right text-dark">60%</span>
+                                    </p>
+                                    <div class="progress progress-xs light">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                            aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <p class="clearfix mb-xs">
+                                        <span class="message pull-left">Importing Contacts</span>
+                                        <span class="message pull-right text-dark">98%</span>
+                                    </p>
+                                    <div class="progress progress-xs light">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="98"
+                                            aria-valuemin="0" aria-valuemax="100" style="width: 98%;"></div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <p class="clearfix mb-xs">
+                                        <span class="message pull-left">Uploading something big</span>
+                                        <span class="message pull-right text-dark">33%</span>
+                                    </p>
+                                    <div class="progress progress-xs light mb-xs">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="33"
+                                            aria-valuemin="0" aria-valuemax="100" style="width: 33%;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li> -->
+                <li>
+                    <a href="#" class="notification-icon" data-toggle="dropdown">
+                        <i class="fa fa-home"></i>
+                        <span class="badge">0</span>
+                    </a>
+                    <div class="dropdown-menu notification-menu">
+                        <div class="notification-title">
+                            <span class="pull-right label label-default">0</span> Messages
+                        </div>
+                        <div class="content">
+                            <ul>
+                                No Messages
+                            </ul>
+                            <hr />
+                            <!-- <div class="text-right">
+                                <a href="#" class="view-more">View All</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <span class="separator"></span>
+            <button type="button" id="header-button" class="btn" ng-class="{'': !langSelected[$index], 'btn-selected': langSelected[$index]}"
+                ng-click="changLang(switLang.name)" title="Change Language">
+                <div class="switchlang ng-binding">
+                    {{switLang.name}}
+                </div>
+            </button>
+            <span class="separator"></span>
+            <div id="userbox" class="userbox">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <figure class="profile-picture">
+                        <img src="assets/kasco-wing/images/!logged-user.jpg" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg"
+                        />
+                    </figure>
+                    <div class="profile-info">
+                        <span class="name">{{data}}</span>
+                        <span class="role">{{userGroupName}}</span>
+                    </div>
+                    <i class="fa custom-caret"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <ul class="list-unstyled">
+                        <li class="divider"></li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" href="#" ng-click="changepassword()">
+                                <i class="fa fa-power-off"></i>
+                                change password
+                            </a>
+                        </li>
+                        <li>
+                            <a role="menuitem" tabindex="-1" href="#" ng-click="logOut()">
+                                <i class="fa fa-power-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</header>

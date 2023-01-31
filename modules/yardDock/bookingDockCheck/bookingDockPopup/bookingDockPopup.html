@@ -1,0 +1,102 @@
+<!-- <div class="modal fade modal-block" tabindex="-1" dp-modal on-show="onShow"> -->
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto;width:90%;margin: 0px auto;">
+        <div class="modal-content">
+            <div class="table " style="overflow: auto">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:5px; margin-bottom:5px;"
+                    aria-disabled="true">
+                    <h3>{{ 'BOOKING_DOCK_CHECK' | translate }}</h3>
+                </div>
+                <table style="width:100%;padding-left: 5px; padding-right: 5px;" border="0">
+
+                    <tbody ng-repeat="data in filterModel">
+                        <tr style="margin-bottom:10px;">
+                            <th class="col-lg-12 col-md-12 col-xs-12 size ">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"
+                                    style="padding-right:0px; margin-bottom:5px;">
+                                    <h4>{{data.appointment_Date}}</h4>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr style="margin-bottom:10px;">
+                            <th class="col-lg-12 col-md-12 col-xs-12"
+                                style="padding-left: 4px; padding-right: 4px;height: 40px;background-color: #CDCCCC;">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 kw-p-zero" style="text-align: center;">
+                                    <h6>{{ 'APPOINTMENT_NO' | translate }}</h6>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 kw-p-zero" style="text-align: center;">
+                                    <h6>{{ 'TIME' | translate }}</h6>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 kw-p-zero" style="text-align: center;">
+                                    <h6>{{ 'TL_STATUS' | translate }}</h6>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr ng-repeat-start="dataitems in data.items ">
+                            <th class="col-lg-12 col-md-12 col-sm-6 col-xs-6 kw-padd">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4" style="padding-right:0px;">
+                                    <span style="color: red;">{{dataitems.appointment_Id}}</span>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4" style="padding-right:0px;">
+                                    <span style="color: red;">{{dataitems.appointment_Time}}</span>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4" style="padding-right:0px;">
+                                    <span style="color: red;">{{dataitems.status}}</span>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr ng-repeat-end ng-repeat="list in dataitems.items">
+                            <th class="col-lg-12 col-md-12 col-sm-12 col-xs-12 size div-shadow" ng-click="select(list)"
+                                style="padding-left: 0px; padding-right: 15px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 kw-padd">
+                                            <label>{{ 'DOCUMENT_NO' | translate }} :</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 kw-padd">
+                                            <span style="color: red;">{{list.dock_Id}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 kw-padd">
+                                            <label>{{ 'ACTIVITY' | translate }} :</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 kw-padd">
+                                            <span style="color: red;">{{list.documentType_Name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 kw-padd">
+                                            <label>{{ 'WAREHOUSE_BOOKING_YARD' | translate }} :</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 kw-padd">
+                                            <span style="color: red;">{{list.wareHouse_Name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 kw-padd">
+                                            <label>{{ 'DOCK' | translate }} :</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6 kw-padd">
+                                            <span style="color: red;">{{list.dock_Name}}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xs-12">
+                                    &nbsp;
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

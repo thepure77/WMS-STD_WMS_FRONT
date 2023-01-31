@@ -1,0 +1,313 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="row" ng-show="$vm.isFilter">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <!-- <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'REF_TRANSFER_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <label class="ios7-switch ios7-switch-md">
+                            <input type="checkbox" ng-click="transferNoHide()">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="form-group" style="margin-top:15px;" ng-show="chk.IsRefTransferNo">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'TRANSFER_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="modelTransfer.goodsTransfer_No" class="form-control" ks-enter="ScanTransferNo()">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;" ng-show="chk.IsRefTransferItem">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="div-shadow" style="margin-top:15px;margin-left:15px;margin-right:15px;">
+                    <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+                        <table class="table table-striped table-width-100 table-bordeered">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'SKU' | translate }}</th>
+                                    <th>{{ 'NAME' | translate }}</th>
+                                    <th>{{ 'QTY' | translate }}</th>
+                                    <th>{{ 'UNIT' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in filterModel.lstGoodsTransfer" ng-if="filterModel.lstGoodsTransfer.length != 0">
+                                    <td>{{data.product_Id}}</td>
+                                    <td>{{data.product_Name}}</td>
+                                    <td>{{data.qty}}</td>
+                                    <td>{{data.productConversion_Name}}</td>
+                                </tr>
+                                <tr ng-if="filterModel.lstGoodsTransfer.length == 0">
+                                    <td colspan="11" class="text-center">{{ 'NO_DATA' | translate }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'LPN_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" autocomplete="off" readonly id="lpnNo" class="form-control" ng-model="filterModel.lpnNo"
+                            ks-enter="ScanBarcode()" placeholder="Scan LPN" blur-on-enter required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'ITEM_NUMBER' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-9">
+                        <input type="text" ng-model="filterModel.productSelect" class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <button ng-click="$vm.locationlist()" class="btn btn-success btn-block btn-md" type="button">
+                            <span class="glyphicon glyphicon-list"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'SKU_NAME' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="filterModel.productName" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'OLD_LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'NEWLOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.locationName" class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" readonly id="locationNew"  ng-model="filterModel.locationNew" class="form-control" ks-enter="ScanLocation(filterModel)" blur-on-enter required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'NEWSTATUS' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'OLD_STATUS' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.ItemStatus_Name" class="form-control" disabled />
+                        <!-- <select class='form-control' ng-model='dropdownItemStatus.model'
+                            ng-options="v.itemStatus_Name for v in dropdownItemStatus">
+                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                        </select> -->
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.ItemStatus_Name" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'QTY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.totalQty" class="form-control" ng-disabled="chk.IsSplitProduct == false" />
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.productConversion_Name" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'BARCODE_LPN' | translate }}</span>
+                </div>
+                <div class="col-lg-8 col-md-3 col-xs-12">
+                    <input type="text" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+                        class="form-control" ng-model="filterModel.lpnNo" ks-enter="ScanBarcode()"
+                        placeholder="Scan LPN">
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'PRODUCT' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <input type="text" ng-model="filterModel.productSelect" class="form-control" disabled />
+                </div> -->
+        <!-- <div class="col-lg-1 col-md-1 col-xs-1">
+                        <span>Split</span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-2">
+                        <label class="ios7-switch ios7-switch-md">
+                            <input type="checkbox" ng-click="splitProductHide()">
+                            <span></span>
+                        </label>
+                    </div> -->
+        <!-- <div class="col-lg-3 col-md-3 col-xs-3">
+                    <button ng-click="$vm.locationlist()" class="btn btn-success btn-block btn-md" type="button">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Location</span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-9">
+                    <input type="text" ng-model="$vm.filterModel.locationName" class="form-control" disabled>
+                </div>
+                
+            </div>
+        </div> 
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>รหัสสินค้า</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" ng-model="filterModel.productId" class="form-control" disabled />
+                </div>
+            </div>
+        </div>-->
+        <!-- <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'SKU_NAME' | translate }}</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" ng-model="filterModel.productName" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'NEW_LOCATION' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <input type="text" ng-model="filterModel.locationNew" class="form-control"
+                        ks-enter="ScanLocation(filterModel)" />
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'OLD_LOCATION' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <input type="text" ng-model="filterModel.locationName" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'NEW_STATUS' | translate }}</span>
+                </div>
+                <div class="col-lg-6 col-md-3 col-xs-12">
+                    <select class='form-control' ng-model='dropdownItemStatus.model'
+                        ng-options="v.itemStatus_Name for v in dropdownItemStatus">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'OLD_STATUS' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <input type="text" ng-model="filterModel.ItemStatus_Name" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'QTY' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <input type="text" ng-model="filterModel.qty" class="form-control"
+                        ng-disabled="chk.IsSplitProduct == false" />
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>{{ 'UNIT' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <input type="text" ng-model="filterModel.productConversion_Name" class="form-control" disabled />
+                </div>
+            </div>
+        </div> -->
+
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="margin-bottom:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button ng-click="confirm()" class="btn btn-success hidden-xs">{{ 'CONFIRM' | translate }}</button>
+                    <button ng-click="confirm()" class="btn btn-success btn-block btn-md visible-xs mt-lg">{{ 'CONFIRM' | translate }}</button>
+                    <button ng-click="clearSearch()" class="btn btn-primary hidden-xs">{{ 'CLEAR' | translate }}</button>
+                    <button ng-click="clearSearch()" class="btn btn-primary btn-block btn-md visible-xs mt-lg">{{ 'CLEAR' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+</div>
+
+<transfer-lpn-item-list is-loading="isLoading"></transfer-lpn-item-list>
+
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<warehouse-popup on-show='popupWarehouse.onShow' config='popupWarehouse.config' invokes='popupWarehouse.invokes' delegates='popupWarehouse.delegates'>
+</warehouse-popup>

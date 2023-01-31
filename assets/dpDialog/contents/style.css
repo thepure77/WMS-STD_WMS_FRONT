@@ -1,0 +1,17 @@
+﻿.dp-dialog {
+    /*position: absolute;
+    top: 50% !important;
+    transform: translate(0, -50%) !important;
+    -ms-transform: translate(0, -50%) !important;
+    -webkit-transform: translate(0, -50%) !important;
+    margin: auto 40%;
+    width: 30%;*/
+    padding-top: 10%;
+    min-width: 100px;
+}
+
+.dp-dialog .modal-body {
+    min-height: 60px;
+    text-align: center;
+    padding-top: 2%;
+}

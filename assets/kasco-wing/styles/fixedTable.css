@@ -1,0 +1,112 @@
+.xy-outer {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  .xy-inner {
+    width: 75%;
+    height: 260px;
+    margin-left: 25%;
+    overflow: hidden;
+  }
+  
+  .xy-header-top {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .xy-header-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
+  }
+  
+  .xy-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    z-index: 1;
+  }
+  
+  .xy-content {
+    cursor: move;
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+  
+  .xy-scroll {
+    background-color: #000;
+    background-color: transparent;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .xy-scroll-x {
+    padding-left: 25%;
+    height: 5px;
+    width: 100%;
+  }
+  
+  .xy-scroll-y {
+    width: 5px;
+    height: 100%;
+  }
+  
+  .xy-bar {
+    background-color: #aaa;
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.3;
+    transition: opacity .3s ease-in-out;
+  }
+  .active .xy-bar {
+    opacity: 1;
+  }
+  
+  .xy-bar-x {
+    height: 5px;
+    width: 100px;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .xy-bar-y {
+    width: 5px;
+    height: 50px;
+    top: 50px;
+  }
+  
+  #target {
+    width: 640px;
+  }
+  #target .xy-header-top .table {
+    background: #fafafa;
+  }
+  #target .xy-corner div {
+    background: #dadada;
+    padding: 8px;
+  }
+  #target .fixed {
+    table-layout: fixed;
+    /* width: 100%; */
+  }
+  #target .fixed .col-sm {
+    width: 100px;
+  }
+  #target .fixed td,
+  #target .fixed th {
+    vertical-align: top;
+    width: 100px;
+  }
+  #target .fixed th {
+    border-bottom: 0 none;
+  }
+  

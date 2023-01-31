@@ -1,0 +1,497 @@
+﻿app.run(['$rootScope', '$state', '$stateParams',
+    function($rootScope, $state, $stateParams) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+
+        $state.go('login');
+    }
+]);
+
+app.config(['$stateProvider', '$urlRouterProvider', 'ngAuthSettings',
+    function($stateProvider, $urlRouterProvider, $ngAuthSettings) {
+
+        // admin router
+        $stateProvider.state('home', {
+            url: "/home",
+            templateUrl: $ngAuthSettings.ClientDirective + "views/state/home.html",
+            controller: "homeController"
+        });
+
+
+        $stateProvider.state('nolayout', {
+            url: "/nolayout",
+            templateUrl: $ngAuthSettings.ClientDirective + "views/state/no-layout.html",
+            controller: "noHeaderConntroller"
+        });
+
+        $stateProvider.state('oms', {
+            url: "/oms",
+            templateUrl: $ngAuthSettings.ClientDirective + "views/state/home.html",
+            controller: "homeController"
+        });
+
+        $stateProvider.state('customer', {
+            url: "/customer",
+            templateUrl: $ngAuthSettings.ClientDirective + "views/state/home.html",
+            controller: "homeController"
+        });
+
+        // use controller
+        $stateProvider.state('oms.index', {
+            url: "/index",
+            templateUrl: $ngAuthSettings.ClientDirective + "views/partials/home/index.html",
+            controller: 'indexController',
+        });
+
+        // $stateProvider.state('contract', {
+        //     url: '/contract',
+        //     templateUrl: $ngAuthSettings.ClientDirective + "views/state/home.html",
+        //     controller: "homeController"
+        // });
+
+        // $stateProvider.state('master', {
+        //     url: '/master',
+        //     templateUrl: $ngAuthSettings.ClientDirective + "views/state/home.html",
+        //     controller: "homeController"
+        // });
+
+        // $stateProvider.state('plan', {
+        //     url: "/plan",
+        //     templateUrl: $ngAuthSettings.ClientDirective + "views/state/home.html",
+        //     controller: "homeController"
+        // });
+
+        // Customer Contract
+        $stateProvider.state('oms.customer', {
+            url: '/customer',
+            template: '<customer-profile></customer-profile>',
+        });
+
+        // Add Customer Contract
+        $stateProvider.state('oms.customer-create', {
+            url: '/customer-create',
+            template: "<customer-create></customer-create>"
+        });
+
+        // Add Customer Contract
+        $stateProvider.state('customer.create-contract-shipto', {
+            url: '/create-contract-shipto',
+            templateUrl: "views/partials/customer/create-contract-shipto.html"
+        });
+
+
+        // login router
+        $stateProvider.state('login', {
+            url: "/login",
+            templateUrl: $ngAuthSettings.ClientDirective + "views/state/login.html",
+            controller: 'loginController',
+        });
+
+
+        $stateProvider.state('oms.changepassword', {
+            url: "/changepassword",
+            templateUrl: $ngAuthSettings.ClientDirective + "views/partials/changepassword/index.html",
+            // params: { childOf: 'home.changepassword' }
+            //controller: '??Controller'
+        });
+
+        $stateProvider.state('oms.test', {
+            url: '/test',
+            templateUrl: $ngAuthSettings.ClientDirective + "views/partials/test/TestPage.html",
+            controller: 'testController',
+        });
+
+        $stateProvider.state('oms.bagging', {
+            url: '/bagging-order',
+            template: '<oms-bagging-order></oms-bagging-order>',
+        });
+
+        $stateProvider.state('oms.createbagging', {
+            url: '/createbagging',
+            template: '<bagging-create-container></bagging-create-container>',
+            // controller: 'baggingCreateController'
+        });
+
+        $stateProvider.state('oms.bagging_plan', {
+            url: '/bagging-plan',
+            template: '<oms-bagging-plan></oms-bagging-plan>',
+        });
+
+        $stateProvider.state('oms.createbagging_plan', {
+            url: '/createbagging-plan',
+            template: '<bagging-plan-create-container></bagging-plan-create-container>',
+            // controller: 'baggingCreateController'
+        });
+
+        $stateProvider.state('oms.domestic', {
+            url: '/domestic-order',
+            template: "<oms-domestic-order></oms-domestic-order>",
+        });
+
+        $stateProvider.state('oms.createdomestic', {
+            url: '/create-domestic',
+            template: '<create-domesticorder action-page="customer"></create-domesticorder>',
+        });
+
+        $stateProvider.state('oms.domestic-plan', {
+            url: '/domestic-plan',
+            template: '<oms-domestic-plan></oms-domestic-plan>',
+        });
+
+        $stateProvider.state('oms.domestic2', {
+            url: '/domestic-order2',
+            template: "<domestic-order></domestic-order>",
+        });
+
+        //***  New returnorder */
+        $stateProvider.state('oms.return-order', {
+            url: '/return-order',
+            template: '<oms-return-order></oms-return-order>'
+        });
+
+        $stateProvider.state('oms.return-order-create', {
+            url: '/return-order-create',
+            template: '<create-returnorder></create-returnorder>',
+            params: {
+                childOf: 'customer.return-order'
+            }
+        });
+
+        $stateProvider.state('oms.silo', {
+            url: '/silo-order-plan',
+            template: '<silo-plan></silo-plan>',
+        });
+
+        $stateProvider.state('oms.silo-plan-create', {
+            url: '/silo-plan-create',
+            controller: 'siloPlanCreateController',
+            templateUrl: $ngAuthSettings.ClientDirective + 'views/partials/siloPlan/silo-plan-create.html',
+        });
+
+        $stateProvider.state('oms.silo-order-summary', {
+            url: '/silo-order',
+            controller: 'siloOrderSummaryController',
+            controllerAs: 'siloOrderCtrl',
+            templateUrl: $ngAuthSettings.ClientDirective + 'views/partials/customer/silo-order-summary.html',
+        });
+
+        $stateProvider.state('oms.silo-order-summary-create', {
+            url: '/silo-order-summary-create',
+            controller: 'siloOrderSummaryCreateController',
+            templateUrl: $ngAuthSettings.ClientDirective + 'views/partials/customer/silo-order-summary-create.html',
+        });
+
+        //Transfer Order
+        $stateProvider.state('oms.transfer-order', {
+            url: '/transfer-order',
+            template: '<oms-transfer-order></oms-transfer-order>',
+        });
+
+        $stateProvider.state('oms.warehouse', {
+            url: '/warehouse-selected',
+            controller: 'whselectedController',
+            controllerAs: 'toCtrl',
+            template: '<warehouse></warehouse>',
+        });
+
+        $stateProvider.state('oms.warehousecreate', {
+            url: '/warehouse-selected-create',
+            controller: 'whselectedController',
+            controllerAs: 'toCtrl',
+            template: '<whselected-create></whselected-create>',
+        });
+
+        $stateProvider.state('oms.calendar', {
+            url: '/calendar',
+            template: '<calendar-container></calendar-container>',
+        });
+
+        $stateProvider.state('oms.dashboard', {
+            url: '/dashboard',
+            controller: 'dashboardController',
+            template: '<dashboard-container></dashboard-container>'
+        });
+
+        // contract state
+        $stateProvider.state('oms.material-list', {
+            url: '/material-list',
+            template: '<material-summary show-selected="true" action-page="true"></material-summary>'
+
+        });
+
+        $stateProvider.state('oms.material-create', {
+            url: '/material-create',
+            template: '<material-code-create></material-code-create>'
+        });
+
+        $stateProvider.state('oms.manage-contract', {
+            url: '/manage-contract',
+            template: '<contract-manage></contract-manage>'
+        });
+
+        // $stateProvider.state('oms.general_contract', {
+        //     url: '/general-contract',
+        //     template: '<general-contract-container></general-contract-container>'
+        // });
+
+        // $stateProvider.state('oms.freight_pricing', {
+        //     url: '/freight-pricing',
+        //     template: '<freight-pricing-container></freight-pricing-container>'
+        // });
+
+        // $stateProvider.state('oms.logistics_pricing', {
+        //     url: '/logistics-pricing',
+        //     template: '<logistics-pricing-container></logistics-pricing-container>'
+        // });
+
+        // $stateProvider.state('oms.transport_pricing', {
+        //     url: '/transport-pricing',
+        //     template: '<tm-pricing-container></tm-pricing-container>'
+        // });
+
+        // $stateProvider.state('oms.warehouse_pricing', {
+        //     url: '/warehouse-pricing',
+        //     template: '<wh-pricing-container></tm-pricing-container>'
+        // });
+
+        // contract state
+        $stateProvider.state('oms.general_contract', {
+            url: '/general-contract',
+            template: '<general-contract-container></general-contract-container>'
+        });
+
+        $stateProvider.state('oms.freight_pricing', {
+            url: '/freight-pricing',
+            template: '<freight-pricing-container></freight-pricing-container>'
+        });
+
+        $stateProvider.state('oms.logistics_pricing', {
+            url: '/logistics-pricing',
+            template: '<logistics-pricing-container></logistics-pricing-container>'
+        });
+
+        $stateProvider.state('oms.transport_pricing', {
+            url: '/transport-pricing',
+            template: '<tm-pricing-container></tm-pricing-container>'
+        });
+
+        $stateProvider.state('oms.warehouse_pricing', {
+            url: '/warehouse-pricing',
+            template: '<wh-pricing-container></tm-pricing-container>'
+        });
+
+        $stateProvider.state('oms.contract_list', {
+            url: '/contract-list',
+            template: '<contract-list></contract-list>'
+        });
+
+        // master state
+        $stateProvider.state('oms.unit-list', {
+            url: '/unit-list',
+            template: '<unit-list-container></unit-list-container>'
+        });
+
+        $stateProvider.state('oms.rentwarehouse-list', {
+            url: '/rent-warehouse-list',
+            template: '<rw-list-container></rw-list-container>'
+        });
+
+        $stateProvider.state('oms.plant-list', {
+            url: '/plant-list',
+            template: '<plant-list-container></plant-list-container>'
+        });
+
+        // inventory state
+        $stateProvider.state('oms.inventory_monitoring', {
+            url: '/inventory-monitoring',
+            template: '<inventory-monitoring-page></inventory-monitoring-page>'
+        });
+
+        // international order
+        $stateProvider.state('oms.international_list', {
+            url: '/international-list',
+            template: '<fms-order-list></fms-order-list>'
+        });
+
+        // Plant Selected
+        $stateProvider.state('oms.domestic_plant_selected', {
+            url: '/domestic-plant-selected',
+            template: '<oms-domestic-plant-selected></oms-domestic-plant-selected>'
+                // template: '<domestic-plant-selected></domestic-plant-selected>'
+        });
+
+        // Plant Selected
+        $stateProvider.state('oms.international_plant_selected', {
+            url: '/international-plant-selected',
+            template: '<oms-international-plant-selected></oms-international-plant-selected>'
+        });
+
+        // Activity
+        $stateProvider.state('oms.activity_list', {
+            url: '/activity-list',
+            template: '<activity-page></activity-page>'
+        });
+
+        // Status
+        $stateProvider.state('oms.status_list', {
+            url: '/status-list',
+            template: '<status-page></status-page>'
+        });
+
+        $stateProvider.state('oms.testUpload', {
+            url: '/test-upload',
+            templateUrl: 'views/partials/upload.html',
+            controller: 'uploadController'
+        });
+
+        //*** Template master
+        $stateProvider.state('oms.ms-region', {
+            url: '/ms-region',
+            template: '<oms-region></oms-region>'
+        });
+        $stateProvider.state('oms.ms-subregion', {
+            url: '/ms-sub-region',
+            template: '<oms-sub-region></oms-sub-region>'
+        });
+        $stateProvider.state('oms.ms-country', {
+            url: '/ms-country',
+            template: '<oms-country></oms-country>'
+        });
+        $stateProvider.state('oms.ms-province', {
+            url: '/ms-province',
+            template: '<oms-province></oms-province>'
+        });
+        $stateProvider.state('oms.ms-district', {
+            url: '/ms-district',
+            template: '<oms-district></oms-district>'
+        });
+        $stateProvider.state('oms.ms-packaging', {
+            url: '/ms-packaging',
+            template: '<oms-packaging></oms-packaging>'
+        });
+        $stateProvider.state('oms.ms-kind', {
+            url: '/ms-kind',
+            template: '<oms-kind></oms-kind>'
+        });
+        $stateProvider.state('oms.ms-tucktype', {
+            url: '/ms-tucktype',
+            template: '<oms-tuck-type></oms-tuck-type>'
+        });
+
+
+        // POpOz
+        $stateProvider.state('oms.ms-categoryOfBagging', {
+            url: '/ms-categoryOfBagging',
+            template: '<oms-category-of-bagging></oms-category-of-bagging>'
+        });
+        $stateProvider.state('oms.ms-finishGoods', {
+            url: '/ms-finishGoods',
+            template: '<oms-finish-goods></oms-finish-goods>'
+        });
+        $stateProvider.state('oms.ms-baggingType', {
+            url: '/ms-baggingType',
+            template: '<oms-bagging-type></oms-bagging-type>'
+        });
+        $stateProvider.state('oms.ms-productSize', {
+            url: '/ms-productSize',
+            template: '<oms-product-size></oms-product-size>'
+        });
+
+
+        $stateProvider.state('oms.ms-semi', {
+            url: '/ms-semi',
+            template: '<oms-semi></oms-semi>'
+        });
+        $stateProvider.state('oms.ms-grade', {
+            url: '/ms-grade',
+            template: '<oms-grade></oms-grade>'
+        });
+        $stateProvider.state('oms.ms-siloProduct', {
+            url: '/ms-siloProduct',
+            template: '<oms-silo-product></oms-silo-product>'
+        });
+        $stateProvider.state('oms.ms-buyer', {
+            url: '/ms-buyer',
+            template: '<oms-buyer></oms-buyer>'
+        });
+        $stateProvider.state('oms.ms-customer', {
+            url: '/ms-customer',
+            template: '<oms-customer></oms-customer>'
+        });
+        $stateProvider.state('oms.ms-pm-customer', {
+            url: '/ms-pm-customer',
+            template: '<oms-p-m-customer></oms-p-m-customer>'
+        });
+        $stateProvider.state('oms.ms-domesticType', {
+            url: '/ms-domesticType',
+            template: '<oms-domestic-type></oms-domestic-type>'
+        });
+        $stateProvider.state('oms.ms-purchaseOrder', {
+            url: '/ms-purchaseOrder',
+            template: '<oms-purchase-order></oms-purchase-order>'
+        });
+        $stateProvider.state('oms.ms-deliverteam', {
+            url: '/ms-deliverteam',
+            template: '<oms-deliver-team></oms-deliver-team>'
+        });
+        $stateProvider.state('oms.ms-deliveryplace', {
+            url: '/ms-deliveryplace',
+            template: '<oms-delivery-place></oms-deliver-place>'
+        });
+        $stateProvider.state('oms.ms-DomesticDeliveryPlan', {
+            url: '/ms-domesticdeliveryplan',
+            template: '<oms-domestic-delivery-plan></oms-domestic-delivery-plan>'
+        });
+        $stateProvider.state('oms.ms-product', {
+            url: '/ms-product',
+            template: '<oms-product></oms-product>'
+        });
+
+        //*** international  order & Plan */
+        $stateProvider.state('oms.international-planning', {
+            url: '/international-planning',
+            template: '<delivery-plan-summary></delivery-plan-summary>'
+        });
+
+        $stateProvider.state('oms.international_shipment_schedule', {
+            url: '/international-shipment-schedule',
+            template: '<manage-planning></manage-planning>'
+        });
+
+        $stateProvider.state('oms.international-pm-order', {
+            url: '/international-pm-order',
+            template: '<oms-pm-delivery></oms-pm-delivery>'
+        });
+
+        $stateProvider.state('oms.pm-plan', {
+            url: '/pm-plan',
+            template: '<oms-pm-plan></oms-pm-plan>'
+        });
+
+        $stateProvider.state('oms.ms-plant', {
+            url: '/ms-plant',
+            template: '<oms-plant></oms-plant>'
+        });
+
+        $stateProvider.state('nolayout.domestic_order', {
+            url: '/domestic-order',
+            template: '<oms-domestic-plan></oms-domestic-plan>'
+        });
+
+        $stateProvider.state('nolayout.export_order', {
+            url: '/export-order',
+            template: '<delivery-plan-summary-pm></delivery-plan-summary-pm>'
+        });
+
+        $stateProvider.state('nolayout.import_order', {
+            url: '/import-order',
+            template: '<delivery-plan-summary-pm></delivery-plan-summary-pm>'
+        });
+
+        $stateProvider.state('nolayout.transfer_order', {
+            url: '/transfer-order',
+            template: '<oms-transfer-order></oms-transfer-order>'
+        });
+
+    }
+]);

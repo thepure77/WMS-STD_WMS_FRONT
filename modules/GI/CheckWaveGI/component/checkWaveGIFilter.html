@@ -1,0 +1,42 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="row">
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-12 col-md-12 col-xs-12 ">
+
+
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'GI_NO' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <auto-comple ng-model="$vm.filterModel.GoodsIssue_Index" value="$vm.filterModel.GoodsIssue_No"
+                        sourceurl="autoComplete.GoodsIssue_No" api="url.GI"></auto-comple>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 35px;">
+
+                <button class="btn btn-primary" type="button" ng-click="filterSearch(filterModel)"
+                    style="width: 145.4px;">
+                    <i class="fa fa-search"></i>{{ 'SEARCH' | translate }}
+                </button>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 35px;">
+
+                <button class="btn btn-groub-Search" type="button" ng-click="export(filterModel)"
+                    style="width: 145.4px;">
+                    <i></i>{{ 'Export Partial' | translate }}
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

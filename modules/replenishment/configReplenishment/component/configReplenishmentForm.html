@@ -1,0 +1,673 @@
+<style>
+    .fontNormal {
+        font-size: 20px;
+    }
+
+    .checking {
+        background-color: greenyellow !important;
+    }
+
+    .switchColorWhite {
+        background-color: white;
+    }
+
+    .switchColorGrey {
+        background-color: #ecedf0;
+    }
+
+    .noCheck {
+        background-color: #ECEDF0;
+    }
+
+    .btnTopinDiv {
+        background-color: #ECEDF0;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        height: 30%;
+        width: 50%;
+        margin: -15% 0 0 -25%;
+        display: inline-table;
+    }
+
+    .btnDowninDiv {
+        background-color: #ECEDF0;
+        text-align: center;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        height: 30%;
+        width: 50%;
+        margin: -15% 0 0 -25%;
+        display: inline-table;
+    }
+
+    .k150 {
+
+        max-width: 150px;
+        min-width: 150px;
+        word-wrap: break-word;
+    }
+
+    .k50 {
+
+        max-width: 50px;
+        min-width: 50px;
+        word-wrap: break-word;
+    }
+</style>
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+        <h2>{{ 'MASTERDATA' | translate }}</h2>
+        <div class="navigationLabel_mainPage" ng-click="back()"> <i class="kw-size-icon-mainpage fa fa-play"
+                aria-hidden="true"></i>
+            <span class="nagivationSelect">{{ 'CONFIGREPLENISHMENT' | translate }}</span>
+        </div>
+        <div class="navigationLabel"> <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+            <span>{{ 'CREATE_CONFIG_REPLENISHMENT' | translate }}</span>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+<div class="panel-body" style="padding-top:0px;" ng-show="onShow">
+    <div class="panel-body" style="padding-top:0px;">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-top">
+                <span class="fontNormal">{{ 'PLAN' | translate }}</span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span> {{ 'NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="filterModel.replenishment_Id" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>
+                            <span style="color:red">*</span> {{ 'TIME' | translate }}
+                        </span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="filterModel.trigger_Time" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>
+                            <span style="color:red">*</span> {{ 'TIME_END' | translate }}
+                        </span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="filterModel.trigger_Time_End" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        </span> {{ 'ACTIVE' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <label class="ios7-switch ios7-switch-md">
+                            <input ng-model="filterModel.isActive" type="checkbox" >
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span> {{ 'REMARK' | translate }}</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <textarea rows="3" cols="50" class="form-control"
+                            ng-model="filterModel.replenishment_Remark"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12"></div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        </span> {{ 'CLEAR_DATE' | translate }}</span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4">
+                        <button ng-model="filterModel.clearSelectDate" ng-click="clearDate()"
+                            class="btn kw-button-search"><span aria-hidden="true"></span>
+                            {{ 'CLICK' | translate }}</button>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        </span> {{ 'ACTIVE' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <label class="ios7-switch ios7-switch-md">
+                            <input ng-model="filterModel.isActive" type="checkbox" ng-click="changeStatusSelected()">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Start Space -->
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <hr style="color:red ; background-color: #991B1E;" />
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom: 5px;">
+                <span class="fontNormal">{{ 'SCHEDULE' | translate }}</span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+                <div class="col-lg-3 col-md-3 col-xs-12 right">
+                    <div class="col-lg-3 col-md-3 col-xs-3 kw-p-zero" style="line-height: 2;">
+                        <span> {{ 'DAY' | translate }}: </span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-model="closeDay" ng-click="chkDayPeriod(0)" type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-xs-2 kw-p-zero-left">
+                    <div class="col-lg-3 col-md-3 col-xs-3 kw-p-zero" style="line-height: 2;">
+                        All
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-model="filterModel.chkDateAll" type="checkbox" ng-change="selectAllDate()">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="line-height: 2;">
+                        Mon
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-change="chkchooseDate(filterModel.isMonday)" ng-model="filterModel.isMonday"
+                                type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-xs-2">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="line-height: 2;">
+                        Tue
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-change="chkchooseDate(filterModel.isTuesday)" ng-model="filterModel.isTuesday"
+                                type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="line-height: 2;">
+                        Wed
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-change="chkchooseDate(filterModel.isWednesday)" ng-model="filterModel.isWednesday"
+                                type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+                <div class="col-lg-3 col-md-2 col-xs-12 right">
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2 kw-p-zero-left">
+                    <div class="col-lg-3 col-md-3 col-xs-3 kw-p-zero" style="line-height: 2;">
+                        Thu
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-change="chkchooseDate(filterModel.isThursday)" ng-model="filterModel.isThursday"
+                                type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="line-height: 2;">
+                        Fri
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-change="chkchooseDate(filterModel.isFriday)" ng-model="filterModel.isFriday"
+                                type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-xs-2">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="line-height: 2;">
+                        Sat
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-change="chkchooseDate(filterModel.isSaturday)" ng-model="filterModel.isSaturday"
+                                type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="line-height: 2;">
+                        Sun
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-change="chkchooseDate(filterModel.isSunday)" ng-model="filterModel.isSunday"
+                                type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+                <div class="col-lg-3 col-md-3 col-xs-12 right">
+                    <div class="col-lg-3 col-md-3 col-xs-3 kw-p-zero" style="line-height: 2;">
+                        <span> {{ 'DATE' | translate }}: </span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                            <input ng-model="closePeriod" ng-click="chkDayPeriod(1)" type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-3 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero-left">
+                        <dir-date-picker-readonly id="dateFrem"  type="date" ng-model="filterModel.trigger_Date" ></dir-date-picker-readonly >
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-3 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero-right">
+                        <dir-date-picker-readonly  type="date" ng-model="filterModel.trigger_Date_End"></dir-date-picker-readonly>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- close Space -->
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <hr style="color:red ; background-color: #991B1E;" />
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 ">
+            <span class="fontNormal">{{ 'PRODUCT' | translate }}</span>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+            All Products
+            <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                <input ng-model="filterModel.chkAllProduct" type="checkbox" ng-click="chkAllProduct()">
+                <span></span>
+            </label>
+        </div>
+        <div ng-show="click == 3" class="col-lg-6 col-md-6 col-xs-12" style="margin-top: 10px; ">
+            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                <span>
+                    <span style="color:red">*</span> {{ 'Product' | translate }}</span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                <auto-comple ng-model="filterModel.name" ng-keypress="keyEnterGetProduct($event)"
+                    value="filterItemModel.product_Id" id="filterItemModel.product_Name" sourceurl="autoComplete.sku"
+                    api="url.PlanGR"></auto-comple>
+            </div>
+        
+        </div>
+
+        <div ng-show="click == 4"  class="col-lg-6 col-md-6 col-xs-12" style="margin-top: 10px; ">
+            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                <span>
+                    <span style="color:red">*</span> {{ 'Product_Type' | translate }}</span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                <auto-comple ng-model="filterModel.name" ng-keypress="keyEnterGetProductType($event)"
+                    value="filterItemModel.product_Id" id="filterItemModel.key" sourceurl="autoComplete.sku"
+                    api="url.PlanGR"></auto-comple>
+            </div>
+        
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-xs-12 table-responsive table-overflow " style="margin-top: 10px; padding: 0; height: 275px;
+                background-color: white;display: inline-table;">
+
+            <div class="col-lg-5 col-md-5 col-xs-12 table-responsive table-overflow">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab"
+                            ng-click="clickTab(3)">{{ 'PRODUCT' | translate }}</a>
+                    </li>
+                    <li>
+                        <a data-target="#table2" data-toggle="tab"
+                            ng-click="clickTab(4)">{{ 'PRODUCT_TYPE' | translate }}</a>
+                    </li>
+                </ul>
+
+                <div id="table3" class="tab-pane active">
+                    <div class="table-responsive table-overflow" ng-if="click == 3">
+                        <table class="kw-custom-table table-striped table-fixed">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="k100 text-center">#</th>
+                                    <th class="k250" style="text-align: center;">{{ 'PRODUCT_ID' | translate }}
+                                    </th>
+                                    <th class="k250" style="text-align: center;">
+                                        {{ 'PRODUCT_NAME' | translate }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="max-height:175px;">
+                                <tr ng-repeat="data in dtRes"
+                                    ng-click="selectItem(data.product_Id, $index , $index == userSelected[$index].index  ?  userSelected[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data , 1)"
+                                    ng-class="$index == userSelected[$index].index  ?  userSelected[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+
+                                    <td class="k100">{{$index+1}}</td>
+                                    <td class="k250"> {{data.product_Id}}</td>
+                                    <td class="k240"> {{data.product_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="table4" class="tab-pane active" ng-if="click == 4">
+                    <div class="table-responsive table-overflow">
+                        <table class="kw-custom-table table-striped table-fixed">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="k100 ">#</th>
+                                    <th class="k250">{{ 'PRODUCT_TYPE_ID' | translate }}</th>
+                                    <th class="k250">{{ 'PRODUCT_TYPE_NAME' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody style="max-height:175px;">
+                                <tr ng-repeat="data in dtResProductType"
+                                    ng-click="selectItem(data.productCategory_Id, $index , $index == userSelectedTab2[$index].index  ?  userSelectedTab2[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data,2)"
+                                    ng-class="$index == userSelectedTab2[$index].index  ?  userSelectedTab2[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+
+                                    <td class="k100">{{$index+1}}</td>
+                                    <td class="k250"> {{data.productCategory_Id}}</td>
+                                    <td class="k250"> {{data.productCategory_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-xs-12" style=" height: 100%; overflow: auto;background-color: white;">
+                <div>
+                    <div class="btnTopinDiv col-lg-12 col-md-12 col-xs-12 centerMiddleDivInDiv "
+                        ng-click='chooseItem()'>
+                        <span style="font-size: 30; font-weight: 600; vertical-align: middle; display: table-cell;">
+                            >>
+                        </span>
+                    </div>
+                    <div class="btnDowninDiv col-lg-12 col-md-12 col-xs-12 centerMiddleDivInDiv "
+                        ng-click='deleteItem()'>
+                        <span style="font-size: 30; font-weight: 600; vertical-align: middle; display: table-cell;">
+                            &lt; &lt;
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-5 col-xs-12 table-responsive table-overflow  div-shadow"
+                style=" height: 100%; overflow: auto; padding: 0;">
+
+                <table class="table  ">
+                    <thead>
+                        <tr>
+                            <th class="k50">#</th>
+                            <th class="k150" style="text-align: center;">{{ 'PRODUCT_ID' | translate }}</th>
+                            <th class="k200" style="text-align: center;">{{ 'PRODUCT_NAME' | translate }}</th>
+                            <th class="k150" style="text-align: center;">{{ 'PRODUCT_TYPE_ID' | translate }}
+                            </th>
+                            <th class="k200" style="text-align: center;">{{ 'PRODUCT_TYPE_NAME' | translate }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="dtChoose != null || dtChoose != 'undefind'">
+                        <tr ng-repeat="data in dtChoose track by $index"
+                            ng-click="selectItem2(data.product_Id, $index , $index == userSelected2[$index].index  ?  userSelected2[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data)"
+                            ng-class="$index == userSelected2[$index].index  ?  userSelected2[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+
+                            <td class="k50">{{$index+1}}</td>
+                            <td class="k150"> {{data.product_Id}}</td>
+                            <td class="k200"> {{data.product_Name}}</td>
+                            <td class="k200"> {{data.productCategory_Id}}</td>
+                            <td class="k200"> {{data.productCategory_Name}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="dtChoose1 != null || dtChoose1 != 'undefind'">
+                        <tr ng-repeat="data in dtChoose1 track by $index"
+                            ng-click="selectItem2(data.product_Id, $index , $index == userSelected2[$index].index  ?  userSelected2[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data)"
+                            ng-class="$index == userSelected2[$index].index  ?  userSelected2[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+
+                            <td class="k50">{{$index+1}}</td>
+                            <td class="k150"> {{data.product_Id}}</td>
+                            <td class="k200"> {{data.product_Name}}</td>
+                            <td class="k200"> {{data.productType_Id}}</td>
+                            <td class="k200"> {{data.productType_Name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- location -->
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <hr style="color:red ; background-color: #991B1E;" />
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 ">
+            <span class="fontNormal">{{ 'LOCATION_PICKFACE' | translate }}</span>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+            All Locations
+            <label style="margin-left: 5px;" class="ios7-switch ios7-switch-md">
+                <input ng-model="filterModel.chkallLocation" type="checkbox" ng-click="chkAllItem()">
+                <span></span>
+            </label>
+        </div>
+
+        <!-- ----------------------------------------------------------------------------------------------------------------------- -->
+        <div ng-show="clickTabLocation == 1 " class="col-lg-6 col-md-6 col-xs-12" style="margin-top: 10px; ">
+            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                <span>
+                    <span style="color:red">*</span> {{ 'LOCATION_PICKFACE' | translate }}</span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                <auto-comple ng-keypress="keyEnterGetLocation($event)" ng-model="filterModel.location_Id"
+                    value="filterModel.key" sourceurl="autoComplete.location" api="url.Master"></auto-comple>
+            </div>
+        </div>
+
+        <div ng-show="clickTabLocation == 2 " class="col-lg-6 col-md-6 col-xs-12" style="margin-top: 10px; ">
+            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                <span>
+                    <span style="color:red">*</span> {{ 'Zone' | translate }}</span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                <auto-comple ng-keypress="keyEnterGetZone($event)" ng-model="filterModel.Zone"
+                    value="filterModel.key" sourceurl="autoComplete.location" api="url.Master"></auto-comple>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-xs-12 "
+            style="margin-top: 10px; padding: 0; height: 275px;background-color: white;">
+            <div class="col-lg-5 col-md-5 col-xs-12">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab"
+                            ng-click="clickTab(1)">{{ 'LOCATION_PICKFACE' | translate }}</a>
+                    </li>
+                    <li>
+                        <a data-target="#table2" data-toggle="tab" ng-click="clickTab(2)">{{ 'ZONE' | translate }}</a>
+                    </li>
+                </ul>
+
+                <div id="table1" class="tab-pane active">
+                    <div class="table-responsive table-overflow" ng-if="clickTabLocation == 1" style="max-height: 225px;">
+                        <table class="kw-custom-table table-striped table-fixed">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="k100 text-center">#</th>
+                                    <th class="k250" style="text-align: center;">{{ 'LOCATION_ID' | translate }}
+                                    </th>
+                                    <th class="k250" style="text-align: center;">
+                                        {{ 'LOCATION_NAME' | translate }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="max-height:175px;">
+                                <tr ng-repeat="data in dtResLocation"
+                                    ng-click="selectItemLocation(data.location_Id, $index , $index == userSelectedLocation[$index].index  ?  userSelectedLocation[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data , 1)"
+                                    ng-class="$index == userSelectedLocation[$index].index  ?  userSelectedLocation[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+                                    <td class="k100">{{$index+1}}</td>
+                                    <td class="k250"> {{data.location_Id}}</td>
+                                    <td class="k250"> {{data.location_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="table2" class="tab-pane active" ng-if="clickTabLocation == 2">
+                    <div class="table-responsive table-overflow">
+                        <table class="kw-custom-table table-striped table-fixed">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <!-- <th class="k200 text-center">
+                                            <input ng-change="detectCheckAll(checkAll)" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked
+                                            />
+                                            <label for="all_"></label>
+                                        </th> -->
+                                    <th class="k100 ">#</th>
+                                    <th class="k250">{{ 'ZONE_ID' | translate }}</th>
+                                    <th class="k250">{{ 'ZONE_NAME' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody style="max-height:175px;">
+                                <tr ng-repeat="data in dtResZone"
+                                    ng-click="selectItemLocation(data.zone_Id, $index , $index == userSelectedLocationTab2[$index].index  ?  userSelectedLocationTab2[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data,2)"
+                                    ng-class="$index == userSelectedLocationTab2[$index].index  ?  userSelectedLocationTab2[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+
+                                    <td class="k100">{{$index+1}}</td>
+                                    <td class="k250"> {{data.zone_Id}}</td>
+                                    <td class="k250"> {{data.zone_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-xs-12" style=" height: 100%; overflow: auto;background-color: white;">
+                <div>
+                    <div class="btnTopinDiv col-lg-12 col-md-12 col-xs-12 centerMiddleDivInDiv "
+                        ng-click='chooseItemLocation()'>
+                        <span style="font-size: 30; font-weight: 600; vertical-align: middle; display: table-cell;">
+                            >>
+                        </span>
+                    </div>
+                    <div class="btnDowninDiv col-lg-12 col-md-12 col-xs-12 centerMiddleDivInDiv "
+                        ng-click='deleteItemlocation()'>
+                        <span style="font-size: 30; font-weight: 600; vertical-align: middle; display: table-cell;">
+                            &lt; &lt;
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-5 col-xs-12 table-responsive table-overflow  div-shadow"
+                style=" height: 100%; overflow: auto; padding: 0;">
+                <!-- <div class="row" style="margin-bottom: 42px;"></div> -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="k50">#</th>
+                            <th class="k150" style="text-align: center;">{{ 'LOCATION_ID' | translate }}</th>
+                            <th class="k200" style="text-align: center;">{{ 'LOCATION_NAME' | translate }}</th>
+                            <th class="k150" style="text-align: center;">{{ 'ZONE_ID' | translate }}</th>
+                            <th class="k200" style="text-align: center;">{{ 'ZONE_NAME' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in dtChooseLocation track by $index"
+                            ng-click="selectItemLocation2(data.zone_Id, $index , $index == userSelectedLocation2[$index].index  ?  userSelectedLocation2[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data)"
+                            ng-class="$index == userSelectedLocation2[$index].index  ?  userSelectedLocation2[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+
+                            <td class="k50">{{$index+1}}</td>
+                            <td class="k150"> {{data.location_Id}}</td>
+                            <td class="k200"> {{data.location_Name}}</td>
+                            <td class="k200"> {{data.zone_Id}}</td>
+                            <td class="k200"> {{data.zone_Name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xs-12 p-zero" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()" style="float: left;">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-primary previous" ng-show="create" ng-click="saveReplenishment()"
+                    style="float: right;">
+                    {{ 'SAVE' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-success" ng-show="update" ng-click="saveReplenishment()"
+                    style="float: right;">
+                    {{ 'UPDATE' | translate }}
+                </button>
+            </ul>
+        </div>
+
+        <!-- <div class="">
+                <div class="col-md-12 col-lg-12 col-xs-12 p-zero">
+                    <div class="col-md-4 padd"></div>
+                    <div class="col-md-4 padd">
+                        <button ng-click="saveReplenishment()" class="btn kw-button-search"><span aria-hidden="true"></span>
+                            {{ 'Save' | translate }}</button>
+                    </div>
+    
+                    <div class="col-md-4 padd">
+                    </div>
+                </div>
+            </div> -->
+
+    </div>
+</div>
+
+</div>

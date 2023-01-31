@@ -1,0 +1,66 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div class="col-lg-12 col-md-12 col-xs-12">
+        <h3>{{ 'DOCUMENT_TYPE_ITEM_STATUS' | translate }}</h3>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px; padding-left: 0px;">
+                {{ 'DOCUMENT_ID' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.documentTypeItemStatus_Id" type="text" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                <span style="color:red">*</span>{{ 'DOCUMENT_TYPE' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <auto-comple ng-model="filterModel.documentType_Index" name="filterModel.documentType_Name" value="filterModel.documentType_Name" id="filterModel.documentType_Id"
+                    sourceurl="autoComplete.documentType" api="url.Master"></auto-comple>
+            </div>
+        </div>        
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                <span style="color:red">*</span>{{ 'ITEM_STATUS' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <auto-comple ng-model="filterModel.itemStatus_Index" name="filterModel.itemStatus_Name" value="filterModel.itemStatus_Name" id="filterModel.itemStatus_Id"
+                    sourceurl="autoComplete.itemStatus" api="url.Master"></auto-comple>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                {{ 'ISACTIVE' | translate }} 
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="ig-control">
+                    <input type="checkbox" ng-model="filterModel.isActive"  class="ig-control__cbx" ng-checked="getCheck" ng-true-value="1" ng-false-value="0" id="table_setting_1"/>
+                    <label for="table_setting_1"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .button -->
+    <div class="footer-white">
+        <ul class="pager">
+            <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+            </button>
+
+            <button type="button" class="btn btn-primary previous" ng-show="create" ng-click="add()" style="float: right;">
+                {{ 'SAVE' | translate }}
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+
+            <button type="button" class="btn btn-success" ng-show="update" ng-click="add()" style="float: right;">
+                {{ 'UPDATE' | translate }}
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+        </ul>
+    </div>
+    <!-- /.button -->
+</div>

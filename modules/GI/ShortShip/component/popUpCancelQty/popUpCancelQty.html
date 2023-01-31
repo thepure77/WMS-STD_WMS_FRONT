@@ -1,0 +1,61 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow">
+    <div class="modal-dialog" style="overflow:auto;width:50%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal"></a>
+                    </div>
+
+                    <h2 class="panel-title">{{ 'CANCEL QTY' | translate }}</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+ 
+                            <div class="text-center padding-xs col-lg-12 col-md-12 col-xs-12" >
+                                <div class="col-lg-5 col-md-12 col-xs-12" style="text-align: right; padding-top: 10px;">
+                                    <span>{{ 'PRODUCT_ID' | translate}}</span>
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-xs-12">
+                                    <input type="text" ng-model="model.product_Id" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                        <div class="text-center padding-xs col-lg-12 col-md-12 col-xs-12" >
+                            <div class="col-lg-5 col-md-12 col-xs-12" style="text-align: right; padding-top: 10px;">
+                                <span>{{ 'PRODUCT_NAME' | translate}}</span>
+                            </div>
+                            <div class="col-lg-5 col-md-12 col-xs-12">
+                                <input type="text" ng-model="model.product_name" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="text-center padding-xs col-lg-12 col-md-12 col-xs-12" >
+                            <div class="col-lg-5 col-md-12 col-xs-12" style="text-align: right; padding-top: 10px;">
+                                <span>{{ 'CANCEL_QTY' | translate}}</span>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-xs-12">
+                                <input type="number" ng-model="model.shortQty" class="form-control" min="0">
+                            </div>
+                            <div class="col-lg-1 col-md-12 col-xs-12" style="text-align: right; padding-top: 10px;">
+                                <span>{{ 'UNIT' | translate}}</span> 
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-xs-12">
+                                <input type="text" ng-model="model.productConversion_Name" class="form-control" disabled> 
+                            </div>
+                            
+                        </div>
+                        <div class="form-group text-center padding-m">
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <button ng-click="update()" class="btn btn-primary display-inline" style="margin:5px;">
+                                    {{ 'Save' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

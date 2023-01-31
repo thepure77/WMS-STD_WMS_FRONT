@@ -1,0 +1,120 @@
+<div class="panel-body" ng-show="onShow">
+    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  padd">
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                        <span class="required">* <label>{{ 'APPOINTMENT_NO' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                        <input type="text" ng-model="filterModel.appointment_Id" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                        <label>{{ 'DOCUMENT_NO' | translate }}</label>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                        <input type="text" ng-model="filterModel.ref_Document_No" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'DATE_OFPRODUCT' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'TIME_OFPRODUCT' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <dir-date-picker type="text" ng-model="filterModel.checkIn_Date" disabled="disabled == 1"/>
+                        </dir-date-picker>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.checkIn_Time" class="form-control" disabled/>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label>{{ 'ACTIVITY' | translate }}</label>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                        <input type="text" ng-model="filterModel.documentType_Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        {{ 'WAREHOUSE' | translate }}
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        {{ 'LIST_DOCK' | translate }}
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.wareHouse_Name" class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.dock_Name" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        {{ 'DEPOSIT_DATE' | translate }}
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        {{ 'TIME' | translate }}
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.appointment_Date" class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.appointment_Time" class="form-control" disabled />
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                <!-- <div class="col-lg-4 col-md-4 col-xs-12 padd">
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        {{ 'CUSTOMER_ID_COMPANY' | translate }} :
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        <input ng-model="filterModel.owner_Id" class="form-control text-upper"
+                            disabled></input>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 padd">
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        {{ 'CUSTOMER_NAME_COMPANY' | translate }} :
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        <input ng-model="filterModel.owner_Name" class="form-control text-upper"
+                            disabled></input>
+                    </div>
+                </div> -->
+                <div class="col-lg-4 col-md-4 col-xs-12 padd">
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        {{ 'REMARK' | translate }} :
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        <textarea rows="3" ng-model="filterModel.remark" class="form-control text-upper"
+                            placeholder="Search"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-info previous" ng-show="showCheckIn" ng-click="add()"
+                    style="float: none;">
+                    {{ 'CHECKIN' | translate }}
+                </button>
+            </ul>
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()" style="float: none;">
+                    {{ 'BACK' | translate }}
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>

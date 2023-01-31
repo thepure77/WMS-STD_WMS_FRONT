@@ -1,0 +1,226 @@
+<header class="page-header">
+
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'REPORT' | translate }} </h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a ui-sref="wms.index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'REPORT' | translate }}</span>
+                </li>
+                <li>
+                    <span>{{ 'REPORT_TRACEABILITY' | translate }}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label"> {{ 'REPORT_TRACEABILITY' | translate }}</label>
+</div>
+
+<div class="col-md-12" style="margin-bottom: 1%;">
+
+    <div class="col-md-1" style="text-align: center;font-size: 11px">
+        <span style="color: red">* </span>{{ 'WAREHOUSE' | translate }}
+        <select ng-model="filterModel.ambientRoom" class="form-control">
+            <option value=""> -- {{ 'SELECT' | translate }} -- </option>
+            <option value="01">ambient</option>
+            <option value="02">ห้องเย็น</option>
+        </select>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'BUSINESS_UNIT' | translate }}
+        <select class='form-control' ng-model='filterModel.businessUnitList'
+            ng-options="v.businessUnit_Name for v in dropdownBusinessUnit">
+            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+        </select>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'PRODUCTID' | translate }}
+        <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Id" id="filterModel.product_Name" sourceurl="autoComplete.autoSku" api="url.Master"></auto-comple>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'PRODUCT_NAME' | translate }}
+        <input type="text" ng-model="filterModel.product_Name" class="form-control" disabled/>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'DATA_OF_MONTH' | translate }}
+        <select ng-model="filterModel.month" class="form-control">
+            <option value=""> -- {{ 'SELECT' | translate }} -- </option>
+            <option value="01">{{ 'JANUARY' | translate }}</option>
+            <option value="02">{{ 'FEBRUARY' | translate }}</option>
+            <option value="03">{{ 'MARCH' | translate }}</option>
+            <option value="04">{{ 'APRIL' | translate }}</option>
+            <option value="05">{{ 'MAY' | translate }}</option>
+            <option value="06">{{ 'JUNE' | translate }}</option>
+            <option value="07">{{ 'JULY' | translate }}</option>
+            <option value="08">{{ 'AUGUST' | translate }}</option>
+            <option value="09">{{ 'SEPTEMBER' | translate }}</option>
+            <option value="10">{{ 'OCTOBER' | translate }}</option>
+            <option value="11">{{ 'NOVEMBER' | translate }}</option>s
+            <option value="12">{{ 'DECEMBER' | translate }}</option>
+        </select>
+    </div>
+    <div class="col-md-3" style="margin-top: 15px;">
+        <div class="col-md-4 padd">
+            <button ng-click="validate('pdf')" class="btn kw-button-search" ng-show='!advanceSearch'>
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                {{ 'SEARCH' | translate }}</button>
+        </div>
+        <div class="col-md-5 padd">
+            <button class="btn kw-button-advanceSearch" type="button" ng-click="advanceSearch_()" style="height: auto;">
+                <i class="fa fa-star-o"></i>{{ 'ADVANCE_SEARCH' | translate }}
+            </button>
+        </div>
+        <div class="col-md-3 padd">
+            <button ng-click="validate('excel')" class="btn btn-success"  style="width: 100%;">
+                <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                {{ 'EXECEL' | translate }}</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-12" style="margin-bottom: 1%;" ng-show='advanceSearch'>
+
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'EXP_DATE' | translate }}
+        <dir-date-picker ng-model="filterModel.exp_Date"></dir-date-picker>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+         {{'MFG_DATE' | translate }}
+        <dir-date-picker ng-model="filterModel.mfg_Date"></dir-date-picker>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'GOODRECEIVE_DATE' | translate }}
+        <dir-date-picker ng-model="filterModel.goodsReceive_Date"></dir-date-picker>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'BATCH_LOT' | translate }}
+        <input type="text" ng-model="filterModel.product_Lot" class="form-control" />
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'OWNER' | translate }}
+        <auto-comple ng-model="filterModel.vendor_Index" value="filterModel.vendor_Id" id="filterModel.vendor_Name" sourceurl="autoComplete.vendor" api="url.Report"></auto-comple>        
+    </div>
+    <div class="col-md-2" style="margin-top:15px;">
+        <div class="col-md-7 padd">
+            <button ng-click="validate('pdf')" class="btn btn-groub-Search " style="width: 100%;">
+                <span class="glyphicon glyphicon-search" aria-hidden="true" ></span>
+                {{ 'SEARCH' | translate }}</button>
+        </div>
+        <div class="col-md-5 padd">
+            <button type="button" class="btn kw-button-search " ng-click="clear()" style="float: right;">
+                {{ 'CLEAR' | translate }}
+        </div>
+    </div>
+
+</div>
+
+<!-- 
+<div class="col-md-12" style="margin-bottom: 1%;">
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <div class="col-md-1 col-xs-9 padd" style="text-align: center;font-size: 11px"><span style="color: red">* </span>{{ 'คลัง' | translate }}</div>
+        <div class="col-md-2 col-xs-1 padd" style="text-align: center;font-size: 11px">{{ 'BUSINESS_UNIT' | translate }}</div>        
+        <div class="col-md-2 col-xs-9 padd" style="text-align: center;font-size: 11px">{{ 'PRODUCTID' | translate }}</div>
+        <div class="col-md-3 col-xs-9 padd" style="text-align: center;font-size: 11px">{{ 'PRODUCT_NAME' | translate }}</div>
+        <div class="col-md-1 col-xs-9 padd" style="text-align: center;font-size: 11px">{{ 'DATA_OF_MONTH' | translate }}</div>
+        <div class="col-md-1 col-xs-1 padd" style="text-align: center;font-size: 11px"></div>
+        <div class="col-md-1 col-xs-1 padd" style="text-align: center;min-height: 26px;"></div>
+        <div class="col-md-1 col-xs-1 padd" style="text-align: center;font-size: 11px"></div>
+        <div class="col-md-2 col-xs-9 padd"></div>
+        <div class="col-md-1 col-xs-9 padd"></div>
+        
+        <div class="">
+            <div class="col-md-1 col-xs-9 padd">
+                <div class="dropdown">
+                    <select ng-model="filterModel.ambientRoom" class="form-control">
+                        <option value=""> -- {{ 'SELECT' | translate }} -- </option>
+                        <option value="01">ambient</option>
+                        <option value="02">ห้องเย็น</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-1 padd">
+                <div class="col-lg-12 col-md-10 col-sm-10  kw-p-zero">
+                    <select class='form-control' ng-model='filterModel.businessUnitList'
+                        ng-options="v.businessUnit_Name for v in dropdownBusinessUnit">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-9 padd">
+                <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Id" id="filterModel.product_Name" sourceurl="autoComplete.autoSku" api="url.Master"></auto-comple>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-9 padd">
+                <input type="text" ng-model="filterModel.product_Name" class="form-control"
+                disabled/>    
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-1 col-xs-9 padd">
+                <div class="dropdown">
+                    <select ng-model="filterModel.ambientRoom" class="form-control">
+                        <option value=""> -- {{ 'SELECT' | translate }} -- </option>
+                        <option value="01">ambient</option>
+                        <option value="02">ห้องเย็น</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <div class="col-md-6 padd">
+                    <button ng-click="searchReport(filterModel)" class="btn kw-button-search">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        {{ 'SEARCH' | translate }}</button>
+                </div>
+                <div class="col-md-4 padd">
+                    <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                        <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                        {{ 'EXECEL' | translate }}</button>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="">
+            <div class="col-md-2 p-zero">
+                
+            </div>
+        </div>
+
+</div> -->
+
+<div style="display: block;" ng-show="isShow">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </center>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

@@ -1,0 +1,165 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="panel-body">
+            <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                <div class="col-lg-3 col-md-4 col-xs-6 padd"><span style="color:red">*</span>{{ 'MEMO_NO' | translate }}
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-6 padd"><span
+                        style="color:red">*</span>{{ 'MEMO_DATE' | translate }}</div>
+                <div class="col-lg-3 col-md-4 col-xs-6 padd">{{ 'DOCUMENT_NO' | translate }}</div>
+                <div class="col-lg-3 col-md-4 col-xs-6 padd">{{ 'DOCUMENT_REF3' | translate }}</div>
+
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input class="form-control" ng-model="filterModel.memo_No" value="filterModel.memo_No"
+                    sourceurl="" disabled></input>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <div class="input-group">
+                    <dir-date-picker ng-model="filterModel.memo_Date" id="filterModel.memo_Date"
+                        value="filterModel.memo_Date">
+                    </dir-date-picker>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.ref_Document_No" id="filterModel.ref_Document_No"
+                    value="filterModel.ref_Document_No" sourceurl="" class="form-control" disabled></input>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.documentRef_No3" id="filterModel.documentRef_No3"
+                    value="filterModel.documentRef_No3" sourceurl="" class="form-control"></input>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                <div class="col-lg-6 col-md-4 col-xs-6 padd"><span
+                        style="color:red">*</span>{{ 'CY_DOC_TYPE' | translate }} :</div>
+                <div class="col-lg-3 col-md-4 col-xs-6 padd">{{ 'DOCUMENT_REF1' | translate }}</div>
+                <div class="col-lg-3 col-md-4 col-xs-6 padd">{{ 'DOCUMENT_REF4' | translate }}</div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <select class='form-control' ng-model='dropdownDocumentType.model'
+                    ng-options="v.documentType_Name for v in dropdownDocumentType" >
+                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd"></div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.documentRef_No1" id="filterModel.documentRef_No1"
+                    value="filterModel.documentRef_No1" sourceurl="" class="form-control"></input>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.documentRef_No4" id="filterModel.documentRef_No4"
+                    value="filterModel.documentRef_No4" sourceurl="" class="form-control"></input>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                <div class="col-lg-6 col-md-4 col-xs-6 padd">{{ 'OWNER' | translate }}</div>
+                <div class="col-lg-3 col-md-4 col-xs-6 padd">{{ 'DOCUMENT_REF2' | translate }}</div>
+                <div class="col-lg-3 col-md-4 col-xs-6 padd">{{ 'DOCUMENT_REF5' | translate }}</div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.owner_Id" id="filterModel.owner_Id" value="filterModel.owner_Id"
+                    sourceurl="" class="form-control" disabled></input>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.owner_Name" id="filterModel.owner_Name" value="filterModel.owner_Name"
+                    sourceurl="" class="form-control" disabled></input>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.documentRef_No2" id="filterModel.documentRef_No2"
+                    value="filterModel.documentRef_No2" sourceurl="" class="form-control"></input>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 padd">
+                <input ng-model="filterModel.documentRef_No5" id="filterModel.documentRef_No5"
+                    value="filterModel.documentRef_No5" sourceurl="" class="form-control"></input>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                <div class="col-lg-6 col-md-4 col-xs-6 padd">{{ 'REMARK' | translate }}</div>
+
+            </div>
+            <div class="col-lg-6 col-md-4 col-xs-6 padd">
+                <textarea rows="3" cols="100" class="form-control" ng-model="filterModel.remark"></textarea>
+            </div>
+        </div>
+    </form>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+                <button type="button" class="modal-with-form btn btn-default"
+                    ng-click="addDetailItem.onClick(filterModel)">{{ 'ADD' | translate }}</button>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+                <div class="table-responsive table-overflow">
+                    <table class="table  table-width-100 fixed-header tableHeight-350" border="0">
+                        <thead>
+                            <tr>
+                                <th class="text-center k120">{{ 'ACTION' | translate}}</th>
+                                <th class="text-center k100">{{ 'ROW_NUMBER' | translate}}</th>
+                                <th class="text-center k250">{{ 'SERVICECHARHE_NAME' | translate}}</th>
+                                <th class="text-center k100">{{ 'QTY' | translate}}</th>
+                                <th class="text-center k150">{{ 'WEIGHT' | translate}}</th>
+                                <th class="text-center k150">{{ 'VOLUME' | translate}}</th>
+                                <th class="text-center k150">{{ 'Rate' | translate}}</th>
+                                <th class="text-center k150">{{ 'AMOUNT' | translate}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listItemViewModels">
+                                <td class="text-center k100">
+                                    <div>
+                                        <a class="btn btn-danger"
+                                            ng-click="deleteItem( filterModel.listItemViewModels, $index)">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="text-center k120">{{$index+1}}</td>
+                                <td class="text-center k250">{{data.serviceCharge_Name}}</td>
+                                <td class="text-center k100">{{data.qty}}</td>
+                                <td class="text-center k150">{{data.weight}}</td>
+                                <td class="text-center k150">{{data.volume}}</td>
+                                <td class="text-center k150">{{data.rate}}</td>
+                                <td class="text-center k150">{{data.amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-step-back" ng-click="back()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+    </button>
+    <div class="col-lg-5 col-md-2 col-xs-12 kw-p-zero"></div>
+    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+        <span><h5>{{ 'TOTAL_AMOUNT' | translate }}</h5></span>
+    </div>
+    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+        <input ng-model="filterModel.total_amount" value="filterModel.total_amount"
+            sourceurl="" class="form-control" disabled></input>
+    </div>
+    
+
+
+    <button type="button" class="btn btn-blue previous" ng-click="add()" style="float: right;background-color: #60b0ff">
+        {{ 'SAVE' | translate }}
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </button>
+
+</div>
+
+<gr-memo-detail on-show='addDetailItem.onShow' config='addDetailItem.config' invokes='addDetailItem.invokes'
+    delegates='addDetailItem.delegates'>
+</gr-memo-detail>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

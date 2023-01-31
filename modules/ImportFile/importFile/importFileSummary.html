@@ -1,0 +1,41 @@
+<header class="page-header">
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2> {{ 'IMPORTFILE' | translate }}</h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span> {{ 'IMPORTFILE' | translate }} </span>
+                </li>
+                <!-- <li><span>Basic</span></li> -->
+            </ol>
+        </div>
+    </div>
+</header>
+
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label">{{ 'IMPORTFILE' | translate }}</label>
+</div>
+
+<div class="tabs">
+    <!-- <div class="col"> -->
+    <div class="panel-body">
+        <div style="margin-bottom:15px;">
+            <import-file-filter filter-model="filterModel" gu-id="guId" column-header="columnHeader" search-result-model="searchResultModel"
+                invalid-result-model="invalidResultModel" trigger-search="callSearch" trigger-create="create" ng-show="isFilter"></import-file-filter>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <import-file-table-list filter-model="filterModel" gu-id="guId" column-header="columnHeader" search-result-model="searchResultModel"
+                invalid-result-model="invalidResultModel" trigger-search="callSearch" trigger-create="create" is-filter="isFilter"></import-file-table-list>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>

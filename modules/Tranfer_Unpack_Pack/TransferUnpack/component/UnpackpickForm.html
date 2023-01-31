@@ -1,0 +1,392 @@
+<meta http-equiv="Pragma" content="no-cache">
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+        <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'PICK' | translate }} </h2>
+
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+<div class="tabs">
+    <div class="panel-body">
+        <div ng-show="$vm.isFilterTable">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-click="selectedTab(1)" ng-init="colortab1 = '#0d449d'">{{ 'MATTER' | translate }}</a>
+                </li>
+                <li class="active">
+                    <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}" ng-click="selectedTab(2)">{{ 'THE_DATE' | translate }}</a>
+                </li>
+                <li class="active">
+                    <a data-target="#tab3" data-toggle="tab" style="background-color:{{colortab3}}" ng-click="selectedTab(3)">{{ 'LOCATIONV2' | translate }}</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="tab1" class="tab-pane active" ng-if="selected == 1" style="height: 150px">
+                    <div class="form-group" style="margin-top:15px;">
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'ProductType' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='filterModel.dropdownProductType' ng-options="v.productType_Name for v in dropdownProductType"
+                                    ng-disabled="filterModel.isUseDocumentType">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'MATERIAL_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <auto-comple-id ng-model="filterModel.product_Index" value="filterModel.product_Id" id="filterModel.product_Name" sourceurl="autoComplete.sku"
+                                    is-disabled="filterModel.isUseDocumentType" api="url.binBalance"></auto-comple-id>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'MATERIAL_PICKMANUAL' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Name" id="filterModel.product_Id" sourceurl="autoComplete.product"
+                                    is-disabled="filterModel.isUseDocumentType" api="url.binBalance"></auto-comple>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'STATUS' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='filterModel.dropdownItemStatus' ng-options="v.itemStatus_Name for v in dropdownItemStatus"
+                                    ng-disabled="filterModel.isUseDocumentType">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:15px;">
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'GR_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <auto-comple ks-enter="filterGR(model)" ng-model="filterModel.goodsReceive_Index" value="filterModel.goodsReceive_No" sourceurl="autoComplete.goodsReceive"
+                                    api="url.binBalance"></auto-comple>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'LOT' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <auto-comple ks-enter="filterGR(model)" ng-model="filterModel.product_Lot" value="filterModel.product_Lot" sourceurl="autoComplete.productLot"
+                                    is-disabled="filterModel.isUseDocumentType" api="url.binBalance"></auto-comple>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'TAG_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <auto-comple ks-enter="filterGR(model)" ng-model="filterModel.tag_Index" value="filterModel.tag_No" sourceurl="autoComplete.tag"
+                                    is-disabled="filterModel.isUseDocumentType" api="url.binBalance"></auto-comple>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'ERP_LOCATION' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <input type="text" class="form-control " ng-model="filterModel.erp_Location" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="tab2" class="tab-pane active" ng-if="selected == 2" style="height: 150px">
+                    <div class="form-group" style="margin-top:15px;">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'GR_DATE' | translate }} :
+                                </span>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <dir-date-picker ng-model="filterModel2.goodsReceive_Date"></dir-date-picker>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <dir-date-picker ng-model="filterModel2.goodsReceive_Date_To"></dir-date-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:15px;">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'MFG_DATE' | translate }} :
+                                </span>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <dir-date-picker ng-model="filterModel2.mfg_Date"></dir-date-picker>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <dir-date-picker ng-model="filterModel2.mfg_Date_To"></dir-date-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:15px;">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'EXP_DATE' | translate }} :
+                                </span>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <dir-date-picker ng-model="filterModel2.exp_Date"></dir-date-picker>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                <dir-date-picker ng-model="filterModel2.exp_Date_To"></dir-date-picker>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div id="tab3" class="tab-pane active" ng-if="selected == 3" style="height: 150px">
+                    <div class="form-group" style="margin-top:15px;">
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'WAREHOUSE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='filterModel3.dropdownWarehouse' ng-options="v.warehouse_Name for v in dropdownWarehouse">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'ZONE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='filterModel3.dropdownZone' ng-options="v.zone_Name for v in dropdownZone">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    {{ 'LOCATION' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <auto-comple ng-model="filterModel3.location_Index" name="filterModel3.location_Name" value="filterModel3.location_Name"
+                                    id="filterModel3.location_Id" sourceurl="autoComplete.location" api="url.Master"></auto-comple>
+                            </div>
+                            <!-- <select class='form-control' ng-model='filterModel3.dropdownLocation' ng-options="v.location_Name for v in dropdownLocation">
+                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                        </select> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+
+                <button type="button" class="btn btn-blue previous" ng-click="Search()" style="float: right;background-color: #60b0ff">
+                    {{ 'SEARCH' | translate }}
+                </button>
+
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#subTab1" data-toggle="subTab" style="background-color:{{colorsubtab1}}" ng-click="selectedSubTab(1)">{{ 'STOCK_INVENTORY' | translate }}</a>
+                    </li>
+                    <li class="active">
+                        <a data-target="#subTab2" data-toggle="subTab" style="background-color:{{colorsubtab2}}" ng-click="selectedSubTab(2)">{{ 'RESERVE' | translate }}</a>
+                    </li>
+                </ul>
+
+                <!-- <button type="button" class="btn btn-blue previous" ng-click="test()" style="float: right;background-color: #60b0ff">
+                TEST Popup
+            </button> -->
+                <div class="tab-content">
+                    <div id="subTab1" class="tab-pane active" ng-if="subSelected == 1">
+                        <div class="form-group" style="margin-top:15px;">
+                            <input ng-model="filterModel.checkAll_" ng-change="detectCheckAll(filterModel.checkAll_)" ng-show="filterModel.isUseDocumentType"
+                                type="checkbox" id="all2_" class="ig-control__cbx" style="margin-left: 37px;" checked />
+                            <label for="all2_" ng-show="filterModel.isUseDocumentType"></label>
+                            <button type="button" class="btn btn-success" ng-click="ok()" ng-show="filterModel.isUseDocumentType" style="margin-top: -20px;">
+                                OK
+                            </button>
+                            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+                                <div class="table-responsive table-overflow">
+                                    <table class="table  table-width-100 fixed-header tableHeight-350">
+                                        <thead>
+                                            <tr>
+                                                <th class="k100 text-center" ng-show="!filterModel.isUseDocumentType">{{ 'ACTION' | translate }}</th>
+                                                <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'TAG_NO' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'LOCATION' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'LOT' | translate }}</th>
+                                                <th class="k150 text-center">{{ 'MATERIAL_NO' | translate }}</th>
+                                                <th class="k250 text-center">{{ 'MATERIAL_PICKMANUAL' | translate }}</th>
+                                                <th class="k80 text-center">{{ 'SALE_UNIT' | translate }}</th>
+                                                <th class="k80 text-center">{{ 'QTY' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'UNIT' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'Erp location' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'STATUS' | translate }}</th>
+                                                <th class="k120 text-center">{{ 'MFG_DATE' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'EXP_DATE' | translate }}</th>
+                                                <th class="k150 text-center">{{ 'GR_NO' | translate }}.</th>
+                                                <th class="k100 text-center">{{ 'GR_DATE' | translate }}</th>
+                                                <th class="k150 text-center">{{ 'REMARK' | translate }}</th>
+                                                <th class="k120 text-center">{{ 'WAREHOUSE' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'ZONE' | translate }}</th>
+                                                <th class="k80 text-center">{{ 'WEIGHT' | translate }}</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in items">
+                                                <td class="k100" ng-show="!filterModel.isUseDocumentType">
+                                                    <div>
+                                                        <a class="btn btn-primary nextBtn" ng-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3"
+                                                            ng-click="popupPick.onClick(data)" style="width: 40%;">
+                                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                        </a>
+                                                        <!-- <a class="btn btn-danger"  ng-click="deleteItem(filterModel.listPlanGoodsReceiveItemViewModel, $index)"
+                                                        ng-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3">
+                                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                    </a> -->
+                                                    </div>
+                                                </td>
+                                                <td class="k50 text-center">{{$index+1}}</td>
+                                                <td class="k100 text-center">{{data.tag_No}}</td>
+                                                <td class="k100 text-center">{{data.location_Name}}</td>
+                                                <td class="k100 text-center">{{data.product_Lot}}</td>
+                                                <td class="k150 text-center">{{data.product_Id}}</td>
+                                                <td class="k250 ">{{data.product_Name}}</td>
+                                                <td class="K80 text-center">{{data.sale_unit}} </td>
+                                                <td class="k80 text-center">{{data.qty|number:3}}</td>
+                                                <td class="k100 text-center">{{ data.productConversion_Name }}</td>
+                                                <td class="k100 text-center">{{ data.erp_location }}</td>
+                                                <td class="k100 text-center">{{ data.status_Name }}</td>
+                                                <td class="k120 text-center">{{ data.goodsReceive_MFG_Date|dateFormate }}</td>
+                                                <td class="k100 text-center">{{ data.goodsReceive_EXP_Date|dateFormate }}</td>
+                                                <td class="k150 text-center">{{data.goodsReceive_No}}</td>
+                                                <td class="k100 text-center">{{ data.goodsReceive_Date|dateFormate }}</td>
+                                                <td class="k150 text-center">{{ data.remark }}</td>
+                                                <td class="k120 text-center">{{data.warehouse_Name}}</td>
+                                                <td class="k100 text-center">{{data.zone_Name}}</td>
+                                                <td class="k80 text-center">{{ data.weight|number:3 }}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="subTab2" class="tab-pane active" ng-if="subSelected == 2">
+                        <div class="form-group" style="margin-top:15px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+                                <div class="table-responsive table-overflow">
+                                    <table class="table  table-width-100 fixed-header tableHeight-350">
+                                        <thead>
+                                            <tr>
+                                                <th class="k150 text-center">{{ 'ACTION' | translate }}</th>
+                                                <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                                                <th class="k150 text-center">{{ 'GR_NO' | translate }}.</th>
+                                                <th class="k100 text-center">{{ 'ZONE' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'LOCATION' | translate }}</th>
+                                                <th class="k120 text-center">{{ 'WAREHOUSE' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'TAG_NO' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'LOT' | translate }}</th>
+                                                <th class="k150 text-center">{{ 'MATERIAL_NO' | translate }}</th>
+                                                <th class="k250 text-center">{{ 'MATERIAL_PICKMANUAL' | translate }}</th>
+                                                <th class="k80 text-center">{{ 'QTY' | translate }}</th>
+                                                <th class="k80 text-center">{{ 'WEIGHT' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'UNIT' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'STATUS' | translate }}</th>
+                                                <th class="k150 text-center">{{ 'REMARK' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'GR_DATE' | translate }}</th>
+                                                <th class="k120 text-center">{{ 'MFG_DATE' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'EXP_DATE' | translate }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in itemsReserve.item">
+                                                <td class="k150">
+                                                    <div>
+                                                        <a class="btn btn-danger" ng-click="deleteItem(data, $index)">
+                                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td class="k50 text-center">{{$index+1}}</td>
+                                                <td class="k150 text-center">{{data.goodsReceive_No}}</td>
+                                                <td class="k100 text-center">{{data.zone_Name}}</td>
+                                                <td class="k100 text-center">{{data.location_Name}}</td>
+                                                <td class="k120 text-center">{{data.warehouse_Name}}</td>
+                                                <td class="k100 text-center">{{data.tag_No}}</td>
+                                                <td class="k100 text-center">{{data.product_Lot}}</td>
+                                                <td class="k150 text-center">{{data.product_Id}}</td>
+                                                <td class="k250 ">{{data.product_Name}}</td>
+                                                <td class="k80 text-center">{{data.pick * data.unit.productconversion_Ratio}}</td>
+                                                <td class="k80 text-center">{{data.pick * data.unitWeight|number:3}}</td>
+                                                <td class="k100 text-center">{{ data.productConversion_Name }}</td>
+                                                <td class="k100 text-center">{{ data.status_Name }}</td>
+                                                <td class="k150 text-center">{{ data.remark }}</td>
+                                                <td class="k100 text-center">{{ data.goodsReceive_Date|dateFormate }}</td>
+                                                <td class="k120 text-center">{{ data.goodsReceive_MFG_Date|dateFormate }}</td>
+                                                <td class="k100 text-center">{{ data.goodsReceive_EXP_Date|dateFormate }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-6 col-md-6 col-xs-12 text-left padding-m">
+                        <button class="btn btn-primary hidden-xs" ng-click="back()">{{ 'BACK' | translate }}</button>
+                        <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="back()">{{ 'BACK' | translate }}</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12 text-right padding-m">
+                        <button class="btn btn-success hidden-xs" ng-click="Confirm()">{{ 'CONFIRM' | translate }}</button>
+                        <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="Confirm()">{{ 'CONFIRM' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <transfer-unpack-pick-popup on-show='popupPick.onShow' config='popupPick.config' invokes='popupPick.invokes' delegates='popupPick.delegates'>
+    </transfer-unpack-pick-popup>

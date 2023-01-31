@@ -1,0 +1,453 @@
+<div class="tabs" ng-show="$vm.isFilterTable">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#planGIDetail" data-toggle="tab" ng-click="selectedTab(1)">Work Order Detail</a>
+        </li>
+        <!-- <li>
+            <a data-target="#otherDetail" data-toggle="tab" ng-click="selectedTab(2)">Other Detail</a>
+        </li> -->
+    </ul>
+    <div ng-show="$vm.isFilterTable">
+        <div id="planGIDetail" class="tab-pane active" ng-if="selected == 1">
+            <div class="row div-shadow">
+                <div class="form-group" style="margin-top:20px">
+                    <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'WORK_ORDER_NO' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.goodsIssueNo" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'WORK_ORDER_DATE' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <dir-date-picker ng-model="filterModel.goodsIssueDate" disabled="filterModel.documentStatus == 0 || filterModel.documentStatus == -1 || filterModel.documentStatus == 1"></dir-date-picker>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'WORK_ORDER_STATUS' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.documentStatus" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'DELIVERY_DATE' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <dir-date-picker ng-model="filterModel.goodsIssueDate" disabled="filterModel.documentStatus == 0 || filterModel.documentStatus == -1 || filterModel.documentStatus == 1"></dir-date-picker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'OWNER' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <div class="input-group" style="padding:0!important;">
+                                    <input type="text" class="form-control" ng-model="filterModel.ownerName" value="filterModel.ownerIndex"
+                                        disabled>
+                                    <span class="input-group-btn">
+                                        <button ng-click='popupOwner.onClick()' class="btn btn-groub-Search" type="button"
+                                            type="button" disabled>
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'SOLDTO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <div class="input-group" style="padding:0!important;">
+                                    <input type="text" class="form-control" ng-model="filterModel.soldToName" value="filterModel.soldToIndex"
+                                        disabled>
+                                    <span class="input-group-btn">
+                                        <button ng-click='popupSoldTo.onClick()' class="btn btn-groub-Search" type="button"
+                                            type="button" disabled>
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'SHIPTO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <div class="input-group" style="padding:0!important;">
+                                    <input type="text" class="form-control" ng-model="filterModel.shipToName" value="filterModel.shipToIndex"
+                                        disabled>
+                                    <span class="input-group-btn">
+                                        <button ng-click='popupShipTo.onClick()' class="btn btn-groub-Search" type="button"
+                                            type="button" disabled>
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'WORK_ORDER_TYPE' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <div class="input-group" style="padding:0!important;">
+                                    <input type="text" class="form-control" ng-model="filterModel.documentTypeName"
+                                        value="filterModel.documentTypeIndex" disabled>
+                                    <span class="input-group-btn">
+                                        <button ng-click='popupOwner.onClick()' class="btn btn-groub-Search" type="button"
+                                            type="button" disabled>
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'REFERENCE' | translate }} 1:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.DocumentRefNo1" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'REFERENCE' | translate }} 2:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.DocumentRefNo2" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'REFERENCE' | translate }} 3:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.DocumentRefNo3" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'SO_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;margin-bottom:20px;">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'UDF' | translate }} 1:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.UDF1" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'UDF' | translate }} 2:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.UDF2" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'UDF' | translate }} 3:</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.UDF3" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <span>{{ 'REMARK' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px">
+                                <input type="text" class="form-control" ng-model="filterModel.DocumentRemark" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row div-shadow" style="margin-top:30px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="padding:0px;" ng-if="click == 1">
+                    <div class="table-responsive table-overflow">
+                        <table class="table table-striped table-bordeered table-width-200">
+                            <thead>
+                                <tr>
+                                    <th class="text-center tr180">No.</th>
+                                    <th class="text-center tr180">สถานะPick</th>
+                                    <th class="text-center tr180">ตำแหน่ง</th>
+                                    <th class="text-center tr200">เลข Carton</th>
+                                    <th class="text-center tr200">รหัสสินค้า</th>
+                                    <th class="text-center tr320">ชื่อสินค้า</th>
+                                    <th class="text-center tr180">สถานะสินค้า</th>
+                                    <th class="text-center tr180">{{ 'LOT' | translate }}/{{ 'BATCH' | translate }}</th>
+                                    <th class="text-center tr180">จำนวน</th>
+                                    <th class="text-center tr180">หน่วย</th>
+                                    <th class="text-center tr180">จำนวนหยิบ</th>
+                                    <th class="text-center tr180">หน่วยหยิบ น้ำหนัก</th>
+                                    <th class="text-center tr180">สถานะที่หยิบ</th>
+                                    <th class="text-center tr180">น้ำหนัก</th>
+                                    <th class="text-center tr180">ปริมาตร</th>
+                                    <th class="text-center tr180">วันที่ Run Wave</th>
+                                    <th class="text-center tr180">{{ 'MFG_DATE' | translate }}</th>
+                                    <th class="text-center tr180">{{ 'EXP_DATE' | translate }}</th>
+                                    <th class="text-center tr180">{{ 'SO' | translate }}</th>
+                                    <th class="text-center tr180">{{ 'SO_SEP' | translate }}</th>
+                                    <th class="text-center tr320">{{ 'REMARK' | translate }}</th>
+                                    <th class="text-center tr180">{{ 'PICK_BY' | translate }}</th>
+                                    <th class="text-center tr180">{{ 'PICK_DATE' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in filterModel.listGoodIssueViewModelItem">
+                                    <td class="text-center tr180">{{$index+1}}</td>
+                                    <td class="text-center tr180">{{data.tagOutPick_Status}}</td>
+                                    <td class="text-center tr180"></td>
+                                    <td class="text-center tr200">{{data.cartonNo}}</td>
+                                    <td class="text-center tr200">{{data.productId}}</td>
+                                    <td class="text-center tr320">{{data.productSecondName}}</td>
+                                    <td class="text-center tr180">{{data.itemStatusName}}</td>
+                                    <td class="text-center tr180"></td>
+                                    <td class="text-center tr180">{{data.qty}}</td>
+                                    <td class="text-center tr180">{{data.productConversionName}}</td>
+                                    <td class="text-center tr180"></td>
+                                    <td class="text-center tr180">{{data.unitWeight}}</td>
+                                    <td class="text-center tr180"></td>
+                                    <td class="text-center tr180">{{data.weight}}</td>
+                                    <td class="text-center tr180"></td>
+                                    <td class="text-center tr180">{{data.goodsIssue_Date|dateFormate}}</td>
+                                    <td class="text-center tr180">{{data.mfgDate|dateFormate}}</td>
+                                    <td class="text-center tr180">{{data.expDate|dateFormate}}</td>
+                                    <td class="text-center tr180">{{data.planNo}}</td>
+                                    <td class="text-center tr180"></td>
+                                    <td class="text-center tr320"></td>
+                                    <td class="text-center tr180"></td>
+                                    <td class="text-center tr180"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right padding-m" style="margin-bottom:15px;">
+        <button ng-click="goToSave()" class="btn btn-success hidden-xs" ng-show="buttons.add">{{ 'SAVE' | translate }}</button>
+        <button ng-click="goToSave()" class="btn btn-success btn-block btn-lg visible-xs mt-lg" ng-show="buttons.add">{{ 'SAVE' | translate }}</button>
+        <button class="btn btn-primary hidden-xs" ng-click="back()">{{ 'BACK' | translate }}</button>
+        <button class="btn btn-primary btn-block btn-lg visible-xs mt-lg" ng-click="back()">{{ 'BACK' | translate }}</button>
+    </div>
+</div>
+<div id="otherDetail" class="tab-pane" ng-if="selected == 2">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'VEHICLE_TYPE' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'VESSEL_NAME' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'FIGHT_NO' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'VESSEL_NAME' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsReceiveDateTo"></dir-date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'ARRIVAL_DATE_TERNAL' | translate }}/WA :</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'PORT_ORIGIN' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'PORT_DESTINATION' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'ARRIVAL_DATE' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <dir-date-picker ng-model="filterModel.planGoodsReceiveDateTo"></dir-date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'COUNTIRY_ORIGIN' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'COUNTORY_DESTINATION' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'VENDOR' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'POSTION' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'CHECKING_BY' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'CONTACTS' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <span>{{ 'APPROVE_BY' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<gi-loading-form is-loading="isLoading" ng-hide="$vm.isFilterTable"></gi-loading-form>
+
+
+<sold-to-popup on-show='popupSoldTo.onShow' config='popupSoldTo.config' invokes='popupSoldTo.invokes' delegates='popupSoldTo.delegates'>
+</sold-to-popup>
+<ship-to-popup on-show='popupShipTo.onShow' config='popupShipTo.config' invokes='popupShipTo.invokes' delegates='popupShipTo.delegates'>
+</ship-to-popup>
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>

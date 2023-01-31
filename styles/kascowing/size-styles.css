@@ -1,0 +1,240 @@
+.kw-mg-top {
+    margin-top: 10px;
+}
+
+.kw-mg-tb {
+    margin: 10px 0 14px 0;
+}
+
+.kw-p-zero {
+    padding: 0px;
+}
+
+.kw-p-RL-five {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+.kw-p-RL-six {
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+.kw-p-zero-right {
+    padding-right: 0px;
+}
+
+.kw-p-zero-left {
+    padding-left: 0px;
+}
+
+.kw-pad-tb {
+    padding: 10px 0 7px 0;
+}
+
+.kw-set-middle {
+    padding: 2px 5px 0px 5px;
+}
+
+.kw-mg-bot {
+    margin-bottom: 10px;
+}
+
+.kw-mg-left {
+    margin-left: 20px;
+}
+
+.kw-form-group {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.kw-mg-bot-filter {
+    margin-bottom: 8px;
+}
+.kw-pad-filter {
+    padding: 0px 2px 0px 2px;
+}
+.kw-dateStartTxt {
+    text-align: right;
+    left: -6%;
+    font-size: 12px;
+    color: #989898;
+}
+
+.kw-dateEndTxt {
+    text-align: left;
+    right: 13%;
+    font-size: 12px;
+    color: #989898;
+}
+
+.kw-createDetail-top {
+    margin-top: 17px;
+}
+
+.kw-padd {
+    padding: 5px 4px 5px 4px;
+}
+
+;
+.kw-pos {
+    position: relative;
+    top: -4px;
+    padding: 0 0px 0 3px;
+}
+
+.w30 {
+    max-width: 30px;
+    min-width: 30px;
+    /* padding: 0px !important; */
+}
+
+.w50 {
+    max-width: 50px;
+    min-width: 50px;
+    /* padding: 0px !important; */
+}
+
+.w80 {
+    max-width: 80px;
+    min-width: 80px;
+    /* padding: 0px !important; */
+}
+
+.w100 {
+    max-width: 100px;
+    min-width: 100px;
+    /* padding: 0px !important; */
+}
+
+.w130 {
+    max-width: 130px;
+    min-width: 130px;
+}
+
+.w150 {
+    max-width: 150px;
+    min-width: 150px;
+    /* padding: 0px !important; */
+}
+
+.w200 {
+    max-width: 200px;
+    min-width: 200px;
+    word-wrap: break-word;
+    /* padding: 0px !important; */
+}
+
+.w250 {
+    max-width: 250px;
+    min-width: 250px;
+    /* padding: 0px !important; */
+}
+
+.w300 {
+    max-width: 300px;
+    min-width: 300px;
+    /* padding: 0px !important; */
+}
+
+.w350 {
+    max-width: 350px;
+    min-width: 350px;
+    /* padding: 0px !important; */
+}
+
+.w400 {
+    max-width: 400px;
+    min-width: 400px;
+    /* padding: 0px !important; */
+}
+
+.w450 {
+    max-width: 450px;
+    min-width: 450px;
+    /* padding: 0px !important; */
+}
+
+.w500 {
+    max-width: 500px;
+    min-width: 500px;
+    /* padding: 0px !important; */
+}
+
+.w550 {
+    max-width: 550px;
+    min-width: 550px;
+    /* padding: 0px !important; */
+}
+
+.w600 {
+    max-width: 600px;
+    min-width: 600px;
+    /* padding: 0px !important; */
+}
+
+.kw-style-subMenu {
+    padding: 0px 0 0 4%;
+}
+
+.kw-footer-page {
+    font-size: 10px;
+}
+
+.kw-mg-left-detail {
+    margin-left: 83px;
+}
+
+.kw-mg-right-detail {
+    margin-right: 42px;
+}
+
+.kw-pad-detail-RL {
+    padding: 0 13px;
+}
+
+.kw-pad-tablelist-summary-RL {
+    padding: 0 26px 0 17px;
+}
+
+.kw-pad-tablelist-RL {
+    padding: 0 19px 0 19px;
+}
+
+.kw-ct-table {
+    position: relative;
+    left: -6.5px;
+}
+
+.kw-textct {
+    position: relative;
+    top: 5px;
+}
+
+body .kw-btn-other {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #991B1E;
+    border-color: #991B1E;
+    line-height: 2.5;
+    height: 36px;
+    width: 50px;
+    padding: 0px 4px 0px 4px;
+}
+
+.kw-pos-left {
+    position: relative;
+    right: 3px;
+    top: -1px;
+}
+
+.kw-pos {
+    POSITION: relative;
+    top: -3px;
+}
+
+.kw-pos-text {
+    POSITION: relative;
+    top: 10px;
+}

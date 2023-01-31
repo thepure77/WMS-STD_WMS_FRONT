@@ -1,0 +1,2871 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" class="fixed" ng-controller="AppCtrl">
+
+<head>
+    <link rel="icon" href="assets/kasco-wing/images/logo_wms.png">
+    <title>Warehouse Management System</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
+    <link ref="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" href="assets/javascripts/multiSelectItem/bootstrap-multiselect.css" type="text/css">
+    <!-- Custom CSS Libraries -->
+    <link href="styles/css/app.css" rel="stylesheet" />
+    <link href="styles/controls.css" rel="stylesheet" />
+    <link href="styles/tableStyle.css" rel="stylesheet" />
+    <link href="styles/datatable.css" rel="stylesheet" />
+    <link href="styles/button.css" rel="stylesheet" />
+    <link href="styles/fixedTable.css" rel="stylesheet">
+
+
+    <!-- Load Theme  -->
+    <link rel="stylesheet" href="styles/kascowing/kw-styles.css" />
+    <link rel="stylesheet" href="styles/kascowing/size-styles.css" />
+    <link href="styles/kascowing/newIcon/fonts/styleIcon/styleicon.css" rel="stylesheet" />
+</head>
+
+<body style="overflow:unset;">
+
+    <div ui-view></div>
+
+    <span>
+        <dp-pageload></dp-pageload>
+    </span>
+
+    <script type="text/javascript">
+        var updateversion = "30000";
+    </script>
+
+
+    <!-- Jquery -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Vendor -->
+    <script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="assets/vendor/magnific-popup/magnific-popup.js"></script>
+    <script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+
+    <!-- Angular Libraries -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-touch/angular-touch.min.js"></script>
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="node_modules/angular-translate/dist/angular-translate.min.js"></script>
+    <script
+        src="node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="node_modules/moment/moment.js"></script>
+    <script src="node_modules/angular-moment/angular-moment.min.js"></script>
+    <script src="node_modules/moment/locale/th.js"></script>
+    <script src="node_modules/phaser/dist/phaser.min.js"></script>
+
+    <script src='styles/kascowing/flot/jquery.flot.min.js'></script>
+    <script src='styles/kascowing/flot/jquery.flot.pie.js'></script>
+    <script src='styles/kascowing/flot/jquery.flot.tooltip.min.js'></script>
+
+    <!-- Plug-in -->
+    <script src="node_modules/angular-ui-calendar/src/calendar.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
+    <script src='www/lib/ng-file-upload-shim/ng-file-upload-shim.min.js'></script>
+    <script src='www/lib/ng-file-upload/ng-file-upload.min.js'></script>
+
+    <!-- Angular Modules -->
+    <script src="app.js"></script>
+    <script src="services/config.js" charset="utf-8"></script>
+    <script src="routers/config.js"></script>
+
+    <!-- library -->
+    <script type="text/javascript" src="assets/ui-sortable/sortable.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script> -->
+
+    <!-- assets library -->
+    <script src='assets/dpDialog/dpDialog.js'></script>
+    <script src='assets/dpModal/modal.js'></script>
+    <script src="assets/fixedTable/fixedTable.js"></script>
+    <script src='assets/kDialog/kDialog.js'></script>
+
+    <!-- Load filters -->
+    <script src="filters/filterExpression.js"></script>
+    <script src="filters/filterQuery.js"></script>
+    <script src="filters/filterRemove.js"></script>
+    <script src="filters/filterDate.js"></script>
+
+    <!-- Load services -->
+    <script src="services/commonService.js"></script>
+    <script src="services/authInterceptorService.js"></script>
+    <script src="services/dataConstant.js"></script>
+    <script src="services/modalService.js"></script>
+    <script src="services/langService.js"></script>
+    <script src="services/clientService.js"></script>
+    <script src="services/customHttpInterceptor.js"></script>
+
+    <!-- Load component -->
+    <script src="assets/dpPageLoad/pageLoad.js"></script>
+    <script src="assets/read-excel-file/read-excel.js"></script>
+    <script src="widgets/dragDropTable/dragDropTableDirective.js"></script>
+
+    <script src="modules/yardDock/printPopup/printPopup.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingYardDock/component/bkYardDockForm.js"></script>
+    <script src="modules/yardDock/bookingYardDock/factory/bkYardDockFactory.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingYardDock/component/bkYardDockTableList.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingYardDock/component/bkYardDockFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingYardDock/bookingPoup/bookingPopup.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingYardDock/bkYardDockSummary.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingYardDock/blockTimePopup/blockTimePopup.js?version=updateversion"></script>
+
+    <script src="modules/yardDock/bookingAssignDock/component/bookingAssignDockForm.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingAssignDock/factory/bookingAssignDockFactory.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingAssignDock/component/bookingAssignDockTableList.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingAssignDock/component/bookingAssignDockFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingAssignDock/bookingAssignDock.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVehicleType/factory/masterVehicleTypeFactory.js"></script>
+
+    <script
+        src="modules/yardDock/bookingAppoinement/component/bookingDockAppoinementForm.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingAppoinement/factory/bookingDockAppoinementFactory.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingAppoinement/component/bookingDockAppoinementTableList.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingAppoinement/component/bookingDockAppoinementFilter.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingAppoinement/bookingScanPoup/bookingScanPopup.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingAppoinement/bookingDockAppoinement.js?version=updateversion"></script>
+
+    <script src="modules/yardDock/bookingDockCheck/component/bookingDockCheckForm.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingDockCheck/component/bookingDockCheckoutForm.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingDockCheck/component/bookingDockCheckTableList.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingDockCheck/component/bookingDockCheckFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingDockCheck/factory/bookingDockCheckFactory.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingDockCheck/factory/bookingDockCheckoutFactory.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingDockCheck/bookingDockPopup/bookingDockPopup.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingDockCheck/collapsePopup/collapsePopup.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingDockCheck/bookingDockCheck.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingDockCheck/component/remarkPopup.js?version=updateversion"></script>
+
+    <script src="modules/yardDock/bookingConfigDock/component/bookingConfigDockForm.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingConfigDock/factory/bookingConfigDockFactory.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingConfigDock/component/bookingConfigDockTableList.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingConfigDock/component/bookingConfigDockFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingConfigDock/restTimePopup/restTimePopup.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingConfigDock/bookingConfigDock.js?version=updateversion"></script>
+
+
+
+    <!-- Load view controllers -->
+    <script src="controllers/state/login.js"></script>
+    <script src="controllers/state/home.js"></script>
+    <script src="controllers/state/test.js"></script>
+    <script src="controllers/partials/home/index.js"></script>
+    <script src="services/authService.js"></script>
+
+    <!-- Load controllers -->
+    <script src="modules/widgets/dirHeader/dirHeader.js"></script>
+    <script src="modules/widgets/dirSidebar/dirSidebar.js"></script>
+
+    <script src="modules/widgets/datePicker/dirDatePicker.js"></script>
+    <script src="modules/widgets/dirFooter/dirFooter.js"></script>
+    <script src="modules/widgets/dirModal/dirModal.js"></script>
+    <script src="modules/widgets/dirLang/dirLang.js"></script>
+    <script src="modules/widgets/dirInputFilter/dirInputFilter.js"></script>
+    <script src="modules/widgets/dirDownloadPdf/downloadPdf.js"></script>
+    <script src="modules/widgets/customer/customer.js"></script>
+    <!-- Master Data-->
+    <script src="modules/masterData/masterEquipment/component/equipmentForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterEquipment/component/equipmentTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterEquipment/component/equipmentFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterEquipment/equipmentSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterEquipmentType/component/equipmentTypeForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterEquipmentType/component/equipmentTypeTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterEquipmentType/component/equipmentTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterEquipmentType/equipmentTypeSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterEquipmentSubType/component/equipmentSubTypeForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterEquipmentSubType/component/equipmentSubTypeTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterEquipmentSubType/component/equipmentSubTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterEquipmentSubType/equipmentSubTypeSummary.js?version=updateversion"></script>
+
+    <!-- 
+    <script src="modules/masterData/masterGrade/component/masterGradeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterGrade/component/masterGradeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterGrade/component/masterGradeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterGrade/masterGradeSummary.js?version=updateversion"></script> -->
+
+    <script src="modules/masterData/masterVendorType/factory/vendorTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVendorType/component/vendorTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVendorType/component/vendorTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVendorType/component/vendorTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVendorType/vendorTypeSummary.js?version=updateversion"></script>
+
+
+    <!-- Vehicle Type -->
+    <script src="modules/masterData/masterVehicleType/component/vehicleTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVehicleType/component/vehicleTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVehicleType/component/vehicleTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVehicleType/factory/vehicleTypeFactoryV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVehicleType/vehicleTypeSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterItemStatus/component/masterItemStatusForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterItemStatus/component/masterItemStatusTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterItemStatus/component/masterItemStatusFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterItemStatus/factory/masterItemStatusFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterItemStatus/masterItemStatusSummary.js?version=updateversion"></script>
+
+
+
+
+    <script src="modules/masterData/masterOwnerType/component/ownerTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerType/component/ownerTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerType/component/ownerTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerType/ownerTypeSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterOwner/component/ownerTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwner/component/ownerForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwner/component/ownerFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwner/ownerSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterOwnerVendor/component/ownerVendorTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerVendor/component/ownerVendorForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerVendor/component/ownerVendorFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerVendor/ownerVendorSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterOwnerSoldTo/component/ownerSoldtoTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/component/ownerSoldtoForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/component/ownerSoldtoFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/ownerSoldtoSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterVendor/component/vendorTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVendor/component/vendorForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVendor/component/vendorFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterVendor/vendorSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterSoldTo/component/soldToTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldTo/component/soldToForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldTo/component/soldToFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldTo/factory/soldToFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldTo/soldToSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterCostCenter/component/costCenterTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterCostCenter/component/costCenterForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterCostCenter/component/costCenterFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterCostCenter/factory/costCenterFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterCostCenter/costCenterSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterMovementType/component/movementTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterMovementType/component/movementTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterMovementType/component/movementTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterMovementType/factory/movementTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterMovementType/movementTypeSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterSoldToType/component/soldToTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToType/component/soldToTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToType/component/soldToTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToType/factory/soldToTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToType/soldToTypeSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterShipTo/component/shipToTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipTo/component/shipToForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipTo/component/shipToFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipTo/factory/shipToFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipTo/shipToSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterShipToType/component/shipToTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipToType/component/shipToTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipToType/component/shipToTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipToType/factory/shipToTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterShipToType/shipToTypeSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterSoldToShipTo/component/soldToshipToTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToShipTo/component/soldToshipToForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToShipTo/component/soldToshipToFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToShipTo/factory/soldToShipToFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSoldToShipTo/soldToshipToSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterProductCategory/component/productCategoryTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductCategory/component/productCategoryForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductCategory/component/productCategoryFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductCategory/productCategorySummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterProductType/component/productTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductType/component/productTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductType/component/productTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductType/factory/productTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductType/productTypeSummary.js?version=updateversion"></script>
+
+<!-- AUT -->
+<script src="modules/masterData/masterBusinessUnit/component/businessUnitTableList.js?version=updateversion"></script>
+<script src="modules/masterData/masterBusinessUnit/component/businessUnitForm.js?version=updateversion"></script>
+<script src="modules/masterData/masterBusinessUnit/component/businessUnitFilter.js?version=updateversion"></script>
+<script src="modules/masterData/masterBusinessUnit/factory/businessUnitFactory.js?version=updateversion"></script>
+<script src="modules/masterData/masterBusinessUnit/businessUnitSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterProductOwner/component/productOwnerTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductOwner/component/productOwnerForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductOwner/component/productOwnerFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductOwner/productOwnerSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterProductSubType/component/productSubTypeTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductSubType/component/productSubTypeForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductSubType/component/productSubTypeFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductSubType/factory/productSubTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductSubType/productSubTypeSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterProduct/component/productTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProduct/component/productForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProduct/component/productFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProduct/productSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterWareHouse/component/wareHouseTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWareHouse/component/wareHouseForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWareHouse/component/wareHouseFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWareHouse/wareHouseSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterRoom/component/roomTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRoom/component/roomForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRoom/component/roomFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRoom/factory/roomFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRoom/roomSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterProductConversion/component/productConversionTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductConversion/component/productConversionForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductConversion/component/productConversionFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductConversion/productConversionSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterZone/component/zoneTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZone/component/zoneForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZone/component/zoneFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZone/zoneSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterZonePutaway/component/zonePutawayTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZonePutaway/component/zonePutawayForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZonePutaway/component/zonePutawayFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZonePutaway/zonePutawaySummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterZoneLocation/component/zoneLocationTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZoneLocation/component/zoneLocationForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZoneLocation/component/zoneLocationFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZoneLocation/zoneLocationSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterLocationType/component/locationTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationType/component/locationTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationType/component/locationTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationType/locationTypeSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterProductConversionBarcode/component/productconversionbarcodeTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductConversionBarcode/component/productconversionbarcodeForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductConversionBarcode/component/productconversionbarcodeFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductConversionBarcode/productconversionbarcodeSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterLocationLock/component/locationlockTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationLock/component/locationlockForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationLock/component/locationlockFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationLock/locationlockSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterLocation/component/locationTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocation/component/locationForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocation/component/locationFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocation/locationSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterTaskGroup/component/taskGroupTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroup/component/taskGroupForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroup/component/taskGroupFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroup/taskGroupSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterTaskGroupEquipment/component/taskGroupEquipmentTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupEquipment/component/taskGroupEquipmentForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupEquipment/component/taskGroupEquipmentFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupEquipment/taskGroupEquipmentSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterTaskGroupUser/component/taskGroupUserTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroupUser/component/taskGroupUserForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupUser/component/taskGroupUserFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroupUser/taskGroupUserSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterUser/component/userTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUser/component/userForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUser/component/userFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUser/userSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterUserTruck/component/userTruckTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserTruck/component/userTruckForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserTruck/component/userTruckFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserTruck/userTruckSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/masterUserGroup/component/userGroupTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroup/component/userGroupForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroup/component/userGroupFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroup/userGroupSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterUserGroupMenu/component/userGroupMenuTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroupMenu/component/userGroupMenuForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterUserGroupMenu/component/userGroupMenuFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroupMenu/userGroupMenuSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterUserGroupZone/component/userGroupZoneTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroupZone/component/userGroupZoneForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterUserGroupZone/component/userGroupZoneFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroupZone/userGroupZoneSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterLocationWorkArea/component/locationWorkAreaTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationWorkArea/component/locationWorkAreaForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationWorkArea/component/locationWorkAreaFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationWorkArea/locationWorkAreaSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/masterData/masterWorkArea/component/workAreaTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWorkArea/component/workAreaForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWorkArea/component/workAreaFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWorkArea/workAreaSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterLocationEquipment/component/locationEquipmentTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationEquipment/component/locationEquipmentForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationEquipment/component/locationEquipmentFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationEquipment/locationEquipmentSummary.js?version=updateversion"></script>
+
+
+    <script
+        src="modules/masterData/masterTaskGroupWorkArea/component/taskGroupWorkAreaTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupWorkArea/component/taskGroupWorkAreaForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupWorkArea/component/taskGroupWorkAreaFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroupWorkArea/taskGroupWorkAreaSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterDocumentType/component/documentTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterDocumentType/component/documentTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterDocumentType/component/documentTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterDocumentType/documentTypeSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/mastergridPage/component/gridPageTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/mastergridPage/component/gridPageForm.js?version=updateversion"></script>
+    <script src="modules/masterData/mastergridPage/component/gridPageFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/mastergridPage/gridPageSummary.js?version=updateversion"></script>
+
+    <script src="modules/masterData/wizardForm/wizardForm.js?version=updateversion"></script>
+
+    <!-- All Factory -->
+    <script src="modules/masterData/mastergridPage/factory/gridpageFactory.js?version=updateversion"></script>
+    <!-- <script src="modules/GR/putAway/putAwayByLPN/factory/putAwayFactory.js?version=updateversion"></script> -->
+    <script src="modules/masterData/masterVendor/factory/vendorFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterDocumentType/factory/documentTypeFactory.js?version=updateversion"></script>
+    <!-- <script src="modules/masterData/masterGrade/factory/masterGradeFactory.js?version=updateversion"></script> -->
+    <script src="modules/masterData/masterLocationType/factory/locationTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocation/factory/locationFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationLock/factory/locationLockFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwner/factory/ownerFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerSoldTo/factory/ownerSoldToFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerType/factory/ownerTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroup/factory/taskGroupFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterOwnerVendor/factory/ownerVendorFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProduct/factory/productFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductCategory/factory/productCategoryFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWareHouse/factory/warehouseFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZone/factory/zoneFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZonePutaway/factory/zonePutawayFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductConversion/factory/productConversionFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterZoneLocation/factory/zoneLocationFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductOwner/factory/productOwnerFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductConversionBarcode/factory/productConversionBarcodeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/countryPopup/factory/countryFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/districtPopup/factory/districtFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/postcodePopup/factory/postcodeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/provincePopup/factory/provinceFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/subDistrictPopup/factory/subDistrictFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterLocationWorkArea/factory/locationFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWorkArea/factory/workAreaFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupWorkArea/factory/taskGroupWorkAreaFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterTaskGroupEquipment/factory/taskGroupEquipmentFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterTaskGroupUser/factory/taskGroupUserFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterEquipment/factory/equipmentFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/menuPopup/factory/menuFactory.js?version=updateversion"></script>
+    <script src="modules/GR/planGR/factory/planGoodsReceiveFactory.js?version=updateversion"></script>
+    <script src="modules/GR/component/planGrTypePopup/factory/planGrTypeFactory.js?version=updateversion"></script>
+    <script src="modules/GR/LPN/factory/lpnFactory.js?version=updateversion"></script>
+    <script src="modules/GR/LPN/factory/lpnItemFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUser/factory/userFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroup/factory/userGroupFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroupMenu/factory/userGroupMenuFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterUserGroupZone/factory/userGroupZoneFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/processPopup/factory/processFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ruleConditionFieldPopup/factory/ruleConditionFieldPopupFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/rulePopup/factory/rulePopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ruleConditionFieldPopup2/factory/ruleConditionFieldPopupFactory2.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ruleConditionOperationPopup/factory/ruleConditionOperationPopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationEquipment/factory/locationEquipmentFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterEquipmentType/factory/equipmentTypeFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterEquipmentSubType/factory/equipmentSubTypeFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/processPopupV2/factory/processFactoryV2.js?version=updateversion"></script>
+    <script src="modules/masterData/component/zonePopup/factory/zonePopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/userGroupPopup/factory/userGroupPopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ruleputawayConditionFieldPopup/factory/ruleputawayConditionFieldPopupFactory.js?version=updateversion"></script>
+
+    <!-- popup -->
+    <script src="modules/masterData/component/warehousePopup/warehousePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/warehousePopup/warehousePopupTable/warehousePopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/roomPopup/roomPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/roomPopup/roomPopupTable/roomPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/locationTypePopup/locationTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/locationTypePopup/locationTypePopupTable/locationTypePopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/productCategoryPopup/productCategoryPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/productCategoryPopup/productCategoryPopupTable/productCategoryPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/productTypePopup/productTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/productTypePopup/productTypePopupTable/productTypePopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/productSubTypePopup/productSubTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/productSubTypePopup/productSubTypePopupTable/productSubTypePopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/productConversion/productConversion.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/productConversion/productConversionPopupTable/productConversionPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/locationLockPopup/locationLockPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/locationLockPopup/locationLockPopupTable/locationLockPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/locationPopup/locationPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/locationPopup/locationPopupTable/locationPopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/zonePopup/zonePopupTable/zonePopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/zonePopup/zonePopup.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/vendorTypePopup/vendorTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/vendorTypePopup/vendorTypePopupTable/vendorTypePopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/ownerTypePopup/ownerTypePopupTable/ownerTypePopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/ownerTypePopup/ownerTypePopup.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/productPopup/productPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/productPopup/productPopupTable/productPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/ownerPopup/ownerPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ownerPopup/ownerPopupTable/ownerPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/shipToPopup/shipToPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/shipToPopup/shipToPopupTable/shipToPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/userGroupPopup/userGroupPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/userGroupPopup/userGroupPopupTable/userGroupPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/menuPopup/newMenuPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/menuPopup/newMenuPopupTable/newMenuPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/shipToTypePopup/shipToTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/shipToTypePopup/shipToTypePopupTable/shipToTypePopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/soldToPopup/soldToPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/soldToPopup/soldToPopupTable/soldToPopupTable.js?version=updateversion"></script>
+
+    <!-- <script src="modules/masterData/component/soldToTypePopup/soldToTypePopup.js?version=updateversion"></script>
+    <script src="modules/masterData/component/soldToTypePopup/soldToTypePopupTable/soldToTypePopupTable.js?version=updateversion"></script> -->
+
+    <script src="modules/masterData/component/vendorPopup/vendorPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/vendorPopup/vendorPopupTable/vendorPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/countryPopup/countryPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/countryPopup/countryPopupTable/countryPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/districtPopup/districtPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/districtPopup/districtPopupTable/districtPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/postcodePopup/postcodePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/postcodePopup/postcodePopupTable/postcodePopupTable.js?version=updateversion"></script>
+
+    <!-- <script src="modules/masterData/component/equipmentPopup/equipmentPopupTable/equipmentPopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/equipmentPopup/equipmentPopup.js?version=updateversion"></script> -->
+
+    <script src="modules/masterData/component/provincePopup/provincePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/provincePopup/provincePopupTable/provincePopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/processPopup/processPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/processPopup/processPopupTable/processPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/processPopupV2/processPopupV2.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/processPopupV2/processPopupTableV2/processPopupTableV2.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/ruleputawayConditionFieldPopup/ruleputawayConditionFieldPopup.js?version=updateversion">
+        </script>
+    <script
+        src="modules/masterData/component/ruleputawayConditionFieldPopup/ruleputawayConditionFieldPopupTable/ruleputawayConditionFieldPopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/ownerPopupV2/ownerPopupTableV2/ownerPopupTableV2.js?version=updateversion"></script>
+    <script src="modules/masterData/component/ownerPopupV2/ownerPopupV2.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/shipToPopupV2/shipToPopupV2.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/shipToPopupV2/shipToPopupTableV2/shipToPopupTableV2.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/ruleConditionFieldPopup/ruleConditionFieldPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ruleConditionFieldPopup/ruleConditionFieldPopupTable/ruleConditionFieldPopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/ruleConditionOperationPopup/ruleConditionOperationPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ruleConditionOperationPopup/ruleConditionOperationPopupTable/ruleConditionOperationPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/rulePopup/rulePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/rulePopup/rulePopupTable/rulePopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/ruleConditionFieldPopup2/ruleConditionFieldPopup2.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/ruleConditionFieldPopup2/ruleConditionFieldPopupTable2/ruleConditionFieldPopupTable2.js?version=updateversion"></script>
+
+    <script src="modules/GR/component/planGrTypePopup/planGrTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/GR/component/planGrTypePopup/planGrTypePopupTable/planGrTypePopupTable.js?version=updateversion"></script>
+
+    <script src="modules/GR/component/planGrPopup/planGrPopup.js?version=updateversion"></script>
+    <script src="modules/GR/component/planGrPopup/planGrPopupTable/planGrPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/warehouseToPopup/warehouseToPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/warehouseToPopup/warehouseToPopupTable/warehouseToPopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/itemStatusPopup/factory/itemStatusFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/itemStatusPopup/itemStatusPopupTable/itemStatusPopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/itemStatusPopup/itemStatusPopup.js?version=updateversion"></script>
+
+    <script src="modules/GR/component/masterRequire/masterRequirePopup.js?version=updateversion"></script>
+
+    <script
+        src="modules/GR/component/suggestLocationPopup/factory/suggestLocationFactory.js?version=updateversion"></script>
+    <script
+        src="modules/GR/component/suggestLocationPopup/suggestLocationPopupTable/suggestLocationPopupTable.js?version=updateversion"></script>
+    <script src="modules/GR/component/suggestLocationPopup/suggestLocationPopup.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/statusPopup/statusPopupTable/statusPopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/statusPopup/statusPopup.js?version=updateversion"></script>
+    <script src="modules/masterData/component/statusPopup/factory/statusPopupFactory.js?version=updateversion"></script>
+
+
+    <script src="modules/widgets/dirPopup/popupDeliveryPlace/code.js?version=updateversion"></script>
+    <script src="modules/widgets/dirPopup/popupPackaging/code.js?version=updateversion"></script>
+    <script src="modules/widgets/dirPopup/popupProduct/code.js?version=updateversion"></script>
+    <script src="modules/widgets/dirPopup/popupLotNo/code.js?version=updateversion"></script>
+    <script src="modules/widgets/dirPopup/popupGrade/code.js?version=updateversion"></script>
+    <script src="modules/widgets/dirPopup/popupSoldTo/code.js?version=updateversion"></script>
+
+    <script src="modules/widgets/dirPopup/popupDeliveryTeam/code.js?version=updateversion"></script>
+    <script src="modules/masterData/component/subDistrictPopup/subDistrictPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/subDistrictPopup/subDistrictPopupTable/subDistrictPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/widgets/dirPopup/popupDeliveryTeam/code.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/workAreaPopup/workAreaPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/workAreaPopup/workAreaPopupTable/workAreaPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/taskGroupPopup/taskGroupPopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/taskGroupPopup/taskGroupPopupTable/taskGroupPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/equipmentTypePopup/equipmentTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/equipmentTypePopup/equipmentTypePopupTable/equipmentTypePopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/equipmentSubTypePopup/equipmentSubTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/equipmentSubTypePopup/equipmentSubTypePopupTable/equipmentSubTypePopupTable.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/userPopup/userPopupTable/userPopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/userPopup/userPopup.js?version=updateversion"></script>
+
+    <!-- <script src="modules/GR/component/planGiPopup/planGiPopupTable/planGiPopupTable.js?version=updateversion"></script>
+    <script src="modules/GR/component/planGiPopup/planGiPopup.js?version=updateversion"></script> -->
+
+    <script src="modules/masterData/component/dockDoorPopup/factory/dockDoorFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/dockDoorPopup/dockDoorPopupTable/dockDoorPopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/dockDoorPopup/dockDoorPopup.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/vehicleTypePopup/factory/vehicleTypeFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/vehicleTypePopup/vehicleTypePopupTable/vehicleTypePopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/vehicleTypePopup/vehicleTypePopup.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/containerTypePopup/factory/containerTypeFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/containerTypePopup/containerTypePopupTable/containerTypePopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/containerTypePopup/containerTypePopup.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/t3plPopup/factory/t3plFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/t3plPopup/t3plPopupTable/t3plPopupTable.js?version=updateversion"></script>
+    <script src="modules/masterData/component/t3plPopup/t3plPopup.js?version=updateversion"></script>
+
+    <script src="modules/GI/component/marshallnoPopup/marshallnoPopup.js?version=updateversion"></script>
+    <script
+        src="modules/GI/component/marshallnoPopup/marshallnoPopupTable/marshallnoPopupTable.js?version=updateversion"></script>
+
+
+    <script src="widgets/ksEnter/ksEnter.js?version=updateversion"></script>
+    <script src="widgets/ksSelectOnClick/ksSelectOnClick.js?version=updateversion"></script>
+    <link href="widgets/tableStyle/code.css" rel="stylesheet">
+    </script>
+    <script src="widgets/chars/chars.js?version=updateversion"></script>
+    <link href="widgets/myStyle/code.css" rel="stylesheet">
+    </script>
+
+
+    <!--  Plan GR -->
+    <script src="modules/GR/planGR/planSummary.js?version=updateversion"></script>
+    <script src="modules/GR/planGR/component/planTableList.js?version=updateversion"></script>
+    <script src="modules/GR/planGR/component/planFilter.js?version=updateversion"></script>
+    <script src="modules/GR/planGR/component/planForm.js?version=updateversion"></script>
+    <script src="modules/GR/planGR/factory/planGoodsReceiveItemFactory.js?version=updateversion"></script>
+    <script src="modules/GR/planGR/component/planItem.js?version=updateversion"></script>
+
+    <!--Plan GI -->
+    <script src="modules/GI/planGI/planGiSummary.js?version=updateversion"></script>
+    <script src="modules/GI/planGI/component/planGITableList.js?version=updateversion"></script>
+    <script src="modules/GI/planGI/component/planGIFilter.js?version=updateversion"></script>
+    <script src="modules/GI/planGI/component/planGIForm.js?version=updateversion"></script>
+    <script src="modules/GI/planGI/factory/planGoodsIssueFactory.js?version=updateversion"></script>
+    <script src="modules/GI/planGI/factory/planGoodsIssueItemFactory.js?version=updateversion"></script>
+    <script src="modules/GI/planGI/component/remarkPopup.js?version=updateversion"></script>
+
+
+
+    <!-- GR -->
+    <script src="modules/GR/GR/grSummary.js?version=updateversion"></script>
+    <script src="modules/GR/GR/component/grTableList.js?version=updateversion"></script>
+    <script src="modules/GR/GR/component/grFilter.js?version=updateversion"></script>
+    <script src="modules/GR/GR/component/grForm.js?version=updateversion"></script>
+    <script src="modules/GR/GR/factory/goodsReceiveFactory.js?version=updateversion"></script>
+    <script src="modules/GR/GR/factory/goodsReceiveItemFactory.js?version=updateversion"></script>
+    <script src="modules/GR/GR/component/grItem.js?version=updateversion"></script>
+    <script src="modules/GR/GR/component/grPutawayPopupTable/grPutawayPopupTable.js?version=updateversion"></script>
+
+    <!-- Scan Receive -->
+    <script src="modules/GR/scanReceive/factory/scanReceiveFactory.js?version=updateversion"></script>
+    <script src="modules/GR/scanReceive/scanReceive.js?version=updateversion"></script>
+    <script src="modules/GR/scanReceive/scanReceiveSummary/scanReceiveSummary.js?version=updateversion"></script>
+
+    <script src="modules/GR/component/goodReceivePopup/goodReceivePopup.js?version=updateversion"></script>
+    <script
+        src="modules/GR/component/goodReceivePopup/goodReceivePopupTable/goodReceivePopupTable.js?version=updateversion"></script>
+    <script src="modules/GR/component/goodReceivePopup/factory/goodReceiveFactory.js?version=updateversion"></script>
+
+    <!-- LPN -->
+    <script src="modules/GR/LPN/lpnManagement.js?version=updateversion"></script>
+
+    <!-- Put Away -->
+
+    <script src="modules/GR/putAway/factory/putAwayFactory.js?version=updateversion"></script>
+    <script src="modules/GR/putAway/putAway/putAway.js?version=updateversion"></script>
+    <script src="modules/GR/putAway/dockToStaging/dockToStaging.js?version=updateversion"></script>
+
+    <!-- Rework Pallet Inspection -->
+
+    <script src="modules/GR/reworkPalletInspection/factory/reworkPalletInspectionFactory.js?version=updateversion"></script>
+    <script src="modules/GR/reworkPalletInspection/reworkPalletInspection.js?version=updateversion"></script>
+
+    <!-- GI -->
+    <script src="modules/GI/GI/giSummary.js?version=updateversion"></script>
+    <script src="modules/GI/GI/component/giFilter.js?version=updateversion"></script>
+    <script src="modules/GI/GI/component/giTableList.js?version=updateversion"></script>
+    <script src="modules/GI/GI/component/giForm.js?version=updateversion"></script>
+    <script src="modules/GI/GI/component/giLoadingForm.js?version=updateversion"></script>
+    <script src="modules/GI/GI/factory/goodIssueFactory.js?version=updateversion"></script>
+    <script src="modules/GI/GI/factory/goodsIssueItemFactory.js?version=updateversion"></script>
+
+    <!-- Expected  -->
+    <script src="modules/GI/Expected/Expected.js?version=updateversion"></script>
+    <script src="modules/GI/Expected/factory/ExpectedFactory.js?version=updateversion"></script>
+
+    <!-- Round -->
+    <script src="modules/GI/component/Round/factory/roundFactory.js?version=updateversion"></script>
+    <script src="modules/GI/component/Round/roundPopupTable/roundPopupTable.js?version=updateversion"></script>
+    <script src="modules/GI/component/Round/roundPopup.js?version=updateversion"></script>
+
+    <!-- Route -->
+    <script src="modules/GI/component/Route/routePopup.js?version=updateversion"></script>
+    <script src="modules/GI/component/Route/factory/routeFactory.js?version=updateversion"></script>
+    <script src="modules/GI/component/Route/routePopupTable/routePopupTable.js?version=updateversion"></script>
+
+    <!-- Rule -->
+    <script src="modules/GI/component/waveTemplate/waveTemplatePopup.js?version=updateversion"></script>
+    <script
+        src="modules/GI/component/waveTemplate/waveTemplatePopupTable/waveTemplatePopupTable.js?version=updateversion"></script>
+    <script src="modules/GI/component/waveTemplate/factory/waveTemplateFactory.js?version=updateversion"></script>
+
+    <!--text editor -->
+    <link rel='stylesheet' href='www/lib/textAngular/dist/textAngular.css'>
+    <script src='www/lib/textAngular/dist/textAngular-rangy.min.js?version=updateversion'></script>
+    <script src='www/lib/textAngular/dist/textAngular-sanitize.min.js?version=updateversion'></script>
+    <script src='www/lib/textAngular/dist/textAngular.min.js?version=updateversion'></script>
+
+
+    <script src="modules/GI/component/documentTypePopup/documentTypePopup.js?version=updateversion"></script>
+    <script src="modules/GI/component/documentTypePopup/factory/documentTypeFactory.js?version=updateversion"></script>
+    <script
+        src="modules/GI/component/documentTypePopup/documentTypePopupTable/documentTypeTable.js?version=updateversion"></script>
+
+
+    <!-- Tranfer -->
+    <script src="modules/Tranfer/Tranfer/tranferSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Tranfer/component/tranferFilter.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Tranfer/component/tranferTableList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Tranfer/factory/tranferFactory.js?version=updateversion"></script>
+    <!-- <script src="modules/Tranfer/Tranfer/factory/tranferPalletFactory.js?version=updateversion"></script> -->
+    <script src="modules/Tranfer/TransferPallet/factory/tranferPalletFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Tranfer/factory/tranferCartonFactory.js?version=updateversion"></script>
+
+    <!-- Transfer -->
+    <script src="modules/Tranfer/Transfer/transferSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer/component/transferFilter.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer/component/transferForm.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer/component/pickForm.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer/component/transferTableList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer/factory/transferFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer/factory/transferItemFactory.js?version=updateversion"></script>
+
+    <!-- Tranfer Item Relocation Active -->
+    <script
+        src="modules/Tranfer/TransferItemRelocation/transferItemRelocationActiveSummary.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemRelocation/component/tranferItemRelocationActive.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemRelocation/component/tranferItemRelocationList.js?version=updateversion"></script>
+
+    <!-- Tranfer Item Relocation Reserve -->
+    <script
+        src="modules/Tranfer/TransferItemRelocationReserve/transferItemRelocationReserveSummary.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemRelocationReserve/component/tranferItemRelocationReserve.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemRelocationReserve/component/tranferItemRelocationReserveList.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemRelocationReserve/component/tranferItemCheckBalance.js?version=updateversion"></script>
+
+    <!-- Tranfer Item Active -->
+    <script src="modules/Tranfer/TransferItemActive/transferItemActiveSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferItemActive/component/tranferItemActive.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferItemActive/component/locationList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferItemActive/component/checkBalance.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemActive/factory/TransferStockAdjustmentFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/component/StockAdjustmentPopup/StockAdjustmentPopup.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/component/StockAdjustmentPopup/StockAdjustmentPopupTable/stockAdjustmentPopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/component/StockAdjustmentPopup/factory/reasonCodeFactory.js?version=updateversion"></script>
+
+
+    <!-- Tranfer Item Reserve -->
+    <script src="modules/Tranfer/TransferItemReserve/transferItemReserveSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferItemReserve/component/tranferItemReserve.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferItemReserve/component/itemReserveLpnList.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemReserve/component/itemReserveCheckBalance.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferItemReserve/factory/TransferStockAdjustmentLPNFactory.js?version=updateversion"></script>
+
+    <!-- Carton Item -->
+    <script src="modules/Tranfer/CartonItem/cartonItemSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/CartonItem/component/cartonItemForm.js?version=updateversion"></script>
+    <script src="modules/Tranfer/CartonItem/component/cartonList.js?version=updateversion"></script>
+
+    <!-- Status Grade -->
+    <script src="modules/Tranfer/StatusGrade/statusGradeSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/StatusGrade/factory/statusGradeFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/StatusGrade/component/statusGradeForm.js?version=updateversion"></script>
+    <script src="modules/Tranfer/StatusGrade/component/lpnList.js?version=updateversion"></script>
+
+    <!-- Transfer Pallet -->
+    <script src="modules/Tranfer/TransferPallet/transferPalletSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferPallet/component/transferPallet.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferPallet/component/transferLpnList.js?version=updateversion"></script>
+
+    <!-- Transfer Status Location -->
+    <script
+        src="modules/Tranfer/TransferStatusLocation/transferStatusLocationSummary.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferStatusLocation/component/transferStatusLocation.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferStatusLocation/component/transferLpnItemList.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/TransferStatusLocation/factory/transferStatusLocationFactory.js?version=updateversion"></script>
+
+    <!-- Pallet Inspection -->
+    <script src="modules/Tranfer/PalletInspection/PalletInspectionSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/PalletInspection/component/PalletInspection.js?version=updateversion"></script>
+    <script src="modules/Tranfer/PalletInspection/component/PalletInspectionItemList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/PalletInspection/factory/PalletInspectionFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/PalletInspection/component/taskPalletInspection.js"></script>
+
+
+    <!-- Transfer Carton -->
+    <script src="modules/Tranfer/TransferCarton/transferCartonSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferCarton/component/transferCarton.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferCarton/component/cartonList.js?version=updateversion"></script>
+
+    <!-- Task List -->
+    <!-- <script src="modules/GI/TaskList/TaskList.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/TaskList/factory/TaskListFactory.js?version=updateversion"></script> -->
+
+    <!-- Put to staging -->
+    <!-- <script src="modules/GI/PutToStaging/PutToStaging.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/PutToStagingV2/PutToStagingV2.js?version=updateversion"></script> -->
+
+    <!-- Print Carton RF -->
+    <!-- <script src="modules/GI/PrintCartonRF/printCarton.js?version=updateversion"></script> -->
+
+    <!-- Picking Tools -->
+    <!-- <script src="modules/GI/PickingTools/pickingTools.js?version=updateversion"></script> -->
+
+    <!-- Scan POS Detail -->
+    <!-- <script src="modules/GI/ScanPOSDetail/scanPosDetail.js?version=updateversion"></script> -->
+
+    <script src="modules/Inquiry/SKU/skuSummary.js?version=updateversion"></script>
+    <script src="modules/Inquiry/SKU/component/skuFilter.js?version=updateversion"></script>
+    <script src="modules/Inquiry/SKU/component/skuTableList.js?version=updateversion"></script>
+    <script src="modules/Inquiry/SKU/component/skuProductConversion.js?version=updateversion"></script>
+    <script src="modules/Inquiry/SKU/factory/inquirySkuFactory.js?version=updateversion"></script>
+    <script src="modules/Inquiry/SKU/component/skuStockDetail.js?version=updateversion"></script>
+    <script src="modules/Inquiry/SKU/component/skuAllocated.js?version=updateversion"></script>
+
+    <!-- Upload -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js?version=updateversion"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js?version=updateversion"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js?version=updateversion"></script>
+    <!-- <script src="modules/GI/LoadToTruck/component/importPopup.js?version=updateversion"></script> -->
+
+    <!-- <script src="modules/GI/ScanPOSDetail/scanPosDetail.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/PickingTools/pickingToolsSummary.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/PickingTools/component/pickingToolsFilter.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/PickingTools/component/pickingToolsTableList.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/PickingTools/factory/pickingToolFactory.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/PickingTools/component/scanPickingForm.js?version=updateversion"></script> -->
+    <!-- <script src="modules/GI/PickingTools/component/reasonCode.js?version=updateversion"></script> -->
+
+
+    <!-- PickTicket -->
+    <script src="modules/GI/component/pickTicketPopup/pickTicketPopup.js?version=updateversion"></script>
+    <script
+        src="modules/GI/component/pickTicketPopup/pickTicketPopupTable/pickTicketPopupTable.js?version=updateversion"></script>
+    <script src="modules/GI/component/pickTicketPopup/factory/pickTicketPopupFactory.js?version=updateversion"></script>
+
+    <!-- MarshallTask -->
+    <script src="modules/GI/component/marshallTask/marshallTaskPopup.js?version=updateversion"></script>
+    <script
+        src="modules/GI/component/marshallTask/marshallTaskPopupTable/marshallTaskPopupTable.js?version=updateversion"></script>
+    <script src="modules/GI/component/marshallTask/factory/marshallTaskFactory.js?version=updateversion"></script>
+
+    <!-- Report -->
+    <script src="modules/report/reportSummary.js?version=updateversion"></script>
+    <script src="modules/report/factory/reportFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/component/reportPopup/reportPopup.js?version=updateversion"></script>
+
+    <!-- reasonCodePopup -->
+    <script src="modules/GI/component/ReasonCode/ReasonCodePopup.js?version=updateversion"></script>
+    <script
+        src="modules/GI/component/ReasonCode/ReasonCodePopupTable/ReasonCodePopupTable.js?version=updateversion"></script>
+    <script src="modules/GI/component/ReasonCode/factory/reasonCodeGiFactory.js?version=updateversion"></script>
+
+
+
+    <script src="modules/GI/component/planGiPopup/planGiPopupTable/planGiPopupTable.js?version=updateversion"></script>
+    <script src="modules/GI/component/planGiPopup/planGiPopup.js?version=updateversion"></script>
+
+
+
+    <script src="modules/Tranfer/CartonItem/factory/tranferCartonItemFactory.js?version=updateversion"></script>
+
+    <script src="modules/masterData/component/soCatchWeightPopup/code.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/soCatchWeightPopup/soCatchWeightTable/code.js?version=updateversion"></script>
+    <script src="modules/masterData/component/sogiCatchWeightPopup/code.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/component/sogiCatchWeightPopup/sogiCatchWeightTable/code.js?version=updateversion"></script>
+
+    <script src="modules/widgets/pcCountUp/code.js?version=updateversion"></script>
+    <script src="assets/jquery-pos-master/jquery.pos.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/component/productPopup/factory/productPopupFactory.js?version=updateversion"></script>
+
+    <script src="modules/GI/Pack/packSummary.js?version=updateversion"></script>
+    <script src="modules/GI/Pack/factory/packFactory.js?version=updateversion"></script>
+    <script src="modules/GI/Pack/component/packForm.js?version=updateversion"></script>
+
+    <!--  Autocomplete -->
+    <script src="widgets/auto/autocomple.js?version=updateversion"></script>
+    <script src="modules/component/auto-complete-text/auto-complete.js?version=updateversion"></script>
+
+
+    <!-- New Popup -->
+    <!-- OwnerPopup -->
+    <script src="modules/component/Popup/ownerPopup/PlanGR/ownerPopupPlangr.js?version=updateversion"></script>
+    <script src="modules/component/Popup/ownerPopup/ownerPopupTable/ownerPopupTable.js?version=updateversion"></script>
+    <script src="modules/component/Popup/ownerPopup/PlanGR/factory/ownerFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/ownerPopup/PlanGI/factory/ownerFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/ownerPopup/PlanGI/ownerPopupPlangi.js?version=updateversion"></script>
+    <script src="modules/component/Popup/ownerPopup/GR/ownerPopupGr.js?version=updateversion"></script>
+    <script src="modules/component/Popup/ownerPopup/GR/factory/ownerFactory.js?version=updateversion"></script>
+
+
+    <!-- VendorPopup -->
+    <script src="modules/component/Popup/vendorPopup/PlanGR/factory/vendorFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/vendorPopup/PlanGR/vendorPopupPlangr.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/vendorPopup/vendorPopupTable/vendorPopupTable.js?version=updateversion"></script>
+
+    <!-- StatusPopup -->
+    <script
+        src="modules/component/Popup/statusPopup/statusPopupTable/statusPopupTable.js?version=updateversion"></script>
+    <script src="modules/component/Popup/statusPopup/PlanGR/statusPopuuPlan.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/statusPopup/PlanGR/factory/statusPopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/statusPopup/PlanGI/factory/statusPopupFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/statusPopup/PlanGI/statusPopuuPlan.js?version=updateversion"></script>
+    <script src="modules/component/Popup/statusPopup/GR/statusPopupGR.js?version=updateversion"></script>
+    <script src="modules/component/Popup/statusPopup/GR/factory/statusPopupFactory.js?version=updateversion"></script>
+
+    <!-- WarehousePopup -->
+    <script
+        src="modules/component/Popup/warehousePopup/PlanGR/factory/warehouseFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/warehousePopup/PlanGR/warehousePopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/warehousePopup/warehousePopupTable/warehousePopupTable.js?version=updateversion"></script>
+    <script src="modules/component/Popup/warehousePopup/PlanGR/warehouseToPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/warehousePopup/PlanGI/factory/warehouseFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/warehousePopup/PlanGI/warehousePopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/warehousePopup/PlanGI/warehouseToPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/warehousePopup/Gr/warehousePopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/warehousePopup/Gr/warehouseToPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/warehousePopup/Gr/factory/warehouseFactory.js?version=updateversion"></script>
+
+    <!-- DocumentTypePopup -->
+    <script src="modules/component/Popup/documentTypePopup/PlanGR/documentTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/documentTypePopup/documentTypePopupTable/documentTypeTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/documentTypePopup/PlanGR/factory/documentTypeFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/documentTypePopup/PlanGI/documentTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/documentTypePopup/PlanGI/factory/documentTypeFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/documentTypePopup/GR/documentTypePopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/documentTypePopup/GR/factory/documentTypeFactory.js?version=updateversion"></script>
+
+    <!-- ProductPopup -->
+    <script src="modules/component/Popup/productPopup/PlanGR/productPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productPopup/PlanGR/factory/productPopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productPopup/productPopupTable/productPopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productPopup/PlanGI/factory/productPopupFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/productPopup/PlanGI/productPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/productPopup/GR/productPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/productPopup/GR/factory/productPopupFactory.js?version=updateversion"></script>
+
+    <!-- productConversionPopup -->
+    <script
+        src="modules/component/Popup/productConversion/PlanGR/productConversionPlan.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productConversion/productConversionPopupTable/productConversionPopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productConversion/PlanGR/factory/productConversionFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productConversion/PlanGI/factory/productConversionFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productConversion/PlanGI/productConversionPlan.js?version=updateversion"></script>
+
+    <!-- planGoodsIssuePopup -->
+    <script src="modules/component/Popup/planGiPopup/PlanGR/planGiPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/planGiPopup/planGiPopupTable/planGiPopupTable.js?version=updateversion"></script>
+
+    <script src="modules/component/Popup/planGiPopupOfW/PlanGI/planGiPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/planGiPopupOfW/planGiPopupTable/planGiPopupTable.js?version=updateversion"></script>
+
+    <!-- PlanGRPopup -->
+    <script src="modules/component/Popup/planGrPopup/GR/factory/planGrPopupFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/planGrPopup/GR/planGrPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/planGrPopup/planGrPopupTable/planGrPopupTable.js?version=updateversion"></script>
+
+    <!-- SoldToPopup -->
+    <script src="modules/component/Popup/soldToPopup/PlanGI/soldToPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/soldToPopup/PlanGI/factory/soldToFactoryPlanGi.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/soldToPopup/soldToPopupTable/soldToPopupTable.js?version=updateversion"></script>
+
+    <!-- ShipToPopup -->
+    <script
+        src="modules/component/Popup/shipToPopup/shipToPopupTable/shipToPopupTable.js?version=updateversion"></script>
+    <script src="modules/component/Popup/shipToPopup/PlanGI/shipToPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/shipToPopup/PlanGI/factory/shipToFactory.js?version=updateversion"></script>
+
+    <!-- roundPopup -->
+    <script src="modules/component/Popup/roundPopup/PlanGI/factory/roundFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/roundPopup/PlanGI/roundPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/roundPopup/roundPopupTable/roundPopupTable.js?version=updateversion"></script>
+
+    <!-- routePopup -->
+    <script src="modules/component/Popup/routePopup/PlanGI/factory/routeFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/routePopup/PlanGI/routePopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/routePopup/routePopupTable/routePopupTable.js?version=updateversion"></script>
+
+    <!-- ItemPopup -->
+    <script src="modules/component/Popup/itemStatusPopup/PlanGI/itemStatusPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/itemStatusPopup/PlanGI/factory/itemStatusFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/itemStatusPopup/itemStatusPopupTable/itemStatusPopupTable.js?version=updateversion"></script>
+
+    <!-- VehicleType -->
+    <script
+        src="modules/component/Popup/vehicletypePopup/vahicletypePopupTable/vehicleTypePopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/vehicletypePopup/GR/factory/vehicleTypeFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/vehicletypePopup/GR/vehicleTypePopup.js?version=updateversion"></script>
+
+    <!-- scanReceive ProductLineitem -->
+    <script
+        src="modules/component/Popup/scanReceivePopup/GR/factory/productLineitemFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/scanReceivePopup/GR/productLineitemPopupTable/productLineitemPopupTable.js?version=updateversion"></script>
+    <script src="modules/component/Popup/scanReceivePopup/GR/productLineitemPopup.js?version=updateversion"></script>
+
+    <!-- manyToOnePopup -->
+    <script src="modules/component/Popup/LPNmanyToOnePopup/LPN/manyToOnePopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/LPNmanyToOnePopup/component/code.js?version=updateversion"></script>
+
+    <!-- oneToManyPopup -->
+
+    <script src="modules/component/Popup/LPNoneToManyPopup/LPN/oneToManyPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/LPNoneToManyPopup/component/code.js?version=updateversion"></script>
+
+    <!-- locationPopup -->
+
+    <script
+        src="modules/component/Popup/locationPopup/transfer/transferLocationPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/locationPopup/component/code.js?version=updateversion"></script>
+
+    <!-- pickPopup -->
+
+    <script src="modules/component/Popup/pickPopup/transfer/transferPickPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/pickPopup/component/code.js?version=updateversion"></script>
+
+
+
+    <script src="assets/javascripts/multiSelectItem/bootstrap-multiselect.js?version=updateversion"></script>
+    <script src="modules/component/multipleSelect/status/code.js?version=updateversion"></script>
+    <script src="modules/component/multipleSelect/statusYard/code.js?version=updateversion"></script>
+    <script src="modules/component/multipleSelect/sorting/code.js?version=updateversion"></script>
+    <script src="modules/component/multipleSelect/pcMultiSelect/code.js?version=updateversion"></script>
+    <script src="modules/component/multipleSelect/waveround/code.js?version=updateversion"></script>
+
+
+
+    <!-- facility -->
+    <script src="modules/masterData/masterFacility/component/facilityTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacility/component/facilityForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacility/component/facilityFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacility/factory/facilityFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacility/facilitySummary.js?version=updateversion"></script>
+
+    <!-- facilityType -->
+    <script
+        src="modules/masterData/masterFacilityType/component/facilityTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacilityType/component/facilityTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacilityType/component/facilityTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacilityType/factory/facilityTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterFacilityType/facilityTypeSummary.js?version=updateversion"></script>
+
+    <!-- Warehouse Owner -->
+    <script src="modules/masterData/masterWHOwner/component/whOwnerTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwner/component/whOwnerForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwner/component/whOwnerFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwner/factory/whOwnerFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwner/whOwnerSummary.js?version=updateversion"></script>
+
+    <!-- Warehouse Owner Type-->
+    <script src="modules/masterData/masterWHOwnerType/component/whOwnerTypeTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwnerType/component/whOwnerTypeForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwnerType/component/whOwnerTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwnerType/factory/whOwnerTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWHOwnerType/whOwnerTypeSummary.js?version=updateversion"></script>
+
+    <!-- Rule Condition Field-->
+    <script
+        src="modules/masterData/masterRuleConditionField/component/ruleConditionFieldTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionField/component/ruleConditionFieldForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionField/component/ruleConditionFieldFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionField/factory/ruleConditionFieldFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionField/ruleConditionFieldSummary.js?version=updateversion"></script>
+
+    <!-- Rule Condition Operation-->
+    <script
+        src="modules/masterData/masterRuleConditionOperation/component/ruleConditionOperationTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionOperation/component/ruleConditionOperationForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionOperation/component/ruleConditionOperationFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionOperation/factory/ruleConditionOperationFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleConditionOperation/ruleConditionOperationSummary.js?version=updateversion"></script>
+
+    <!-- Rule Condition-->
+    <script
+        src="modules/masterData/masterRuleCondition/component/ruleConditionTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRuleCondition/component/ruleConditionForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleCondition/component/ruleConditionFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRuleCondition/factory/ruleConditionFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRuleCondition/ruleConditionSummary.js?version=updateversion"></script>
+
+    <!-- Rule-->
+    <script src="modules/masterData/masterRule/component/ruleTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRule/component/ruleForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRule/component/ruleFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRule/factory/ruleFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRule/ruleSummary.js?version=updateversion"></script>
+
+    <!-- Wave-->
+    <script src="modules/masterData/masterWave/component/waveTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWave/component/waveForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWave/component/waveFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWave/factory/waveFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterWave/waveSummary.js?version=updateversion"></script>
+
+    <!-- LocationZoneputaway-->
+    <script
+        src="modules/masterData/masterLocationZoneputaway/component/locationZoneputawayTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationZoneputaway/component/locationZoneputawayForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationZoneputaway/component/locationZoneputawayFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationZoneputaway/factory/locationZoneputawayFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterLocationZoneputaway/locationZoneputawaySummary.js?version=updateversion"></script>
+
+    <!-- RuleputawayConditionField-->
+    <script
+        src="modules/masterData/masterRuleputawayConditionField/component/ruleputawayConditionFieldTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayConditionField/component/ruleputawayConditionFieldForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayConditionField/component/ruleputawayConditionFieldFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayConditionField/factory/ruleputawayConditionFieldFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayConditionField/ruleputawayConditionFieldSummary.js?version=updateversion"></script>
+
+
+    <!-- RuleputawayCondition-->
+    <script
+        src="modules/masterData/masterRuleputawayCondition/component/ruleputawayConditionTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayCondition/component/ruleputawayConditionForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayCondition/component/ruleputawayConditionFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayCondition/factory/ruleputawayConditionFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterRuleputawayCondition/ruleputawayConditionSummary.js?version=updateversion"></script>
+
+    <!-- Ruleputaway-->
+    <script src="modules/masterData/masterRuleputaway/component/ruleputawayTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRuleputaway/component/ruleputawayForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRuleputaway/component/ruleputawayFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRuleputaway/factory/ruleputawayFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterRuleputaway/ruleputawaySummary.js?version=updateversion"></script>
+
+
+    <!-- Load -->
+    <script src="modules/Load/load/loadSummary.js?version=updateversion"></script>
+    <script src="modules/Load/load/factory/loadFactory.js?version=updateversion"></script>
+
+    <!-- Product Assembly -->
+    <script
+        src="modules/masterData/masterProductAssembly/component/productAssemblyTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductAssembly/component/productAssemblyForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductAssembly/component/productAssemblyFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductAssembly/factory/productAssemblyFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductAssembly/productAssemblySummary.js?version=updateversion"></script>
+
+
+    <!-- scanPick -->
+    <script src="modules/GI/scanPick/scanPickSummary.js?version=updateversion"></script>
+    <script src="modules/GI/scanPick/factory/scanPickFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPick/factory/scanPickItemFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPick/component/scanPickForm.js?version=updateversion"></script>
+    <script src="modules/GI/scanPick/component/scanPickFilter.js?version=updateversion"></script>
+    <script src="modules/GI/scanPick/component/scanPickTableList.js?version=updateversion"></script>
+
+    <!-- scanPick Partial -->
+    <script src="modules/GI/scanPickLabeling/scanPickLabelingSummary.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickLabeling/factory/scanPickLabelingFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickLabeling/factory/scanPickLabelingItemFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickLabeling/component/scanPickLabelingForm.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickLabeling/component/scanPickLabelingFilter.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickLabeling/component/scanPickLabelingTableList.js?version=updateversion"></script>
+
+    <!-- AssignJob -->
+    <script src="modules/GI/AssignJob/assignJob.js?version=updateversion"></script>
+    <script src="modules/GI/AssignJob/factory/assignJobFactory.js?version=updateversion"></script>
+
+    <!-- goodsIssuePopup -->
+    <script src="modules/component/Popup/goodsIssuePopup/assignJob/goodsIssuePopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsIssuePopup/assignJob/factory/goodsIssuePopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsIssuePopup/goodsIssuePopupTable/goodsIssuePopupTable.js?version=updateversion"></script>
+
+    <!-- taskPopup -->
+    <script src="modules/component/Popup/previewTaskPopup/assignJob/taskPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/previewTaskPopup/TaskPopupTable/TaskPopupTable.js?version=updateversion"></script>
+
+    <!-- Cyclecount -->
+    <script src="modules/Tranfer/Cyclecount/CyclecountSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Cyclecount/factory/CyclecountFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Cyclecount/component/CyclecountFilter.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Cyclecount/component/CyclecountForm.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Cyclecount/component/CyclecountTableList.js?version=updateversion"></script>
+
+    <!-- Task Cyclecount -->
+    <script src="modules/Tranfer/TaskCyclecount/factory/TaskCyclecountFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskCyclecount/TaskCyclecountSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskCyclecount/TaskCyclecountCount.js?version=updateversion"></script>
+
+    <!-- Cyclecount V2 -->
+    <script src="modules/Tranfer/CyclecountV2/CyclecountSummaryV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/CyclecountV2/factory/CyclecountFactoryV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/CyclecountV2/component/CyclecountFilterV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/CyclecountV2/component/CyclecountFormV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/CyclecountV2/component/CyclecountTableListV2.js?version=updateversion"></script>
+    
+    <!-- Task Cyclecount V2 -->
+    <script src="modules/Tranfer/TaskCyclecountV2/factory/TaskCyclecountFactoryV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskCyclecountV2/TaskCyclecountSummaryV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskCyclecountV2/component/TaskCyclecountFilterV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskCyclecountV2/component/TaskCyclecountFormV2.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskCyclecountV2/component/TaskCyclecountTableListV2.js?version=updateversion"></script>
+
+    <script
+        src="modules/Tranfer/TaskCyclecount/component/masterRequire/masterRequirePopup.js?version=updateversion"></script>
+
+    <!-- CountManual -->
+    <script src="modules/Tranfer/CountManual/factory/countManualFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/CountManual/countManual.js?version=updateversion"></script>
+
+    <script src="modules/component/Popup/packProductPopup/factory/packProductFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/packProductPopup/packProductPopupTable/packProductPopupTable.js?version=updateversion"></script>
+    <script src="modules/component/Popup/packProductPopup/packProductPopup.js?version=updateversion"></script>
+
+    <!-- Picking Order Performance -->
+    <script src="modules/GI/PickingOrderPerformance/pickingOrderPerformance.js?version=updateversion"></script>
+    <script src="modules/GI/PickingOrderPerformance/factory/pickingOrderFactory.js?version=updateversion"></script>
+
+
+
+    <!-- DocumentTypeItemStatus-->
+    <script
+        src="modules/masterData/masterDocumentTypeItemStatus/component/documentTypeItemStatusFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterDocumentTypeItemStatus/component/documentTypeItemStatusForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterDocumentTypeItemStatus/component/documentTypeItemStatusTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterDocumentTypeItemStatus/factory/documentTypeItemStatusFactory.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterDocumentTypeItemStatus/documentTypeItemStatusSummary.js?version=updateversion"></script>
+
+
+    <!-- Bom -->
+    <script src="modules/Tranfer/Bom/bomSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Bom/factory/bomFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Bom/component/bomFilter.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Bom/component/bomTableList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Bom/component/bomForm.js?version=updateversion"></script>
+
+    <script src="widgets/uploadImg/uploadImg.js?version=updateversion"></script>
+
+
+    <!-- ConfigUserGroupMenu-->
+    <script
+        src="modules/masterData/configUserGroupMenu/component/configUserGroupMenuTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/configUserGroupMenu/component/configUserGroupMenuForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/configUserGroupMenu/component/configUserGroupMenuFilter.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/configUserGroupMenu/factory/configUserGroupMenuFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/configUserGroupMenu/configUserGroupMenuSummary.js?version=updateversion"></script>
+
+    <!-- truckLoad -->
+    <script src="modules/GI/truckLoad/truckLoadSummary.js?version=updateversion"></script>
+    <script src="modules/GI/truckLoad/component/truckLoadTableList.js?version=updateversion"></script>
+    <script src="modules/GI/truckLoad/component/truckLoadForm.js?version=updateversion"></script>
+    <script src="modules/GI/truckLoad/component/truckLoadFilter.js?version=updateversion"></script>
+    <script src="modules/GI/truckLoad/factory/truckLoadFactory.js?version=updateversion"></script>
+    <script src="modules/GI/truckLoad/factory/truckLoadItemFactory.js?version=updateversion"></script>
+
+    <!-- Config Replenishment-->
+
+    <script
+        src="modules/replenishment/configReplenishment/component/configReplenishmentTableList.js?version=updateversion"></script>
+    <script
+        src="modules/replenishment/configReplenishment/component/configReplenishmentForm.js?version=updateversion"></script>
+    <script
+        src="modules/replenishment/configReplenishment/component/configReplenishmentFilter.js?version=updateversion"></script>
+    <script
+        src="modules/replenishment/configReplenishment/factory/replenishmentFactory.js?version=updateversion"></script>
+    <script
+        src="modules/replenishment/configReplenishment/configReplenishmentSummary.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterProductLocation/component/ProductLocationTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductLocation/component/ProductLocationForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductLocation/component/ProductLocationFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductLocation/ProductLocationSummary.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterProductLocation/factory/productLocationFactory.js?version=updateversion"></script>
+
+    <!-- ScanLoad -->
+    <script src="modules/GI/scanLoad/scanLoadSummary.js?version=updateversion"></script>
+    <script src="modules/GI/scanLoad/factory/scanLoadFactory.js?version=updateversion"></script>
+
+    <!-- silde -->
+    <script src="widgets/silde/code.js?version=updateversion"></script>
+
+    <!-- AssignJonTransfer -->
+    <script src="modules/Tranfer/AssignJob/assignJob.js?version=updateversion"></script>
+    <script src="modules/Tranfer/AssignJob/factory/assignJobTransferFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsTransferPopup/assignJob/goodsTransferPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsTransferPopup/goodsTransferPopupTable/goodsTransferPopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsTransferPopup/assignJob/factory/goodsTransferPopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/previewTaskTransferPopup/assignJob/taskTransferPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/previewTaskTransferPopup/taskTransferPopupTable/taskTransferPopupTable.js?version=updateversion"></script>
+
+    <!-- Scan Ref Transfer No -->
+    <script src="modules/Tranfer/ScanRefTransferNo/scanRefTransferNoSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/ScanRefTransferNo/component/scanRefTransferNo.js?version=updateversion"></script>
+    <script src="modules/Tranfer/ScanRefTransferNo/component/scanRefTransferNoList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/ScanRefTransferNo/factory/scanRefTransferNoFactory.js?version=updateversion"></script>
+
+    <!-- reportSignerPopup -->
+    <script src="modules/component/Popup/reportSignerPopup/reportSignerPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/reportSignerPopup/reportSignerPopupFactory.js?version=updateversion"></script>
+
+    <!-- reportPrintTagPopup -->
+    <script src="modules/component/Popup/reportPrintTagPopup/reportPrintTagPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/reportPrintTagPopup/reportPrintTagPopupFactory.js?version=updateversion"></script>
+
+    <!-- AssignJobGR -->
+    <script src="modules/GR/AssignJob/assignJob.js?version=updateversion"></script>
+    <script src="modules/GR/AssignJob/factory/assignJobGrFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsReceivePopup/assignJob/goodsReceivePopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsReceivePopup/assignJob/factory/goodsReceivePopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/goodsReceivePopup/goodsReceivePopupTable/goodsReceivePopupTable.js?version=updateversion"></script>
+
+    <!-- previewTaskGrPopup -->
+    <script src="modules/component/Popup/previewTaskGrPopup/assignJob/taskGrPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/previewTaskGrPopup/TaskGrPopupTable/taskGrPopupTable.js?version=updateversion"></script>
+
+    <!-- TaskPutaway -->
+    <script src="modules/GR/putAway/putAway/taskPutaway.js?version=updateversion"></script>
+
+    <!-- DockToStaging -->
+    <script src="modules/GR/putAway/dockToStaging/taskDockToStaging.js?version=updateversion"></script>
+
+    <!-- reportSignerGIPopup -->
+    <script src="modules/component/Popup/reportSignerGIPopup/reportSignerGIPopup.js?version=updateversion"></script>
+
+    <!-- Stock -->
+    <script src="modules/Inquiry/Stock/stockSummary.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Stock/factory/stockFactory.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Stock/component/stockTableList.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Stock/component/stockFilter.js?version=updateversion"></script>
+
+    <!-- reportSignerPGIPopup -->
+    <script src="modules/component/Popup/reportSignerPGIPopup/reportSignerPGIPopup.js?version=updateversion"></script>
+
+    <!-- Staging -->
+    <script src="modules/Inquiry/Aging/agingSummary.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Aging/factory/agingFactory.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Aging/component/agingTableList.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Aging/component/agingFilter.js?version=updateversion"></script>
+
+    <!-- Movement -->
+    <script src="modules/Inquiry/Movement/movementSummary.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Movement/factory/movementFactory.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Movement/component/movementTableList.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Movement/component/movementFilter.js?version=updateversion"></script>
+
+    <!-- Report1 -->
+    <script src="modules/Reports/report1/factory/report1Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report1/report1Summary.js?version=updateversion"></script>
+
+    <!-- Report2 -->
+    <script src="modules/Reports/report2/factory/report2Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report2/report2Summary.js?version=updateversion"></script>
+
+    <!-- Report3 -->
+    <script src="modules/Reports//report3/factory/report3Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report3/report3Summary.js?version=updateversion"></script>
+
+    <!-- Report4 -->
+    <script src="modules/Reports//report4/factory/report4Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report4/report4Summary.js?version=updateversion"></script>
+
+    <!-- Report5 -->
+    <script src="modules/Reports/report5/factory/report5Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report5/report5Summary.js?version=updateversion"></script>
+
+    <!-- Report6 -->
+    <script src="modules/Reports/report6/factory/report6Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report6/report6Summary.js?version=updateversion"></script>
+
+    <!-- Report7 -->
+    <script src="modules/Reports/report7/factory/report7Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report7/report7Summary.js?version=updateversion"></script>
+
+    <!-- Report8 -->
+    <script src="modules/Reports/report8/factory/report8Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report8/report8Summary.js?version=updateversion"></script>
+
+    <!-- Report9 -->
+    <script src="modules/Reports/report9/factory/report9Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report9/report9Summary.js?version=updateversion"></script>
+
+    <!-- Report10 -->
+    <script src="modules/Reports/report10/factory/report10Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report10/report10Summary.js?version=updateversion"></script>
+
+    <!-- Report11 -->
+    <script src="modules/Reports/report11/factory/report11Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report11/report11Summary.js?version=updateversion"></script>
+
+    <!-- Report12 -->
+    <script src="modules/Reports/report12/factory/report12Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report12/report12Summary.js?version=updateversion"></script>
+
+    <!-- Report13 -->
+    <script src="modules/Reports/report13/factory/report13Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report13/report13Summary.js?version=updateversion"></script>
+
+    <!-- Report14 -->
+    <script src="modules/Reports/report14/factory/report14Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report14/report14Summary.js?version=updateversion"></script>
+
+    <!-- Report15 -->
+    <script src="modules/Reports/report15/factory/report15Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report15/report15Summary.js?version=updateversion"></script>
+
+    <!-- Report16 -->
+    <script src="modules/Reports/report16/factory/report16Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report16/report16Summary.js?version=updateversion"></script>
+
+    <!-- Report17 -->
+    <script src="modules/Reports/report17/factory/report17Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report17/report17Summary.js?version=updateversion"></script>
+
+    <!-- Report18 -->
+    <script src="modules/Reports/report18/factory/report18Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report18/report18Summary.js?version=updateversion"></script>
+
+    <!-- Report19 -->
+    <script src="modules/Reports/report19/factory/report19Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report19/report19Summary.js?version=updateversion"></script>
+
+    <!-- Report20 -->
+    <script src="modules/Reports/report20/factory/report20Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report20/report20Summary.js?version=updateversion"></script>
+
+    <!-- Report21 -->
+    <script src="modules/Reports/report21/factory/report21Factory.js?version=updateversion"></script>
+    <script src="modules/Reports/report21/report21Summary.js?version=updateversion"></script>
+
+    <!-- reportPickingPerformanceRecords -->
+    <script src="modules/Reports/reportPickingPerformanceRecords/factory/reportPickingPerformanceRecordsFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportPickingPerformanceRecords/reportPickingPerformanceRecordsSummary.js?version=updateversion"></script>
+
+    <!-- reportInventoryAccuracy -->
+    <script src="modules/Reports/reportInventoryAccuracy/factory/reportInventoryAccuracyFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportInventoryAccuracy/reportInventoryAccuracySummary.js?version=updateversion"></script>
+
+    <!-- reportKPI -->
+    <script src="modules/Reports/reportKPI/factory/reportKpiFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportKPI/reportKpiSummary.js?version=updateversion"></script>
+
+    <!-- reportSpaceUtilization -->
+    <script src="modules/Reports/reportSpaceUtilization/factory/reportSpaceUtilizationFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportSpaceUtilization/reportSpaceUtilizationSummary.js?version=updateversion"></script>
+
+    <!-- reportSummaryShipping -->
+    <script src="modules/Reports/reportSummaryShipping/factory/reportSummaryShippingFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportSummaryShipping/reportSummaryShippingSummary.js?version=updateversion"></script>
+
+    <!-- reportPerformance -->
+    <script src="modules/Reports/reportPerformance/factory/reportPerformanceFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportPerformance/reportPerformanceSummary.js?version=updateversion"></script>
+
+    <!-- reportLaborPerformance -->
+    <script src="modules/Reports/reportLaborPerformance/factory/reportLaborPerformanceFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportLaborPerformance/reportLaborPerformanceSummary.js?version=updateversion"></script>
+
+    <!-- ReportStockAging -->
+    <script src="modules/Reports/reportStockAging/factory/reportStockAgingFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportStockAging/reportStockAgingSummary.js?version=updateversion"></script>
+
+    <!-- ReportVendorWarehouse -->
+    <script
+        src="modules/Reports/reportVendorWarehouse/factory/reportVendorWarehouseFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportVendorWarehouse/reportVendorWarehouseSummary.js?version=updateversion"></script>
+
+    <!-- PrintOutRetrun -->
+    <script src="modules/Reports/PrintOutRetrun/factory/printOutRetrunFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/PrintOutRetrun/printOutRetrunSummary.js?version=updateversion"></script>
+
+    <!-- ReportSummaryMaterialsStock -->
+    <script
+        src="modules/Reports/reportSummaryMaterialsStock/factory/reportSummaryMaterialsStockFactory.js?version=updateversion"></script>
+    <script
+        src="modules/Reports/reportSummaryMaterialsStock/reportSummaryMaterialsStockSummary.js?version=updateversion"></script>
+
+    <!-- ReportSummaryInventoryPayment -->
+    <script
+        src="modules/Reports/reportSummaryInventoryPayment/factory/reportSummaryInventoryPaymentFactory.js?version=updateversion"></script>
+    <script
+        src="modules/Reports/reportSummaryInventoryPayment/reportSummaryInventoryPaymentSummary.js?version=updateversion"></script>
+
+    <!-- ReportInventoryStock -->
+    <script
+        src="modules/Reports/reportInventoryStock/factory/reportInventoryStockFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportInventoryStock/reportInventoryStockSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/Tranfer/AssignJobCycleCount/assignJob.js?version=updateversion"></script>
+    <script
+        src="modules/Tranfer/AssignJobCycleCount/factory/assignJobCycleCountFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/cycleCountPopup/assignJob/factory/cycleCountPopupFactory.js?version=updateversion"></script>
+    <script src="modules/component/Popup/cycleCountPopup/assignJob/cycleCountPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/cycleCountPopup/cycleCountPopupTable/cycleCountPopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/previewTaskCyclecountPopup/taskTransferPopupTable/taskCyclecountPopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/previewTaskCyclecountPopup/assignJob/taskCyclecountPopup.js?version=updateversion"></script>
+
+
+
+    <!-- Logs -->
+    <script src="modules/logs/systemLogs/factory/logsFactory.js?version=updateversion"></script>
+
+    <!-- LogFile -->
+    <script src="modules/logs/logFile/logFileSummary.js?version=updateversion"></script>
+    <script src="modules/logs/logFile/factory/logFileFactory.js?version=updateversion"></script>
+    <script src="modules/logs/logFile/component/logFileTableList.js?version=updateversion"></script>
+    <script src="modules/logs/logFile/component/logFileFilter.js?version=updateversion"></script>
+
+    <!-- LogFileAdmin -->
+    <script src="modules/logs/logsFileAdmin/logsFileAdminSummary.js?version=updateversion"></script>
+    <script src="modules/logs/logsFileAdmin/factory/logFileAdimFactory.js?version=updateversion"></script>
+    <script src="modules/logs/logsFileAdmin/component/logFileAdminFilter.js?version=updateversion"></script>
+    <script src="modules/logs/logsFileAdmin/component/logFileAdminTableList.js?version=updateversion"></script>
+    <script src="modules/component/Popup/logFilePopup/assignJob/logFilePopup.js?version=updateversion"></script>
+
+    <!-- LogsGISentSAP -->
+    <script src="modules/logs/logGI/factory/logGiFactory.js?version=updateversion"></script>
+    <script src="modules/logs/logGI/component/logGiFilter.js?version=updateversion"></script>
+    <script src="modules/logs/logGI/component/logGiTableList.js?version=updateversion"></script>
+    <script src="modules/logs/logGI/logGi.js?version=updateversion"></script>
+
+    <!-- LogsGRSentSAP -->
+    <script src="modules/logs/logGR/factory/logGrFactory.js?version=updateversion"></script>
+    <script src="modules/logs/logGR/component/logGrFilter.js?version=updateversion"></script>
+    <script src="modules/logs/logGR/component/logGrTableList.js?version=updateversion"></script>
+    <script src="modules/logs/logGR/logGr.js?version=updateversion"></script>
+
+
+    <!-- ProductCyclecountPopup -->
+    <script src="modules/component/Popup/productPopup/cyclecountPopup/productPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/productPopup/cyclecountPopup/productPopupTable/productPopupTable.js?version=updateversion"></script>
+
+    <!-- ZoneCyclecountPopup -->
+    <script src="modules/component/Popup/zonePopup/cyclecountPopup/zonePopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/zonePopup/cyclecountPopup/zonePopupTable/zonePopupTable.js?version=updateversion"></script>
+
+    <!--Virtual Warehouse -->
+    <script src="modules/virtualWarehouse/preview/factory/vw.preview.factory.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/preview/scene/rack.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/preview/scene/floor.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/preview/scene/top.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/preview/vwpreview.js?version=updateversion"></script>
+
+    <!--Virtual Warehouse Manage -->
+    <script src="modules/virtualWarehouse/manage/component/sideViewFloorProperty.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/component/sideViewRackProperty.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/component/topViewFloorProperty.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/component/topViewLabelProperty.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/component/topViewRackProperty.js?version=updateversion"></script>
+
+    <script src="modules/virtualWarehouse/manage/factory/vw.manage.factory.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/factory/vw.manage.top.factory.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/scene/rack.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/scene/floor.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/scene/top.js?version=updateversion"></script>
+    <script src="modules/virtualWarehouse/manage/vwmanage.js?version=updateversion"></script>
+
+
+
+
+    <!-- Examples -->
+    <script src="assets/javascripts/ui-elements/examples.modals.js?version=updateversion"></script>
+
+    <!-- addDetailItem -->
+    <script src="modules/component/Popup/addDetailItem/addDetailItem.js?version=updateversion"></script>
+
+    <!-- forwarder -->
+    <script src="modules/component/Popup/forwarderPopup/forwarder/forwarderPopup.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/forwarderPopup/factory/forwarderPopupFactory.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/forwarderPopup/forwarderPopupTable/forwarderPopupTable.js?version=updateversion"></script>
+
+    <!-- invoiceNoGIPopup -->
+    <script src="modules/component/Popup/InvoiceNoGIPopup/invoiceNoGIPopup.js?version=updateversion"></script>
+
+    <!-- import -->
+    <script src="modules/ImportFile/importFile/importFileSummary.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFile/factory/importFileFactory.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFile/component/importFileFilter.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFile/component/importFileTableList.js?version=updateversion"></script>
+
+    <!-- importMaster -->
+    <script src="modules/ImportFile/importFileMaster/importFileMasterSummary.js?version=updateversion"></script>
+    <script
+        src="modules/ImportFile/importFileMaster/component/importFileMasterFilter.js?version=updateversion"></script>
+    <script
+        src="modules/ImportFile/importFileMaster/component/importFileMasterTableList.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFileMaster/factory/importFileMasterFactory.js?version=updateversion"></script>
+
+
+    <script src="modules/component/Popup/masterRequire/masterRequirePopup.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer/component/transferFormPopup.js?version=updateversion"></script>
+
+
+    <!-- PopupBom -->
+    <script src="modules/component/Popup/BomPopup/bomPopup.js?version=updateversion"></script>
+    <script src="modules/component/Popup/BomPopup/bomPopupTable.js?version=updateversion"></script>
+
+    <!-- Config Service -->
+    <script src="modules/masterData/configService/configServiceSummary.js?version=updateversion"></script>
+    <script src="modules/masterData/configService/component/configServiceFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/configService/component/configServiceTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/configService/factory/configServiceFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/configService/component/addServiceChargeList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/configService/serviceChargeFix/serviceChargeFixForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/configService/serviceChargeFix/addServiceChargeFix.js?version=updateversion"></script>
+
+    <script
+        src="modules/masterData/masterServiceChargeType/component/serviceChargeTypeTableList.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterServiceChargeType/component/serviceChargeTypeForm.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterServiceChargeType/component/serviceChargeTypeFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterServiceChargeType/serviceChargeTypeSummary.js?version=updateversion"></script>
+    <script
+        src="modules/masterData/masterServiceChargeType/factory/serviceChargeTypeFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/configService/storageCharge/storageCharge.js?version=updateversion"></script>
+
+    <!-- RePrint -->
+    <script src="modules/GR/rePrintTag/rePrintTag.js?version=updateversion"></script>
+    <script src="modules/GR/rePrintTag/factory/rePrintTagFactory.js?version=updateversion"></script>
+
+
+    <!-- GRMemo -->
+    <script src="modules/GR/Memo/grMemoSummary.js?version=updateversion"></script>
+    <script src="modules/GR/Memo/component/grMemoForm.js?version=updateversion"></script>
+    <script src="modules/GR/Memo/factory/MemoFactory.js?version=updateversion"></script>
+    <script src="modules/GR/Memo/component/grMemoDetail.js?version=updateversion"></script>
+
+    <!-- GIMemo -->
+    <script src="modules/GI/Memo/giMemoSummary.js?version=updateversion"></script>
+    <script src="modules/GI/Memo/component/giMemoForm.js?version=updateversion"></script>
+    <script src="modules/GI/Memo/factory/giMemoFactory.js?version=updateversion"></script>
+    <script src="modules/GI/Memo/component/giMemoDetail.js?version=updateversion"></script>
+
+
+    <!-- Invoice -->
+    <script src="modules/Inquiry/Invoice/invoiceSummary.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Invoice/factory/invoiceFactory.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Invoice/component/invoiceTableList.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Invoice/component/invoiceFilter.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Invoice/component/invoiceForm.js?version=updateversion"></script>
+    <script
+        src="modules/Inquiry/Invoice/component/invoiceStorageCharge/invoiceStorageCharge.js?version=updateversion"></script>
+    <script src="modules/Inquiry/Invoice/component/manualInvoice/manualInvoice.js?version=updateversion"></script>
+
+
+    <!-- PurchaseOrder -->
+    <script src="modules/GR/PO/poSummary.js?version=updateversion"></script>
+    <script src="modules/GR/PO/component/poFilter.js?version=updateversion"></script>
+    <script src="modules/GR/PO/component/poTableList.js?version=updateversion"></script>
+    <script src="modules/GR/PO/component/poForm.js?version=updateversion"></script>
+    <script src="modules/GR/PO/component/poItem.js?version=updateversion"></script>
+    <script src="modules/GR/PO/factory/poFactory.js?version=updateversion"></script>
+    <script src="modules/GR/PO/factory/poItemFactory.js?version=updateversion"></script>
+
+    <!-- dashboardHP -->
+    <script src="modules/dashboardHP/dashboardHPFactory.js"></script>
+    <script src="modules/dashboardHP/dashboard1/dashboard1.js"></script>
+    <script src="modules/dashboardHP/dashboard2/dashboard2.js"></script>
+    <script src="modules/dashboardHP/dashboard3/dashboard3.js"></script>
+    <script src="modules/dashboardHP/dashboard4/dashboard4.js"></script>
+    <script src="modules/dashboardHP/dashboard5/dashboard5.js"></script>
+    <script src="modules/dashboardHP/dashboard6/dashboard6.js"></script>
+    <script src="modules/dashboardHP/dashboard7/dashboard7.js"></script>
+    <script src="modules/dashboardHP/dashboard8/dashboard8.js"></script>
+    <script src="modules/dashboardHP/dashboard9/dashboard9.js"></script>
+    <script src="modules/dashboardHP/dashboard10/dashboard10.js"></script>
+    <script src="modules/dashboardHP/dashboard11/dashboard11.js"></script>
+    <script src="modules/dashboardHP/dashboard12/dashboard12.js"></script>
+
+    <!-- ImportFileMaster -->
+    <!-- <script src="modules/ImportFile/importFileMaster/importFileMasterSummary.js?version=updateversion"></script> -->
+    <!-- <script src="modules/ImportFile/importFileMaster/component/importFileMasterFilter.js?version=updateversion"></script> -->
+    <!-- <script src="modules/ImportFile/importFileMaster/component/importFileMasterTableList.js?version=updateversion"></script> -->
+    <!-- <script src="modules/ImportFile/importFileMaster/factory/importFileMasterFactory.js?version=updateversion"></script> -->
+
+    <!-- popopup -->
+    <script src="modules/component/Popup/poPopup/poPopupFilter/poPopupFilter.js?version=updateversion"></script>
+    <script src="modules/component/Popup/poPopup/poPopupTable/poPopupTable.js?version=updateversion"></script>
+    <script
+        src="modules/component/Popup/poPopup/poPopupFilter/factory/poPopupFactory.js?version=updateversion"></script>
+
+    <!-- Claim -->
+    <script src="modules/Claim/claimSummary.js?version=updateversion"></script>
+    <script src="modules/Claim/component/claimFilter.js?version=updateversion"></script>
+    <script src="modules/Claim/component/claimForm.js?version=updateversion"></script>
+    <script src="modules/Claim/component/claimItem.js?version=updateversion"></script>
+    <script src="modules/Claim/component/claimTableList.js?version=updateversion"></script>
+    <script src="modules/Claim/factory/claimFactory.js?version=updateversion"></script>
+    <script src="modules/Claim/factory/claimItemFactory.js?version=updateversion"></script>
+
+
+    <!-- Unpack -->
+    <script src="modules/Tranfer/Unpack/upPackSummary/taskUnPack.js"></script>
+    <script src="modules/Tranfer/Unpack/factory/unPackFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Unpack/upPackSummary/unPackSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Unpack/unPack.js?version=updateversion"></script>
+
+    <!-- pack -->
+    <script src="modules/Tranfer/Pack/factory/PackFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Pack/PackSummary/PackSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Pack/PackOf.js?version=updateversion"></script>
+
+    <script src="modules/component/Popup/UnpackPopupOfU/Unpack/UnpackPopup.js"></script>
+    <script src="modules/component/Popup/UnpackPopupOfU/UnpackPopupTable/UnpackPopupTable.js"></script>
+
+    <!-- Check Stock Plan GI -->
+    <script src="modules/GI/CheckStock/CheckStockSummary.js?version=updateversion"></script>
+    <!-- <script src="modules/GI/CheckStock/component/detailPopup.js?version=updateversion"></script> -->
+    <script src="modules/GI/CheckStock/component/CheckStockFilter.js?version=updateversion"></script>
+    <script src="modules/GI/CheckStock/component/CheckStockForm.js?version=updateversion"></script>
+    <script src="modules/GI/CheckStock/component/CheckStockTableList.js?version=updateversion"></script>
+    <script src="modules/GI/CheckStock/factory/CheckStockFactory.js?version=updateversion"></script>
+    <script src="modules/GI/CheckStock/factory/CheckStockItemFactory.js?version=updateversion"></script>
+
+    <script src="modules/GI/CheckStock/component/detailPopup.js"></script>
+
+    <!-- Yard Gate Check -->
+    <script src="modules/yardDock/bookingGateDockCheckSummary/bookingGateDockCheckSummary.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckSummary/component/bookingGateDockCheckSummaryFilter.js?version=updateversion"></script>
+    <script
+        src="modules/yardDock/bookingGateDockCheckSummary/component/bookingGateDockCheckSummaryTableList.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckSummary/factory/bookingGateDockCheckSummaryFactory.js?version=updateversion"></script>
+
+    <!-- Yard Gate Check In -->
+    <script src="modules/yardDock/bookingGateDockCheckIn/bookingGateDockCheckIn.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckIn/component/bookingGateDockCheckInFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckIn/component/bookingGateDockCheckInForm.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckIn/component/bookingGateDockCheckInTableList.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckIn/factory/bookingGateDockCheckInFactory.js?version=updateversion"></script>
+
+    <!-- Yard Gate Check Out -->
+    <script src="modules/yardDock/bookingGateDockCheckOut/bookingGateDockCheckOut.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckOut/component/bookingGateDockCheckOutFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckOut/component/bookingGateDockCheckOutForm.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckOut/component/bookingGateDockCheckOutTableList.js?version=updateversion"></script>
+    <script src="modules/yardDock/bookingGateDockCheckOut//factory/bookingGateDockCheckOutFactory.js?version=updateversion"></script>
+
+    <!-- Queue Yard Dock Summary -->
+    <script src="modules/yardDock/queueYardDock/queueYardDockSummary.js?version=updateversion"></script>
+    <script src="modules/yardDock/queueYardDock/component/queueYardDockFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/queueYardDock/component/queueYardDockTableList.js?version=updateversion"></script>
+    <script src="modules/yardDock/queueYardDock/factory/queueYardDockFactory.js?version=updateversion"></script>
+    <script src="modules/yardDock/queueYardDock/Dockconfirm/DockconfirmPopup.js?version=updateversion"></script>
+
+    <script src="modules/GR/scanReceive/selectScan/selectScanPopup.js?version=updateversion"></script>
+
+
+
+
+    <!-- RollCage -->
+    <script src="modules/RollCage/Chute/Chute.js?version=updateversion"></script>
+    <!-- Chute -->
+    <script src="modules/RollCage/Chute/factory/chuteFactory.js?version=updateversion"></script>
+    <!-- ScanIn -->
+    <script src="modules/RollCage/scanIn/scanIn.js?version=updateversion"></script>
+    <script src="modules/RollCage/scanIn/factory/scanInFactory.js?version=updateversion"></script>
+    <!-- ScanIn Rework -->
+    <script src="modules/RollCage/scanInRework/scanInRework.js?version=updateversion"></script>
+    <script src="modules/RollCage/scanInRework/factory/scanInReworkFactory.js?version=updateversion"></script>
+    <!-- ScanOut -->
+    <script src="modules/RollCage/scanOut/scanOut.js?version=updateversion"></script>
+    <script src="modules/RollCage/scanOut/factory/scanOutFactory.js?version=updateversion"></script>
+    <!-- sendRollcage -->
+    <script src="modules/RollCage/sendRollcage/sendRollcage.js?version=updateversion"></script>
+    <script src="modules/RollCage/sendRollcage/factory/sendRollcageFactory.js?version=updateversion"></script>
+
+    <!-- film Cutting -->
+    <script src="modules/RollCage/filmCutting/filmCutting.js?version=updateversion"></script>
+    <script src="modules/RollCage//filmCutting/factory/filmCuttingFactory.js?version=updateversion"></script>
+    <script src="modules/RollCage//filmCutting/filmCuttingSummary/filmCuttingSummary.js?version=updateversion"></script>
+
+     <!-- call full roll cage -->
+     <script src="modules/RollCage/callFullRollCage/callFullRollCage.js?version=updateversion"></script>
+     <script src="modules/RollCage/callFullRollCage/factory/callFullRollCageFactory.js?version=updateversion"></script>
+     <script src="modules/RollCage/callFullRollCage/callFullRollCageSummary/callFullRollCageSummary.js?version=updateversion"></script>
+
+     <!-- rework roll cage -->
+     <script src="modules/RollCage/reworkRollCage/reworkRollCage.js?version=updateversion"></script>
+     <script src="modules/RollCage/reworkRollCage/factory/reworkRollCageFactory.js?version=updateversion"></script>
+     <script src="modules/RollCage/reworkRollCage/reworkRollCageSummary/reworkRollCageSummary.js?version=updateversion"></script>
+
+      <!-- print tagout -->
+      <script src="modules/GI/TagOut/tagOut.js?version=updateversion"></script>
+      <script src="modules/GI/TagOut/factory/tagOutFactory.js?version=updateversion"></script>
+      <script src="modules/GI/TagOut/tagOutForm.js?version=updateversion"></script>
+
+      <script src="modules/GI/scanPickLocation/scanPickLocationSummary.js?version=updateversion"></script>
+      <script src="modules/GI/scanPickLocation/factory/scanPickLocationFactory.js?version=updateversion"></script>
+      <script src="modules/GI/scanPickLocation/factory/scanPickLocationItemFactory.js?version=updateversion"></script>
+      <script src="modules/GI/scanPickLocation/component/scanPickLocationFilter.js?version=updateversion"></script>
+      <script src="modules/GI/scanPickLocation/component/scanPickLocationForm.js?version=updateversion"></script>
+      <script src="modules/GI/scanPickLocation/component/scanPickLocationTableList.js?version=updateversion"></script>
+
+      <script src="modules/GI/PickToLight/PickToLight.js?version=updateversion"></script>
+      <script src="modules/GI/PickToLight/factory/PickToLightFactory.js?version=updateversion"></script>
+      <script src="modules/GI/PickToLight/PickToLightSummary/PickToLightSummary.js?version=updateversion"></script>
+
+    <!-- TaskTransfer -->
+    <script src="modules/Tranfer/TaskTransfer/taskTransfer.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskTransfer/factory/taskTransferFactory.js?version=updateversion"></script>
+
+    <!-- TaskTransferReplenish -->
+    <script src="modules/Tranfer/TaskTransferReplenish/taskTransferReplenish.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskTransferReplenish/factory/taskTransferReplenishFactory.js?version=updateversion"></script>
+
+    <!-- return tote -->
+    <script src="modules/GI/ReturnTote/returnTote.js?version=updateversion"></script>
+    <script src="modules/GI/ReturnTote/factory/returnToteFactory.js?version=updateversion"></script>
+    <script src="modules/GI/ReturnTote/returnToteSummary/returnToteSummary.js?version=updateversion"></script>
+    <script src="modules/GI/ReturnTote/returnToteSummary/returnTotePopup.js"></script>
+    <script src="modules/GI/ReturnTote/returnTotePopupReport/returnTotePopupReportTable.js"></script>
+
+    <!-- popupAssign -->
+    <script src="modules/yardDock/bookingYardDock/popupAssign/popupAssignPopup.js?version=updateversion"></script>
+
+    <script src="modules/GR/GR/component/grItemcontrack.js?version=updateversion"></script>
+
+    <!-- ScanPickQty -->
+    <script src="modules/GI/scanPickQty/scanPickQtySummary.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickQty/factory/scanPickQtyFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickQty/factory/scanPickQtyItemFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickQty/component/scanPickQtyFilter.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickQty/component/scanPickQtyForm.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickQty/component/scanPickQtyTableList.js?version=updateversion"></script>
+
+    <!-- moveToSelectiveOnGround -->
+    <script src="modules/GI/moveToSelectiveOnGround/moveToSelectiveOnGroundSummary.js?version=updateversion"></script>
+    <script src="modules/GI/moveToSelectiveOnGround/factory/moveToSelectiveOnGroundFactory.js?version=updateversion"></script>
+    <script src="modules/GI/moveToSelectiveOnGround/factory/moveToSelectiveOnGroundItemFactory.js?version=updateversion"></script>
+    <script src="modules/GI/moveToSelectiveOnGround/component/moveToSelectiveOnGroundFilter.js?version=updateversion"></script>
+    <script src="modules/GI/moveToSelectiveOnGround/component/moveToSelectiveOnGroundForm.js?version=updateversion"></script>
+    <script src="modules/GI/moveToSelectiveOnGround/component/moveToSelectiveOnGroundTableList.js?version=updateversion"></script>
+
+   <!-- Tracking Loading -->
+   <script src="modules/GI/TrackingLoading/trackingLoading.js?version=updateversion"></script>
+   <script src="modules/GI/TrackingLoading/factory/trackingLoadingFactory.js?version=updateversion"></script>
+   <script src="modules/GI/TrackingLoading/trackingLoadingSummary/trackingLoadingSummary.js?version=updateversion"></script>
+
+    <!-- scanPickStgToDock-->
+    <script src="modules/GI/scanPickStgToDock/scanPickStgToDockSummary.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickStgToDock/factory/scanPickStgToDockFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickStgToDock/factory/scanPickStgToDockItemFactory.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickStgToDock/component/scanPickStgToDockFilter.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickStgToDock/component/scanPickStgToDockForm.js?version=updateversion"></script>
+    <script src="modules/GI/scanPickStgToDock/component/scanPickStgToDockTableList.js?version=updateversion"></script>
+
+    <!-- carInspection-->
+    <script src="modules/yardDock/carInspection/carInspectionSummary.js?version=updateversion"></script>
+    <script src="modules/yardDock/carInspection/factory/carInspectionFactory.js?version=updateversion"></script>
+    <script src="modules/yardDock/carInspection/component/carInspectionFilter.js?version=updateversion"></script>
+    <script src="modules/yardDock/carInspection/component/carInspectionTableList.js?version=updateversion"></script>
+
+    <!-- Return To WB-->
+    <script src="modules/GI/returnTowb/returnTowb.js?version=updateversion"></script>
+    <script src="modules/GI/returnTowb/factory/returnTowbFactory.js?version=updateversion"></script>
+    <script src="modules/GI/returnTowb/returnTowb/returnTowbSummary.js?version=updateversion"></script>
+
+
+    <script src="modules/GI/planGI/component/popUpConfirmDate.js"></script>
+
+    <script src="modules/RollCage/scanIn/popUpTagOut/popUpTagOut/popUpTagOutPopup.js"></script>
+    <script src="modules/RollCage/scanIn/popUpTagOut/popUpTagOutTable/popUpTagOutTable.js"></script>
+
+    <script src="modules/Inquiry/CheckQr/checkQr.js?version=updateversion"></script>
+    <script src="modules/Inquiry/CheckQr/factory/checkQrFactory.js?version=updateversion"></script>
+    <script src="modules/Inquiry/CheckQr/CheckQrSummary/checkQrSummary.js?version=updateversion"></script>
+
+    <script src="modules/GI/GI/component/popUpCheckWave/popUpCheckWaveFilter.js?version=updateversion"></script>
+    <script src="modules/GI/GI/component/popUpCheckWave/popUpCheckWaveTable.js?version=updateversion"></script>
+
+    <script src="modules/GI/ShortShip/shortShipSummary.js?version=updateversion"></script>
+    <script src="modules/GI/ShortShip/factory/shortShipFactory.js?version=updateversion"></script>
+    <script src="modules/GI/ShortShip/component/shortShipFilter.js?version=updateversion"></script>
+    <script src="modules/GI/ShortShip/component/shortShipForm.js?version=updateversion"></script>
+    <script src="modules/GI/ShortShip/component/shortShipPopup.js?version=updateversion"></script>
+    <script src="modules/GI/ShortShip/component/shortShipTableList.js?version=updateversion"></script>
+    <script src="modules/GI/ShortShip/component/popUpCancelQty/popUpCancelQty.js?version=updateversion"></script>
+    
+    <!-- CHECKSTOCKMOBILE -->
+    <script src="modules/Inquiry/checkStockMobile/checkStockMobileSummary.js"></script>
+    <script src="modules/Inquiry/checkStockMobile/factory/checkStockMobileFactory.js"></script>
+    <script src="modules/Inquiry/checkStockMobile/component/checkStockMobileFilter.js"></script>
+    <script src="modules/Inquiry/checkStockMobile/component/checkStockMobileTableList.js"></script>
+
+    <!-- REPORTCHECKSCANROLLCAGE -->
+    <script src="modules/RollCage/reportCheckScanRollCage/reportCheckScanRollCageSummary.js"></script>
+    <script src="modules/RollCage/reportCheckScanRollCage/factory/reportCheckScanRollCageFactory.js"></script>
+    <script src="modules/RollCage/reportCheckScanRollCage/component/reportCheckScanRollCageFilter.js"></script>
+    <script src="modules/RollCage/reportCheckScanRollCage/component/reportCheckScanRollCageTableList.js"></script>
+
+    <!-- CHECKROLLCAGEDATA (AUT) -->
+    <script src="modules/RollCage/checkRollCageData/checkRollCageDataSummary.js"></script>
+    <script src="modules/RollCage/checkRollCageData/factory/checkRollCageDataFactory.js"></script>
+    <script src="modules/RollCage/checkRollCageData/component/checkRollCageDataFilter.js"></script>
+    <script src="modules/RollCage/checkRollCageData/component/checkRollCageDataTableList.js"></script>
+
+    <script src="modules/GI/scanPickQty/component/serialPopup.js"></script>
+
+    <!-- MasterProductV2 -->
+    <script src="modules/masterData/masterProductV2/component/productTableListV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductV2/component/productFormV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductV2/component/productFilterV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductV2/productSummaryV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductV2/factory/productFactoryV2.js?version=updateversion"></script>
+
+    <!-- MasterProductConversion -->
+    <script src="modules/masterData/masterProductConversionV2/component/productConversionTableListV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductConversionV2/component/productConversionFormV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductConversionV2/component/productConversionFilterV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductConversionV2/productConversionSummaryV2.js?version=updateversion"></script>
+    <script src="modules/masterData/masterProductConversionV2/factory/productConversionFactoryV2.js?version=updateversion"></script>
+
+    <script src="modules/GI/PickToLight/Incomplete/IncompletePopup.js"></script>
+
+    <!-- Trace Picking -->
+    <script src="modules/TraceProcess/tracePicking/tracePickingSummary.js"></script>
+    <script src="modules/TraceProcess/tracePicking/factory/tracePickingFactory.js"></script>
+    <script src="modules/TraceProcess/tracePicking/component/tracePickingFilter.js"></script>
+    <script src="modules/TraceProcess/tracePicking/component/tracePickingList.js"></script>
+
+    <!-- Trace Transfer -->
+    <script src="modules/TraceProcess/traceTransfer/traceTransferSummary.js"></script>
+    <script src="modules/TraceProcess/traceTransfer/factory/traceTransferFactory.js"></script>
+    <script src="modules/TraceProcess/traceTransfer/component/traceTransferFilter.js"></script>
+    <script src="modules/TraceProcess/traceTransfer/component/traceTransferList.js"></script>
+
+    <!-- sendRollcageToStaging -->
+    <script src="modules/RollCage/sendRollcageToStaging/sendRollcageToStaging.js"></script>
+    <script src="modules/RollCage/sendRollcageToStaging/factory/sendRollcageToStagingFactory.js"></script>
+    <script src="modules/RollCage/sendRollcageToStaging/sendRollcageToStagingSummary/sendRollcageToStagingSummary.js"></script>
+
+    <!-- Tranfer 104 -->
+    <script src="modules/Tranfer/tranferOneZeroFour/tranferOneZeroFour.js"></script>
+    <script src="modules/Tranfer/tranferOneZeroFour/factory/tranferOneZeroFourFactory.js"></script>
+    <script src="modules/Tranfer/tranferOneZeroFour/tranferOneZeroFourSummary/tranferOneZeroFourSummary.js"></script>
+
+    <!-- Gi Wave  -->
+    <script src="modules/GI/GIWave/giWaveSummary.js"></script>
+    <script src="modules/GI/GIWave/factory/giWaveFactory.js"></script>
+    <script src="modules/GI/GIWave/component/giWaveForm.js"></script>
+
+    <!-- Gi Wave  -->
+    <script src="modules/GI/CheckWaveGI/checkWaveGISummary.js"></script>
+    <script src="modules/GI/CheckWaveGI/factory/checkWaveGIFactory.js"></script>
+    <script src="modules/GI/CheckWaveGI/component/checkWaveGIFilter.js"></script>
+    <script src="modules/GI/CheckWaveGI/component/checkWaveGIList.js"></script>
+
+    <!-- Trace Loading  -->
+    <script src="modules/TraceProcess/traceLoading/traceLoadingSummary.js"></script>
+    <script src="modules/TraceProcess/traceLoading/factory/traceLoadingFactory.js"></script>
+    <script src="modules/TraceProcess/traceLoading/component/traceLoadingList.js"></script>
+    <script src="modules/TraceProcess/traceLoading/component/traceLoadingFilter.js"></script>
+
+    <!-- Tranfer DynamicSlotting  -->
+    <script src="modules/Tranfer/tranferDynamicSlotting/tranferDynamicSlotting.js"></script>
+    <script src="modules/Tranfer/tranferDynamicSlotting/factory/tranferDynamicSlottingFactory.js"></script>
+    <script src="modules/Tranfer/tranferDynamicSlotting/tranferDynamicSlotting/tranferDynamicSlottingFilter.js"></script>
+    <script src="modules/Tranfer/tranferDynamicSlotting/tranferDynamicSlotting/tranferDynamicSlottingForm.js"></script>
+    <script src="modules/Tranfer/tranferDynamicSlotting/tranferDynamicSlotting/tranferDynamicSlottingTableList.js"></script>
+
+    <!-- Round Wave  -->
+    <script src="modules/GI/RoundWaveFromTruckLoad/roundWaveFromTruckLoadSummary.js"></script>
+    <script src="modules/GI/RoundWaveFromTruckLoad/component/roundWaveFromTruckLoadForm.js"></script>
+    <script src="modules/GI/RoundWaveFromTruckLoad/factory/roundWaveFromTruckLoadFactory.js"></script>
+
+     <!-- Transfer Ondemand AUT -->
+     <script src="modules/Tranfer/TransferOndemand/transferOndemandSummary.js"></script>
+     <script src="modules/Tranfer/TransferOndemand/component/pickOndemandForm.js"></script>
+     <script src="modules/Tranfer/TransferOndemand/component/transferOndemandFilter.js"></script>
+     <script src="modules/Tranfer/TransferOndemand/component/transferOndemandForm.js"></script>
+     <script src="modules/Tranfer/TransferOndemand/component/transferOndemandFormPopup.js"></script>
+     <script src="modules/Tranfer/TransferOndemand/component/transferOndemandTableList.js"></script>
+     <script src="modules/Tranfer/TransferOndemand/factory/transferOndemandFactory.js"></script>
+     <script src="modules/Tranfer/TransferOndemand/factory/transferOndemandItemFactory.js"></script>
+
+    <!-- nonStandardizedTransactions -->
+    <script src="modules/Labor/nonStandardizedTransactions/factory/nonStandardizedTransactionsFactory.js?version=updateversion"></script>
+    <script src="modules/Labor/nonStandardizedTransactions/component/nonStandardizedTransactionsFilter.js"></script>
+    <script src="modules/Labor/nonStandardizedTransactions/component/nonStandardizedTransactionsTableList.js"></script>
+    <script src="modules/Labor/nonStandardizedTransactions/nonStandardizedTransactionsSummary.js?version=updateversion"></script>
+
+    <!-- workOutstanding -->
+    <script src="modules/Labor/workOutstanding/factory/workOutstandingFactory.js?version=updateversion"></script>
+    <script src="modules/Labor/workOutstanding/workOutstandingSummary.js?version=updateversion"></script>
+
+    <!--masterPlant-->
+    <script src="modules/masterData/masterPlant/plantSummary.js?version=updateversion"></script>
+    <script src="modules/masterData/masterPlant/component/plantFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterPlant/component/plantForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterPlant/component/plantTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterPlant/factory/plantFactory.js?version=updateversion"></script>
+
+    <!-- masterSloc -->
+    <script src="modules/masterData/masterSloc/component/slocFilter.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSloc/component/slocForm.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSloc/component/slocTableList.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSloc/factory/SlocFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/masterSloc/slocSummary.js?version=updateversion"></script>
+
+    <!-- equipmentStatus -->
+    <script src="modules/masterData/equipmentStatus/equipmentStatusSummary.js?version=updateversion"></script>
+    <script src="modules/masterData/equipmentStatus/factory/equipmentStatusFactory.js?version=updateversion"></script>
+    <script src="modules/masterData/equipmentStatus/component/equipmentStatusForm.js?version=updateversion"></script>
+
+    <!-- emergency billing -->
+    <script src="modules/EmergencyReport/emerGencyBilling/emerGencyBillingSummary.js?version=updateversion"></script>
+    <script src="modules/EmergencyReport/emerGencyBilling/factory/emerGencyBillingFactory.js?version=updateversion"></script>
+    <script src="modules/EmergencyReport/emerGencyBilling/component/emerGencyBillingFilter.js?version=updateversion"></script>
+    <script src="modules/EmergencyReport/emerGencyBilling/component/emerGencyBillingTableList.js?version=updateversion"></script>
+
+    <!-- emergency truckmanifest -->
+    <script src="modules/EmergencyReport/emerGencyTruckManifest/emerGencyTruckManifestSummary.js?version=updateversion"></script>
+    <script src="modules/EmergencyReport/emerGencyTruckManifest/factory/emerGencyTruckManifestFactory.js?version=updateversion"></script>
+    <script src="modules/EmergencyReport/emerGencyTruckManifest/component/emerGencyTruckManifestFilter.js?version=updateversion"></script>
+    <script src="modules/EmergencyReport/emerGencyTruckManifest/component/emerGencyTruckManifestTableList.js?version=updateversion"></script>
+
+
+    <!-- Config Sku -->
+    <script src="modules/masterData/configSku/configSkuSummary.js"></script>
+    <script src="modules/masterData/configSku/factory/configSkuFactory.js"></script>
+    <script src="modules/masterData/configSku/component/configSkuForm.js"></script>
+
+    <!-- import transfer -->
+    <script src="modules/ImportFile/importFileTransfer/importFileTransferSummary.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFileTransfer/factory/importFileTransferFactory.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFileTransfer/component/importFileTransferFilter.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFileTransfer/component/importFileTransferTableList.js?version=updateversion"></script>
+
+    <!-- new report 10 pages -->
+    <!-- checkBalanceAllLocation -->
+    <script src="modules/Reports/checkBalanceAllLocation/factory/checkBalanceAllLocationFactory.js"></script>
+    <script src="modules/Reports/checkBalanceAllLocation/checkBalanceAllLocation.js"></script>
+
+    <!-- checkDimensionAllProduct -->
+
+    <script src="modules/Reports/checkDimensionAllProduct/factory/checkDimensionAllProductFactory.js"></script>
+    <script src="modules/Reports/checkDimensionAllProduct/checkDimensionAllProduct.js"></script>
+
+    <!-- checkGiExp -->
+
+    <script src="modules/Reports/checkGiExp/factory/checkGiExpFactory.js"></script>
+    <script src="modules/Reports/checkGiExp/checkGiExp.js"></script>
+
+    <!-- checkGrPutaway -->
+
+    <script src="modules/Reports/checkGrPutaway/factory/checkGrPutawayFactory.js"></script>
+    <script src="modules/Reports/checkGrPutaway/checkGrPutaway.js"></script>
+
+    <!-- checkOnGroundRobot -->
+
+    <script src="modules/Reports/checkOnGroundRobot/factory/checkOnGroundRobotFactory.js"></script>
+    <script src="modules/Reports/checkOnGroundRobot/checkOnGroundRobot.js"></script>
+   
+    <!-- checkOrderNotPick -->
+
+    <script src="modules/Reports/checkOrderNotPick/factory/checkOrderNotPickFactory.js"></script>
+    <script src="modules/Reports/checkOrderNotPick/checkOrderNotPick.js"></script>
+
+    <!-- checkPickTime -->
+
+    <script src="modules/Reports/checkPickTime/factory/checkPickTimeFactory.js"></script>
+    <script src="modules/Reports/checkPickTime/checkPickTime.js"></script>
+
+    <!-- checkPlanGiandGidiff -->
+
+    <script src="modules/Reports/checkPlanGiandGidiff/factory/checkPlanGiandGidiffFactory.js"></script>
+    <script src="modules/Reports/checkPlanGiandGidiff/checkPlanGiandGidiff.js"></script>
+    
+    <!-- checkReplenishByOrder -->
+
+    <script src="modules/Reports/checkReplenishByOrder/factory/checkReplenishByOrderFactory.js"></script>
+    <script src="modules/Reports/checkReplenishByOrder/checkReplenishByOrder.js"></script>
+    
+    <!-- checkReplenishCfrByMax -->
+    <script src="modules/Reports/checkReplenishCfrByMax/factory/checkReplenishCfrByMaxFactory.js"></script>
+    <script src="modules/Reports/checkReplenishCfrByMax/checkReplenishCfrByMax.js"></script>
+
+    <!-- new report 11-20 -->
+
+    <!-- ReportCheckReplenishVCByMax -->
+    <script src="modules/Reports/reportCheckReplenishVcByMax/factory/reportCheckReplenishVcByMaxFactory.js"></script>
+    <script src="modules/Reports/reportCheckReplenishVcByMax/reportCheckReplenishVcByMax.js"></script>
+    
+    <!-- reportCheckReturnTote -->
+    <script src="modules/Reports/reportCheckReturnTote/factory/reportCheckReturnToteFactory.js"></script>
+    <script src="modules/Reports/reportCheckReturnTote/reportCheckReturnTote.js"></script>
+
+    <!-- reportCheckStockAvb -->
+    <script src="modules/Reports/reportCheckStockAvb/factory/reportCheckStockAvbFactory.js"></script>
+    <script src="modules/Reports/reportCheckStockAvb/reportCheckStockAvb.js"></script>
+    
+    <!-- report_check_stock_On_Hand -->
+    <script src="modules/Reports/reportCheckStockOnHand/factory/reportCheckStockOnHandFactory.js"></script>
+    <script src="modules/Reports/reportCheckStockOnHand/reportCheckStockOnHand.js"></script>
+
+    <!-- report_check_stock_on_hand_partial -->
+    <script src="modules/Reports/reportCheckStockOnHandPartial/factory/reportCheckStockOnHandPartialFactory.js"></script>
+    <script src="modules/Reports/reportCheckStockOnHandPartial/reportCheckStockOnHandPartial.js"></script>
+
+    <!-- report_check_tote_pending_return -->
+    <script src="modules/Reports/reportCheckTotePendingReturn/factory/reportCheckTotePendingReturnFactory.js"></script>
+    <script src="modules/Reports/reportCheckTotePendingReturn/reportCheckTotePendingReturn.js"></script>
+
+    <!-- report_check_transaction_gi -->
+    <script src="modules/Reports/reportCheckTransactionGi/factory/reportCheckTransactionGiFactory.js"></script>
+    <script src="modules/Reports/reportCheckTransactionGi/reportCheckTransactionGi.js"></script>
+
+    <!-- report_check_transaction_gr -->
+    <script src="modules/Reports/reportCheckTransactionGr/factory/reportCheckTransactionGrFactory.js"></script>
+    <script src="modules/Reports/reportCheckTransactionGr/reportCheckTransactionGr.js"></script>
+
+    <!-- report_check_transfer -->
+    <script src="modules/Reports/reportCheckTransfer/factory/reportCheckTransferFactory.js"></script>
+    <script src="modules/Reports/reportCheckTransfer/reportCheckTransfer.js"></script>
+
+    <!-- report_check_zone_putaway -->
+    <script src="modules/Reports/reportCheckZonePutaway/factory/reportCheckZonePutawayFactory.js"></script>
+    <script src="modules/Reports/reportCheckZonePutaway/reportCheckZonePutaway.js"></script>
+
+    
+    <!-- Tranfer CheckBypassForReplenish  -->
+    <script src="modules/Tranfer/CheckBypassForReplenish/checkBypassForReplenish.js"></script>
+    <script src="modules/Tranfer/CheckBypassForReplenish/factory/checkBypassForReplenishFactory.js"></script>
+    <script src="modules/Tranfer/CheckBypassForReplenish/CheckBypassForReplenish/checkBypassForReplenishFilter.js"></script>
+    <script src="modules/Tranfer/CheckBypassForReplenish/CheckBypassForReplenish/checkBypassForReplenishTableList.js"></script>
+
+    <!-- LogsTranferSentSAP -->
+    <script src="modules/logs/logTransfers/factory/logTransfersFactory.js?version=updateversion"></script>
+    <script src="modules/logs/logTransfers/component/logTransfersFilter.js?version=updateversion"></script>
+    <script src="modules/logs/logTransfers/component/logTransfersTableList.js?version=updateversion"></script>
+    <script src="modules/logs/logTransfers/logTransfers.js"></script>
+
+    <!-- Tranfer BypassPartial  -->
+    <script src="modules/Tranfer/BypassPartial/bypassPartial.js?version=updateversion"></script>
+    <script src="modules/Tranfer/BypassPartial/factory/bypassPartialFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/BypassPartial/BypassPartial/bypassPartialFilter.js?version=updateversion"></script>
+    <script src="modules/Tranfer/BypassPartial/BypassPartial/bypassPartialTableList.js?version=updateversion"></script>
+
+    <!-- Gi Wave  -->
+    <script src="modules/GI/LocationPartial/locationPartialSummary.js?version=updateversion"></script>
+    <script src="modules/GI/LocationPartial/factory/locationPartialFactory.js?version=updateversion"></script>
+    <script src="modules/GI/LocationPartial/component/locationPartialFilter.js?version=updateversion"></script>
+    <script src="modules/GI/LocationPartial/component/locationPartialList.js?version=updateversion"></script>
+    <script src="modules/GI/LocationPartial/component/ConfirmBypassPopup/confirmBypassPopup.js"></script>
+    
+
+    <!-- Worked by earth-->
+    <!-- reportRecall -->
+    <script src="modules/Reports/reportRecall/factory/reportRecallFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportRecall/reportRecallSummary.js?version=updateversion"></script>
+
+    <!-- Pallet control docket (PCD)-->
+    <script src = "modules/GI/PALLET_CONTROL_DOCKET/component/palletControlDocketTableList.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_CONTROL_DOCKET/component/palletControlDocketForm.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_CONTROL_DOCKET/component/palletControlDocketFilter.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_CONTROL_DOCKET/component/palletControlDocketItem.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_CONTROL_DOCKET/factory/palletControlDocketFactory.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_CONTROL_DOCKET/factory/palletControlDocketItemFactory.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_CONTROL_DOCKET/palletControlDocketSummary.js?version=updateversion"></script>
+
+    <!-- Pallet Add -->
+    <script src = "modules/GI/PALLET_ADD/component/palletAddFilter.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_ADD/component/palletAddForm.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_ADD/component/palletAddItem.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_ADD/component/palletAddTableList.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_ADD/factory/palletAddFactory.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_ADD/factory/palletAddItemFactory.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_ADD/palletAddSummary.js?version=updateversion"></script>
+
+    <!-- Pallet Borrow-Return  -->
+    <script src = "modules/GI/PALLET_BorrowReturn/component/palletBorrowReturnFilter.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_BorrowReturn/component/palletBorrowReturnForm.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_BorrowReturn/component/palletBorrowReturnItem.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_BorrowReturn/component/palletBorrowReturnTableList.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_BorrowReturn/factory/palletBorrowReturnFactory.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_BorrowReturn/factory/palletBorrowReturnItemFactory.js?version=updateversion"></script>
+    <script src = "modules/GI/PALLET_BorrowReturn/palletBorrowReturnSummary.js?version=updateversion"></script>
+
+    <!-- logcancel -->
+    <script src = "modules/logs/logCancel/component/logCancelFilter.js?version=updateversion"></script>
+    <script src = "modules/logs/logCancel/component/logCancelTableList.js?version=updateversion"></script>
+    <script src = "modules/logs/logCancel/factory/logCancelFactory.js?version=updateversion"></script>
+    <script src = "modules/logs/logCancel/logCancel.js?version=updateversion"></script>
+
+    <!-- Report View -->
+     <!-- Qty on Flow Rack / Carousel -->
+     <script src = "modules/Reports/reportqtyOnflowRack/reportqtyOnflowRackSummary.js?version=updateversion"></script>
+     <script src = "modules/Reports/reportqtyOnflowRack/factory/reportqtyOnflowRackFactory.js?version=updateversion"></script>
+
+     <!-- otherPopup -->
+    <script src="modules/component/Popup/otherPopup/other/otherPopup.js"></script>
+
+    <!-- Repoty Wrong Location -->
+    <script src = "modules/Reports/reportWrongLocation/factory/reportWrongLocationFactory.js?version=updateversion"></script>
+    <script src = "modules/Reports/reportWrongLocation/reportWrongLocationSummary.js?version=updateversion"></script>
+
+    <!-- pallet -->
+    <!-- return_tote -->
+    <script src="modules/Pallets/returnToteHistory/returnToteHistory.js"></script>
+    <script src="modules/Pallets/returnToteHistory/factory/returnToteHistoryFactory.js"></script>
+    <script src="modules/Pallets/returnToteHistory/component/returnToteHistoryTableList.js"></script>
+
+    <!-- history Tote-->
+    <!-- <script src="modules/Pallets/historyTote/historyTote.js"></script>
+    <script src="modules/Pallets/historyTote/factory/historyToteFactory.js"></script>
+    <script src="modules/Pallets/historyTote/component/historyToteTableList.js"></script> -->
+
+    <!-- pallet -->
+
+    <script src="modules/Pallets/pallets/palletsSummary.js"></script>
+    <script src="modules/Pallets/pallets/component/palletsFilter.js"></script>
+    <script src="modules/Pallets/pallets/component/palletsTableList.js"></script>
+    <script src="modules/Pallets/pallets/component/palletsForm.js"></script>
+    <script src="modules/Pallets/pallets/component/palletsItem.js"></script>
+    <script src="modules/Pallets/pallets/factory/palletsFactory.js"></script>
+    
+
+    <!-- history Pallets -->
+    <script src="modules/Pallets/historyPallets/historyPallets.js"></script>
+    <script src="modules/Pallets/historyPallets/factory/historyPalletsFactory.js"></script>
+    <script src="modules/Pallets/historyPallets/component/historyPalletsTableList.js"></script>
+    <script src="modules/Pallets/historyPallets/component/historyPalletsFilter.js"></script>
+
+    <!-- borrowing_returning -->
+    <script src="modules/Pallets/borrowingReturning/factory/testFfFactory.js"></script>
+    <script src="modules/Pallets/borrowingReturning/brSummary.js"></script> 
+    <script src="modules/Pallets/borrowingReturning/component/brFilter.js"></script>
+    <script src="modules/Pallets/borrowingReturning/component/brForm.js"></script>
+    <script src="modules/Pallets/borrowingReturning/component/brItem.js"></script>
+    <script src="modules/Pallets/borrowingReturning/component/brTableList.js"></script>
+
+    <!-- add_pallet -->
+    <script src="modules/Pallets/addPallet/component/addPalletFilter.js"></script>
+    <script src="modules/Pallets/addPallet/component/addPalletForm.js"></script> 
+    <script src="modules/Pallets/addPallet/component/addPalletItem.js"></script>
+    <script src="modules/Pallets/addPallet/component/addPalletTableList.js"></script>
+    <script src="modules/Pallets/addPallet/factory/addPalletFactory.js"></script>
+    <script src="modules/Pallets/addPallet/addPalletSummary.js"></script>
+
+    <!-- pallet_history -->
+    <script src="modules/Pallets/palletHistory/component/palletHistoryFilter.js"></script>
+    <script src="modules/Pallets/palletHistory/component/palletHistoryForm.js"></script> 
+    <script src="modules/Pallets/palletHistory/component/palletHistoryItem.js"></script>
+    <script src="modules/Pallets/palletHistory/component/palletHistoryTableList.js"></script>
+    <script src="modules/Pallets/palletHistory/factory/palletHistoryFactory.js"></script>
+    <script src="modules/Pallets/palletHistory/palletHistorySummary.js"></script>
+
+    <!-- sccsMapping -->
+    <script src="modules/SccsMapping/sccsMapping/component/sccsMappingFilter.js"></script>
+    <script src="modules/SccsMapping/sccsMapping/component/sccsMappingForm.js"></script> 
+    <script src="modules/SccsMapping/sccsMapping/component/sccsMappingTableList.js"></script>
+    <script src="modules/SccsMapping/sccsMapping/factory/sccsMappingFactory.js"></script>
+    <script src="modules/SccsMapping/sccsMapping/sccsMappingSummary.js"></script>
+
+    <!-- replenish On Demand -->
+    <script src="modules/replenishOnDemand/replenishOnDemandSummary.js"></script>
+    <script src="modules/replenishOnDemand/factory/replenishOnDemand.js"></script>
+    <script src="modules/replenishOnDemand/component/replenishOnDemandFilter.js"></script>
+    <script src="modules/replenishOnDemand/component/replenishOnDemandTableList.js"></script>
+
+    <!-- Config Piecepick Item -->
+    <script src="modules/replenishment/configPiecepickItem/component/configPiecepickItemFilter.js"></script>
+    <script src="modules/replenishment/configPiecepickItem/component/configPiecepickItemForm.js"></script> 
+    <script src="modules/replenishment/configPiecepickItem/component/configPiecepickItemTableList.js"></script>
+    <script src="modules/replenishment/configPiecepickItem/factory/configPiecepickItemFactory.js"></script>
+    <script src="modules/replenishment/configPiecepickItem/configPiecepickItemSummary.js"></script>
+
+    <!-- Report Recall Inbound -->
+    <script src="modules/Reports/reportRecallInbound/factory/reportRecallInboundFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportRecallInbound/reportRecallInboundSummary.js?version=updateversion"></script>
+
+     <!-- Report Recall Outbound -->
+     <script src="modules/Reports/reportRecallOutbound/factory/reportRecallOutboundFactory.js?version=updateversion"></script>
+     <script src="modules/Reports/reportRecallOutbound/reportRecallOutboundSummary.js?version=updateversion"></script>
+    
+     <!-- reportVolumeByShipToPickZone -->
+     <script src="modules/Reports/reportVolumeByShipToPickZone/factory/reportVolumeByShipToPickZoneFactory.js"></script>
+     <script src="modules/Reports/reportVolumeByShipToPickZone/reportVolumeByShipToPickZone.js"></script>
+
+    <!-- ReportGIByShipmentDateAndBusinessUnit -->
+    <script src="modules/Reports/reportGIByShipmentDateAndBusinessUnit/factory/reportGIByShipmentDateAndBusinessUnitFactory.js"></script>
+    <script src="modules/Reports/reportGIByShipmentDateAndBusinessUnit/reportGIByShipmentDateAndBusinessUnit.js"></script>
+     <!-- reportGIByShipmentNoProductID -->
+     <script src="modules/Reports/reportGIByShipmentNoProductID/factory/reportGiByShipmentNoProductIdFactory.js"></script>
+     <script src="modules/Reports/reportGIByShipmentNoProductID/reportGiByShipmentNoProductId.js"></script>
+
+     <!-- reportVolumeByAppointmentPickZone -->
+     <script src="modules/Reports/reportVolumeByAppointmentPickZone/volumeByAppointmentPickZone.js"></script>
+     <script src="modules/Reports/reportVolumeByAppointmentPickZone/factory/volumeByAppointmentPickZoneFactory.js"></script>
+
+      <!-- reportVolumeByShipmentPickZone -->
+      <script src="modules/Reports/reportVolumeByShipmentPickZone/factory/volumeByShipmentPickZoneFactory.js"></script>
+      <script src="modules/Reports/reportVolumeByShipmentPickZone/volumeByShipmentPickZone.js"></script>
+
+    <!-- UniversalScarch -->
+    <script src="modules/Inquiry/UniversalScarch/component/universalScarchSummary.js"></script> 
+    <script src="modules/Inquiry/UniversalScarch/universalScarch.js"></script> 
+    <script src="modules/Inquiry/UniversalScarch/factory/universalScarchFactory.js"></script>
+
+    <!-- reportSerialNumberSummary -->
+    <script src="modules/Reports/reportSerialNumber/factory/reportSerialNumberFactory.js"></script>
+    <script src="modules/Reports/reportSerialNumber/reportSerialNumberSummary.js"></script>
+
+    <!-- summary_cycle_count -->
+    <script src="modules/Reports/SummaryCycleCount/factory/summaryCycleCountFactory.js"></script>
+    <script src="modules/Reports/SummaryCycleCount/summaryCycleCount.js"></script>
+
+    <!-- onhand_summary -->
+    <script src="modules/Pallets/onHandSummary/component/onHandSummaryFilter.js"></script>
+    <script src="modules/Pallets/onHandSummary/component/onHandSummaryForm.js"></script>
+    <script src="modules/Pallets/onHandSummary/component/onHandSummaryTableList.js"></script>
+    <script src="modules/Pallets/onHandSummary/factory/onHandSummaryFactory.js"></script>
+    <script src="modules/Pallets/onHandSummary/onHandSummary.js"></script>
+    <script src="modules/Pallets/onHandSummary/component/vendorPopupFilter.js"></script>
+    
+    <!-- report_Summary_Cycle_Count_Summary -->
+    <script src="modules/Tranfer/ReportSummaryCycleCount/component/reportSummaryCycleCountFilter.js"></script>
+    <script src="modules/Tranfer/ReportSummaryCycleCount/component/reportSummaryCycleCountForm.js"></script>
+    <script src="modules/Tranfer/ReportSummaryCycleCount/component/reportSummaryCycleCountTableList.js"></script>
+    <script src="modules/Tranfer/ReportSummaryCycleCount/factory/reportSummaryCycleCountFactory.js"></script>
+    <script src="modules/Tranfer/ReportSummaryCycleCount/reportSummaryCycleCountSummary.js"></script>
+
+
+    
+    <script src="modules/GI_export/scanPickExport/scanPickExportSummary.js"></script>
+    <script src="modules/GI_export/scanPickExport/factory/scanPickExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickExport/factory/scanPickItemExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickExport/component/scanPickExportFilter.js"></script>
+    <script src="modules/GI_export/scanPickExport/component/scanPickExportForm.js"></script>
+    <script src="modules/GI_export/scanPickExport/component/scanPickExportTableList.js"></script>
+
+    <script src="modules/GI_export/scanPickLabelingExport/scanPickLabelingExportSummary.js"></script>
+    <script src="modules/GI_export/scanPickLabelingExport/factory/scanPickLabelingExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickLabelingExport/factory/scanPickLabelingItemExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickLabelingExport/component/scanPickLabelingExportFilter.js"></script>
+    <script src="modules/GI_export/scanPickLabelingExport/component/scanPickLabelingExportForm.js"></script>
+    <script src="modules/GI_export/scanPickLabelingExport/component/scanPickLabelingExportTableList.js"></script>
+
+    <script src="modules/GI_export/scanPickQtyExport/scanPickQtyExportSummary.js"></script>
+    <script src="modules/GI_export/scanPickQtyExport/factory/scanPickQtyExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickQtyExport/factory/scanPickQtyItemExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickQtyExport/component/scanPickQtyExportFilter.js"></script>
+    <script src="modules/GI_export/scanPickQtyExport/component/scanPickQtyExportForm.js"></script>
+    <script src="modules/GI_export/scanPickQtyExport/component/scanPickQtyExportTableList.js"></script>
+ 
+    <script src="modules/GI_export/scanPickLocationExport/scanPickLocationExportSummary.js"></script>
+    <script src="modules/GI_export/scanPickLocationExport/factory/scanPickLocationExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickLocationExport/factory/scanPickLocationItemExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickLocationExport/component/scanPickLocationExportFilter.js"></script>
+    <script src="modules/GI_export/scanPickLocationExport/component/scanPickLocationExportForm.js"></script>
+    <script src="modules/GI_export/scanPickLocationExport/component/scanPickLocationExportTableList.js"></script>
+
+    <script src="modules/GI_export/TrackingLoadingExport/trackingLoadingExport.js"></script>
+    <script src="modules/GI_export/TrackingLoadingExport/factory/trackingLoadingExportFactory.js"></script>
+    <script src="modules/GI_export/TrackingLoadingExport/trackingLoadingExportSummary/trackingLoadingExportSummary.js"></script>
+
+    <script src="modules/GI_export/moveToSelectiveOnGroundExport/moveToSelectiveOnGroundExportSummary.js"></script>
+    <script src="modules/GI_export/moveToSelectiveOnGroundExport/factory/moveToSelectiveOnGroundExportFactory.js"></script>
+    <script src="modules/GI_export/moveToSelectiveOnGroundExport/factory/moveToSelectiveOnGroundItemExportFactory.js"></script>
+    <script src="modules/GI_export/moveToSelectiveOnGroundExport/component/moveToSelectiveOnGroundExportFilter.js"></script>
+    <script src="modules/GI_export/moveToSelectiveOnGroundExport/component/moveToSelectiveOnGroundExportForm.js"></script>
+    <script src="modules/GI_export/moveToSelectiveOnGroundExport/component/moveToSelectiveOnGroundExportTableList.js"></script>
+
+    <script src="modules/GI_export/scanPickStgToDockExport/scanPickStgToDockExportSummary.js"></script>
+    <script src="modules/GI_export/scanPickStgToDockExport/factory/scanPickStgToDockExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickStgToDockExport/factory/scanPickStgToDockItemExportFactory.js"></script>
+    <script src="modules/GI_export/scanPickStgToDockExport/component/scanPickStgToDockExportFilter.js"></script>
+    <script src="modules/GI_export/scanPickStgToDockExport/component/scanPickStgToDockExportForm.js"></script>
+    <script src="modules/GI_export/scanPickStgToDockExport/component/scanPickStgToDockExportTableList.js"></script>
+
+    <!-- reportShippingMark -->
+    <script src="modules/Reports/reportShippingMark/factory/reportShippingMarkFactory.js"></script>
+    <script src="modules/Reports/reportShippingMark/reportShippingMark.js"></script>
+
+    <!-- report_packing_plan -->
+    <script src="modules/Reports/reportPackingPlan/factory/reportPackingPlanFactory.js"></script>
+    <script src="modules/Reports/reportPackingPlan/reportPackingPlan.js"></script>
+
+    <!-- report_pick -->
+    <script src="modules/Reports/reportPick/factory/reportPickFactory.js"></script>
+    <script src="modules/Reports/reportPick/reportPick.js"></script>
+
+    <!-- reportLabor_Utilization -->
+    <script src="modules/Reports/reportLaborUtilization/factory/reportLaborUtilizationFactory.js"></script>
+    <script src="modules/Reports/reportLaborUtilization/reportLaborUtilization.js"></script>
+
+    <!-- report_labor_incentiveScheme -->
+    <script src="modules/Reports/reportLaborIncentiveScheme/factory/reportLaborIncentiveSchemeFactory.js"></script>
+    <script src="modules/Reports/reportLaborIncentiveScheme/reportLaborIncentiveScheme.js"></script>
+
+    <!-- report_stockby_zone_report_ageging -->
+    <script src="modules/Reports/reportStockbyZoneReportAgeging/factory/reportStockbyZoneReportAgegingFactory.js"></script>
+    <script src="modules/Reports/reportStockbyZoneReportAgeging/reportStockbyZoneReportAgeging.js"></script>
+
+    <!-- report picking -->
+    <script src="modules/Reports/reportPicking/factory/reportPickingFactory.js"></script>
+    <script src="modules/Reports/reportPicking/reportPicking.js"></script>
+
+    <!-- report cover -->
+    <script src="modules/Reports/reportCoverDay/factory/reportCoverDayFactory.js"></script>
+    <script src="modules/Reports/reportCoverDay/reportCoverDay.js"></script>
+
+    <!-- report work -->
+    <script src="modules/Reports/reportWorkStanding/factory/reportWorkStandingFactory.js"></script>
+    <script src="modules/Reports/reportWorkStanding/reportWorkStanding.js"></script>
+
+    <!-- report picking -->
+    <script src="modules/Reports/reportPutaway/factory/reportPutawayFactory.js"></script>
+    <script src="modules/Reports/reportPutaway/reportPutaway.js"></script>
+
+    <!-- report receiving -->
+    <script src="modules/Reports/reportReceiving/factory/reportReceivingFactory.js"></script>
+    <script src="modules/Reports/reportReceiving/reportReceiving.js"></script>
+
+    <!-- Report Shipping -->
+    <script src="modules/Reports/reportShipping/factory/reportShippingFactory.js"></script>
+    <script src="modules/Reports/reportShipping/reportShipping.js"></script>
+
+    <!-- report ReconcileSap -->
+    <script src="modules/Reports/reportReconcileSap/reportReconcileSap.js"></script>
+    <script src="modules/Reports/reportReconcileSap/factory/reportReconcileSapFactory.js"></script>
+
+    <!-- report NotMovement -->
+    <script src="modules/Reports/reportNotMovement/reportNotMovement.js"></script>
+    <script src="modules/Reports/reportNotMovement/factory/reportNotMovementFactory.js"></script>
+
+    <!-- report Movement -->
+    <script src="modules/Reports/reportMovement/reportMovement.js"></script>
+    <script src="modules/Reports/reportMovement/factory/reportMovementFactory.js"></script>
+
+    <!-- reportPickingPerformance -->
+    <script src="modules/Reports/reportPickingPerformance/factory/reportPickingPerformanceFactory.js?version=updateversion"></script>
+    <script src="modules/Reports/reportPickingPerformance/reportPickingPerformance.js?version=updateversion"></script>
+
+    <!-- report Traceability -->
+    <script src="modules/Reports/reportTraceability/factory/reportTraceabilityFactory.js"></script>
+    <script src="modules/Reports/reportTraceability/reportTraceability.js"></script>
+
+    <!-- report MovementV2 -->
+    <script src="modules/Reports/reportMovementV2/factory/reportMovementV2Factory.js"></script>
+    <script src="modules/Reports/reportMovementV2/reportMovementV2.js"></script>
+
+    <!-- report Article Not Movement -->
+    <script src="modules/Reports/reportArticleNotMovement/factory/reportArticleNotMovementFactory.js"></script>
+    <script src="modules/Reports/reportArticleNotMovement/reportArticleNotMovement.js"></script>
+
+    <!-- report SpaceUtilization -->
+    <script src="modules/Reports/reportSumSpaceUtilization/factory/reportSumSpaceUtilizationFactory.js"></script>
+    <script src="modules/Reports/reportSumSpaceUtilization/reportSumSpaceUtilization.js"></script>
+
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/transferUnpackSummary.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/factory/transferUnpackFactory.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/factory/transferUnpackItemFactory.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/component/transferUnpackFilter.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/component/transferUnpackForm.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/component/transferUnpackFormPopup.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/component/transferUnpackTableList.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/TransferUnpack/component/unpackpickForm.js"></script>
+
+    <script src="modules/Tranfer_Unpack_Pack/UnpackpickPopup/transfer/transferUnpackPickPopup.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/UnpackpickPopup/component/code.js"></script>
+
+    <script src="modules/Tranfer_Unpack_Pack/Unpack/tranferTaskUnpackSummary.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/Unpack/factory/tranferUnpackFactory.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/Unpack/component/tranferUnpackForm.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/Unpack/component/tranferUnpackSummary.js"></script>
+
+    <script src="modules/Tranfer_Unpack_Pack/PackTranfer/packTranferSummary.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/PackTranfer/factory/packTranferFactory.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/PackTranfer/component/packTaskTranferSummary.js"></script>
+    <script src="modules/Tranfer_Unpack_Pack/PackTranfer/component/packTranferForm.js"></script>
+
+     <!-- Stock On Rollcage -->
+     <script src="modules/Inquiry/StockOnRollcage/stockOnRollcageSummary.js?version=updateversion"></script>
+     <script src="modules/Inquiry/StockOnRollcage/factory/stockOnRollcageFactory.js?version=updateversion"></script>
+     <script src="modules/Inquiry/StockOnRollcage/component/stockOnRollcageTableList.js?version=updateversion"></script>
+     <script src="modules/Inquiry/StockOnRollcage/component/stockOnRollcageFilter.js?version=updateversion"></script>
+    
+    <!-- Rebuild Index  -->
+    <script src="modules/GI/RebuildIndex/rebuildIndexSummary.js"></script>
+    <script src="modules/GI/RebuildIndex/factory/rebuildIndexFactory.js"></script>
+    <script src="modules/GI/RebuildIndex/component/rebuildIndexForm.js"></script>
+
+    <!-- Transfer_export -->
+    <script src="modules/Tranfer/Transfer_export/transferExportSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer_export/component/transferExportFilter.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer_export/component/transferExportForm.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer_export/component/pickExportForm.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer_export/component/transferExportTableList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer_export/factory/transferExportFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer_export/factory/transferItemExportFactory.js?version=updateversion"></script>
+    <script src="modules/Tranfer/Transfer_export/component/transferExportFormPopup.js?version=updateversion"></script>
+
+    <!-- import transfer -->
+    <script src="modules/ImportFile/importFileTransferExport/importFileTransferExportSummary.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFileTransferExport/factory/importFileTransferExportFactory.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFileTransferExport/component/importFileTransferExportFilter.js?version=updateversion"></script>
+    <script src="modules/ImportFile/importFileTransferExport/component/importFileTransferExportTableList.js?version=updateversion"></script>
+
+    <!-- Scan Ref Transfer No Export -->
+    <script src="modules/Tranfer/ScanRefTransferNoExport/scanRefTransferNoExportSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/ScanRefTransferNoExport/component/scanRefTransferNoExport.js?version=updateversion"></script>
+    <script src="modules/Tranfer/ScanRefTransferNoExport/component/scanRefTransferNoExportList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/ScanRefTransferNoExport/factory/scanRefTransferNoExportFactory.js?version=updateversion"></script>
+
+    <!-- Transfer Pallet Export -->
+    <script src="modules/Tranfer/TransferPalletExport/transferPalletExportSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferPalletExport/component/transferPalletExport.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferPalletExport/component/transferLpnExportList.js?version=updateversion"></script>
+
+    <!-- Transfer Status Location Export-->
+    <script src="modules/Tranfer/TransferStatusLocationExport/transferStatusLocationExportSummary.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferStatusLocationExport/component/transferStatusLocationExport.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferStatusLocationExport/component/transferLpnItemExportList.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TransferStatusLocationExport/factory/transferStatusLocationExportFactory.js?version=updateversion"></script>
+
+    <!-- RePrintTag Export -->
+    <script src="modules/Tranfer/rePrintTagExport/rePrintTagExport.js?version=updateversion"></script>
+    <script src="modules/Tranfer/rePrintTagExport/factory/rePrintTagExportFactory.js?version=updateversion"></script>
+
+    <!-- TaskTransferExport -->
+    <script src="modules/Tranfer/TaskTransferExport/taskTransferExport.js?version=updateversion"></script>
+    <script src="modules/Tranfer/TaskTransferExport/factory/taskTransferExportFactory.js?version=updateversion"></script>
+
+    <!-- HistoryCloseWave  -->
+    <script src="modules/GI/HistoryCloseWave/historyCloseWaveSummary.js"></script>
+    <script src="modules/GI/HistoryCloseWave/factory/historyCloseWaveFactory.js"></script>
+
+</body>
+
+</html>

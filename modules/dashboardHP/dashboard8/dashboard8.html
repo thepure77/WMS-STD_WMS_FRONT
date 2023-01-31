@@ -1,0 +1,37 @@
+<table  style="border: solid 1px #CCCCCC;">
+    <tr>
+        <td>
+            <div class="col-md-12 text-center" style="margin-top: 10px;margin-left: -10px;">
+                    <div class="col-md-6" style="padding-left: 100px;">Appointment</div>
+                    <div class="col-md-6" style="padding-right: 80px;">Check In - Check Out</div>
+                    <div class="col-md-12" >
+                        <canvas id="id8"></canvas>
+                    </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<table class="table table-striped" style="margin-top: 10px;min-width: 100% !important">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="text-center" style="max-width: 65px !important;height:60px;" ng-repeat="data in H  track by $index"> 
+                <p style="transform:rotate(45deg)">{{ data }} </p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center"> {{ 'CHECKIN' | translate }}</td>
+            <td class="text-center" ng-repeat="ci in items.Checkin  track by $index">{{ ci }}</td>
+        </tr>
+        <tr>
+            <td class="text-center"> {{ 'CHECKOUT' | translate }}</td>
+            <td class="text-center" ng-repeat="co in items.CheckOut  track by $index"> {{co}}</td>
+        </tr>
+        <tr>
+            <td class="text-center"> {{ 'TOTAL' | translate }}</td>
+            <td class="text-center" ng-repeat="total in items.Total  track by $index"> {{total}}</td>
+        </tr>
+    </tbody>
+</table>

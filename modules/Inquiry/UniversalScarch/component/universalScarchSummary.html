@@ -1,0 +1,479 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+    .div1 {
+        margin: 10px;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+            <!-- web -->
+<div>
+    <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <select class='form-control' ng-model="dropdownType.model" ng-options="x for x in dropdownType">
+                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite" ng-model="input" ks-enter="ScanBarcode()" ng-disabled='!dropdownType.model'/>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <span>{{ 'Total' | translate }}: </span> <b>{{ Total }}</b>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div ng-repeat="data in filterModel" class="form-group hidden-xs">
+        <hr>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Location' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.location" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Tag No' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.tag_no" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Product Id' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.product_Id" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Product Name' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.product_Name" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Qty Sale Unit' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.qtySaleUnit" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Sale Unit' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.sale_unit" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'MFG Date' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.mfg_date" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'EXP Date' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.exp_date" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Receive Date' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.receive_date" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Product Lot' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.product_Lot" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'ERP Location' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.erp_location" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Qty Base Unit' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.qty_base_unit" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Base Unit' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.base_unit" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Business Unit' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.business_unit" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Tempcondition' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.tempcondition_name" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Vendor name' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.vendor_name" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group hidden-xs" style="margin-top:-5px;">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <div class="col-lg-6 col-md-6 col-xs-6">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <span>{{ 'Product Status' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-9">
+                        <input type="text" class="form-control bgwrite"
+                            ng-model="data.itemStatus_Name" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- mobile -->
+    <div class="form-group visible-xs" style="margin-top:-5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <select class='form-control' ng-model="dropdownType.model" ng-options="x for x in dropdownType">
+                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group visible-xs" style="margin-top:-5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <input type="text" class="form-control bgwrite" ng-model="input" ks-enter="ScanBarcode()" ng-disabled='!dropdownType.model'/>
+        </div>
+    </div>
+    <div class="form-group visible-xs" style="margin-top:-5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <span>{{ 'Total' | translate }}: </span> <b>{{ Total }}</b>
+        </div>
+    </div>
+
+    <div ng-repeat="data in filterModel" class="form-group visible-xs">
+        <hr>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Location' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.location" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Tag No' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.tag_no" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Product Id' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.product_Id" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Product Name' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.product_Name" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Qty Sale Unit' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.qtySaleUnit" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Sale Unit' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.sale_unit" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'MFG Date' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.mfg_date" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'EXP Date' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.exp_date" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Receive Date' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.receive_date" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Product Lot' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.product_Lot" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'ERP Location' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.erp_location" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Qty Base Unit' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.qty_base_unit" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Base Unit' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.base_unit" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Business Unit' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.business_unit" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Tempcondition' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.tempcondition_name" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Vendor name' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.vendor_name" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group visible-xs" style="margin-top:-5px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <span>{{ 'Product Status' | translate }}:</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-9">
+                    <input type="text" class="form-control bgwrite"
+                        ng-model="data.itemStatus_Name" disabled />
+                </div>
+            </div>
+        </div>
+    </div>

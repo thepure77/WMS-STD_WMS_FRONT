@@ -1,0 +1,100 @@
+<!-- <meta http-equiv="Pragma" content="no-cache">
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter"
+    >
+    <table class="table table-striped fixed-header" >
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">
+                    <div>
+                        <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all_"
+                            class="ig-control__cbx" checked />
+                        <label for="all_"></label>
+                    </div>
+                </th>
+                <th class="text-center k100">{{ 'Location ID' | translate }}</th>
+                <th class="text-center k150">{{ 'Pallet ID' | translate }}</th>
+                <th class="text-center k150">{{ 'Product ID' | translate }}</th>
+                <th class="text-center k300">{{ 'Product Name' | translate }}</th>
+                <th class="text-center k300">{{ 'Conversion' | translate }}</th>
+                <th class="text-center k300">{{ 'Erp location' | translate }}</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel.checklocation_PPmodel">
+                <td class="text-center k100">
+                    <input ng-click="hide($index)" ng-model="data.selected" type="checkbox" id="check_{{$index}}"
+                        class="ig-control__cbx" checked ng-disabled="data.tag_No == undefined ||data.tag_No == null" />
+                    <label for="check_{{$index}}"></label>
+                </td>
+                <td class="text-center k100">{{data.location_ID_X}}</td>
+                <td class="text-center k150">{{data.tag_No}}</td>
+                <td class="text-center k150">{{data.product_Id}}</td>
+                <td class="text-center k300">{{data.product_Name}}</td>
+                <td class="text-center k300">{{data.salE_ProductConversion_Name}}</td>
+                <td class="text-center k150">{{data.erP_Location}}</td>
+               
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+</div>
+<div class="text-right col-lg-12 col-md-12 col-xs-12">
+
+    <button class="btn btn-primary" type="button" ng-click="remarkPopup.onClick()" 
+        style="width: 145.4px;">
+        {{ 'bypass' | translate }}
+    </button>
+</div> -->
+
+
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter"
+    style="margin-bottom:15px;">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">
+                    <div>
+                        <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all_"
+                            class="ig-control__cbx" checked />
+                        <label for="all_"></label>
+                    </div>
+                </th>
+                <th class="text-center k100">{{ 'Location ID' | translate }}</th>
+                <th class="text-center k150">{{ 'Pallet ID' | translate }}</th>
+                <th class="text-center k150">{{ 'Product ID' | translate }}</th>
+                <th class="text-center k300">{{ 'Product Name' | translate }}</th>
+                <th class="text-center k300">{{ 'Conversion' | translate }}</th>
+                <th class="text-center k300">{{ 'Erp location' | translate }}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel.checklocation_PPmodel">
+                <td class="text-center k100">
+                    <input ng-click="hide($index)" ng-model="data.selected" type="checkbox" id="check_{{$index}}"
+                        class="ig-control__cbx" checked ng-disabled="data.tag_No == undefined ||data.tag_No == null" />
+                    <label for="check_{{$index}}"></label>
+                </td>
+                <td class="text-center k100">{{data.location_ID_X}}</td>
+                <td class="text-center k150">{{data.tag_No}}</td>
+                <td class="text-center k150">{{data.product_Id}}</td>
+                <td class="text-center k300">{{data.product_Name}}</td>
+                <td class="text-center k300">{{data.salE_ProductConversion_Name}}</td>
+                <td class="text-center k150">{{data.erP_Location}}</td>
+               
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="15" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

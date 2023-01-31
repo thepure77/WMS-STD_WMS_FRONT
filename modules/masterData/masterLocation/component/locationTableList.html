@@ -1,0 +1,76 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="text-center k150">{{ 'ACTION' | translate }}</th>
+                <th class="k100">#</th>
+                <th class="k200">{{ 'LOCATION_ID' | translate }}</th>
+                <th class="k200">{{ 'LOCATION_NAME' | translate }}</th>
+                <th class="k200">{{ 'LOCATION_TYPE' | translate }}</th>
+                <th class="k250">{{ 'WAREHOUSE' | translate }}</th>
+                <th class="k200">{{ 'ROOM' | translate }}</th>
+                <th class="k150">{{ 'LOCATION_BAY' | translate }}</th>
+                <th class="k150">{{ 'LOCATION_DEPTH' | translate }}</th>
+                <th class="k150">{{ 'LOCATION_LEVEL' | translate }}</th>
+                <th class="k150">{{ 'MAX_QTY' | translate }}</th>
+                <th class="k150">{{ 'MAX_WEIGHT' | translate }}</th>
+                <th class="k150">{{ 'MAX_VOLUME' | translate }}</th>
+                <th class="k150">{{ 'MAX_PALLET' | translate }}</th>
+                <th class="k150">{{ 'PUTAWAY_SEQ' | translate }}</th>
+                <th class="k150">{{ 'PICKING_SEQ' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="k150 actions">
+                    <div class="text-center" style="margin:0px">
+                        <a  ng-click="editItem(data)" data-toggle="tooltip" title="Edit">
+                            <span class="kw-size-icon-action glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a   ng-click="delete(data)" data-toggle="tooltip" title="Delete">
+                            <span class="kw-size-icon-action glyphicon glyphicon-trash"></span>
+                        </a>
+                    </div>
+                </td>
+                <td class="k100">{{$index+1}}</td>
+                <td class="k200">{{data.location_Id}}</td>
+                <td class="k200">{{data.location_Name}}</td>
+                <td class="k200">{{data.locationType_Name}}</td>
+                <td class="k250">{{data.warehouse_Name}}</td>
+                <td class="k200">{{data.room_Name}}</td>
+                <td class="k150">{{data.location_Bay}}</td>
+                <td class="k150">{{data.location_Depth}}</td>
+                <td class="k150">{{data.location_Level}}</td>
+                <td class="k150">{{data.max_Qty}}</td>
+                <td class="k150">{{data.max_Weight}}</td>
+                <td class="k150">{{data.max_Volume}}</td>
+                <td class="k150">{{data.max_Pallet}}</td>
+                <td class="k150">{{data.putAway_Seq}}</td>
+                <td class="k150">{{data.picking_Seq}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- </div> -->
+</div>
+<div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)"
+                    class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination total-items="$vm.filterModel.totalRow"
+                ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage"
+                max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+<location-form on-show="onShow" ng-hide="$vm.isFilter"> </location-form>

@@ -1,0 +1,87 @@
+<div id="modal-form" class="modal" dp-modal on-show="onShow" on-hide="onHide" data-toggle="modal" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog visible-lg visible-md" style="overflow: auto;border: 1px solid;margin-top: 2%;width: 40%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'Add Time' | translate}}</h4>
+            </div>
+            <!--? Flagment 2 -->
+            <div class="modal-body" style="min-height: 300px;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-mg-bot padd">
+                        <button class="col-lg-2 col-md-2 col-sm-6 col-xs-6 boxControlTime" style="margin: 0 2px 10px 0;" 
+                            ng-repeat="item in arryList track by $index"
+                            ng-click="selectItem(item.value, $index , $index == userSelected[$index].index  ?  userSelected[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', item , 1)"
+                            ng-class="$index == userSelected[$index].index  ?  userSelected[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'mousehover' : 'mousehover'     :    $index%2 == 1  ? 'mousehover' : 'mousehover'  ">
+                            {{item.time}}
+                        </button>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-lg-12">
+                        <div class="col-xs-4 col-md-4 col-lg-4 text-left kw-p-zero">
+                            <button type="button" class="btn btn-danger" ng-click="onClose()" data-dismiss="modal"
+                                style="color: #ffffff; padding: 4px 15px !important;">
+                                {{ 'CANCEL' | translate }}
+                            </button>
+                        </div>
+                        <div class="col-md-8 col-md-8 col-lg-8 text-right kw-p-zero">
+                            <button type="button" class="btn btn-primary" ng-click="chooseItem()"
+                                style="float: right; color: #ffffff; padding: 4px 15px !important;">
+                                {{ 'SELECT' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-dialog visible-sm visible-xs" style="overflow: auto;border: 1px solid;margin: 5%;width: 90%;max-height: 600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'REST_TIME_SELECT' | translate}}</h4>
+            </div>
+            <!--? Flagment 2 -->
+            <div class="modal-body" style="min-height: 300px;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-mg-bot padd">
+                        <button class="col-lg-2 col-md-2 col-sm-6 col-xs-6 boxControl"
+                            ng-repeat="item in arryList track by $index"
+                            ng-click="selectItem(item.value, $index , $index == userSelected[$index].index  ?  userSelected[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', item , 1)"
+                            ng-class="$index == userSelected[$index].index  ?  userSelected[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'mousehover' : 'mousehover'     :    $index%2 == 1  ? 'mousehover' : 'mousehover'  ">
+                            {{item.time}}
+                        </button>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-lg-12">
+                        <div class="col-xs-4 col-md-4 col-lg-4 text-left kw-p-zero">
+                            <button type="button" class="btn btn-danger" ng-click="onClose()" data-dismiss="modal"
+                                style="color: #ffffff; padding: 4px 15px !important;">
+                                {{ 'CANCEL' | translate }}
+                            </button>
+                        </div>
+                        <div class="col-md-8 col-md-8 col-lg-8 text-right kw-p-zero">
+                            <button type="button" class="btn btn-primary" ng-click="chooseItem()"
+                                style="float: right; color: #ffffff; padding: 4px 15px !important;">
+                                {{ 'SELECT' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .boxControlTime {
+        display: block;
+        min-height: 40px;
+        padding: 9px 13px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin: 4px 0px 0 0px;
+        width: 16%;
+    }
+    
+</style>

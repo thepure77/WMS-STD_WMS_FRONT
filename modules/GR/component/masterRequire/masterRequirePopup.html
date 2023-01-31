@@ -1,0 +1,81 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'MASTER_REQUIRE' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">                      
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'MFG_DATE' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <dir-date-picker ng-model="masterRequire.mfgDate" disabled="isMfgDate != 1"></dir-date-picker>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'EXP_DATE' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <dir-date-picker ng-model="masterRequire.expDate" disabled="isExpDate != 1"></dir-date-picker>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'LOT' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <input type="text" class="form-control" ng-model="masterRequire.lot" ng-disabled="isLot != 1" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'SERIAL_NO' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <input type="text" class="form-control" ng-model="masterRequire.serailNo" ng-disabled="isserail != 1" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'VOLUME' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <input type="text" class="form-control" ng-model="masterRequire.volume" ng-disabled="isVolume != 1" />
+                            </div>
+                        </div>
+<!-- 
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>Catch Weight:</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <input type="text" class="form-control" ng-model="masterRequire.catchWeight" chars='only-numbers' ng-disabled ="isCatchWeight != 1"/>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-xs-12">
+                                <span>g.</span>
+                            </div>
+                        </div> -->
+
+                        <div class="form-group text-center padding-m">
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <button ng-click="selected()" class="btn btn-primary display-inline" style="margin:5px;">
+                                    {{ 'SAVE' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

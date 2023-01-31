@@ -1,0 +1,59 @@
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+
+    <div class="form-group">
+        <div class="col-lg-2 col-md-2 col-xs-12">
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-xs-12" style="
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+        margin-left: 0px;
+        padding:0px 10px 10px 10px;
+        border-top: 2px dashed #000000;
+        border-bottom: 2px dashed #000000;
+        border-right: 2px dashed #000000;
+        border-left: 2px dashed #000000;">
+            <div class="col-lg-4 col-md-4 col-xs-12 text-center" style="margin-top: 1%">
+                <span style="font-size: 15px">
+                    <b>{{ 'Download Template' | translate }}</b>
+                </span>
+
+                <a class="btn btn-success" ng-if="routeurl == 'PlanGoodsReceive'" ng-href="http://10.100.63.145/STD_WMS_MasterAPI/downloadTemplate/DN_Template.xlsx"
+                    style="margin-top: 5%">
+                    Download Template</a>
+                <a class="btn btn-success" ng-if="routeurl == 'PlanGoodsIssue'" ng-href="http://10.100.63.145/STD_WMS_MasterAPI/downloadTemplate/PO_Template.xlsx"
+                    style="margin-top: 5%">
+                    Download Template</a>
+                    
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 " style="border-left: 2px dashed #000000;margin-top: 1%">
+                <span style="font-size: 15px">
+                    <b>{{ 'Upload Template' | translate }}</b>
+                </span>
+
+                <select class='form-control ' ng-model='filterModel.select' style="margin-top: 5%" ng-if="routeurl == 'PlanGoodsReceive' ">
+                    <option value="">{{ 'SELECT_HP_VD' | translate }}</option>
+                    <option value="HP">{{ 'HP' | translate }}</option>
+                    <option value="VD">{{ 'VD' | translate }}</option>
+                </select>
+
+                <select class='form-control ' ng-model='filterModel.select' style="margin-top: 5%" ng-if="routeurl == 'PlanGoodsIssue' ">
+                    <option value="">{{ 'SELECT_HP_MHP' | translate }}</option>
+                    <option value="HP">{{ 'HP' | translate }}</option>
+                    <option value="MHP">{{ 'MHP' | translate }}</option>
+                </select>
+                <label style="color:red">
+                    <span style="color:red">*</span>{{ 'รองรับไฟล์ .CSV เท่านั้น' | translate }}</label>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 text-center" style="margin-top: 1%">
+                <button ngf-select="Upload($file,filterModel)" class="btn btn-success" style="margin-top: 15%">
+                    Upload Template</button>
+                <label>{{$vm.guId.FileName}}</label>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-12">
+
+        </div>
+    </div>
+</div>

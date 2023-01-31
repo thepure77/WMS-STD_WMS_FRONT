@@ -1,0 +1,29 @@
+<div class="table-responsive table-overflow">
+        <table class="kw-custom-table table-striped table-fixed">
+                <thead>
+            <tr>
+
+                <th class="k200 text-center"></th>
+                <th class="k250 text-center">{{ 'GOODSRECEIVE_NO' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items" ng-if="items.length != 0">
+                <td class="k200 text-center">
+                    <div class="ig-control">
+                        <input ng-model="data.selected" type="checkbox" id="checkxx_{{$index}}" class="ig-control__cbx" checked/>
+                        <label for="checkxx_{{$index}}"></label>
+                    </div>
+                </td>
+                <td class="k250 text-center">{{data.goodsReceive_No}}</td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="11" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top:10px;">
+    <button class="btn btn-primary pull-right" ng-click="select()">{{ 'CONFIRM' | translate }}</button>
+</div>

@@ -1,0 +1,56 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog"  style="overflow:auto;width:35%;">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'WORK_AREA' | translate }}</h4>
+            </div>
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div id="page-content-wrapper">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="row" style="margin-left:5px;">
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
+                                        <div class="dropdown display-inline" style="margin-left:-15px;">
+                                            <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1' "
+                                                ng-click="clearData()">
+                                                <option value="1">{{ 'WORK_AREA_ID' | translate }}</option>
+                                                <option value="2">{{ 'WORK_AREA_NAME' | translate }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div ng-switch="actionPS">
+                                        <div class="input-group col-lg-4" ng-switch-when="1">
+                                            <input type="text" ng-model="workArea.workArea_Id" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button ng-click="filterSearch()" class="btn btn-primary form-control"
+                                                    style="padding: 8.5px;">
+                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <div class="input-group col-lg-4" ng-switch-when="2">
+                                            <input type="text" ng-model="workArea.workArea_Name" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button ng-click="filterSearch()" class="btn btn-primary form-control"
+                                                    style="padding: 8.5px;">
+                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="div-shadow" style="margin-top: 10px;">
+                                    <work-area-popup-v2-table invokes='datalist.invokes' delegates='datalist.delegates'
+                                        config='datalist.config'></work-area-popup-v2-table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

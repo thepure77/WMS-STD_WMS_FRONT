@@ -1,0 +1,21 @@
+﻿<!-- <link ng-href="{{ClientDirective}}assets/dpDialog/contents/style.css" rel="stylesheet" /> -->
+<link ng-href="assets/dpDialog/contents/style.css" rel="stylesheet" />
+<div class="modal-header" ng-show="Config.Title">
+    <h3 class="modal-title">{{Items.title|translate}} </h3>
+</div>
+<div class="modal-body">
+    <h2>{{Items.content|translate}}</h2>
+    <!-- 
+    {{Items.contentNewLine}}
+    <div ng-repeat="ii in Items.contentNewLine">{{ii}}</div> -->
+    <h2 ng-repeat="i in Items.contentNewLine track by $index">{{i}}</h2>
+    <!-- {{msg}} -->
+</div>
+
+<div class="modal-footer" ng-show="Config.Confirm">
+    <button class="btn btn-filter display-inline" ng-click="ok()" style="min-width:80px" autofocus>{{ 'YES' | translate}}</button>
+    <button class="btn btn-danger display-inline" ng-click="cancel()" style="min-width:80px">{{ 'NONE' | translate}}</button>
+</div>
+<div class="modal-footer" ng-show="Config.MessageBox">
+    <button class="btn btn-filter display-inline" ng-click="ok()" style="min-width:80px">{{ 'CLOSE' | translate}}</button>
+</div>

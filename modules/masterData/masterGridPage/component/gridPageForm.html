@@ -1,0 +1,167 @@
+<div id="page-content-wrapper" ng-show="onShow">
+    <div>
+        <h3>Document Type Form</h3>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                DocumentType ID:
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.documentTypeId" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Process :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.processName" value="filterModel.processIndex">
+                    <span class="input-group-btn">
+                        <button ng-click='popupProcess.onClick()' class="btn btn-filter" 
+                            type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                DocumentType Name :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.documentTypeName" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Format Text :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.formatText" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Date :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="dropdown">
+                    <select ng-click="selectFormat()" ng-model="actionFormat" class="form-control" ng-init="actionFormat = '1' ">
+                        <option value="1"> -- Select your Format -- </option>
+                        <option value="yy">yy </option>
+                        <option value="yyMM">yyMM </option>
+                        <option value="yyMMdd">yyMMdd</option>
+                        <option value="yyyy">yyyy</option>
+                        <option value="yyyyMM">yyyyMM</option>
+                        <option value="yyyyMMdd">yyyyMMdd</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Running :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="dropdown">
+                    <select ng-click="selectFormatRunning()" ng-model="actionFormatRunning" class="form-control"
+                        ng-init="actionFormatRunning = '0' ">
+                        <option value="0"> -- Select your Running -- </option>
+                        <option value="x">Running: 1 </option>
+                        <option value="xx">Running: 2</option>
+                        <option value="xxx">Running: 3</option>
+                        <option value="xxxx">Running: 4</option>
+                        <option value="xxxxx">Running: 5</option>
+                        <option value="xxxxxx">Running: 6</option>
+                        <option value="xxxxxxx">Running: 7</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Format Document :
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="dropdown">
+                    <select ng-click="selectFormatDoc1()" ng-model="actionFormatDoc1" class="form-control" ng-init="actionFormatDoc1 = '0' ">
+                        <option value="0">-- Select FormatDoc --</option>
+                        <option value="[Format_Text]">TEXT</option>
+                        <option value="[Format_Date]">DATE</option>
+                        <option value="[Format_Running]">RUNNING</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <select ng-click="selectFormatDoc2()" ng-model="actionFormatDoc2" class="form-control" ng-init="actionFormatDoc2 = '0' ">
+                    <option value="0">-- Select FormatDoc --</option>
+                    <option value="[Format_Text]">TEXT</option>
+                    <option value="[Format_Date]">DATE</option>
+                    <option value="[Format_Running]">RUNNING</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <select ng-click="selectFormatDoc3()" ng-model="actionFormatDoc3" class="form-control" ng-init="actionFormatDoc3 = '0' ">
+                    <option value="0">-- Select FormatDoc --</option>
+                    <option value="[Format_Text]">TEXT</option>
+                    <option value="[Format_Date]">DATE</option>
+                    <option value="[Format_Running]">RUNNING</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Reset By :
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                <div class="ig-control">
+                    <input type="checkbox" ng-change="detectcheck('1')" ng-model="filterModel.isResetByYear" id="table_setting_1"
+                        class="ig-control__cbx" ng-disabled="disable1" checked />
+                    <label for="table_setting_1">Year</label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                <div class="ig-control">
+                    <input type="checkbox" ng-change="detectcheck('2')" ng-model="filterModel.isResetByMonth" id="table_setting_2"
+                        class="ig-control__cbx" ng-disabled="disable2" checked />
+                    <label for="table_setting_2">Mouth</label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                <div class="ig-control">
+                    <input type="checkbox" ng-change="detectcheck('3')" ng-model="filterModel.isResetByDay" id="table_setting_3"
+                        class="ig-control__cbx" ng-disabled="disable3" checked />
+                    <label for="table_setting_3">Day</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- .button -->
+    <div ng-show="Cancel">
+        <button ng-click="back()" class="ks-btn red pull-right" >Cancel</button>
+    </div>
+    <div ng-show="update" >
+        <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+            Update</button>
+    </div>
+    <div ng-show="create">
+        <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+            Create</button>
+    </div>
+    <!-- /.button -->
+</div>
+<process-popup on-show='popupProcess.onShow' config='popupProcess.config' invokes='popupProcess.invokes' delegates='popupProcess.delegates'>
+</process-popup>

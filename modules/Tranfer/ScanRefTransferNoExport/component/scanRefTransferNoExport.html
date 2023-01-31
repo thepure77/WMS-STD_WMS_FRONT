@@ -1,0 +1,149 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="row" ng-show="$vm.isFilter">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'TRANSFER_NO_EXPORT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-xs-8 ">
+                        <input type="text" readonly id="goodsTransfer_No" ng-model="filterModel.goodsTransfer_No"
+                            class="form-control" ks-enter="ScanRefTransferNo()" blur-on-enter required />
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-4">
+                        <button ng-click="GetTransferItem()" class="btn btn-success btn-block btn-md" type="button">
+                            <span class="glyphicon glyphicon-list"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'TAG_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="filterModel.tag_No" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'MATERIAL_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="filterModel.product_Id" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'SKU_NAME' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" ng-model="filterModel.product_Name" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'Old' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'Suggest' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.location_Name" class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.suggest_location" class="form-control" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'NEW_LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" readonly id="location_Name_New" ng-model="filterModel.location_Name_New"
+                            class="form-control" blur-on-enter required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'OLD_STATUS' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'NEWSTATUS' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.itemStatus_Name" class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.itemStatus_Name_To" class="form-control" disabled />
+                        <!-- <select class='form-control' ng-model='dropdownItemStatus.model' ng-options="v.itemStatus_Name for v in dropdownItemStatus">
+                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                        </select> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'QTY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.qty" class="form-control" disabled />
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-xs-6">
+                        <input type="text" ng-model="filterModel.productConversion_Name" class="form-control"
+                            disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="margin-bottom:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button ng-click="confirm()" ng-disabled="isBlock"
+                        class="btn btn-success hidden-xs">{{ 'CONFIRM' | translate }}</button>
+                    <button ng-click="confirm()" ng-disabled="isBlock"
+                        class="btn btn-success btn-block btn-md visible-xs mt-lg">{{ 'CONFIRM' | translate }}</button>
+                    <button ng-click="clearSearch()"
+                        class="btn btn-primary hidden-xs">{{ 'CLEAR' | translate }}</button>
+                    <button ng-click="clearSearch()"
+                        class="btn btn-primary btn-block btn-md visible-xs mt-lg">{{ 'CLEAR' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+</div>
+
+<scan-ref-transfer-no-list is-loading="isLoading"></scan-ref-transfer-no-list>

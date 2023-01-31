@@ -1,0 +1,132 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+        <div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow">
+            <div class="modal-dialog" style="overflow:auto;width:80%;">  
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal"></a>
+                    </div>
+
+                    <h2 class="panel-title">{{ 'PUTAWAY_STATUS' | translate }}</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <!-- <div class="row" > -->
+                            <div class="col-lg-3 dropdown display-inline" style="margin-left:-15px;margin-top:20px;">
+                                <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1' ">
+                                    <option value="1">{{ 'PRODUCT_ID' | translate }}</option>
+                                    <option value="2">{{ 'PRODUCT_NAME' | translate }}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                    <span>{{ 'PUTAWAY_STATUS' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                    <select ng-model="Template" class="form-control" ng-init="Template = '0' ">
+                                        <option value="0"> {{ 'STATUS_putaway_0' | translate }}</option>
+                                        <option value="1"> {{ 'STATUS_putaway_1' | translate }}</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div ng-switch="actionPS" class="col-lg-3" style="margin-top:20px;">
+                                <div class="input-group col-lg-12" ng-switch-when="1" ng-init="model.product_Name = ''">
+                                    <input type="text" ng-model="model.product_Id" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button ng-click="SearchTagPutaway(model,Template)" class="btn btn-filter">
+                                            <span class="kw-icon-button icon-magnify kw-pos-left"
+                                                aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="input-group col-lg-12" ng-switch-when="2" ng-init="model.product_Id = ''">
+                                    <input type="text" ng-model="model.product_Name" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button ng-click="SearchTagPutaway(model,Template)" class="btn btn-filter">
+                                            <span class="kw-icon-button icon-magnify kw-pos-left"
+                                                aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero" style="height: 20px;">
+                                    <span></span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                    <button class="btn btn-success" ng-click="export()" style="float: left;background-color: #60b0ff">
+                                        Export</button>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 table-responsive"style="padding:0px; margin-top:15px;">
+                            <div class="table-responsive table-overflow">
+                                <table class="table  table-width-100 tableHeight-350">
+                                    <thead>
+                                        <tr>
+                                            <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'TAG_NO' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'SUGESSTION_LOCATION' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'MATERIAL_NO' | translate }}</th>
+                                            <th class="k200 text-center">{{ 'MATERIAL' | translate }}</th>
+                                            <th class="k100 text-center">{{ 'STATUS' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'PUTAWAY_STATUS' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'Wait To store location' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'Wait To store Date' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'Dock to staging location' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'Dock tostaging Date' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'Pallet Inspection location' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'Pallet Inspection Date' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'LOCATION_ZONE_PUTAWAY' | translate }}</th>
+                                            <th class="k100 text-center">{{ 'PUTAWAY_BY' | translate }}</th>
+                                            <th class="k150 text-center">{{ 'STATUS_CREATE' | translate }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in ResultData">
+                                            <td class="k50 text-center">{{$index+1}}</td>
+                                            <td class="k150 text-center">{{data.tag_No}}</td>
+                                            <td class="k150 text-center">{{data.location_Name}}</td>
+                                            <td class="k150 text-center">{{data.product_Id}}</td>
+                                            <td class="k200 text-center">{{data.product_Name}}</td>
+                                            <td class="k100 text-center">{{data.itemStatus_Name}}</td>
+                                            <td class="k150 text-center">{{data.statusPutaway}}</td>
+                                            <td class="k150 text-center">{{data.waitTostore_location}}</td>
+                                            <td class="k150 text-center">{{data.waitTostore_date}}</td>
+                                            <td class="k150 text-center">{{data.docktostaging_location}}</td>
+                                            <td class="k150 text-center">{{data.docktostaging_date}}</td>
+                                            <td class="k150 text-center">{{data.pallet_Inspection_location}}</td>
+                                            <td class="k150 text-center">{{data.pallet_Inspection_date}}</td>
+                                            <td class="k150 text-center">{{data.putaway_location}}</td>
+                                            <td class="k100 text-center">{{data.putaway_By}}</td>
+                                            <td class="k150 text-center">{{data.putaway_Date}}</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'CLOSE' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

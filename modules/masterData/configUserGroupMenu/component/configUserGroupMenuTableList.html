@@ -1,0 +1,32 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <th class="text-center k200">
+                    <div>
+                        <input ng-change="detectCheckAll(checkAll)" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked/>
+                        <label for="all_"></label>
+                    </div>
+                </th>
+                <th class="k250">{{ 'MENU_NAME' | translate }}</th>
+                <th class="k450">{{ 'MENU_SECONDNAME' | translate }}</th>
+                <th class="k450">{{ 'MENU_THIRDNAME' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel" style="background-color:{{getColor(data.menuType_Index)}};color:{{fontColor}};">
+                <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <input ng-model="data.isActive" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" ng-change="detectCheck(data,data.isActive)" checked />
+                        <label for="check_{{$index}}"></label>
+                    </div>
+                </td>
+                <td class="k250">{{data.menu_Name}}</td>
+                <td class="k450">{{data.menu_SecondName}}</td>
+                <td class="k450">{{data.menu_ThirdName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<wave-form on-show="onShow" ng-hide="$vm.isFilter"></wave-form>

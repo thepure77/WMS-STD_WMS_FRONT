@@ -1,0 +1,230 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-lg-12 col-md-12 col-xs-12 padd">
+            <div class="col-lg-2 col-md-4 col-xs-6 padd">{{ 'GR_NO' | translate }} :</div>
+            <div class="col-lg-2 col-md-4 col-xs-6 padd">{{ 'PLAN_NO' | translate }} :</div>
+            <div class="col-lg-2 col-md-4 col-xs-6 padd text-center" style="font-size: 11px">{{ 'D_START' | translate }} -
+                {{ 'D_END' | translate }}</div>
+            <div class="col-lg-2 col-md-6 col-xs-6 padd"></div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.key_Index" value="filterModel.key" sourceurl="autoComplete.basicSearch"
+                api="url.GR"></auto-comple>
+        </div>
+        <div class="col-lg-2 col-md-4 col-xs-6 padd">
+            <!-- <auto-comple ng-model="filterModel.owner" id="filterModel.owner_Id" value="filterModel.owner_Name" sourceurl="autoComplete.owner" api="url.GR"></auto-comple> -->
+            <!-- <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Id" id="filterModel.owner_Name" value1="filterModel.ownerDocumentRef_No1" value2="filterModel.ownerDocumentRef_No2" value3="filterModel.ownerDocumentRef_No3" sourceurl="autoComplete.owner"
+            api="url.GR"> -->
+            <auto-comple ng-model="filterModel.plan_no_Index" value="filterModel.plan_no" sourceurl="autoComplete.autoPoV2" api="url.PlanGR">
+            </auto-comple>
+        </div>
+        <div class="col-lg-2 col-md-4 col-xs-6 padd">
+            <div class="input-group">
+                <input type="button" name="datefilter" name="datefilter" ng-model="filterModel.date" class="form-control daterange text-center">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 p-zero">
+            <div class="col-md-3 col-sm-3 col-xs-4 padd">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-4 padd">
+                <status class="inline" multiple="true" order="true" ng-model="filterModel.status" checked="row.display"
+                    options="row.display for row in status" change="sortBy(row.display)" ng-hide='header.advanceSearch'
+                    style="width: 100%;">
+                </status>
+            </div>
+            <!-- <div class="col-md-2 col-sm-2 col-xs-4 padd">
+                <sorting ng-hide='header.advanceSearch' class="inline" multiple="true" order="true"
+                    ng-model="filterModel.sort" checked="row.display" options="row.display for row in selectSort"
+                    change="sortBy(row.display)" style="width: 100%;">
+                </sorting>
+            </div> -->
+            <div class="col-md-4 col-sm-4 col-xs-10 padd">
+                <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()" data-toggle="collapse"
+                    data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="kw-icon-button icon-star_border_24px_outlined" aria-hidden="true"></span><label
+                        class="kw-pos">{{ 'ADVANCE_SEARCH' | translate }}</label>
+                </button>
+            </div>
+            <div class="col-md-1 col-xs-1 padd">
+                <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()">
+                    <i class="kw-icon-button icon-add_24px_outlined " aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div ng-show='header.advanceSearch'>
+    <div class="col-md-12 kw-mg-bot">
+        <div class="col-lg-2 col-md-2 col-xs-12 p-zero pull-right">
+            <status class="inline" multiple="true" order="true" ng-model="filterModel.status" checked="row.display"
+                options="row.display for row in status" change="sortBy(row.display)" ng-hide='header.advanceSearch'>
+            </status>
+            <storing ng-hide='header.advanceSearch' class="inline hidden-sm hidden-xs" multiple="true" order="true"
+                ng-model="filterModel.sort" checked="row.display" options="row.display for row in selectSort"
+                change="sortBy(row.display)" style="width: 100%;">
+            </storing>
+            <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()" data-toggle="collapse"
+                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <span class="fa fa-star-o" aria-hidden="true"></span>{{ 'ADVANCE_SEARCH' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <div class="col-md-12 kw-mg-tb">
+
+        <div class="form-group">
+            <div class="col-lg-4 col-md-4 col-sm-12 kw-p-zero-right">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'GR_NO' | translate }}</label>
+                </div>
+
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <!-- <auto-comple ng-model="filterModel.invoice_No1" value="filterModel.invoice_No"
+                        sourceurl="autoComplete.invoice" api="url.GR"></auto-comple> -->
+                        <auto-comple ng-model="filterModel.goodsReceive_Index" value="filterModel.goodsReceive_No" sourceurl="autoComplete.GoodsReceive"
+                        api="url.GR"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 ">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'RECEIVING_DATE' | translate }}</label>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <div class="input-group">
+                        <input type="button" name="datefilterAdv" class="form-control daterange text-center" ng-model="filterModel.date">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 kw-p-zero-right">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'OWNER' | translate }}</label>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Name"
+                        sourceurl="autoComplete.owner" api="url.GR"></auto-comple>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!-- <div class="col-lg-4 col-md-4 col-sm-12 kw-p-zero-right">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'PRODUCT' | translate }}</label>
+                </div>
+
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Name" code="1" sourceurl="autoComplete.productName"
+                        api="url.GR"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 ">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'SKU' | translate }}</label>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Id" code="2" sourceurl="autoComplete.productId"
+                        api="url.GR"></auto-comple>
+                </div>
+            </div> -->
+
+            <div class="col-lg-4 col-md-4 col-sm-12 kw-p-zero-right">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'DOCUMENT_TYPE' | translate }}</label>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <select class='form-control' ng-model='dropdownDocumentType.model'
+                        ng-options="v.documentType_Name for v in dropdownDocumentType">
+                        <option value="">Please selected</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 ">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'STATUS' | translate }}</label>
+                </div>
+
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <select class='form-control' ng-model='dropdownProcessStatus.model'
+                        ng-options="v.processStatus_Name for v in dropdownProcessStatus">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="form-group">
+            <div class="col-lg-4 col-md-4 col-sm-12 kw-p-zero-right">
+                <div class="col-lg-5 col-md-5 col-xs-12">
+                    <label>{{ 'STATUS' | translate }}</label>
+                </div>
+
+                <div class="col-lg-7 col-md-7 col-sm-9 kw-p-zero">
+                    <select class='form-control' ng-model='dropdownProcessStatus.model' ng-options="v.processStatus_Name for v in dropdownProcessStatus">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="col-lg-12 col-md-12 p-zero" style="margin-top:10px;">
+            <div class="col-lg-6 col-md-6 pull-right p-zero">
+                <div class="col-md-3 padd"></div>
+                <div class="col-md-3 padd"></div>
+                <div class="col-md-3 padd">
+                    <button class="btn kw-bt-search-GR  btn-md" ng-click="filterSearch()"
+                        ng-show='header.advanceSearch'>
+                        <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                </div>
+                <div class="col-md-3 padd">
+                    <button class="btn kw-button-clearSearch  btn-md" ng-click="clearSearch()"
+                        ng-show='header.advanceSearch'>
+                        {{ 'CLEAR_SEARCH' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+
+        $('input[name="datefilter"] , input[name="datefilterAdv"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    });
+</script>

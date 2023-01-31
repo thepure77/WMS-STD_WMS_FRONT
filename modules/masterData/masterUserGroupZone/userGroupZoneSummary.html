@@ -1,0 +1,48 @@
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+       <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'MASTERDATA' | translate }} </h2>
+            <div class="navigationLabel"> <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+                {{ 'USER_GROUP_ZONE' | translate }}</div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+            <!-- <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span> {{ 'MASTERDATA' | translate }} </span>
+                </li>
+                <li><span>{{ 'USER_GROUP_ZONE' | translate }}</span></li>
+                
+            </ol> -->
+        </div>
+    </div>
+</header>
+
+<!-- <div class="kw-text-subMenu kw-style-subMenu" >
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label">{{ 'USER_GROUP_ZONE' | translate }}</label>
+</div> -->
+
+
+<div class="tabs">
+    <div class="panel-body">
+    <div style="margin-bottom:0px;">
+        <user-group-zone-filter filter-model="filterModel" search-result-model="searchResultModel"
+            trigger-search="callSearch" trigger-create="create" ng-show="isFilter">
+        </user-group-zone-filter>
+    </div>
+
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 kw-pad-tablelist-summary-RL">
+        <user-group-zone-table-list filter-model="filterModel" search-result-model="searchResultModel"
+            trigger-search="callSearch" trigger-create="create" is-filter="isFilter"></user-group-zone-table-list>
+    </div>
+</div>
+</div>
+
+

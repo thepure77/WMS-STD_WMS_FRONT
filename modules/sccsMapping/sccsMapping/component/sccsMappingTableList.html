@@ -1,0 +1,70 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <!-- <div class="table" style="overflow: auto"> -->
+        <table class="kw-custom-table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="k100">#</th>
+                <th class="k150">{{ 'SCCS ID' | translate }}</th>
+                <th class="k150">{{ 'Plant' | translate }}</th>
+                <th class="k200">{{ 'Cost Center' | translate }}</th>
+                <th class="k200">{{ 'Cost Center Description' | translate }}</th>
+                <th class="k150">{{ 'Profit Center' | translate }}</th>
+                <th class="k200">{{ 'Profit Center Description' | translate }}</th>
+                <th class="k200">{{ 'Costomer Group' | translate }}</th>
+                <th class="k150">{{ 'Ship to' | translate }}</th>
+                <th class="k150">{{ 'Account Cat.' | translate }}</th>
+                <th class="k150">{{ 'Item Cat.' | translate }}</th>
+                <th class="k150">{{ 'G/L Account' | translate }}</th>
+                <th class="k150">{{ 'I/O' | translate }}</th>
+                <th class="k250">{{ 'Short Text PO item' | translate }}</th>
+                <th class="k200">{{ 'Short Text Service line' | translate }}</th>  
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                
+                <td class="k100">{{$index+1}}</td>
+                <td class="k150">{{data.sCCS_Mapping_Id}}</td>
+                <td class="k150">{{data.plant}}</td>
+                <td class="k200">{{data.costCenter_Id}}</td>
+                <td class="k200">{{data.costCenter_Description}}</td>
+                <td class="k150">{{data.profitCenter}}</td>
+                <td class="k200">{{data.profitCenter_Description}}</td>
+                <td class="k200">{{data.customerGroup}}</td>
+                <td class="k150">{{data.shipto_Id}}</td>
+                <td class="k150">{{data.aCC_CAT}}</td>
+                <td class="k150">{{data.itemCat}}</td>
+                <td class="k150">{{data.gL_ACC}}</td>
+                <td class="k150">{{data.iO_Code}}</td>
+                <td class="k250">{{data.shortText_PO_item}}</td>
+                <td class="k200">{{data.shortText_Service_line}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:0px;">
+    <div class="col-lg-12" style="padding: 12px 0;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" ng-init="colortab2 = '#FFF'" style="color:{{colortab2}};">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination
+                total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="maxSize"
+                class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+<sccs-mapping-form on-show="onShow" ng-hide="$vm.isFilter"></sccs-mapping-form>

@@ -1,0 +1,42 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto;width:60%;">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="onClose()">&times;</button>
+            <h4 class="blue bigger">{{ 'PREVIEW_TASK' | translate }}</h4>
+        </div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row" >
+                                <div class="col-lg-4">
+                                    <h4>{{ 'TASK_NO' | translate }} : {{dataset.taskGR_No}}</h4>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h4>{{ 'TASK_DATE' | translate }} : {{dataset.create_Date|dateFormate}}</h4>
+                                </div>
+                                <div class="col-lg-4">
+                                    <h4>{{ 'TIME' | translate }} : {{dataset.create_Time}}</h4>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h4>{{ 'ASSIGN_BY' | translate }} : {{dataset.create_By}}</h4>
+                                </div>
+                                <!-- <div class="col-lg-12">
+                                    <h4>{{ 'TASK_BY' | translate }} : {{dataset.userAssign}}</h4>
+                                </div> -->
+                            </div>
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <task-gr-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></task-gr-popup-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

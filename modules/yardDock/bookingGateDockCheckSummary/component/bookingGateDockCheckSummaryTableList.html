@@ -1,0 +1,294 @@
+<div class="visible-lg table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div>
+        <ul class="nav nav-tabs">
+          
+            <li class="active">
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}"
+                    ng-click="clickTab(1)">{{ 'InBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(2)">{{ 'OutBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(3)">{{ 'Frozen' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <th class="k100 text-center">{{ 'ACTION' | translate }}</th>
+                <th class="k100 text-center">{{ 'NO' | translate }}</th>
+                <th class="k150 text-center">{{ 'BOOKING_DATE' | translate }}</th>
+                <th class="k150 text-center">{{ 'TIME' | translate }}</th>
+                <th class="k150 text-center">{{ 'APPOINTMENT_NO' | translate }}</th>
+                <th class="k150 text-center">{{ 'DOCUMENT_NO' | translate }}</th>
+                <th class="k100 text-center">{{ 'LICENSE' | translate }}</th>
+                <th class="k100 text-center">{{ 'ACTIVITY' | translate }}</th>
+                <th class="k100 text-center">{{ 'LIST_DOCK' | translate }}</th>
+                <th class="k150 text-center">{{ 'GATE_TIME_CHECKIN' | translate }}</th>
+                <th class="k100 text-center">{{ 'GATE_STATUS_CHECKEDIN' | translate }}</th>
+                <th class="k100 text-center">{{ 'GATE_CHECKEDINBY' | translate }}</th>
+
+                <th class="k100 text-center">{{ 'TIME_CHECKIN' | translate }}</th>
+                <th class="k100 text-center">{{ 'CHECKEDINBY' | translate }}</th>
+                <th class="k150 text-center">{{ 'TIME_CHECKOUT' | translate }}</th>
+                <th class="k100 text-center">{{ 'CHECKEDOUTBY' | translate }}</th>
+
+                <th class="k150 text-center">{{ 'GATE_TIME_CHECKOUT' | translate }}</th>
+                <th class="k100 text-center">{{ 'GATE_STATUS_CHECKEDOUT' | translate }}</th>
+                <th class="k100 text-center">{{ 'GATE_CHECKEDOUTBY' | translate }}</th>
+                <th class="k100 text-center">{{ 'REMARK' | translate }}</th>
+                <th class="k100 text-center">{{ 'USER_UPDATE' | translate }}</th>
+                <th class="k100 text-center">{{ 'USER_CANCEL' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody ng-if="click == 1">
+            <tr ng-repeat-start="data in $vm.searchResultModel | filter :{'documentType_Index':'7f139afb-b712-4562-911e-0ed654c6f7af'}">
+                <td class="k100 text-center" style="padding: 5px;" ng-if="data.gateCheckIn_Status == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedIn')">
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date != null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')"
+                        ng-disabled="data.gateCheckOut_Status != null">
+                        <i class="kw-icon-button fa fa-upload"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')" disabled>
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center">{{$index+1}}</td>
+                <td class="k150 text-center">{{data.appointment_Date | dateFormat}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="k150 text-center">{{data.appointment_Id}}</td>
+                <td class="k150 text-center">{{data.ref_Document_No}}</td>
+                <td class="k100 text-center">{{data.license}}</td>
+                <td class="k100 text-center">{{data.documentType_Name}}</td>
+                <td class="k100 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.gateCheckIn_Date}}</td>
+                <td class="k100 text-center">{{data.gateCheckIn_Status}}</td>
+                <td class="k100 text-center">{{data.gateCheckIn_By}}</td>
+
+                <td class="k100 text-center">{{data.checkIn_Date}}</td>
+                <td class="k100 text-center">{{data.checkIn_By}}</td>
+                <td class="k100 text-center">{{data.checkOut_Date}}</td>
+                <td class="k100 text-center">{{data.checkOut_By}}</td>
+
+
+                <td class="k150 text-center">{{data.gateCheckOut_Date}}</td>
+                <td class="k100 text-center">{{data.gateCheckOut_Status}}</td>
+                <td class="k100 text-center">{{data.gateCheckOut_By}}</td>
+                <td class="k100 text-center">{{data.remark}}</td>
+                <td class="k100 text-center">{{data.update_By}}</td>
+                <td class="k100 text-center">{{data.cancel_By}}</td>
+
+            </tr>
+            <tr ng-if="data.expanded" ng-repeat-end>  
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 2">
+            <tr ng-repeat-start="data in $vm.searchResultModel | filter :{'documentType_Index':'c392d865-8e69-4985-b72f-2421ebe8bcdb'}">
+                <td class="k100 text-center" style="padding: 5px;" ng-if="data.gateCheckIn_Status == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedIn')">
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date != null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')"
+                        ng-disabled="data.gateCheckOut_Status != null">
+                        <i class="kw-icon-button fa fa-upload"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')" disabled>
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center">{{$index+1}}</td>
+                <td class="k150 text-center">{{data.appointment_Date | dateFormat}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="k150 text-center">{{data.appointment_Id}}</td>
+                <td class="k150 text-center">{{data.ref_Document_No}}</td>
+                <td class="k100 text-center">{{data.license}}</td>
+                <td class="k100 text-center">{{data.documentType_Name}}</td>
+                <td class="k100 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.gateCheckIn_Date}}</td>
+                <td class="k100 text-center">{{data.gateCheckIn_Status}}</td>
+                <td class="k100 text-center">{{data.gateCheckIn_By}}</td>
+
+                <td class="k100 text-center">{{data.checkIn_Date}}</td>
+                <td class="k100 text-center">{{data.checkIn_By}}</td>
+                <td class="k100 text-center">{{data.checkOut_Date}}</td>
+                <td class="k100 text-center">{{data.checkOut_By}}</td>
+
+
+                <td class="k150 text-center">{{data.gateCheckOut_Date}}</td>
+                <td class="k100 text-center">{{data.gateCheckOut_Status}}</td>
+                <td class="k100 text-center">{{data.gateCheckOut_By}}</td>
+                <td class="k100 text-center">{{data.remark}}</td>
+                <td class="k100 text-center">{{data.update_By}}</td>
+                <td class="k100 text-center">{{data.cancel_By}}</td>
+
+            </tr>
+            <tr ng-if="data.expanded" ng-repeat-end>  
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 3">
+            <tr ng-repeat-start="data in $vm.searchResultModel | filter :{'documentType_Index':'13091631-5829-4341-bcb4-272b0ed854d7'}">
+                <td class="k100 text-center" style="padding: 5px;" ng-if="data.gateCheckIn_Status == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedIn')">
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date != null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')"
+                        ng-disabled="data.gateCheckOut_Status != null">
+                        <i class="kw-icon-button fa fa-upload"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')" disabled>
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center">{{$index+1}}</td>
+                <td class="k150 text-center">{{data.appointment_Date | dateFormat}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="k150 text-center">{{data.appointment_Id}}</td>
+                <td class="k150 text-center">{{data.ref_Document_No}}</td>
+                <td class="k100 text-center">{{data.license}}</td>
+                <td class="k100 text-center">{{data.documentType_Name}}</td>
+                <td class="k100 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.gateCheckIn_Date}}</td>
+                <td class="k100 text-center">{{data.gateCheckIn_Status}}</td>
+                <td class="k100 text-center">{{data.gateCheckIn_By}}</td>
+
+                <td class="k100 text-center">{{data.checkIn_Date}}</td>
+                <td class="k100 text-center">{{data.checkIn_By}}</td>
+                <td class="k100 text-center">{{data.checkOut_Date}}</td>
+                <td class="k100 text-center">{{data.checkOut_By}}</td>
+
+
+                <td class="k150 text-center">{{data.gateCheckOut_Date}}</td>
+                <td class="k100 text-center">{{data.gateCheckOut_Status}}</td>
+                <td class="k100 text-center">{{data.gateCheckOut_By}}</td>
+                <td class="k100 text-center">{{data.remark}}</td>
+                <td class="k100 text-center">{{data.update_By}}</td>
+                <td class="k100 text-center">{{data.cancel_By}}</td>
+
+            </tr>
+            <tr ng-if="data.expanded" ng-repeat-end>  
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="visible-xs visible-sm table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter"
+    style="margin-bottom:15px;">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="text-center">{{ 'APPOINTMENT_NO' | translate }}</th>
+                <th>{{ 'TIME' | translate }}</th>
+                <th>{{ 'STATUS' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="data in $vm.searchResultModel track by $index ">
+            <tr
+                ng-class="$index == userSelected[$index].index  ?  userSelected[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey' ">
+                <td>{{data.appointment_Id}}</td>
+                <td>{{data.appointment_Time}}</td>
+                <td class="k100 text-center" style="padding: 5px;" ng-if="data.gateCheckIn_Status == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedIn')">
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date != null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')"
+                        ng-disabled="data.gateCheckOut_Status != null">
+                        <i class="kw-icon-button fa fa-upload"></i>
+                    </button>
+                </td>
+                <td class="k100 text-center" style="padding: 5px;"
+                    ng-if="data.gateCheckIn_Status != null && data.checkOut_Date == null">
+                    <button type="button" class="btn btn-primary" ng-click="checkedScan(data , 'checkedout')" disabled>
+                        <i class="kw-icon-button fa fa-check"></i>
+                    </button>
+                </td>
+                <!-- <td class="text-center" ng-if="data.status != 0"> {{data.status_Desc}}</td> -->
+            </tr>
+            <tr ng-style="{display: data.expanded ? '':'none'}">
+                <td colspan="3" id="{{data.appointmentItem_Index}}" style="padding: 0;"
+                    colspan="{{tblHeader.length - 1}}">
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="panel-body kw-padd">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                    <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                        ng-click="changeTableSize(50,1)" class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                        class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                    </button>
+                </div>
+                <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow"
+                    uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                    items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                    ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right"
+                    boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+
+<div class="visible-xs visible-sm" id="temp-container" ng-show="isShowTemp">
+    <collapse-popup trigger-init="containerInit" trigger-show="showContainerDesc">
+    </collapse-popup>
+</div>
+<booking-gate-dock-check-in-form on-show="onShow" ng-hide="$vm.isFilter"></booking-gate-dock-check-in-form>
+
+<style>
+    .saveOk {
+        float: right;
+        font-size: 21px;
+        font-weight: bold;
+        line-height: 1;
+        cursor: pointer;
+        color: #000000;
+        text-shadow: 0 1px 0 #ffffff;
+        opacity: 0.2;
+        filter: alpha(opacity=20);
+    }
+
+    body .btn-primary:hover {
+        border-color: #0c1fd0 !important;
+        background-color: #0c1fd0;
+
+    }
+</style>

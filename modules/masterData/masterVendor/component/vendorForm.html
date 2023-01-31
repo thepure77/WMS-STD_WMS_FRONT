@@ -1,0 +1,369 @@
+<div class="panel-body" ng-show="onShow">
+    <div class="col-md-12 kw-mg-tb">
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_ID' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Id" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <span style="color:red">*</span> <label>{{ 'SUPPLIER_NAME' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Name" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <span style="color:red">*</span> <label>{{ 'SUPPLIER_SECOND_NAME' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_SecondName" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <span style="color:red">*</span> <label>{{ 'SUPPLIER_THIRD_NAME' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_ThirdName" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <span style="color:red">*</span> <label>{{ 'SUPPLIER_FOURTH_NAME' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_FourthName" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <span style="color:red">*</span> <label>{{ 'SUPPLIER_TYPE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.vendorType_Index" value="filterModel.value1"
+                    id="filterModel.vendorType_Id" value1=filterModel.vendorType_Name
+                        sourceurl="autoComplete.vendorType" api="url.Master"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_TAX_ID' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_TaxID" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_EMAIL' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Email" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_FAX' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Fax" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_TEL' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Tel" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_MOBILE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Mobile" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_BARCODE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Barcode" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_PERSON' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Person" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_PERSON2' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Person2" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_PERSON3' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Person3" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_TEL' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Tel" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_TEL2' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Tel2" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_TEL3' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Tel3" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_EMAIL' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Email" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_EMAIL2' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Email2" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CONTACT_EMAIL3' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.contact_Email3" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUPPLIER_ADDRESS' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.vendor_Address" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'COUNTRY' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.country_Index" name="filterModel.country_Index"
+                        value="filterModel.country_Name" id="filterModel.country_Id" sourceurl="autoComplete.country"
+                        api="url.Master"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'PROVINCE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.province_Index" name="filterModel.province_Index"
+                        value="filterModel.province_Name" key2="filterModel.country_Index" id="filterModel.province_Id"
+                        sourceurl="autoComplete.province" api="url.Master"></auto-comple>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'DISTRICT' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.district_Index" name="filterModel.district_Index"
+                        value="filterModel.district_Name" key2="filterModel.country_Index"
+                        key3="filterModel.province_Index" id="filterModel.district_Id" sourceurl="autoComplete.district"
+                        api="url.Master"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'SUB_DISTRICT' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.subDistrict_Index" name="filterModel.subDistrict_Index"
+                        value="filterModel.subDistrict_Name" key2="filterModel.country_Index"
+                        key3="filterModel.province_Index" key4="filterModel.district_Index"
+                        id="filterModel.subDistrict_Id" sourceurl="autoComplete.subDistrict" api="url.Master">
+                    </auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'POSTCODE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.postcode_Index" name="filterModel.postcode_Index"
+                        value="filterModel.postcode_Name" key2="filterModel.country_Index"
+                        key3="filterModel.province_Index" key4="filterModel.district_Index"
+                        key5="filterModel.subDistrict_Index" id="filterModel.postcode_Id"
+                        sourceurl="autoComplete.postCode" api="url.Master">
+                    </auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'REF_NO1' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.ref_No1" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'REF_NO2' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.ref_No2" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'REF_NO3' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.ref_No3" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'REF_NO4' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.ref_No4" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'REF_NO5' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.ref_No5" type="text" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'REMARK' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.remark" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'ISACTIVE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <div class="ig-control">
+                        <input type="checkbox" ng-model="filterModel.isActive" class="ig-control__cbx"
+                            ng-checked="getCheck" ng-true-value="1" ng-false-value="0" id="table_setting_1" />
+                        <label for="table_setting_1"></label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()" style="float: left;">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-primary previous" ng-show="create" ng-click="add()"
+                    style="float: right;">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-success" ng-show="update" ng-click="add()" style="float: right;">
+                    {{ 'UPDATE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>

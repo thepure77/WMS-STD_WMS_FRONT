@@ -1,0 +1,393 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="tabs" ng-show="$vm.isFilterTable">
+    <div class="tab-content">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a class="fa fa-caret-down" ng-click="ShowHeader()"></a>
+                </div>
+                <h2 class="panel-title">
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <div class="row">
+                                <label class="col-lg-1 control-label kw-p-zero ng-binding">{{ 'COUNT_NO' | translate }} : </label>
+                                <div class="col-lg-2 kw-p-zero">
+                                    <input type="text" class="form-control " ng-model="binModel.cycleCount_No" disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h2>
+            </header>
+
+
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'COUNT_NO' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="binModel.cycleCount_No" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span style="color:red">*</span>
+                            <span>{{ 'DATE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <dir-date-picker ng-model="binModel.cycleCount_Date" disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"></dir-date-picker>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span style="color:red">*</span>
+                                <span>{{ 'CY_DOC_TYPE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="binModel.documentType_Name" id="documentType_Id"  class="form-control" disabled />
+                            <!-- <select class='form-control' ng-model='dropdownDocumentType.model' ng-options="v.documentType_Name for v in dropdownDocumentType"ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-9 col-md-9 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'Remark' | translate }}</span>
+                        </div>
+                        <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                            <textarea ng-model="binModel.remark" class="form-control" rows="4" cols="50"ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <h4>{{ 'Condition Search' | translate }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <label>{{ 'BUSINESS_UNIT' | translate }}</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model='binModel.businessUnitList'ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                                ng-options="v.businessUnit_Name for v in dropdownBusinessUnit">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'LOCATION_TYPE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model='dropdownLocationType.model'ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                                ng-options="v.locationType_Name for v in dropdownLocationTypeList">
+                                <option value="">Please selected</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span>{{ 'LOCATION' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="binModel.location_Index" value="binModel.location_Name" id="binModel.location_Id" is-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                                sourceurl="autoComplete.location" api="url.Cyclecount">
+                            </auto-comple>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'Rollcage' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model='dropdownRollCage.model'ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                                ng-options="v.rollCage_Id for v in dropdownRollCageList">
+                                <option value="">Please selected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'PRODUCT_ID' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                <label class="ios7-switch ios7-switch-md">
+                                    <input type="checkbox" ng-model="Checkproduct_Id" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-xs-12  kw-p-zero">
+                                <div ng-if="Checkproduct_Id == true">
+                                    <auto-comple ng-model="binModel.product_Index" id="binModel.product_Name"value="binModel.product_Id" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                                    sourceurl="autoComplete.autoProductId" api="url.Master" >
+                                    </auto-comple>
+                                </div>
+                                <div ng-if="Checkproduct_Id == false">
+                                    <input type="text" class="form-control" disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'PRODUCT_NAME' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <input type="text" class="form-control" ng-model="binModel.product_Name" id="binModel.product_Name_Name" disabled />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span style="color:red">*</span>
+                            <span>{{ 'OWNER_ID' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                <label class="ios7-switch ios7-switch-md">
+                                    <input type="checkbox" ng-model="Checkowner_Id" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-xs-12  kw-p-zero">
+                                <div ng-if="Checkowner_Id == true">
+                                    <auto-comple ng-model="binModel.owner_Index" id="binModel.owner_Name" value="binModel.owner_Id" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                                    sourceurl="autoComplete.owner" api="url.Cyclecount" >
+                                    </auto-comple>
+                                </div>
+                                <div ng-if="Checkowner_Id == false">
+                                    <input type="text" class="form-control" disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'OWNER_NAME' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <input type="text" class="form-control" ng-model="binModel.owner_Name" id="binModel.owner_Name_Name" disabled />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span>{{ 'Status SKU' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model='binModel.dropdownItemStatus' ng-options="v.itemStatus_Name for v in dropdownItemStatus" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'Pallet ID' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <auto-comple ng-model="binModel.tag_no" value="binModel.tag_no"is-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2"
+                            sourceurl="autoComplete.autoSearchTag" api="url.Report"></auto-comple>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'Movement Stock' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model="movementstock.model" ng-options="x for x in movementstock" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span style="color:red">*</span>
+                            <span>{{ 'Day' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <div ng-if="movement == true">
+                                <input type="text" class="form-control" ng-model="binModel.diff_Movement" id="binModel.movement_Name" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"/>
+                            </div>
+                            <div ng-if="movement == false">
+                                <input type="text" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                        <!-- <button id="table2" ng-if="click == 2" class="btn btn-success" ng-click="exportFile.ExportCycleCountDetail()">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"> {{ 'EXECEL' | translate }}</i>
+                        </button> -->
+
+                        <button ng-click="SearchBinBalance(binModel)" class="btn btn-primary"ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                            <i class="fa fa-search" aria-hidden="true"></i> {{ 'SEARCH' | translate }}</button>
+                        <button ng-click="ClearSearch()" class="btn btn-danger"ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                            <i class="fa fa-repeat" aria-hidden="true"></i> {{ 'CLEAR_SEARCH' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="panel">
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab" ng-click="clickTab(1)">{{ 'Selected' | translate }}</a>
+                    </li>
+                    <li>
+                        <a data-target="#table2" data-toggle="tab" ng-click="clickTab(2)">{{ 'DETAIL' | translate }}</a>
+                    </li>
+
+                </ul>
+                <div class="tab-pane active">
+                    <div id="table1" class="table-responsive table-overflow" ng-if="click == 1">
+                        <table class="table table-striped fixed-header tableHeight-350">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <td class="text-ceneter k100">
+                                        <input ng-change="detectCheckAll(checkAll)" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked
+                                        />
+                                        <label for="all_"></label>
+                                    </td>
+                                    <td class="text-center k250">{{ 'LOCATION' | translate }}</td>
+                                    <td class="text-center k250">{{ 'LOCATION_TYPE' | translate }}</td>
+                                    <td class="text-center k150">{{ 'Rollcage' | translate }}</td>
+                                    <td class="text-center k150">{{ 'Pallet' | translate }}</td>
+                                    <td class="text-center k150">{{ 'PRODUCTID' | translate }}</td>
+                                    <td class="text-center k580">{{ 'PRODUCT_NAME' | translate }}</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in listBinBlanceViewModel">
+                                    <td class="text-ceneter k100">
+                                        <div class="ig-control">
+                                            <input ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked />
+                                            <label for="check_{{$index}}"></label>
+                                        </div>
+                                    </td>
+                                    <td class="text-center k250">{{data.location_Name}}</td>
+                                    <td class="text-center k250">{{data.locationType_Name}}</td>
+                                    <td class="text-center k150">{{data.rollCage_Id}}</td>
+                                    <td class="text-center k150">{{data.tag_No}}</td>  
+                                    <td class="text-center k150">{{data.product_Id}}</td>
+                                    <td class="k580">{{data.product_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="table2" class="table-responsive table-overflow" ng-if="click == 2">
+                        <table class="table table-striped fixed-header tableHeight-350">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <td class="text-center k100">#</td>
+                                    <td class="k100"></td>
+                                    <td class="text-center k150">{{ 'LOCATION' | translate }}</td>
+                                    <td class="text-center k150">{{ 'LOCATION_TYPE' | translate }}</td>
+                                    <td class="text-center k150">{{ 'Rollcage' | translate }}</td>
+                                    <td class="text-center k150">{{ 'Pallet' | translate }}</td>
+                                    <td class="text-center k150">{{ 'PRODUCTID' | translate }}</td>
+                                    <td class="text-center k250">{{ 'PRODUCT_NAME' | translate }}</td>
+                                    <td class="text-center k150">{{ 'QTY_BAL' | translate }}</td>
+                                    <td class="text-center k150">{{ 'QTY_COUNT' | translate }}</td>
+                                    <td class="text-center k150">{{ 'QTY_DIFF' | translate }}</td>
+                                    <td class="text-center k150">{{ 'USER_COUNT' | translate }}</td>
+                                    <td class="text-center k150">{{ 'COUNT' | translate }}</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in listDetail">
+                                    <td class="text-center k100">{{$index+1}}</td>
+                                    <td class="k100 text-center">
+                                        <a class="btn btn-danger" ng-click="deleteItem(listDetail,listBinBlanceViewModel, $index)" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                    <td class="text-center k150">{{data.location_Name}}</td>
+                                    <td class="text-center k150">{{data.locationType_Name}}</td>
+                                    <td class="text-center k150">{{data.rollCage_Id}}</td>
+                                    <td class="text-center k150">{{data.tag_No}}</td>  
+                                    <td class="text-center k150">{{data.product_Id}}</td>
+                                    <td class="text-center k250">{{data.product_Name}}</td>
+                                    <td class="text-center k150">{{data.qty_Bal}}</td>
+                                    <td class="text-center k150">{{data.qty_Count}}</td>
+                                    <td class="text-center k150">{{data.qty_Diff}}</td>
+                                    <td class="text-center k150">{{data.update_By}}</td>
+                                    <td class="text-center k150">{{data.update_Date}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <div class="footer-white" style="margin-top:10px;">
+        <ul class="pager">
+            <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;">
+                <i class="fa fa-angle-left" aria-hidden="true"></i> {{ 'BACK' | translate }}
+            </button>
+
+            <button type="button" class="btn btn-primary previous" ng-click="add(binModel,listBinBlanceViewModel)" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                style="float: right;">
+                {{ 'SAVE' | translate }}
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+
+        </ul>
+    </div>

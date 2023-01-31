@@ -1,0 +1,65 @@
+<div class="col-md-12" ng-hide='header.advanceSearch'>
+
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-lg-2 col-md-4 col-xs-12 padd">
+            <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                <span> {{ 'WAREHOUSE' | translate }}</span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                <select class='form-control' ng-model='filterWarehouse.model'
+                ng-options="v.wareHouse_Name for v in filterWarehouse" >
+                <option value="">เลือกทั้งหมด</option>
+            </select>
+                
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-xs-6 padd">
+        </div>
+        <div class="col-lg-2 col-md-4 col-xs-6 padd">
+        </div>
+        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 p-zero" style="position: relative;top: 0px;text-align: right;">
+            <div class="col-lg-12 col-md-12 col-xs-12 visibled-sm visibled-lg padd">
+                <div class="vs-text">RRR</div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 hidden-sm hidden-xs padd"></div>
+            <div class="col-lg-1 col-md-1 visibled-sm visibled-lg padd"></div>
+            <div class="col-lg-3 col-md-3 col-sm-4 padd">
+                <!-- <sorting ng-hide='header.advanceSearch' class="inline" multiple="true" order="true"
+                    ng-model="filterModel.sort" checked="row.display" options="row.display for row in selectSort"
+                    change="sortBy(row.display)" style="width: 100%;">
+                </sorting> -->
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-7 col-xs-7 padd"></div>
+            <div class="col-lg-4 col-md-4 col-sm-7 col-xs-7 padd">
+                <button ng-click="searchFilter(filterModel)" class="btn kw-button-search">
+                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+            </div>
+            <!-- <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 padd" >
+                <status class="inline" multiple="true" order="true" ng-model="filterModel.status" checked="row.display"
+                    options="row.display for row in status" change="sortBy(row.display)" ng-hide='header.advanceSearch'
+                    style="width: 100%;">
+                </status>
+            </div> -->
+           
+            <div class="col-md-1 col-sm-1 col-xs-1 padd">
+                <button class="kw-icon-Plus" ng-click="createWH()">
+                    <i class="kw-icon-button icon-add_24px_outlined " aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<booking-assign-dock-form on-show='itemModels.onShow' config='itemModels.config' invokes='itemModels.invokes'
+    delegates='itemModels.delegates'>
+</booking-assign-dock-form>
+<style>
+    .hidden-sm, .hidden-xs {
+    display: none;
+}
+</style>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

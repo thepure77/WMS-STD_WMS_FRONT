@@ -1,0 +1,63 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="width:60%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">province</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row" >
+                                <!-- search box -->
+                                <div ng-hide="model.advanceSearch" class="row">
+                                    <div class="col-md-3" style="margin-top:10px;" ng-hide='model.advanceSearch'>
+                                        <div class="input-group">
+                                            <input type="text" ng-model="province.provinceName" class="form-control" placeholder="ใส่ชื่อจังหวัด"
+                                                aria-label="Province ">
+                                            <span class="input-group-btn">
+                                                <button ng-click="filter()" class="btn btn-filter" style="padding: 8.5px;">
+                                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <!-- /input-group -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <province-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></province-popup-table>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-right:0px; margin-top:15px;">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-2 display-inline">
+                                <select class='form-control display-inline' style='width:70px;display:inline-block;'
+                                    ng-model='pagging.perPage' ng-options="v.value as v.value for v in pageOption"
+                                    ng-init='pagging.perPage' ng-change='pagging.changeSize()'>
+                                </select>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 display-inline text-right" style="padding:0px; padding-left: 40px;margin-top:-18px;">
+                                <ul uib-pagination total-items="pagging.totalRow" ng-change="pagging.change()"
+                                    items-per-page="pagging.numPerPage" num-pages="pagging.num" ng-model="pagging.currentPage"
+                                    max-size="pagging.maxSize" boundary-link-numbers="true" rotate="false">
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
+
+                </div>
+                <!-- PAGE CONTENT BEGINS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-filter" ng-click="onClose()">Close</button>
+                <!--
+         <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

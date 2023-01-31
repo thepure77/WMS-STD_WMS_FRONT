@@ -1,0 +1,97 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto;width:50%;">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Registration Form</h2>
+            </header>
+            <div class="panel-body">
+                <form id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+                    <div class="col-md-3 col-sm-3 kw-p-zero">
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="name" class="form-control" placeholder="Type your name..."
+                                    required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" name="email" class="form-control" placeholder="Type your email..."
+                                    required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">URL</label>
+                            <div class="col-sm-9">
+                                <input type="url" name="url" class="form-control" placeholder="Type an URL..." />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 kw-p-zero">
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">TEXT11</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="TEXT11" class="form-control" placeholder="Type ..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">TEXT12</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="TEXT12" class="form-control" placeholder="Type ..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">TEXT13</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="TEXT13" class="form-control" placeholder="Type ..." required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 kw-p-zero">
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">TEXT21</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="TEXT21" class="form-control" placeholder="Type ..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">TEXT22</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="TEXT22" class="form-control" placeholder="Type ..." required />
+                            </div>
+                        </div>
+                        <div class="form-group mt-lg">
+                            <label class="col-sm-3 control-label">TEXT13</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="TEXT23" class="form-control" placeholder="Type ..." required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 ">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Comment</label>
+                            <div class="col-sm-12">
+                                <textarea rows="5" class="form-control" placeholder="Type your comment..."
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary modal-confirm" ng-click="">Submit</button>
+                        <button class="btn btn-default modal-dismiss" ng-click="onClose()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+
+</div>

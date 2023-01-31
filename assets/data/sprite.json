@@ -1,0 +1,34 @@
+[
+    {
+        "type": "rack-pillar",
+        "Layout_Index": "",
+        "position": {
+            "x": 16,
+            "y": 64
+        }
+    },
+    {
+        "type": "rack-bar",
+        "Layout_Index": "",
+        "position": {
+            "x": 32,
+            "y": 64
+        }
+    },
+    {
+        "type": "rack-bar",
+        "Layout_Index": "",
+        "position": {
+            "x": 64,
+            "y": 64
+        }
+    },
+    {
+        "type": "floor-area",
+        "Layout_Index": "",
+        "position": {
+            "x": 120,
+            "y": 80
+        }
+    }
+]

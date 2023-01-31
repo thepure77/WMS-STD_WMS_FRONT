@@ -1,0 +1,221 @@
+<div class="panel-body kw-p-zero" ng-show="onShow">
+    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb kw-p-zero">
+        <div class="form-group col-lg-offset-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-padd">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-lg visible-md kw-pos-text kw-p-zero">
+                    <span style="color:red">*</span><span> {{ 'WAREHOUSE' | translate }}</span>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 visible-sm visible-xs kw-p-zero">
+                    <span style="color:red">*</span><span> {{ 'WAREHOUSE' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 padd">
+                    <select class='form-control' ng-click="selectWH()" ng-model='dropdownWarehouse.model'
+                        ng-options="v.warehouse_Name for v in itemsWarehouse">
+                        <option value="">เลือกคลัง</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-padd">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-lg visible-md kw-pos-text kw-p-zero">
+                    <span style="color:red">*</span><span> {{ 'LIST_DOCK' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 visible-sm visible-xs kw-p-zero">
+                    <span style="color:red">*</span><span> {{ 'LIST_DOCK' | translate }}</span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 padd">
+                    <pc-multiselect class="input-xlarge" multiple="true" order="true" ng-model="filterModel.docks"
+                        checked="row.name" options="row.name for row in ProductStock" change="sortBy(row.name)">
+                    </pc-multiselect>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-padd">
+                <div class="col-lg-3 col-md-3 col-xs-12 visible-lg visible-md kw-pos-text kw-p-zero">
+                    <span style="color:red">*</span><label>{{ 'DATE_ON' | translate }}</label>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12 visible-sm visible-xs kw-p-zero">
+                    <span style="color:red">*</span><label>{{ 'DATE_ON' | translate }}</label>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  padd">
+                    <dir-date-picker id="isDisabledDate" ng-click="CheckactiveAllTime()"
+                        ng-model="filterModel.dockQouta_Date">
+                    </dir-date-picker>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12  padd"
+                    style="text-align: center;line-height: 3;width: 40px;">
+                    <label>ถึง</label>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  padd">
+                    <dir-date-picker id="isDisabledDate" ng-click="CheckactiveAllTime()"
+                        ng-model="filterModel.dockQouta_Date_End">
+                    </dir-date-picker>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12  kw-p-zero" style="margin: 5px 2px;">
+                    <div class="ig-control">
+                        <input type="checkbox" ng-change="checkedAllTime('check1' , 1)"
+                            ng-model="filterModel.isActiveAllTime" class="ig-control__cbx" ng-checked="isActiveAllTime"
+                            ng-true-value="1" ng-false-value="0" id="table_setting_1" />
+                        <label for="table_setting_1">
+                            <p class="kw-textct">{{ 'ALL_TIME' | translate }}</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-padd">
+                <div class="col-lg-3 col-md-3 col-xs-12 visible-lg visible-md kw-pos-text kw-p-zero">
+                    <span style="color:red">*</span><label>{{ 'PERIOD_TIME' | translate }}
+                        ({{ 'INTERVAL' | translate }}) </label>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12 visible-sm visible-xs kw-p-zero">
+                    <span style="color:red">*</span><label>{{ 'PERIOD_TIME' | translate }}
+                        ({{ 'INTERVAL' | translate }}) </label>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-10 padd" style="padding-left: 3px;padding-right: 0px;">
+                    <select class='form-control' ng-change="intevalTime(bkItem.interval)"
+                        ng-init="bkItem.interval = 'selected'" ng-model='bkItem.interval'>
+                        <option value="">{{ 'SELECT' | translate }}</option>
+                        <option value="15">-- 15 --</option>
+                        <option value="30">-- 30 --</option>
+                        <option value="45">-- 45 --</option>
+                        <option value="60">-- 60 --</option>
+                        <option value="120">-- 120 --</option>
+                        <!-- <option value="120">-- 180 --</option> -->
+                        <!-- <option value="120">-- 240 --</option> -->
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 kw-padd"
+                    style="text-align: center;position: relative;top: 5px;width: 40px;">
+                    <label>{{ 'MINUTE' | translate }}</label>
+                </div>
+
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-padd">
+                <div class="col-lg-3 col-md-3 col-xs-12 visible-lg visible-md kw-pos-text kw-p-zero">
+                    <span style="color:red">*</span><label>{{ 'LIMIT_BEFORE' | translate }} & {{ 'LIMIT_AFTER' | translate }}</label>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12 visible-sm visible-xs kw-p-zero">
+                    <span style="color:red">*</span><label>{{ 'LIMIT_BEFORE' | translate }} & {{ 'LIMIT_AFTER' | translate }}</label>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  padd">
+                    <input class="form-control text-upper" 
+                    ng-model="filterModel.checkIn_Limit_Before" placeholder="ก่อนเวลากี่นาที">
+                </div>
+              
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12  padd">
+                    <input class="form-control text-upper" 
+                    ng-model="filterModel.checkIn_Limit_After" placeholder="หลังเวลากี่นาที">
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  kw-padd">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-lg visible-md kw-pos-text kw-p-zero">
+                        <span style="color:red">*</span><label>{{ 'TIME_ON' | translate }}</label>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 visible-sm visible-xs kw-p-zero">
+                        <span style="color:red">*</span>
+                        <label">{{ 'TIME_ON' | translate }}</label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 padd" style="padding-right: 3px;">
+                        <select ng-disabled="!intevalSetting"
+                             class='form-control'
+                            ng-model="dropdownIntervalTimeOn.model"
+                            ng-options="v.time_Start for v in dropdownIntervalTimeOn">
+                            <option value="">{{ 'TIME_START' | translate }}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 padd" style="padding-left: 3px;">
+                        <select ng-disabled="!intevalSetting"
+                             class='form-control'
+                            ng-model="dropdownIntervalTimeEnd.model"
+                            ng-options="v.time_End for v in dropdownIntervalTimeEnd">
+                            <option value="">{{ 'TIME_END' | translate }}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 kw-padd" style="margin: 2px;">
+                        <div class="ig-control">
+                            <input type="checkbox" ng-change="checkedAllTime('check2' , 2)"
+                                ng-model="filterModel.isActiveAllTime2" class="ig-control__cbx"
+                                ng-checked="isActiveAllTime2" ng-true-value="1" ng-false-value="0"
+                                id="table_setting_2" />
+                            <label for="table_setting_2">
+                                <p class="kw-textct">{{ 'ALL_TIME' | translate }}</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-padd">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-lg visible-md kw-pos-text kw-p-zero">
+                        <span style="color:red">*</span><label>{{ 'REST_TIME' | translate }}
+                            ({{ 'MINUTE' | translate }}) </label>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 visible-sm visible-xs kw-p-zero">
+                        <span style="color:red">*</span><label>{{ 'REST_TIME' | translate }}
+                            ({{ 'MINUTE' | translate }}) </label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-8 col-xs-8 padd">
+                        <select class='form-control' ng-click="selectedTime(DockQoutaIntervalBreakTime.model)"
+                            ng-model='DockQoutaIntervalBreakTime.model'
+                            ng-options="v.time for v in DockQoutaIntervalBreakTime">
+                            <option value="">{{ 'TIME_LIST' | translate }}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 kw-padd"
+                        style="text-align: center;position: relative;top: -3px;width: 40px;margin: 0 2px 0 2px;">
+                        <button class="kw-icon-Plus" ng-click="openPickTime()">
+                            <i class="kw-icon-button icon-add_24px_outlined " aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 kw-padd" ng-show="deleteTimeItem"
+                        style="text-align: center;position: relative;top: -3px;width: 40px;margin: 0 2px 0 2px;">
+                        <button class="kw-icon-Plus" ng-click="deleteRestTime(DockQoutaIntervalBreakTime.model)">
+                            <i class="kw-icon-button fa fa-minus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-padd">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 visible-lg visible-md kw-pos-text kw-padd">
+                        <span style="color:red">*</span><label>{{ 'STATUS' | translate }}</label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 visible-sm visible-xs kw-padd">
+                        <span style="color:red">*</span><label>{{ 'STATUS' | translate }}</label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 kw-padd  visible-lg visible-md">
+                        <label class="switch"><input ng-model='filterModel.isActive' type="checkbox" id="togBtn">
+                            <div class="sliderNew round"></div>
+                        </label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 kw-padd  visible-sm visible-xs"
+                        style="text-align: right;">
+                        <label class="switch"><input ng-model='filterModel.isActive' type="checkbox" id="togBtn">
+                            <div class="sliderNew round"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-white" style="margin-top:10px;margin-bottom: 104px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()" style="float: left;">
+                    {{ 'BACK' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-blue previous"  style="float: right;" ng-show="create" ng-click="add()">
+                    {{ 'SAVE' | translate }}
+                </button>
+
+                <button type=" button" class="btn btn-blue previous" style="float: right;" ng-show="update" ng-click="add()">
+                    {{ 'UPDATE' | translate }}
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<rest-time-popup on-show='itemModels.onShow' config='itemModels.config' invokes='itemModels.invokes'
+    delegates='itemModels.delegates'>
+</rest-time-popup>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

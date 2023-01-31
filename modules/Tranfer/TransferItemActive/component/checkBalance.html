@@ -1,0 +1,99 @@
+<header class="page-header">
+    <h2> Check Balance</h2>
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>Check Balance</h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Check Balance</span></li>
+                <!-- <li><span>Basic</span></li> -->
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="row" ng-show="chkBalance">
+
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-xs-3">
+                <span>รหัสสินค้า</span>
+            </div>
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <input type="text" class="form-control" placeholder="Scan Barcode Product">
+            </div>
+        </div>
+        <div class="col-xs-12" style="margin-top:20px;"></div>
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-xs-3">
+                <span>ชื่อสินค้า</span>
+            </div>
+            <div class="col-lg-9 col-md-9 col-xs-9">
+                <input type="text" class="form-control" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-shadow" style="margin-top:15px;margin-left:15px;margin-right:15px;">
+        <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+            <table class="table table-striped table-width-100 table-bordeered">
+                <thead>
+                    <tr>
+                        <th ng-click="config.sortTable= !config.sortTable">LPN</th>
+                        <th ng-click="config.sortTable= !config.sortTable">ProductID</th>
+                        <th ng-click="config.sortTable= !config.sortTable">ProductName</th>
+                        <th ng-click="config.sortTable= !config.sortTable">QTY</th>
+                        <th ng-click="config.sortTable= !config.sortTable">UOM</th>
+                        <th ng-click="config.sortTable= !config.sortTable">Location</th>
+                        <th ng-click="config.sortTable= !config.sortTable">Status(Grade)</th>
+                        <th ng-click="config.sortTable= !config.sortTable">Expire Date</th>
+                        <th ng-click="config.sortTable= !config.sortTable">UDF1</th>
+                        <th ng-click="config.sortTable= !config.sortTable">UDF2</th>
+                        <th ng-click="config.sortTable= !config.sortTable">UDF3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in $vm.searchResultModel" ng-if="$vm.searchResultModel.length != 0">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr ng-if="$vm.searchResultModel.length == 0">
+                        <td colspan="11" class="text-center">No Data</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-8 col-md-8 col-xs-6 text-right">
+            <span>จำนวนรวม</span>
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-3">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-3">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="text-right padding-m">
+            <button class="btn btn-filter hidden-xs">Back</button>
+            <button class="btn btn-filter btn-block btn-md visible-xs mt-lg">Back</button>
+        </div>
+    </div>
+</div>

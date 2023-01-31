@@ -1,0 +1,21 @@
+﻿.modal-backdrop {
+    z-index: 1032;
+}
+
+.dropdown-menu + .ng-pristine .btn,.div-datepicker .btn-default,.div-datepicker .btn:focus {
+     background-color:#ffffff !important;
+    border-color: #ffffff !important;
+    color:#000000 !important;
+}
+
+.div-datepicker .btn-default:focus {
+     background-color:#f0dfdf !important;
+    border-color: #ffffff !important;
+    color:#000000 !important;
+}
+.div-datepicker .btn-info.active {
+     background-color:#ebe3e3 !important;
+    border-color: #ebe3e3 !important;
+    color:#ff0000 !important;
+}
+

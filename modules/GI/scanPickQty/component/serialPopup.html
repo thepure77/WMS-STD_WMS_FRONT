@@ -1,0 +1,66 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow">
+    <div class="modal-dialog" style="overflow:auto;width:100%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal"></a>
+                    </div>
+                    <h2 class="panel-title">{{ 'REMARK' | translate }}</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+                <div class="form-group" ng-if="!fullserial">
+                    <div class="form-group">
+                        <div class="col-lg-1 col-md-2 col-xs-12 kw-p-zero"></div>
+                        <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                            <span>{{ 'Tagout' | translate }}</span>
+                        </div>
+                        <div class="col-lg-7 col-md-4 col-xs-12 kw-p-zero">
+                            <input class="form-control" ng-model="detail.tagOut_No"  ks-enter="next()" />
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                            <span>{{ 'Serial' | translate }}</span>
+                        </div>
+                        <div class="col-lg-7 col-md-4 col-xs-12 kw-p-zero">
+                            <input class="form-control" ng-model="detail.insertSerial"  ks-enter="addsItem()" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div ng-repeat="data in list" style="margin-top:10px;">
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding-left: 0px; padding-right: 0px; ">
+                            <div class="col-lg-6 col-md-6 col-xs-12" style="padding-left: 0px; padding-right: 0px; ">
+                                
+                                <!-- <div class="col-lg-7 col-md-4 col-xs-12"
+                                    style="text-align: center; padding-left: 0px;padding-right: 0px;">
+                                    <input type="text" class="form-control" ng-model="data.insertSerial" disabled />
+                                </div> -->
+                                
+                                <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                                    <span>{{ 'Tagout && Serial' | translate }}</span>
+                                </div>
+                                <div class="col-lg-7 col-md-4 col-xs-12 kw-p-zero">
+                                    <input class="form-control" ng-model="data.tagOut_No" disabled/>
+                                </div>
+                                <div class="col-lg-7 col-md-4 col-xs-12 kw-p-zero">
+                                    <input class="form-control" ng-model="data.insertSerial" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'CLOSE' | translate }}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="!fullserial"
+                        ng-click="saveserial()">{{ 'SAVE' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

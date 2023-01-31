@@ -1,0 +1,370 @@
+<div class="row">
+    <div class="div-shadow">
+        <!-- <div class="text-right padding-m">
+            <button ng-click="$vm.triggerCreate()" class="btn btn-success hidden-xs">
+                <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> Create</button>
+            <button ng-click="$vm.triggerCreate()" class="btn btn-success btn-block btn-md visible-xs mt-lg">
+                <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> Create</button>
+        </div> -->
+
+        <header class="panel-heading">
+            <div class="text-right ">
+                <button ng-click="$vm.triggerCreate()" class="btn btn-success hidden-xs">
+                    <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> Create</button>
+                <button ng-click="$vm.triggerCreate()" class="btn btn-success btn-block btn-md visible-xs mt-lg">
+                    <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i> Create</button>
+                <button ng-click="hide()" class="btn btn-light hidden-xs">
+                    <i class="glyphicon glyphicon-chevron-down" aria-hidden="true"></i>
+                </button>
+                <button ng-click="hide()" class="btn btn-light btn-block btn-md visible-xs mt-lg">
+                    <i class="glyphicon glyphicon-chevron-down" aria-hidden="true"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="panel-body" style="display: block;" ng-show='header.Search'>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Tranfer No.</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Plan Tranfer No.</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.planGoodsIssueNo" value="filterModel.planGoodsIssueIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupPlanGi.onClick()' class="btn btn-filter" type="button">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Owner</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.ownerName" value="filterModel.ownerIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupOwner.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>ShipTo</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.shipToName" value="filterModel.shipToIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupShipTo.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>GI Date Form</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <dir-date-picker ng-model="filterModel.goodsIssueDate"></dir-date-picker>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>GI Date TO</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <dir-date-picker ng-model="filterModel.goodsIssueDateTo"></dir-date-picker>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Pick Ticket</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.pickingStatus" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Product</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.productName" value="filterModel.productIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupProduct.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>GI Type</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.documentTypeName" value="filterModel.documentTypeIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupDocumentType.onClick()' class="btn btn-filter" type="button" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>GI Status</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.documentStatus">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Route</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.routeName" value="filterModel.routeIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupRoute.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Round</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.roundName" value="filterModel.roundIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupRound.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>From Warehouse</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.warehouseName" value="filterModel.warehouseIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupWarehouse.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>To Warehouse</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.warehouseToName" value="filterModel.warehouseToIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupWarehouseTo.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Zone</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.zoneName" value="filterModel.zoneIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupZone.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Wave By</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Reference 1</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Reference 2</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>Reference 3</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>UDF 1</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>UDF 2</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <div class="col-lg-8 col-md-3 col-xs-12">
+                            <span>UDF 3</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-right padding-m">
+                <button class="btn btn-success hidden-xs">Clear</button>
+                <button class="btn btn-success btn-block btn-md visible-xs mt-lg">Clear</button>
+                <button ng-click="filterSearch()" class="btn btn-filter hidden-xs">
+                    <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                <button ng-click="filterSearch()" class="btn btn-filter btn-block btn-md visible-xs mt-lg">
+                    <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            </div>
+            <div class="form-group ">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <span>Sort By</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <select ng-click="selectFormatDoc3()" ng-model="actionFormatDoc3" class="form-control" ng-init="actionFormatDoc3 = '0' ">
+                                <option value="0">Select One</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-xs-12">
+                            <select ng-click="selectFormatDoc3()" ng-model="actionFormatDoc3" class="form-control" ng-init="actionFormatDoc3 = '0' ">
+                                <option value="0">ASC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes' delegates='popupOwner.delegates'>
+</owner-popup>
+<product-popup on-show='popupProduct.onShow' config='popupProduct.config' invokes='popupProduct.invokes' delegates='popupProduct.delegates'>
+</product-popup>
+<ship-to-popup on-show='popupShipTo.onShow' config='popupShipTo.config' invokes='popupShipTo.invokes' delegates='popupShipTo.delegates'>
+</ship-to-popup>
+<warehouse-popup on-show='popupWarehouse.onShow' config='popupWarehouse.config' invokes='popupWarehouse.invokes' delegates='popupWarehouse.delegates'>
+</warehouse-popup>
+<warehouse-to-popup on-show='popupWarehouseTo.onShow' config='popupWarehouseTo.config' invokes='popupWarehouseTo.invokes'
+    delegates='popupWarehouseTo.delegates'>
+</warehouse-to-popup>
+<zone-popup on-show='popupZone.onShow' config='popupZone.config' invokes='popupZone.invokes' delegates='popupZone.delegates'>
+</zone-popup>
+<round-popup on-show='popupRound.onShow' config='popupRound.config' invokes='popupRound.invokes' delegates='popupRound.delegates'>
+</round-popup>
+<route-popup on-show='popupRoute.onShow' config='popupRoute.config' invokes='popupRoute.invokes' delegates='popupRoute.delegates'>
+</route-popup>
+<plan-gi-popup on-show='popupPlanGi.onShow' config='popupPlanGi.config' invokes='popupPlanGi.invokes' delegates='popupPlanGi.delegates'>
+</plan-gi-popup>
+<document-type-popup on-show='popupDocumentType.onShow' config='popupDocumentType.config' invokes='popupDocumentType.invokes'
+    delegates='popupDocumentType.delegates'>
+</document-type-popup>

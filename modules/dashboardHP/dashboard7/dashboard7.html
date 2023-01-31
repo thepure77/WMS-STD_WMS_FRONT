@@ -1,0 +1,34 @@
+<table  style="border: solid 1px #CCCCCC;">
+    <tr>
+        <td>
+            <div class="col-md-12 text-center" style="margin-top: 10px;margin-left: -10px;">
+                <div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <canvas id="id7"></canvas>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<table class="table table-striped" style="margin-top: 10px;min-width: 100% !important">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="text-center" ng-repeat="data in H  track by $index">{{ data }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center"> {{ 'INBOUND' | translate }} / (DN)</td>
+            <td class="text-center" ng-repeat="di in items.inbound  track by $index"> {{di}}</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td class="text-center"> {{ 'OUTBOUND' | translate }} / (PO)</td>
+            <td class="text-center" ng-repeat="du in items.outbound  track by $index">{{ du }}</td>
+        </tr>
+    </tbody>
+</table>

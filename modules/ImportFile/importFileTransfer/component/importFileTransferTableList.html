@@ -1,0 +1,230 @@
+<!-- PC -->
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter" style="margin-bottom:15px; margin-top: 20px;">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#table1" data-toggle="tab" style="color:black;background-color:{{colortable1}}" ng-click="selectedTabTable(1)">Complete</a>
+        </li>
+        <li class="active">
+            <a data-target="#table2" data-toggle="tab" style="color:black;background-color:{{colortable2}}" ng-click="selectedTabTable(2)">Log Failed</a>
+        </li>
+        <button class="btn btn-success" ng-click="exportLog()" style="float: right;background-color: #60b0ff">
+            <!-- <i class="glyphicon glyphicon-open" aria-hidden="true"></i>  -->
+            Export Log Failed</button>
+    </ul>
+    <!-- <div class="table-overflow">
+        <table id="table1" class="table table-striped fixed-header tableHeight-350" ng-if="selectedTable == 1">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};max-width: {{column.width}};width: {{column.width}};">
+                        {{column.name}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchResultModel">
+                    <td ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};max-width: {{column.width}};width: {{column.width}};">
+                        <span style="overflow: hidden;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;" uib-tooltip="{{data[column.field]}}">
+                            {{data[column.field]}}
+                        </span>
+                    </td>
+                </tr>
+                <tr ng-if="$vm.searchResultModel.length == 0">
+                    <td colspan="10" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="table2" class="table table-striped fixed-header tableHeight-350" ng-if="selectedTable == 2">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};max-width: {{column.width}};width: {{column.width}};">
+                        {{column.name}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.invalidResultModel">
+                    <td ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};
+                    max-width: {{column.width}};
+                    width: {{column.width}};
+                    background-color: {{getColor(data.error,column.field)}};">
+                        <span style="overflow: hidden;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;" uib-tooltip="{{data[column.field]}}">
+                            {{data[column.field]}}
+                        </span>
+                    </td>
+                </tr>
+                <tr ng-if="$vm.invalidResultModel.length == 0">
+                    <td colspan="10" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+
+    <div class="table-overflow">
+        <table id="table1" class="table table-striped table-fixed tab-pane active" ng-if="selectedTable == 1">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <!-- <th class="k100 text-center">{{ 'ROW_NUMBER' | translate }}</th> -->
+                    <th class="k150 text-center">{{ 'เลขที่พาเลท' | translate }}</th>
+                    <th class="k150 text-center">{{ 'Location ปลายทาง' | translate }}</th>
+                    <th class="k100 text-center">{{ 'Location ต้นทาง' | translate }} 1</th>
+                    <th class="k150 text-center">{{ 'SKU' | translate }} 2</th>
+                    <th class="k150 text-center">{{ 'ชื่อ SKU' | translate }}</th>
+                    <th class="k150 text-center">{{ 'จำนวน' | translate }}</th>
+                    <th class="k150 text-center">{{ 'หน่วย' | translate }}</th>
+                    <th class="k150 text-center">{{ 'Lot/Batch' | translate }}</th>
+                    <th class="k150 text-center">{{ 'Sloc' | translate }}</th>
+                    <th class="k100 text-center">{{ 'สถานะสินค้า' | translate }}</th>
+                    <th class="k150 text-center">{{ 'วันผลิต' | translate }}</th>
+                    <th class="k150 text-center">{{ 'วันหมดอายุ' | translate }}</th>
+                    <th class="k150 text-center">{{ 'เลขที่ GR' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchResultModel">
+                    <!-- <td class="k100">{{data.row}}</td> -->
+                    <td class="k150 text-center">{{ data.c0 }}</td>
+                    <td class="k150 text-center">{{ data.c1 }}</td>
+                    <td class="k100 text-center">{{ data.c2 }}</td>
+                    <td class="k150 text-center">{{ data.c3 }}</td>
+                    <td class="k150 text-center">{{ data.c4 }}</td>
+                    <td class="k150 text-center">{{ data.c5 }}</td>
+                    <td class="k150 text-center">{{ data.c6 }}</td>
+                    <td class="k150 text-center">{{ data.c7 }}</td>
+                    <td class="k150 text-center">{{ data.c8 }}</td>
+                    <td class="k100 text-center">{{ data.c9 }}</td>
+                    <td class="k150 text-center">{{ data.c10 }}</td>
+                    <td class="k150 text-center">{{ data.c11 }}</td>
+                    <td class="k100 text-center">{{ data.c12 }}</td>
+                    <td class="k150 text-center">{{ data.c13 }}</td>
+                    <td class="k150 text-center">{{ data.c14 }}</td>
+                    <td class="k150 text-center">{{ data.c15 }}</td>
+                    <td class="k150 text-center">{{ data.c16 }}</td>
+                    <td class="k150 text-center">{{ data.c17 }}</td>
+                    <td class="k150 text-center">{{ data.c18 }}</td>
+                    <td class="k100 text-center">{{ data.c19 }}</td>
+                    <td class="k150 text-center">{{ data.c20 }}</td>
+                    <td class="k150 text-center">{{ data.c21 }}</td>
+                    <td class="k100 text-center">{{ data.c22 }}</td>
+                    <td class="k150 text-center">{{ data.c23 }}</td>
+                    <td class="k150 text-center">{{ data.c24 }}</td>
+                    <td class="k150 text-center">{{ data.c25 }}</td>
+                    <td class="k150 text-center">{{ data.c26 }}</td>
+                </tr>
+                <tr ng-if="$vm.searchResultModel.length == 0">
+                    <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="table2" class="table table-striped table-fixed tab-pane active" ng-if="selectedTable == 2">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <!-- <th class="k100">{{ 'NO' | translate }}</th> -->
+                    <th class="k150 text-center">{{ 'เลขที่พาเลท' | translate }}</th>
+                    <th class="k150 text-center">{{ 'Location ปลายทาง' | translate }}</th>
+                    <th class="k100 text-center">{{ 'Location ต้นทาง' | translate }} 1</th>
+                    <th class="k150 text-center">{{ 'SKU' | translate }} 2</th>
+                    <th class="k150 text-center">{{ 'ชื่อ SKU' | translate }}</th>
+                    <th class="k150 text-center">{{ 'จำนวน' | translate }}</th>
+                    <th class="k150 text-center">{{ 'หน่วย' | translate }}</th>
+                    <th class="k150 text-center">{{ 'Lot/Batch' | translate }}</th>
+                    <th class="k150 text-center">{{ 'Sloc' | translate }}</th>
+                    <th class="k100 text-center">{{ 'สถานะสินค้า' | translate }}</th>
+                    <th class="k150 text-center">{{ 'วันผลิต' | translate }}</th>
+                    <th class="k150 text-center">{{ 'วันหมดอายุ' | translate }}</th>
+                    <th class="k150 text-center">{{ 'เลขที่ GR' | translate }}</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.invalidResultModel">
+                    <!-- <td class="k100">{{data.row}}</td> -->
+                    <td class="k150 text-center" style="color:black;background-color:#DB6147">{{ data.c0 }}</td>
+                    <td class="k150 text-center">{{ data.c1 }}</td>
+                    <td class="k100 text-center">{{ data.c2 }}</td>
+                    <td class="k150 text-center">{{ data.c3 }}</td>
+                    <td class="k150 text-center">{{ data.c4 }}</td>
+                    <td class="k150 text-center">{{ data.c5 }}</td>
+                    <td class="k150 text-center">{{ data.c6 }}</td>
+                    <td class="k150 text-center">{{ data.c7 }}</td>
+                    <td class="k150 text-center">{{ data.c8 }}</td>
+                    <td class="k100 text-center">{{ data.c9 }}</td>
+                    <td class="k150 text-center">{{ data.c10 }}</td>
+                    <td class="k150 text-center">{{ data.c11 }}</td>
+                    <td class="k100 text-center">{{ data.c12 }}</td>
+                    <td class="k150 text-center">{{ data.c13 }}</td>
+                    <td class="k150 text-center">{{ data.c14 }}</td>
+                    <td class="k150 text-center">{{ data.c15 }}</td>
+                    <td class="k150 text-center">{{ data.c16 }}</td>
+                    <td class="k150 text-center">{{ data.c17 }}</td>
+                    <td class="k150 text-center">{{ data.c18 }}</td>
+                    <td class="k100 text-center">{{ data.c19 }}</td>
+                    <td class="k150 text-center">{{ data.c20 }}</td>
+                    <td class="k150 text-center">{{ data.c21 }}</td>
+                    <td class="k100 text-center">{{ data.c22 }}</td>
+                    <td class="k150 text-center">{{ data.c23 }}</td>
+                    <td class="k150 text-center">{{ data.c24 }}</td>
+                    <td class="k150 text-center">{{ data.c25 }}</td>
+                    <td class="k150 text-center">{{ data.c26 }}</td>
+                </tr>
+                <tr ng-if="$vm.invalidResultModel.length == 0">
+                    <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div ng-if="selectedTable == 1" id="table1" class=" table-responsive table-overflow tab-pane active" ng-show="$vm.isFilter"
+        style="margin-bottom:15px;">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                    <button type="button " style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)" class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                    </button>
+                </div>
+                <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination total-items="$vm.filterModel.totalRow"
+                    ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage"
+                    max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="selectedTable == 2" id="table1" class=" table-responsive table-overflow tab-pane active" ng-show="$vm.isFilter"
+        style="margin-bottom:15px;">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                    <button type="button " style="background-color:{{colortab3}}" ng-click="changeTableSize2(50,1)" class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab3}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSize2(100,2)" style="background-color:{{colortab4}}" class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab4}}">100</span>
+                    </button>
+                </div>
+                <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow2"
+                    ng-change='changePage2()' items-per-page="$vm.filterModel.perPage2" num-pages="$vm.filterModel.num2" ng-model="$vm.filterModel.currentPage2"
+                    max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+    <!-- <button type="button" class="btn btn-step-back" ng-click="back()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+    </button> -->
+    <button type="button" class="btn btn-blue previous" ng-click="save()" style="float: right;background-color: #60b0ff">
+        {{ 'SAVE' | translate }}
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-danger " ng-click="cancel()" style="float: right;margin-right: 5px;">
+        {{ 'CANCEL' | translate }}
+    </button>
+</div>

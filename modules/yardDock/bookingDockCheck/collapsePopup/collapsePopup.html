@@ -1,0 +1,107 @@
+<div class="col-sm-12 col-xs-12 visible-xs  visible-sm kw-p-zero" ng-show="$vm.isShow">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <!-- <th class="col-sm-12  col-xs-12  ">
+                </th> -->
+            </thead>
+            <tbody>
+                <!-- <tr class="color-click">
+                    <th ng-repeat="header in tblHeader" ng-show="header.show" class="{{header.class}}">
+                        {{header.name}}
+                    </th>
+                </tr> -->
+                <tr style="margin-bottom:10px;">
+                    <td class="col-sm-12  col-xs-12 ">
+                        <div class="col-sm-4 col-xs-4" style="padding-right:0px;">
+                            {{ 'DOCUMENT_NO' | translate }} :
+                        </div>
+                        <div class="col-sm-4 col-xs-8" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{filterModel.ref_Document_No}}</h5>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="margin-bottom:10px;">
+                    <td class="col-sm-12  col-xs-12 ">
+                        <div class="col-sm-4 col-xs-4" style="padding-right:0px;">
+                            {{ 'ACTIVITY' | translate }} :
+                        </div>
+                        <div class="col-sm-4 col-xs-8" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{filterModel.documentType_Name}}</h5>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="margin-bottom:10px;">
+                    <td class="col-sm-12  col-xs-12 ">
+                        <div class="col-sm-4 col-xs-4" style="padding-right:0px;">
+                            {{ 'WAREHOUSE' | translate }} :
+                        </div>
+                        <div class="col-sm-4 col-xs-8" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{filterModel.wareHouse_Name}}</h5>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="margin-bottom:10px;">
+                    <td class="col-sm-12  col-xs-12 ">
+                        <div class="col-sm-4 col-xs-4" style="padding-right:0px;">
+                            {{ 'LIST_DOCK' | translate }} :
+                        </div>
+                        <div class="col-sm-4 col-xs-8" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{filterModel.dock_Name}}</h5>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="margin-bottom:10px;">
+                    <td class="col-sm-12  col-xs-12 ">
+                        <div class="col-sm-4 col-xs-4" style="padding-right:0px;">
+                            {{ 'DOC_DN_NO' | translate }} :
+                        </div>
+                        <div class="col-sm-4 col-xs-8" style="padding-right:0px;margin:0px;">
+                            <h5 style="margin:0px;">{{filterModel.ref_Document_No}}</h5>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-12  col-xs-12 ">
+                        <div class="col-sm-4 col-xs-1" style="padding-right:0px;">
+                        </div>
+                        <div class="col-sm-4 col-xs-9" style="padding-right:0px;margin:0px;">
+                            <div class="text-center" style="margin:0px">
+                                <button class="btn btn-danger" ng-click="checkout(filterModel, 'checkedout')" data-toggle="tooltip" title="Checked out">
+                                    <label style="padding-left: 5px;">{{ 'CHECKOUT' | translate }}</label>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+            <!-- <tbody ng-repeat="data in $vm.containnerDesc track by $index">
+                <tr>
+                    <td ng-repeat="item in tblHeader track by $index" ng-if="item.show">
+                        <div ng-if="item.type == 'text'" class="item.class">
+                            {{data[item.field]}}
+                        </div>
+
+                        <div ng-if="item.type == 'date'" class="item.class">
+                            {{data[item.field]|dateFormate}}
+                        </div>                             
+                    </td>
+                </tr>
+                
+            </tbody> -->
+            <tbody ng-if="$vm.containnerDesc.length<1">
+                <tr>
+                    <td colspan="3" class="text-center">{{ 'L_DATA_NOT_FOUND' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    .color-click {
+        background-color: #00FFFF !important;
+    }
+</style>
+
+<booking-dock-check-form on-show="onShow" ng-hide="$vm.isShow"></booking-dock-check-form>

@@ -1,0 +1,21 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto;width:40%;">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="onClose()">&times;</button>
+            <h4 class="blue bigger">{{ 'LOG_FILE' | translate }}</h4>
+        </div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        {{dataset}}
+                        <!-- <pre></pre> -->
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

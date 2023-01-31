@@ -1,0 +1,37 @@
+<div class="col-md-12 kw-mg-tb" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="">
+            <div class="col-md-4 col-xs-6 padd">
+                <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.userGroupZone"
+                    api="url.Master"></auto-comple>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-4 col-xs-6 padd">
+            </div>
+        </div>
+
+        <div class="">
+            <div class="col-md-4 p-zero">
+                <div class="col-md-3 padd"></div>
+                <div class="col-md-3 padd"></div>
+
+                <div class="col-md-5 padd">
+                        <button ng-click="searchFilter(filterModel)" class="btn kw-button-search"> <span class="kw-icon-button icon-magnify" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+                </div>
+                <div class="col-md-1 col-xs-2 padd">
+                    <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()"> <i class="kw-icon-button icon-add_24px_outlined" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+

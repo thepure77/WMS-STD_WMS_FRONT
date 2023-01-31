@@ -1,0 +1,47 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "Kasco IT used AngularJS default package liberties",
+  "main": "app.js",
+  "dependencies": {
+    "@auth0/angular-jwt": "^5.0.1",
+    "@uirouter/angularjs": "0.2.15",
+    "angular": "1.5.7",
+    "angular-animate": "1.4.7",
+    "angular-aria": "1.4.7",
+    "angular-chart.js": "1.0.3",
+    "angular-filter": "0.5.17",
+    "angular-fixed-table-header": "^0.2.1",
+    "angular-jwt": "^0.1.11",
+    "angular-local-storage": "~0.2.4",
+    "angular-mocks": "1.5.8",
+    "angular-moment": "1.3.0",
+    "angular-touch": "^1.5.7",
+    "angular-translate": "2.12.0",
+    "angular-ui-bootstrap": "2.5.6",
+    "angular-ui-calendar": "1.0.2",
+    "bootstrap": "3.3.7",
+    "chart.js": "2.4.0",
+    "jquery": "^3.4.1",
+    "karma": "3.1.3",
+    "moment": "2.22.2",
+    "npm": "^6.13.1",
+    "npm-reinstall": "^1.2.1",
+    "phaser": "^3.23.0"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "2.2.0",
+    "karma-firefox-launcher": "1.1.0",
+    "karma-jasmine": "2.0.1"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://dev@kascoit.ddns.net/scm/ctop/central-top-masterdatafront.git"
+  },
+  "author": "kascoIT",
+  "license": "ISC"
+}

@@ -1,0 +1,130 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-2 control-label kw-p-zero">{{ 'EQUIPMENT_STATUS' | translate }}</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+        </header>
+
+    </section>
+
+    <div>
+        <div class="col-lg-5 col-md-5 col-xs-12 ">
+            <h2 class="panel-title">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-12 control-label kw-p-zero">{{ 'EQUIPMENT' | translate }} Enable</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+            
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-xs-12" style=" height: 100%; overflow: auto;background-color: white;">
+            
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-xs-12 ">
+            <h2 class="panel-title">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-12 control-label kw-p-zero">{{ 'EQUIPMENT' | translate }} Disable</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+            
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12 table-responsive table-overflow " style="margin-top: 10px; padding: 0; height: 450px;
+                background-color: white;display: inline-table;">
+
+        <div class="col-lg-5 col-md-5 col-xs-12 table-responsive table-overflow  div-shadow"
+            style=" height: 100%; overflow: auto; padding: 0;">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                        <th class="k150 text-center" style="text-align: center;">{{ 'Crane' | translate }}</th>
+                        <th class="k200 text-center" style="text-align: center;">{{ 'location Aisle' | translate }}</th>
+                        <th class="k200 text-center" style="text-align: center;">{{ 'USER_UPDATE' | translate }}</th>
+                        <th class="k200 text-center" style="text-align: center;">{{ 'UPDATE_DATE' | translate }}</th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in filterModellist.crane_enable" ng-click="selectEnable(data, $index)" style="background-color: {{chkIsuse(data)}}">
+
+                        <td class="k50 text-center">{{$index+1}}</td>
+                        <td class="k150 text-center"> {{data.equipment_Name}}</td>
+                        <td class="k200 text-center"> {{data.locationAisle_Name}}</td>
+                        <td class="k200"> {{data.update_By}}</td>
+                        <td class="k200"> {{data.update_Date}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-xs-12" style=" height: 100%; overflow: auto;background-color: white;">
+            
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-xs-12 table-responsive table-overflow  div-shadow"
+            style=" height: 100%; overflow: auto; padding: 0;">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                        <th class="k150 text-center" style="text-align: center;">{{ 'Crane' | translate }}</th>
+                        <th class="k200 text-center" style="text-align: center;">{{ 'location Aisle' | translate }}</th>
+                        <th class="k200 text-center" style="text-align: center;">{{ 'USER_UPDATE' | translate }}</th>
+                        <th class="k200 text-center" style="text-align: center;">{{ 'UPDATE_DATE' | translate }}</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in filterModellist.crane_disable" ng-click="selectDisable(data, $index)" style="background-color: {{chkIsuse(data)}}">
+
+                        <td class="k50 text-center">{{$index+1}}</td>
+                        <td class="k150 text-center"> {{data.equipment_Name}}</td>
+                        <td class="k200 text-center"> {{data.locationAisle_Name}}</td>
+                        <td class="k200"> {{data.update_By}}</td>
+                        <td class="k200"> {{data.update_Date}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="float: right;">
+            <div class="col-lg-12 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;" >
+                <button"  ng-click="updatestautsCrane(filterModellist.checkWaveDipbyWavemodel)" 
+                    class="btn btn-primary ">{{ 'Update Crane' | translate }}</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:0px;word-break: break-all;">
+    <!-- <div class="table" style="overflow: auto"> -->
+    <table class="kw-custom-table table-striped table-fixed">
+        <thead>
+            <tr class="table-info-wing">
+                <th class="text-center k150">Action</th>
+                <th class="text-center k50">#</th>
+                <th class="text-center tr100">{{ 'CRANE' | translate}}</th>
+                <th class="text-center tr100">{{ 'SKU' | translate}}</th>
+                <th class="text-center tr100">{{ 'LASTRUN' | translate}}</th>
+                <th class="text-center tr100">{{ 'STATUS' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel ">
+                <td class="k150 actions">
+                    <div class="text-center" style="margin:0px">
+                        <!-- <button class="kw-circle" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
+                            data-placement="bottom">
+                            <i class="kw-icon-red icomoon icon-create_24px_outlined" aria-hidden="true"></i>
+                        </button>
+                        <button class="kw-circle" ng-click="delete(data)" data-toggle="tooltip" title="Delete"
+                            data-placement="bottom">
+                            <i class="kw-icon-trash icomoon glyphicon glyphicon-trash" aria-hidden="true"></i>
+                        </button> -->
+                        <button class="btn btn-success" ng-click="genDynamicSlotting(data)">{{ 'GEN' | translate }}</button>
+                        <button class="btn btn-primary" ng-click="deleteDynamicSlotting(data)">{{ 'DELETE' | translate }}</button>
+                    </div>
+                    
+                </td>
+                <td class="text-center k50">{{$index+1}}</td>
+                <td class="text-center k100">{{data.crane_Name}} </td>
+                <td class="text-center k100">{{data.product_Id}}+{{data.product_Name}}</td>
+                <td class="text-center k100">{{data.last_Trigger_Date}} </td>
+                <td class="text-center k100">{{data.isActive}} </td>
+ 
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:0px;">
+    <div class="col-lg-12" style="padding: 12px 0;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" ng-init="colortab2 = '#FFF'" style="color:{{colortab2}};">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination
+                total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="maxSize"
+                class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+<tranfer-dynamic-slotting-form on-show="onShow" ng-hide="$vm.isFilter"></tranfer-dynamic-slotting-form>

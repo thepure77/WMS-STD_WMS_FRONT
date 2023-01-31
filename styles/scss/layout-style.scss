@@ -1,0 +1,235 @@
+body {
+    background-color: rgb(252, 252, 252) !important;
+}
+
+.div-shadow {
+    border: solid 1px #eee;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.txt-form {
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.form-right {
+    float: right;
+}
+
+.form-left {
+    float: left;
+}
+
+.newline {
+    display: block;
+    white-space: pre-line;
+}
+
+.form-inline {
+    display: inline;
+}
+
+.col-fixed-right {
+    position: absolute !important;
+    width: 150px;
+    right: 0;
+    background: #e0e0e0;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.form-topbox {
+    margin-top: 10px;
+    z-index: 1;
+}
+
+.form-textpanel {
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.input-margin {
+    margin-top: 10px;
+}
+
+.sidebar-list {
+    padding: 0 44px !important;
+    color: $dark-color !important;
+}
+
+.ng-scope {
+    padding-bottom: 5px;
+}
+
+.modal-header {
+    background-color: #337ab7 !important;
+    color: #ffffff !important;
+}
+
+.form-margin {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.radio-form {
+    margin-right: 15px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.sidebar-nav-dy {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #e0e0e0;
+}
+
+.sidebar-nav-dy li {
+    text-indent: 20px;
+    line-height: 40px;
+    border-bottom: 1px solid #e2e2e2;
+    font-size: 10pt;
+}
+
+.sidebar-nav-dy li a {
+    display: block;
+    text-decoration: none;
+    color: #3b4042;
+    font-weight: normal;
+    padding: 0px;
+}
+
+.sidebar-nav-dy li a:hover {
+    text-decoration: none;
+    color: #00aabd;
+    background: rgba(255, 255, 255, 1);
+}
+
+.sidebar-nav-dy li a:active,
+.sidebar-nav-dy li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav-dy>li>.active {
+    text-decoration: none;
+    color: white;
+    background: rgba(249, 114, 68, 1);
+    border: none;
+}
+
+.sidebar-nav-dy>.sidebar-brand {
+    height: 65px;
+    font-size: 10px;
+    line-height: 60px;
+}
+
+.sidebar-nav-dy li a:hover {
+    text-decoration: none;
+    color: white;
+    background: rgba(249, 114, 68, 1);
+}
+
+#sidebar-wrapper>ul>li.sidebar-brand {
+    height: 34px;
+}
+
+.sidebar-nav-dy>.sidebar-brand a {
+    color: #00aabd;
+    background: #3b4042;
+}
+
+.sidebar-nav-dy>.sidebar-brand a:hover {
+    color: #00aabd;
+    background: #3b4042;
+}
+
+.container-margin {
+    margin: 15px 0;
+    padding: 15px;
+}
+
+.header-margin {
+    margin: 15px 0 8px 0;
+}
+
+.header-padding {
+    padding: 15px 0 8px 0;
+}
+
+.kl-page-layout {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.bottom-margin {
+    margin-bottom: 40px;
+}
+
+    .funnel{
+        position: relative;
+        width: 100%;
+    }
+        .funnel .body{
+            /*background: url('../../img/funnel/img100.png') top content no-repeat;*/
+            width: 104px;
+            height: 149px;
+            display: inline-block;
+            margin-bottom: 10px;
+            &.p-100{ background-image: url(../../img/funnel/img100.png) !important; }
+            &.p-95{ background-image: url(../../img/funnel/img95.png) !important;   }
+            &.p-90{ background-image: url(../../img/funnel/img90.png) !important;   }
+            &.p-85{ background-image: url(../../img/funnel/img85.png) !important;   }
+            &.p-80{ background-image: url(../../img/funnel/img80.png) !important;   }
+            &.p-75{ background-image: url(../../img/funnel/img75.png) !important;   }
+            &.p-70{ background-image: url(../../img/funnel/img70.png) !important;   }
+            &.p-65{ background-image: url(../../img/funnel/img65.png) !important;   }
+            &.p-60{ background-image: url(../../img/funnel/img60.png) !important;   }
+            &.p-55{ background-image: url(../../img/funnel/img55.png) !important;   }
+            &.p-50{ background-image: url(../../img/funnel/img50.png) !important;   }
+            &.p-45{ background-image: url(../../img/funnel/img45.png) !important;   }
+            &.p-40{ background-image: url(../../img/funnel/img40.png) !important;   }
+            &.p-35{ background-image: url(../../img/funnel/img35.png) !important;   }
+            &.p-30{ background-image: url(../../img/funnel/img30.png) !important;   }
+            &.p-25{ background-image: url(../../img/funnel/img25.png) !important;   }
+            &.p-20{ background-image: url(../../img/funnel/img20.png) !important;   }
+            &.p-15{ background-image: url(../../img/funnel/img15.png) !important;   }
+            &.p-10{ background-image: url(../../img/funnel/img10.png) !important;   }
+            &.p-5{ background-image: url(../../img/funnel/img5.png) !important;   }
+            &.p-0{ background-image: url(../../img/funnel/img0.png) !important;   }
+        }
+        .funnel .footer{
+            position: absolute;
+            bottom: 5px;
+            left: 50px;
+            margin-left: -5px;
+            padding: 7px;
+            background-color: green;
+        }
+        .funnel div.red{
+             background-color: #af0707;
+        }
+
+        

@@ -1,0 +1,16 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="width:80%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'REPORTVIEW' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-filter" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

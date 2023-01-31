@@ -1,0 +1,32 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-10  page-header-left">
+        <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'OUTBOUND' | translate }} </h2>
+            <div class="navigationLabel">
+                <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+                {{ 'SHORTSHIP' | translate }}</div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-2 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+
+<div class="tabs">
+    <div class="panel-body">
+        <div style="margin-bottom:15px;">
+            <short-ship-filter filter-model="filterModel" search-data-row="searchDataRow" search-result-model="searchResultModel" trigger-search="callSearch"
+                trigger-create="create" ng-show="isFilter">
+            </short-ship-filter>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <short-ship-table-list filter-model="filterModel" search-data-row="searchDataRow" search-result-model="searchResultModel" trigger-search="callSearch"
+                trigger-create="create" is-filter="isFilter">
+            </short-ship-table-list>
+        </div>
+    </div>
+</div>

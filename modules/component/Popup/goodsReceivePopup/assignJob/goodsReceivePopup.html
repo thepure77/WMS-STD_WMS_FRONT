@@ -1,0 +1,39 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto;width:35%;">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="onClose()">&times;</button>
+            <h4 class="blue bigger">{{ 'GOODSRECEIVE_NO' | translate }}</h4>
+        </div>
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row" >
+                                <div class="col-lg-3">
+                                    <span>{{ 'GOODSRECEIVE_NO' | translate }}</span>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+                                    <div class="input-group" style="padding:0!important;">
+                                        <auto-comple ng-model="gr.goodsReceive_No" value="gr.goodsReceive_No" sourceurl="autoComplete.GoodsReceive_No"
+                                            api="url.GR"></auto-comple>
+                                        <span class="input-group-btn">
+                                            <button ng-click="find(gr.goodsReceive_No)" class="btn kw-button-search" type="button" type="button">
+                                                <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 10px;">
+                                <goods-receive-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></goods-receive-popup-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

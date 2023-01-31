@@ -1,0 +1,27 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'REASON_CODE' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <reason-code-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></reason-code-popup-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT BEGINS -->
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="btn btn-filter" ng-click="onClose()">Close</button> 
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

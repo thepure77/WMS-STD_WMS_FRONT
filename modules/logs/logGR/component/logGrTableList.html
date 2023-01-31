@@ -1,0 +1,78 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <!-- <th class="text-center k200">{{ 'ACTION' | translate }}</th> -->
+                <td class="text-center k50">No.</td>
+                <!-- <th class="k250">{{ 'ROW_NUMBER' | translate }}</th> -->
+                <td class="text-center k100">{{ 'Orders' | translate }}</td>
+                <td class="text-center k100">{{ 'WMS ID' | translate }} </td>
+                <td class="text-center k100">{{ 'IN OUT SAP' | translate }}</td>
+                <td class="text-center k50">{{ 'STATUS WMS' | translate }}</td>
+                <td class="text-center k50">{{ 'Type' | translate }} </td>
+                <td class="text-center k250">{{ 'MASSAGE' | translate }} </td>
+                <td class="text-center k100">{{ 'Mat Doc' | translate }} </td>
+                
+
+                <!-- <th class="text-center k100">{{ 'ROW_NUMBER' | translate }}</th>
+                    <th class="text-center k150">{{ 'ORDERS' | translate }}</th>
+                    <th class="text-center k150">{{ 'WMS_ID' | translate }}</th>
+                    <th class="text-center k150">{{ 'SENT_DATE' | translate }}</th>
+                    <th class="text-center k150">{{ 'RESPONSE_DATE' | translate }}</th>
+                    <th class="text-center k150">{{ 'STATUS_SENT_TO_SAP' | translate }}</th>
+                    <th class="text-center k300">{{ 'STATUS_RESPONSE_SAP' | translate }}</th> 
+                    <th class="text-center k150">{{ 'MASSAGE' | translate }}</th>
+                    <th class="text-center k150">{{ 'BILLING/MAT_DOC' | translate }}</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <!-- <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <a  ng-click="editItem(data)" data-toggle="tooltip" title="Edit">
+                            <span class="kw-size-icon-action glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a   ng-click="delete(data)" data-toggle="tooltip" title="Delete">
+                            <span class="kw-size-icon-action glyphicon glyphicon-trash"></span>
+                        </a>
+                    </div>
+                </td> -->
+                <td class="text-center k50">{{$index+1}}</td>
+                <!-- <td class="k250">{{data.rowIndex}}</td> -->
+                <td class="text-center k100">{{data.doc_LINKgr}}</td>
+                <td class="text-center k100">{{data.wms_IDgr}}</td>
+                <td class="text-center k100">{{data.createdDategr}}</td>
+                <td class="text-center k50">{{data.wms_ID_STATUSgr}}</td>
+                <td class="text-center k50">{{data.typegr}}</td>
+                <td class="text-center k250"style="text-align: left;">{{data.mESSAGEgr}}</td>
+                <td class="text-center k100">{{data.mat_Docgr}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- </div> -->
+</div>
+<div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination
+                total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="maxSize"
+                class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>

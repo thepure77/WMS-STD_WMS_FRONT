@@ -1,0 +1,134 @@
+<div id="modal-form" class="modal" dp-modal on-show="onShow" on-hide="onHide" data-toggle="modal" data-backdrop="static"
+    data-keyboard="false">
+    <div class="modal-dialog" style="overflow: visible;border: 1px solid;margin-top: 2%;width: 90%;">
+        <div class="modal-content">
+            <div class="row">
+                <button type="button" class="close" ng-click="onClose()" style="position: relative;left: -30px;top: 10px;">&times;</button>
+                <!-- <h4 class="blue bigger">{{ 'INFORMATION_RESERVE' | translate}}</h4> -->
+            </div>
+            <!--? Flagment 2 -->
+            <div class="modal-body" style="min-height: 600px;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-bot">
+                        <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                            <div class="col-lg-4 col-md-4 col-xs-4 kw-p-zero"
+                                style="border: 1px solid #777;height: 100px;">
+                                <div class="col-lg-5 col-md-5 col-xs-5  padd" style="margin-top: 10px;">
+                                    <span>{{ 'WAREHOUSE_BOOKING_YARD' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-xs-7  padd" style="margin-top: 10px;">
+                                    <label class="required">{{bkItem.wareHouse_Name}}</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-xs-4  padd">
+                                    <span>{{ 'LIST_DOCK' | translate }} : </span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  padd">
+                                    <label class="required">{{bkItem.dock_Name}} </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                            <div class="col-lg-offset-3  kw-p-zero">
+                                <img src="assets/img/Barcode.jpeg" alt="JSOFT Admin"
+                                    style="width: 50%; margin-left: 2em;" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-bot">
+                        <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero kw-mg-bot">
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'ACTIVITY' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.activity}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'APPOINTMENT_NO' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.appointment_Id}}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'OWNER_NAME' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.owner_Name}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'DOCUMENT_NO' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.ref_Document_No}}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'CUSTOMER_NAME' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.activity}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'appointment_Date' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.appointment_Date |dateFormat}}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'CONTACT_TEL' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.contact_Tel}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3 ">
+                                    <span>{{ 'TIME' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.appointment_Time}}</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3  ">
+                                    <span>{{ 'CONTACT_EMAIL' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.contact_email}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-3 col-md-3 col-xs-3 ">
+                                    <span>{{ 'CREATE_DATE' | translate }} :</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-8  ">
+                                    <label class="required">{{bkItem.create_Date}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>

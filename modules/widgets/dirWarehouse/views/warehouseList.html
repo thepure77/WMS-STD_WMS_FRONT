@@ -1,0 +1,34 @@
+﻿<div class="table div-shadow">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th width="">{{"PRODUCT" | translate}}</th>
+                <th width="">{{"GRADE" | translate }}</th>
+                <th width="">{{"BATCH" | translate}}</th>
+                <th width="">{{"QUATITY" | translate }}</th>
+                <th width="">{{"UOM" | translate }}</th>
+                <th width="">{{"ACTION" | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in listData track by $index" ng-if="item.product!==undefined">
+                <td>{{item.product}}</td>
+                <td>{{item.grade}}</td>
+                <td>{{item.batch}}</td>
+                <td>{{item.qty}}</td>
+                <td>{{item.orderDate}}</td>
+                <td>
+                    <button class="ks-btn primary" ng-click="delegate.edit($index)">
+                        <span class="glyphicon glyphicon-pencil" ></span>
+                    </button>
+                    <button class="ks-btn red" ng-click="delegate.remove($index)">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-if="!listData[0].product!==undefined">
+                <td colspan="6" class="text-center">{{'DATA_NOT_FOUND' |translate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

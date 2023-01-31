@@ -1,0 +1,121 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-2 control-label kw-p-zero">{{ 'REBUILD' | translate }}</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+        </header>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'USER_Name' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <auto-comple ng-model="filterModel.Rebuild_By" value="filterModel.key" sourceurl="autoComplete.user"
+                                api="url.Master"></auto-comple>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'REBUILD_DATE_START' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <div class="input-group">
+                                    <input type="text" ng-model="filterModel.rebuild_date" class="form-control daterange text-center" name="datefilter">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <button ng-click="RebuildSearch()"
+                                    class="btn kw-button-search">
+                                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <button ng-click="rebuildIndex()" ng-disabled="filterModellist.resultIsUse"
+                                    class="btn btn-primary ">{{ 'REBUILD' | translate }}</button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ ' ' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <button class="btn btn-success" type="button" ng-click="exportFile.Export(filterModel)">
+                                    {{ 'EXCEL' | translate }}
+                                </button>
+                            </div>
+                        </div>
+
+
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+        <div class="table-responsive table-overflow">
+            <table class="table table-striped table-width-100 table-bordeered">
+                <thead>
+                    <tr style="overflow-y: auto;">
+                        <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'REBUILD_DATE_START' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'REBUILD_DATE_END' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'USER_Name' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in filterModellist.models">
+                        <td class="tr100 text-center">{{$index+1}}</td>
+                        <td class="tr150 text-center">{{data.rebuild_Date_Start}}</td>
+                        <td class="tr150 text-center">{{data.rebuild_Date_End}}</td>
+                        <td class="tr150 text-center">{{data.rebuild_By}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

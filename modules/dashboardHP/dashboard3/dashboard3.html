@@ -1,0 +1,16 @@
+<table class="table table-striped" style="min-width: 100% !important">
+    <thead>
+        <tr>
+            <th style="background-color: #FF9900;" colspan="2">
+                <p style="color:white">{{ 'DASHBOARD3' | translate }}</p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="data in H">
+            <!-- <td class="text-center"> {{data | translate}} {{items[$index]}}</td> -->
+            <td class="text-left" style="border-right:black;"> {{data | translate}}</td>
+            <td class="text-left" style="border-left:black;"> {{items[$index]}}</td>
+        </tr>
+    </tbody>
+</table>

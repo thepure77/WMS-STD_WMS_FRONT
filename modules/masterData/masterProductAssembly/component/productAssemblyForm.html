@@ -1,0 +1,333 @@
+<div class="panel-body" ng-show="onShow">
+    <div style="background-color: white;" class="row tab">
+        <div class="form-group" style="margin-top:15px;margin-left:30px;">
+            <div class="tabs">
+                <ul class="nav nav-tabs" style="margin-top:15px;">
+
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab">{{ 'สินค้า' | translate }}</a>
+                    </li>
+                    <li>
+                </ul>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'PRODUCT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="filterModel.product_Index" value="filterModel.key"
+                                id="filterModel.product_Id" value1="filterModel.product_Name"
+                                sourceurl="autoComplete.autoProduct" api="url.Master"></auto-comple>
+                            </auto-comple>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'Type' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model='filterModel.productBOM_Type'>
+                                <option value="">{{ 'SELECT' | translate }}</option>
+                                <option value="Bom">-- Bom --</option>
+                                <option value="Promotion">-- Promotion --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-6 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                {{ 'PROMOTION_DATE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-6 col-xs-12 kw-p-zero">
+                            <dir-date-picker ng-model="filterModel.promotion_Date" disabled="disable == 1">
+                            </dir-date-picker>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-6 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                {{ 'PROMOTION_DATE_TO' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-6 col-xs-12 kw-p-zero">
+                            <dir-date-picker ng-model="filterModel.promotion_Date_To" disabled="disable == 1">
+                            </dir-date-picker>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'SKU' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.product_Id" disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'PRODUCT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.product_Name" disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'UNIT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <!-- <auto-comple ng-model="filterModel.productConversion_Index" name="productConversion_Name"
+                                value="filterModel.productConversion_Name" id="filterModel.productConversion_Id"
+                                sourceurl="autoComplete.autoProductConversion" api="url.Master"></auto-comple> -->
+                            <select class='form-control' name="Productconversion"
+                                ng-model='dropdownProductconversion.model'
+                                ng-options="v.productConversion_Name for v in dropdownProductconversion">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO1' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.ref_No1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO2' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.ref_No2" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO3' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.ref_No3" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO4' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.ref_No4" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO5' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.ref_No5" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REMARK' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.remark">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: white;" class="row tab">
+        <div class="form-group" style="margin-top:15px;margin-left:30px;">
+            <div class="tabs">
+                <ul class="nav nav-tabs" style="margin-top:15px;">
+
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab">{{ 'รายการส่วนประกอบ' | translate }}</a>
+                    </li>
+                    <li>
+                </ul>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'PRODUCT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="filterItemModel.product_Index" value="filterItemModel.key"
+                                id="filterItemModel.product_Id" value1="filterItemModel.product_Name"
+                                sourceurl="autoComplete.autoProduct" api="url.Master"></auto-comple>
+                            </auto-comple>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'SKU' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.product_Id" disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'PRODUCT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.product_Name" disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'QTY' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.qty" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'UNIT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <!-- <auto-comple ng-model="filterItemModel.productConversion_Index"
+                                value="filterItemModel.productConversion_Name" id="filterItemModel.productConversion_Id"
+                                sourceurl="autoComplete.autoProductConversion" api="url.Master"></auto-comple> -->
+                            <select class='form-control' name="Productconversion"
+                                ng-model='dropdownProductconversionItem.model'
+                                ng-options="v.productConversion_Name for v in dropdownProductconversionItem">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO1' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.ref_No1" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO2' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.ref_No2" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO3' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.ref_No3" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO4' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.ref_No4" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO5' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.ref_No5" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REMARK' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterItemModel.remark">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+                    <button class="btn btn-success" type="button" ng-click="addsItem(filterItemModel)">
+                        {{ 'ADD' | translate }} </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+        <div class="table-responsive table-overflow">
+            <table class="table  table-width-100 fixed-header tableHeight-350">
+                <thead>
+                    <tr>
+                        <th class="k150 text-center">{{ 'ACTION' | translate }}</th>
+                        <th class="k100">{{ 'NO' | translate }}</th>
+                        <th class="k150">{{ 'SKU' | translate }}</th>
+                        <th class="k250">{{ 'PRODUCT' | translate }}</th>
+                        <th class="k250">{{ 'QTY' | translate }}</th>
+                        <th class="k250">{{ 'UNIT' | translate }}</th>
+                        <th class="k200">{{ 'REF_NO1'| translate}}</th>
+                        <th class="k200">{{ 'REF_NO2'| translate}}</th>
+                        <th class="k200">{{ 'REF_NO3'| translate}}</th>
+                        <th class="k200">{{ 'REF_NO4'| translate}}</th>
+                        <th class="k200">{{ 'REF_NO5'| translate}}</th>
+                        <th class="k250">{{ 'REMARK' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in filterModel.listProductAssemblyItemViewModel">
+                        <td class="k150">
+                            <div>
+                                <a class="btn btn-filter nextBtn" ng-click="editItem($index)">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </a>
+                                <a class="btn btn-danger"
+                                    ng-click="deleteItem(filterModel.listProductAssemblyItemViewModel, $index)">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </td>
+                        <td class="k100">{{$index+1}}</td>
+                        <td class="k150">{{data.product_Id}}</td>
+                        <td class="k250">{{data.product_Name}}</td>
+                        <td class="k250">{{data.qty}}</td>
+                        <td class="k250">{{data.productConversion_Name}}</td>
+                        <td class="k200">{{data.ref_No1}}</td>
+                        <td class="k200">{{data.ref_No2}}</td>
+                        <td class="k200">{{data.ref_No3}}</td>
+                        <td class="k200">{{data.ref_No4}}</td>
+                        <td class="k200">{{data.ref_No5}}</td>
+                        <td class="k250">{{data.remark}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+<div class="footer-white" style="margin-top:0px;">
+    <ul class="pager">
+        <button type="button" class="btn btn-step-back" ng-click="back()" style="float: left;">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+        </button>
+        <button type="button" class="btn btn-success" ng-click="add()" style="float: right;">
+            Confirm
+        </button>
+    </ul>
+</div>
+</div>

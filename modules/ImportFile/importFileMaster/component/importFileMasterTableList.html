@@ -1,0 +1,258 @@
+<!-- PC -->
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter" style="margin-bottom:15px; margin-top: 20px;">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#table1" data-toggle="tab" style="color:black;background-color:{{colortable1}}" ng-click="selectedTabTable(1)">Complete</a>
+        </li>
+        <li class="active">
+            <a data-target="#table2" data-toggle="tab" style="color:black;background-color:{{colortable2}}" ng-click="selectedTabTable(2)">Log Failed</a>
+        </li>
+        <button class="btn btn-success" ng-click="exportLog()" style="float: right;background-color: #60b0ff">
+            <!-- <i class="glyphicon glyphicon-open" aria-hidden="true"></i>  -->
+            Export Log Failed</button>
+    </ul>
+    <div class="table-overflow">
+        <table id="table1" class="table table-striped fixed-header tableHeight-350" ng-if="selectedTable == 1">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};max-width: {{column.width}};width: {{column.width}};">
+                        {{column.name}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchResultModel">
+                    <td ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};max-width: {{column.width}};width: {{column.width}};">
+                        <span style="overflow: hidden;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;" uib-tooltip="{{data[column.field]}}">
+                            {{data[column.field]}}
+                        </span>
+                    </td>
+                </tr>
+                <tr ng-if="$vm.searchResultModel.length == 0">
+                    <td colspan="10" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="table2" class="table table-striped fixed-header tableHeight-350" ng-if="selectedTable == 2">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};max-width: {{column.width}};width: {{column.width}};">
+                        {{column.name}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.invalidResultModel">
+                    <td ng-repeat="column in $vm.columnHeader" style="text-align:center;vertical-align:middle;min-width: {{column.width}};
+                    max-width: {{column.width}};
+                    width: {{column.width}};
+                    background-color: {{getColor(data.error,column.field)}};">
+                        <span style="overflow: hidden;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;" uib-tooltip="{{data[column.field]}}">
+                            {{data[column.field]}}
+                        </span>
+                    </td>
+                </tr>
+                <tr ng-if="$vm.invalidResultModel.length == 0">
+                    <td colspan="10" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <div class="table-overflow">
+        <table id="table1" class="table table-striped table-fixed tab-pane active" ng-if="selectedTable == 1">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th class="k100 text-center">{{ 'ROW_NUMBER' | translate }}</th>
+                    <th class="k150 text-center">{{ 'NO_DN' | translate }}</th>
+                    <th class="k150 text-center">{{ 'CONTACTS' | translate }}</th>
+                    <th class="k100 text-center">{{ 'REF' | translate }} 1</th>
+                    <th class="k150 text-center">{{ 'REF' | translate }} 2</th>
+                    <th class="k150 text-center">{{ 'DN_DATE' | translate }}</th>
+                    <th class="k150 text-center">{{ 'DUE_DATE' | translate }}</th>
+                    <th class="k150 text-center">{{ 'DOCUMENT_TYPE' | translate }}</th>
+                    <th class="k150 text-center">{{ 'VENDER_ID' | translate }}</th>
+                    <th class="k150 text-center">{{ 'VENDER_NAME' | translate }}</th>
+                    <th class="k100 text-center">{{ 'ITEM' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_VENDER_ID' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_VENDER_NAME' | translate }}</th>
+                    <th class="k150 text-center">{{ 'QTY' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'WIDTH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'LENGTH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'HEIGTH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_HOMEPRO' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_MHOMEPRO' | translate }}</th>
+                    <th class="k150 text-center">{{ 'LOT' | translate }}/{{ 'BATCH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNITWEIGHT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNITNETWEIGHT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNITGRSWEIGHT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchResultModel">
+                    <td class="k100">{{data.row}}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k100 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k100 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                </tr>
+                <tr ng-if="$vm.searchResultModel.length == 0">
+                    <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="table2" class="table table-striped table-fixed tab-pane active" ng-if="selectedTable == 2">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th class="k100">{{ 'NO' | translate }}</th>
+                    <th class="k150 text-center">{{ 'NO_DN' | translate }}</th>
+                    <th class="k150 text-center">{{ 'CONTACTS' | translate }}</th>
+                    <th class="k100 text-center">{{ 'REF' | translate }} 1</th>
+                    <th class="k150 text-center">{{ 'REF' | translate }} 2</th>
+                    <th class="k150 text-center">{{ 'DN_DATE' | translate }}</th>
+                    <th class="k150 text-center">{{ 'DUE_DATE' | translate }}</th>
+                    <th class="k150 text-center">{{ 'DOCUMENT_TYPE' | translate }}</th>
+                    <th class="k150 text-center">{{ 'VENDER_ID' | translate }}</th>
+                    <th class="k150 text-center">{{ 'VENDER_NAME' | translate }}</th>
+                    <th class="k100 text-center">{{ 'ITEM' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_VENDER_ID' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_VENDER_NAME' | translate }}</th>
+                    <th class="k150 text-center">{{ 'QTY' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'WIDTH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'LENGTH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'HEIGTH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_HOMEPRO' | translate }}</th>
+                    <th class="k150 text-center">{{ 'ART_MHOMEPRO' | translate }}</th>
+                    <th class="k150 text-center">{{ 'LOT' | translate }}/{{ 'BATCH' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNITWEIGHT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNITNETWEIGHT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNITGRSWEIGHT' | translate }}</th>
+                    <th class="k150 text-center">{{ 'UNIT' | translate }}</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchDataLocation">
+                    <td class="k100">{{data.row}}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k100 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k100 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                    <td class="k150 text-center">{{ data. }}</td>
+                </tr>
+                <tr ng-if="$vm.searchDataLocation.length == 0">
+                    <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div> -->
+
+    <div ng-if="selectedTable == 1" id="table1" class=" table-responsive table-overflow tab-pane active" ng-show="$vm.isFilter"
+        style="margin-bottom:15px;">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                    <button type="button " style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)" class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                    </button>
+                </div>
+                <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination total-items="$vm.filterModel.totalRow"
+                    ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage"
+                    max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="selectedTable == 2" id="table1" class=" table-responsive table-overflow tab-pane active" ng-show="$vm.isFilter"
+        style="margin-bottom:15px;">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                    <button type="button " style="background-color:{{colortab3}}" ng-click="changeTableSize2(50,1)" class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab3}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSize2(100,2)" style="background-color:{{colortab4}}" class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab4}}">100</span>
+                    </button>
+                </div>
+                <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow2"
+                    ng-change='changePage2()' items-per-page="$vm.filterModel.perPage2" num-pages="$vm.filterModel.num2" ng-model="$vm.filterModel.currentPage2"
+                    max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-step-back" ng-click="back()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+    </button>
+    <button type="button" class="btn btn-blue previous" ng-click="save()" style="float: right;background-color: #60b0ff">
+        {{ 'SAVE' | translate }}
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-danger " ng-click="cancel()" style="float: right;margin-right: 5px;">
+        {{ 'CANCEL' | translate }}
+    </button>
+</div>

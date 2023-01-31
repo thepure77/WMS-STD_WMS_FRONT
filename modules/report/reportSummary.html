@@ -1,0 +1,99 @@
+<header class="page-header">
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>Report Test</h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Report Test</span></li>
+                <!-- <li><span>Basic</span></li> -->
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="panel-body" style="display: block;">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="col-lg-8 col-md-3 col-xs-12">
+                    <span>GI Date Form</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <dir-date-picker ng-model="criteriaView.dateS"></dir-date-picker>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="col-lg-8 col-md-3 col-xs-12">
+                    <span>GI Date TO</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <dir-date-picker ng-model="criteriaView.dateE"></dir-date-picker>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="col-lg-8 col-md-3 col-xs-12">
+                    <span>Test parameter 3</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <input type="text" class="form-control" ng-model="criteriaView.test1" />
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="col-lg-8 col-md-3 col-xs-12">
+                    <span>Test parameter 3</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <input type="text" class="form-control" ng-model="criteriaView.test2" />
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="col-lg-8 col-md-3 col-xs-12">
+                    <span>Test parameter 3</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <input type="text" class="form-control" ng-model="criteriaView.test3" />
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="col-lg-8 col-md-3 col-xs-12">
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right padding-m">
+        <button ng-click="preview2('PDF')" class="btn btn-filter hidden-xs">
+                <i class="fa fa-search" aria-hidden="true"></i> preview</button>
+        <button ng-click="preview2('PDF')" class="btn btn-filter btn-block btn-md visible-xs mt-lg">
+                <i class="fa fa-search" aria-hidden="true"></i> preview</button>
+        <button ng-click="preview('PDF')" class="btn btn-filter hidden-xs">
+                        <i class="fa fa-search" aria-hidden="true"></i> PDF</button>
+        <button ng-click="preview2('PDF')" class="btn btn-filter btn-block btn-md visible-xs mt-lg">
+                        <i class="fa fa-search" aria-hidden="true"></i> PDF</button>
+        <button ng-click="preview('XLS')" class="btn btn-filter hidden-xs">
+                                <i class="fa fa-search" aria-hidden="true"></i> Excel</button>
+        <button ng-click="preview2('XLS')" class="btn btn-filter btn-block btn-md visible-xs mt-lg">
+                                <i class="fa fa-search" aria-hidden="true"></i> Excel</button>
+        <button ng-click="clearSearch()" class="btn btn-success hidden-xs">Clear</button>
+        <button class="btn btn-success btn-block btn-md visible-xs mt-lg">Clear</button>
+    </div>
+</div>
+<div class="panel-body" style="display: block;">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:90%;height:600px;" src="{{expdf}}"></iframe>
+                <!-- <iframe style="width:90%;height:600px;" src="{{www}}"></iframe> -->
+            </center>
+        </div>
+    </div>
+</div>

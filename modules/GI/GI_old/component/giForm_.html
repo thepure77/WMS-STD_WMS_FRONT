@@ -1,0 +1,364 @@
+<header class="page-header">
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'OUTBOUND' | translate }}</h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'OUTBOUND' | translate }} > {{ 'WORK_ORDER' | translate }} 
+                    </span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+
+<div ng-show="$vm.isFilterTable">
+    <div class="tab-content">
+        <div class="wizard-progress wizard-progress-lg">
+            <div class="steps-progress">
+                <div class="progress-indicator" style="width: {{menu_width}}%"></div>
+            </div>
+            <ul class="wizard-steps">
+                <li class="{{menu[0].completed}} {{menu[0].active}}" style="pointer-events:none" disabled>
+                    <a href="#step-1" data-toggle="tab">
+                        <span>1</span>{{ 'CREATE_HEADER' | translate }}</a>
+                </li>
+                <li class="{{menu[1].completed}} {{menu[1].active}}" style="pointer-events:none" disabled>
+                    <a href="#step-2" data-toggle="tab">
+                        <span>2</span>{{ 'CREATE_DETAIL' | translate }}</a>
+                </li>
+                <li class="{{menu[2].completed}} {{menu[2].active}}" style="pointer-events:none" disabled>
+                    <a href="#step-3" data-toggle="tab">
+                        <span>3</span>{{ 'PREVIEW' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row tab" ng-if="menu[0].active == 'active'">
+            <div class="col-lg-8 col-md-8 col-xs-12 ">
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-4 col-md-4 col-xs-12 ">
+                                <span>{{ 'GI_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 ">
+                                <input type="text" ng-model="filterModel.goodsIssue_No" class="form-control" disabled />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-4 col-md-4 col-xs-12 ">
+                                <span>
+                                    <span style="color:red">*</span> {{ 'GI_DATE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 ">
+                                <dir-date-picker ng-model="filterModel.goodsIssue_Date" disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3"></dir-date-picker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-4 col-md-4 col-xs-12 ">
+                                <span>
+                                    <span style="color:red">*</span> {{ 'DOCUMENT_TYPE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 ">
+                                <select class='form-control' ng-model='dropdownDocumentType.model' ng-options="v.documentType_Name for v in dropdownDocumentType" ng-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3"></dir-date-picker>
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-4 col-md-4 col-xs-12 ">
+                                <span>
+                                    <span style="color:red">*</span> {{ 'DOCUMENT_DATE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 ">
+                                <dir-date-picker ng-model="filterModel.document_Date" disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3"></dir-date-picker>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-4 col-md-4 col-xs-12 ">
+                                <span>{{ 'OWNER' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 ">
+                                <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Name" id="filterModel.owner_Id" sourceurl="autoComplete.owner"
+                                    api="url.GI" is-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3"></auto-comple>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-4 col-md-4 col-xs-12 ">
+                                <span>{{ 'WAREHOUSE_OWNER' | translate }}</span>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-xs-12 ">
+                                <auto-comple ng-model="filterModel.warehouse_Index" value="filterModel.warehouse_Name" id="filterModel.warehouse_Id" sourceurl="autoComplete.whOwner"
+                                    api="url.GR" is-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3"></auto-comple>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-xs-12 ">
+                <div class="col-lg-12 col-md-12 col-xs-12 ">
+                    <div class="col-lg-4 col-md-4 col-xs-12  ">
+                        <span>
+                            <span>{{ 'REMARK' | translate }}</span>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-xs-12  ">
+                        <textarea rows="5" cols="50" class="form-control" ng-model="filterModel.document_Remark"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row tab" id="step-2" ng-if="menu[1].active == 'active'">
+            <div class="col-lg-12 col-md-12 col-xs-12 ">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.ref_Document_No" value="filterModel.ref_Document_Index" placeholder="{{ 'PLAN_OLD_GI' | translate }}">
+                        <span class="input-group-btn">
+                            <button ng-click='popupPlanGi.onClick()' class="btn btn-groub-Search" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                    <select class='form-control' ng-model='dropdownDocumentTypeWave.model' ng-options="v.wave_Name for v in dropdownDocumentTypeWave">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-6 ">
+                    <button class="btn btn-warning" type="button" ng-click="runwave()">
+                        {{ 'RUNWAVE' | translate }} </button>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-6 "></div>
+                <div class="col-lg-1 col-md-1 col-xs-6 "></div>
+                <div class="col-lg-2 col-md-2 col-xs-6 text-right">
+                    <button class="btn btn-success" type="button" ng-click="pickItems()">
+                        {{ 'PICK' | translate }} </button>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+                <div class="table-responsive table-overflow">
+                    <table class="table  table-width-100 fixed-header tableHeight-350">
+                        <thead>
+                            <tr>
+                                <th class="k150 text-center">{{ 'ACTION' | translate }}</th>
+                                <th class="k50 text-center">{{ 'ROW_NUMBER' | translate }}</th>
+                                <th class="k100 text-center">{{ 'LOCATION' | translate }}.</th>
+                                <th class="k150 text-center">{{ 'TAG_NO' | translate }}</th>
+                                <!-- <th class="k120 text-center">{{ 'GR_No' | translate }}</th>
+                                <th class="k200 text-center">{{ 'GR_Date' | translate }}</th> -->
+                                <th class="k150 text-center">{{ 'RO' | translate }}</th>
+                                <th class="k150 text-center">{{ 'MATERIAL_NO' | translate }}</th>
+                                <th class="k250 text-center">{{ 'MATERIAL' | translate }}</th>
+                                <th class="k80 text-center">{{ 'QTY' | translate }}</th>
+                                <!-- <th class="k80 text-center">{{ 'PICK' | translate }}</th> -->
+                                <!-- <th class="k80 text-center">{{ 'WEIGHT' | translate }}</th> -->
+                                <th class="k80 text-center">{{ 'UNIT' | translate }}</th>
+                                <th class="k200 text-center">{{ 'STATUS' | translate }}</th>
+                                <th class="k100 text-center">{{ 'LOT' | translate }}</th>
+                                <th class="k150 text-center">{{ 'PLANT' | translate }}</th>
+                                <th class="k200 text-center">{{ 'REMARK' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listGoodsIssueItemViewModel | orderBy:'planGoodsIssue_No'" style="background-color: {{getcolor(data)}}">
+                                <td class="k150">
+                                    <div>
+                                        <a class="btn btn-danger" ng-click="deleteItem(data)">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                        <a class="btn btn-success" ng-click="pickItems(data)" ng-disabled="data.binBalance_Index">
+                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="k50 text-center">{{$index+1}}</td>
+                                <td class="k100 text-center">{{data.location_Name}}</td>
+                                <td class="k150 text-center">{{data.tag_No}}</td>
+                                <!-- <td class="k120 text-center">{{data.goodsReceive_No}}</td>
+                                <td class="k200 text-center">{{data.goodsReceive_date|dateTimeFormate}}</td> -->
+                                <td class="k150 text-center">{{data.ref_Document_No}}</td>
+                                <td class="k150 text-center">{{data.product_Id}}</td>
+                                <td class="k250">{{data.product_Name}}</td>
+                                <!-- <td class="k80 text-center">{{data.qtyPlan}}</td> -->
+                                <td class="k80 text-center">{{data.qty| number:3}}</td>
+                                <!-- <td class="k80 text-center">{{data.weight}}</td> -->
+                                <td class="k80 text-center">{{data.productConversion_Name}}</td>
+                                <td class="k200 text-center">{{data.itemStatus_Name}}</td>
+                                <th class="k100 text-center">{{data.product_Lot}}</th>
+                                <th class="k150 text-center">{{data.warehouse_Name_To }}</th>
+                                <th class="k200 text-center">{{ data.documentItem_Remark }}</th>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row tab" id="step-3" ng-if="menu[2].active == 'active'">
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'GI_NO' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.goodsIssue_No}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'GI_DATE' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.goodsIssue_Date|dateFormate}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'DOCUMENT_TYPE' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.documentType_Name}}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'DOCUMENT_DATE' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.document_Date|dateFormate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'OWNER' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.owner_Name}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'WAREHOUSE_OWNER' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.warehouse_Name}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'REMARK' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.document_Remark}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 " style="margin-top:15px;">
+                    <table class="table fixed-header tableHeight-350">
+                        <thead>
+                            <th class="k100 text-center">{{ 'ROW_NUMBER' | translate }}</th>
+                            <th class="k200 text-center">{{ 'PLAN_GI_NO' | translate }}</th>
+                            <th class="k200 text-center">{{ 'SKU' | translate }}</th>
+                            <th class="k250 text-center">{{ 'PRODUCT' | translate }}</th>
+                            <th class="k200 text-center">{{ 'QTY' | translate }}</th>
+                            <!-- <th class="k100 text-center">{{ 'PICK' | translate }}</th> -->
+                            <th class="k200 text-center">{{ 'UNIT' | translate }}</th>
+                            <th class="k200 text-center">{{ 'WEIGHT' | translate }}</th>
+                            <!-- <th class="k120 text-center">{{ 'LOCATION' | translate }}.</th> -->
+                            <th class="k200 text-center">{{ 'STATUS' | translate }}</th>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listGoodsIssueItemViewModel">
+                                <td class="k100 text-center">{{$index+1}}</td>
+                                <td class="k200 text-center">{{data.ref_Document_No}}</td>
+                                <td class="k200 text-center">{{data.product_Id}}</td>
+                                <td class="k250">{{data.product_Name}}</td>
+                                <!-- <td class="k100 text-center">{{data.qtyPlan}}</td> -->
+                                <td class="k200 text-center">{{data.qty}}</td>
+                                <td class="k200 text-center">{{data.productConversion_Name}}</td>
+                                <td class="k200 text-center">{{data.weight}}</td>
+                                <!-- <td class="k120 text-center">{{data.location_Name}}</td> -->
+                                <td class="k200 text-center">{{data.itemStatus_Name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-if="menu[0].active == 'active'" ng-click="back()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+                <button type="button" class="btn btn-step-back" ng-if="menu[0].active != 'active'" ng-click="previous()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+                <button type="button" class="btn btn-step-next" ng-if="menu[2].active != 'active'" ng-click="next()">
+                    {{ 'NEXT' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-blue previous" ng-show="buttons.add" ng-if="menu[2].active == 'active'" ng-click="add()" style="float: right;background-color: #60b0ff">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-blue" ng-show="buttons.update && filterModel.document_Status == 0" ng-if="menu[2].active == 'active'"
+                    ng-click="edit()" style="float: right;background-color: #60b0ff">
+                    {{ 'UPDATE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<plan-gi-popup-of-w on-show='popupPlanGi.onShow' config='popupPlanGi.config' invokes='popupPlanGi.invokes' delegates='popupPlanGi.delegates'>
+</plan-gi-popup-of-w>

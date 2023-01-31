@@ -1,0 +1,38 @@
+
+<div class="table" style="overflow: auto">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <!-- <td>#</td> -->
+                <th ng-if="config.title == 'SO Catch Weight'">SO</th>
+                <th ng-if="config.title == 'Work Order Catch Weight'">Work Order</th>
+                <th ng-show="show.action">
+                    <div>Action</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items">
+                <!-- <td>{{$index+1}}</td> -->
+                <td ng-if="config.title == 'SO Catch Weight'">{{data.planGoodsIssue_No}}</td>
+                <td ng-if="config.title == 'Work Order Catch Weight'">{{data.goodsIssue_No}}</td>
+                <td ng-show="show.action" class="hight">
+                    <div style="width: 5px">
+                        <a class="btn btn-filter" ng-click="selected(data, config.title)">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- <div class="form-left" ng-show="show.pagination">
+    <select class='form-control' style='width:70px;display:inline;' ng-model='model.numPerPage' ng-options="v.value as v.value for v in pageOption"
+        ng-init='model.numPerPage = 10' ng-change='changeTableSize()'>
+    </select>
+</div>
+<div class="form-right" ng-show="show.pagination">
+    <ul uib-pagination total-items="pagging.totalRow" ng-change="pagging.change()" items-per-page="pagging.perPage" num-pages="pagging.num"
+        ng-model="pagging.currentPage" max-size="pagging.maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+</div> -->

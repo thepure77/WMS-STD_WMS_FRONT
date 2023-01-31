@@ -1,0 +1,70 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide" >
+    <div class="modal-dialog" style="overflow:auto;width:60%;" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'PLAN_GR' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row" style="margin-left:5px;">
+                                <!-- search box -->
+                                <div class="col-lg-3 dropdown display-inline" style="margin-left:-15px;">
+                                    <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1' ">
+                                        <option value="1">{{ 'PLAN_NO' | translate }}</option>
+                                        <option value="2">{{ 'VENDOR' | translate }}</option>
+                                        <option value="3">{{ 'PLAN_DATE' | translate }}</option>
+                                        <option value="4">{{ 'DUE_DATE' | translate }}</option>
+
+                        </select>
+                    </div>
+                    <div ng-switch="actionPS">
+                        <div class="input-group col-lg-4" ng-switch-when="1" ng-init="planGr.vendor_Name = ''; planGr.planGoodsReceive_Date = ''; planGr.planGoodsReceive_Due_Date = ''">
+                            <input type="text" ng-model="planGr.planGoodsReceive_No" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="find(planGr.planGoodsReceive_No)" class="btn btn-groub-Search">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group col-lg-4" ng-switch-when="2" ng-init="planGr.planGoodsReceive_No = ''; planGr.planGoodsReceive_Date = ''; planGr.planGoodsReceive_Due_Date = ''">
+                            <input type="text" ng-model="planGr.vendor_Name" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="find()" class="btn btn-groub-Search">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group col-lg-4" ng-switch-when="3" ng-init="planGr.vendor_Name = ''; planGr.planGoodsReceive_No = ''; planGr.planGoodsReceive_Due_Date = ''">
+                            <dir-date-picker ng-model="planGr.planGoodsReceive_Date"></dir-date-picker>
+                            <span class="input-group-btn">
+                                <button ng-click="find()" class="btn btn-groub-Search">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group col-lg-4" ng-switch-when="4" ng-init="planGr.vendor_Name = ''; planGr.planGoodsReceive_Date = ''; planGr.planGoodsReceive_No = ''">
+                            <dir-date-picker ng-model="planGr.planGoodsReceive_Due_Date"></dir-date-picker>
+                            <span class="input-group-btn">
+                                <button ng-click="find()" class="btn btn-groub-Search">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top: 10px;">
+                    <plan-gr-pop-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></plan-gr-pop-table>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">                   
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

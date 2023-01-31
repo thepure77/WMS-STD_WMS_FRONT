@@ -1,0 +1,29 @@
+    .topnavbar {
+        background: #3861c2;
+        height: 55px;
+    }
+
+    .i-notify {
+        background: red;
+        position: relative;
+        top: -15px;
+        left: -10px;
+    }
+
+    .usr-name {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .user-li:hover {
+        background-color: darkslategrey;
+        opacity: 0.2 !important;
+    }
+
+    .fa-custom {
+        color: white;
+    }
+
+    .notifications-menu>a:hover {
+        background-color: #3D8EF0 !important;
+    }

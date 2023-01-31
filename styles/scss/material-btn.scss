@@ -1,0 +1,160 @@
+﻿.ks-btn {
+    margin: 4px 4px;
+    position: relative;
+    display: inline-block;
+    padding: 8px 8px !important;
+    overflow: hidden;
+    border-width: 0;
+    min-height: 36px;
+    min-width: 36px;
+    outline: none;
+    border-radius: 1px;
+    -webkit-box-shadow: 0 1px 1px $kl-default-color;
+    -moz-box-shadow: 0 1px 1px $kl-default-color;
+    box-shadow: 0 1px 1px $kl-default-color;
+    transition: background-color .3s;
+    background-color: $kl-green;
+    color: $input-background;
+}
+
+.ks-btn:hover,
+.ks-btn:focus {
+    background-color: $kl-green-hover;
+}
+
+.ks-btn>* {
+    position: relative;
+}
+
+.ks-btn span {
+    display: block;
+    padding: 12px 24px;
+}
+
+.ks-btn:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    width: 0;
+    padding-top: 0;
+    border-radius: 100%;
+    background-color: $shadow-br-color-before;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.ks-btn:active:before {
+    width: 120%;
+    padding-top: 120%;
+    transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.ks-btn.orange {
+    background-color: $kl-orange;
+}
+
+.ks-btn.orange:hover,
+.ks-btn.orange:focus {
+    background-color: $kl-orange-hover;
+}
+
+.ks-btn.red {
+    background-color: $kl-red;
+}
+
+.ks-btn.red:hover,
+.ks-btn.red:focus {
+    background-color: $kl-red-hover;
+}
+
+.ks-btn.primary {
+    background-color: $kl-blue;
+}
+
+.ks-btn.primary:hover,
+.ks-btn.primary:focus {
+    background-color: $kl-blue-hover;
+}
+
+.ks-btn.light-green {
+    background-color: $kl-green-light;
+}
+
+.ks-btn.light-green:focus,
+.ks-btn.light-green:hover {
+    background-color: $kl-green-light;
+}
+
+.ks-btn.light-blue {
+    background-color: $kl-blue-light;
+}
+
+.ks-btn.light-blue:focus,
+.ks-btn.light-blue:hover {
+    background-color: $kl-blue-light;
+}
+
+.ks-btn.yellow {
+    background-color: $kl-yellow;
+    color: $dark-color;
+}
+
+.ks-btn.yellow:focus,
+.ks-btn.yellow:hover {
+    background-color: $kl-yellow-hover;
+    color: $dark-color;
+}
+
+.ks-btn.light-yellow {
+    background-color: $kl-yellow;
+    color: $dark-color;
+}
+
+.ks-btn.ight-yellow:focus,
+.ks-btn.light-yellow:hover {
+    background-color: $kl-yellow;
+    color: $dark-color;
+}
+
+.ks-btn.purple {
+    background-color: $kl-purple;
+}
+
+.ks-btn.purple:focus,
+.ks-btn.purple:hover {
+    background-color: $kl-purple-hover;
+}
+
+.ks-btn.light-purple {
+    background-color: $kl-purple;
+}
+
+.ks-btn.light-purple:hover,
+.ks-btn.purple:focus {
+    background-color: $kl-purple;
+}
+
+.ks-btn.default {
+    color: #333;
+    background-color: $kl-default-color;
+}
+
+.ks-btn.default:hover,
+.ks-btn.default:focus {
+    color: #F3F3F3;
+    background-color: $radio-empty-color;
+}
+
+.input-group-addon {
+    line-height: 0;
+    border-radius: 1px;
+}
+
+.kl-btn-size {
+    width: 120px;
+}

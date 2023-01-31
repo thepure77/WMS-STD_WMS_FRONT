@@ -1,0 +1,17 @@
+<table class="table table-striped" style="min-width: 100% !important">
+    <thead>
+        <tr>
+            <th style="background-color: #F4A460;" colspan="4">
+                <p style="color:white">{{ 'PRODUCTIVITY' | translate }}</p>
+            </th>
+            <!-- <th style="background-color: #F4A460;" colspan="2">
+                <p style="color:white">{{ 'ARTICLE' | translate }}</p>
+            </th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center" style="background-color: {{color(h)}};" ng-repeat="h in H track by $index"> {{h | translate}} : {{items[$index]}}</td>
+        </tr>
+    </tbody>
+</table>

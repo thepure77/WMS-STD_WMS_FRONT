@@ -1,0 +1,78 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'PLAN_GI' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <!-- search box -->
+                                <div class="col-lg-3 dropdown display-inline" style="margin-top: 20px;">
+                                    <select ng-model="actionPS" class="form-control">
+                                        <option value="1">{{ 'PLAN_GI_NO' | translate }}</option>
+                                        <!-- <option value="2">{{ 'OWNER' | translate }}</option> -->
+                                    </select>
+                                </div>
+                                <div ng-switch="actionPS" class="col-lg-3">
+                                    <div class="input-group col-lg-12" ng-switch-when="1">
+                                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                            <span>{{ 'PLAN_GI_NO' | translate }}</span>
+                                        </div>
+                                        <input type="text" ng-model="planGi.planGoodsIssue_No" class="form-control"
+                                            ng-init="planGi.owner_Name = ''">
+                                        <!-- <span class="input-group-btn">
+                                            <button ng-click="filter()" class="btn kw-button-search">
+                                                <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                            </button>
+                                        </span> -->
+                                    </div>
+                                    <div class="input-group col-lg-12" ng-switch-when="2">
+                                        <input type="text" ng-model="planGi.owner_Name" class="form-control"
+                                            ng-init="planGi.planGoodsIssue_No = ''">
+                                        <!-- <span class="input-group-btn">
+                                            <button ng-click="filter()" class="btn kw-button-search">
+                                                <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                            </button>
+                                        </span> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                    <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                        <span>{{ 'DUE_DATE' | translate }}</span>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                        <dir-date-picker ng-model="planGi.planGoodsIssue_Due_Date">
+                                        </dir-date-picker>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-xs-12" style="margin-top: 20px;">
+                                    <button class="btn kw-button-search" ng-click="filter()">
+                                    <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>                                    
+                                </div>
+                            </div>
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <plan-gi-pop-table-of-w invokes='datalist.invokes' delegates='datalist.delegates'
+                                    config='datalist.config'></plan-gi-pop-table-of-w>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT BEGINS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="confirm()">{{ 'CONFIRM' | translate }}</button>
+                <!-- <button class="btn btn-primary" ng-click="onClose()">Close</button>  -->
+                <!--<button class="btn btn-danger" data-dismiss="modal">Cancel</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

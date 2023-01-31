@@ -1,0 +1,70 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped fixed-header">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="text-center k250">{{ 'ACTION' | translate }}</th>
+                <th class="k200">{{ 'COUNT_NO' | translate }}</th>
+                <th class="k120">{{ 'Create Date' | translate }}</th>
+                <th class="k150">{{ 'Status Diff' | translate }}</th>
+                <th class="k150">{{ 'DOCUMENT_TYPE' | translate }}</th>
+                <th class="k150">{{ 'STATUS' | translate }}</th>
+                <th class="k150">{{ 'USER' | translate }}</th>
+                <th class="k150">{{ 'USER_UPDATE' | translate }}</th>
+                <th class="k150">{{ 'USER_CANCEL' | translate }}</th>
+                <!-- <th class="k150">{{ 'REF_NO1' | translate }}</th> -->
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="text-center k250">
+                    <a class="btn btn-primary" style="margin-left:5px;" ng-click="exportPDF.ExportPDF(data)">
+                        <span aria-hidden="true" ng-di>{{ 'PDF' | translate }}</span>
+                    </a>
+                    <a class="btn btn-primary" style="margin-left:5px;" ng-click="exportFile.ExportExcel(data)">
+                        <span aria-hidden="true" ng-di>{{ 'EXCEL' | translate }}</span>
+                    </a>
+                </td>
+                <td class="k200">{{data.cycleCount_No}}</td>
+                <td class="k120">{{data.date_Create |dateFormate}}</td>
+                <td class="k150">{{data.status_Diff}}</td>
+                <td class="k150">{{data.documentType_Name}}</td>
+                <td class="k150">{{data.processStatus_Name}}</td>
+                <td class="k150">{{data.create_By}}</td>
+                <td class="k150">{{data.update_By}}</td>
+                <td class="k150">{{data.cancel_By}}</td>
+                <!-- <td class="k150">{{data.documentRef_No1}}</td> -->
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="20" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)"
+                    class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination total-items="$vm.filterModel.totalRow"
+                ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage"
+                max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes' delegates='popupReport.delegates'>
+</report-popup>

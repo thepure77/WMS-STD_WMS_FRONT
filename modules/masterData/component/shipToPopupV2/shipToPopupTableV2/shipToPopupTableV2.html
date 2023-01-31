@@ -1,0 +1,31 @@
+<div class="table-responsive table-overflow">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+           
+                <th class="k100 text-center">
+                    <!-- {{ 'ACTION' | translate }} -->
+                </th>
+                <th class="k150 text-center">{{ 'SHIPTO_ID' | translate }}</th>
+                <th class="k150 text-center">{{ 'SHIPTO_NAME' | translate }}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items">
+                <td class="k100 text-center">
+                        <input ng-model="data.selected" type="checkbox" id="checkxx_{{$index}}" class="ig-control__cbx"/>
+                        <label for="checkxx_{{$index}}"></label>
+                </td>
+                <td class="k150 text-center">{{data.shipTo_Id}}</td>
+                <td class="k150 ">{{data.shipTo_Name}}</td>
+            
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="add()">{{ 'CONFIRM' | translate }}</button>
+
+
+    </div>
+</div>

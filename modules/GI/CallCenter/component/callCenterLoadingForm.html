@@ -1,0 +1,190 @@
+<div class="container " ng-show="isLoading">
+        <div class="row div-shadow">
+            <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px; margin-bottom:20px;">
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">PlanGI No:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.planGoodsIssueNo" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Product:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.productName" value="filterModel.productIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupProduct.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Product Status:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.itemStatusName" value="filterModel.ItemStatusIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupItemStatus.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-md-10" style="margin-top:5px;">Qty:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="number" class="form-control" ng-model="filterModel.qtyPlan" />
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-md-10" style="margin-top:5px;">UOM:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <div class="input-group" style="padding:0!important;">
+                                <input type="text" class="form-control" ng-model="filterModel.productConversionName" value="filterModel.ProductConversionIndex">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupProductConversion.onClick()' class="btn btn-filter" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Lot/Batch:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.productLot" />
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Expire Date:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <dir-date-picker ng-model="filterModel.expDate"></dir-date-picker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Price/UOM:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.unitPrice" />
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Discount:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.discount" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Net:</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">UDF 1</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.uDF1" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">UDF 2</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.uDF2" />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">UDF 3</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.uDF3" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px;">
+                        <span class="col-lg-10 col-md-10 col-xs-12" style="margin-top:5px;">Remark</span>
+                        <div class="col-lg-8 col-md-8 col-xs-12">
+                            <input type="text" class="form-control" ng-model="filterModel.callCenterRemark" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+            <div class="form-group text-right">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12" style="margin-top:10px; margin-bottom:15px;">
+                        <button ng-click="add()" class="btn btn-filter hidden-xs" ng-show="buttons.add">
+                            Save</button>
+                        <button ng-click="add()" class="btn btn-filter btn-block btn-md visible-xs mt-lg" ng-show="buttons.add">
+                            Save</button>
+    
+                        <button ng-click="edit(filterModel)" class="btn btn-success hidden-xs" ng-show="buttons.update">
+                            Update</button>
+                        <button ng-click="edit(filterModel)" class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-show="buttons.update">
+                            Update</button>
+    
+                        <button ng-click="back()" class="btn btn-danger hidden-xs">
+                            Cancel</button>
+                        <button ng-click="back()" class="btn btn-danger btn-block btn-md visible-xs mt-lg">
+                            Cancel</button>
+    
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    
+    <product-popup on-show='popupProduct.onShow' config='popupProduct.config' invokes='popupProduct.invokes' delegates='popupProduct.delegates'>
+    </product-popup>
+    <product-conversion-popup on-show='popupProductConversion.onShow' config='popupProductConversion.config' invokes='popupProductConversion.invokes'
+        delegates='popupProductConversion.delegates'>
+    </product-conversion-popup>
+    <item-status-popup on-show='popupItemStatus.onShow' config='popupItemStatus.config' invokes='popupItemStatus.invokes' delegates='popupItemStatus.delegates'>
+    </item-status-popup>

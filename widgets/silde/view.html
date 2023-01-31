@@ -1,0 +1,16 @@
+<!-- <div class="slider"> -->
+    <div ng-repeat="image in images" ng-show="image.visible">
+        <img ng-src="{{image.src}}" ng-if="image.type == 'image' || image.type == 'image/jpg'" width="250" height="100" />
+        <video ng-if="image.type=='video'" autobuffer controls>
+            <source ng-src="{{image.src|trusted}}" type="video/mp4">
+        </video>
+    </div>
+    <div class="arrows">
+        <a class="btn btn-success" ng-click="prevImg()">
+            <span class="fa fa-reply" aria-hidden="true"></span>
+        </a>
+        <a class="btn btn-success" ng-click="nextImg()">
+            <span class="fa fa-share" aria-hidden="true"></span>
+        </a>
+    </div>
+<!-- </div> -->

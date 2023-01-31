@@ -1,0 +1,183 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- PC -->
+<div class="col-md-12" style="margin-bottom: 1%;">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-zero">
+        <div class="col-md-3 col-xs-6 padd">
+            <button class="btn btn-success" type="button" ng-click="confirmPlanGR()">
+                {{ 'Confirm' | translate }}
+            </button>
+        </div>
+        
+    </div>
+</div>
+<div class="table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter"
+    style="margin-bottom:15px;height: 656px;">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">
+                    <div>
+                        <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all_"
+                            class="ig-control__cbx" checked />
+                        <label for="all_"></label>
+                    </div>
+                </th>
+                <th class="text-center k250" style="width:200px;">{{ 'ACTION' | translate }}</th>
+                <th class="k50">{{ 'NO' | translate }}</th>
+                <th class="k150">{{ 'PLAN_NO' | translate }}</th>
+                <th class="k150">{{ 'REF_PO_NO_XX' | translate }}</th>
+                <th class="k150">{{ 'PLAN_DATE' | translate }}</th>
+                <th class="k150">{{ 'OWNER_NAME' | translate }}</th>
+                <th class="k150">{{ 'DOCUMENT_TYPE' | translate }}</th>
+                <th class="k80">{{ 'STATUS' | translate }}</th>
+                <th class="k100">{{ 'USER' | translate }}</th>
+                <th class="k100">{{ 'USER_UPDATE' | translate }}</th>
+                <th class="k100">{{ 'USER_CANCEL' | translate }}</th>
+                <th class="k100">{{ 'STATUS' | translate }}</th>
+                <th class="k100">{{ 'MATDOC' | translate }}</th>
+                <th class="k100">{{ 'MESSAGE' | translate }}</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="text-center k100">
+                    <input ng-click="hide($index)" ng-model="data.selected" type="checkbox" id="check_{{$index}}"
+                        class="ig-control__cbx" checked />
+                    <label for="check_{{$index}}"></label>
+                </td>
+                <td class="k250 tr-height" ng-if="data.row == $vm.searchDataRow">
+                    <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
+                        data-placement="bottom">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-groub-Search" ng-click="comfirmStatus(data)" data-toggle="tooltip"
+                        title="Confirm Document" data-placement="bottom"
+                        ng-disabled="data.document_Status == 1 || data.document_Status == -1 || data.document_Status == 2 || data.document_Status == -2 ||data.document_Status == 2">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-blue" ng-click="printDN(data)" data-toggle="tooltip" title="PrintDN"
+                        data-placement="bottom">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </a>
+                    <!-- <a class="btn btn-blue" ng-click="print(data)" data-toggle="tooltip" title="Print" data-placement="bottom">
+                        <i class="fa fa-print"></i>
+                    </a> -->
+                    <div class="btn-group" style="margin-top:2px;">
+                        <button ng-disabled="data.document_Status == 4 || data.document_Status == -1" title="Other"
+                            type="button" class="mb-xs mt-xs mr-xs btn btn-warning dropdown-toggle"
+                            data-toggle="dropdown">
+                            <i class="fa fa-list"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- <li ng-show="data.document_Status != 2">
+                                <a ng-click="delete(data)">
+                                    <i class="fa fa-trash-o"></i> {{ 'DELETE' | translate }}</a>
+                            </li> -->
+                            <li ng-show="data.document_Status != -2">
+                                <a ng-click="cancelPlan(data)">
+                                    <i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+                            </li>
+                            <li>
+                                <a ng-click="closeDocument(data)">
+                                    <i class="fa fa-times"></i> {{ 'CLOSE_DOCUMENT' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="k250" ng-if="data.row != $vm.searchDataRow">
+                    <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
+                        data-placement="bottom">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-groub-Search" ng-click="comfirmStatus(data)" data-toggle="tooltip"
+                        title="Confirm Document" data-placement="bottom"
+                        ng-disabled="data.document_Status == 1 || data.document_Status == -1 || data.document_Status == 2 || data.document_Status == -2 ||data.document_Status == 2">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-blue" ng-click="printDN(data)" data-toggle="tooltip" title="PrintDN"
+                        data-placement="bottom">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </a>
+                    <!-- <a class="btn btn-blue" ng-click="print(data)" data-toggle="tooltip" title="Print" data-placement="bottom">
+                        <i class="fa fa-print"></i>
+                    </a> -->
+                    <div class="btn-group" style="margin-top:2px;">
+                        <button ng-disabled="data.document_Status == 4 || data.document_Status == -1" title="Other"
+                            type="button" class="mb-xs mt-xs mr-xs btn btn-warning dropdown-toggle"
+                            data-toggle="dropdown">
+                            <i class="fa fa-list"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- <li ng-show="data.document_Status != 2">
+                                <a ng-click="delete(data)">
+                                    <i class="fa fa-trash-o"></i> {{ 'DELETE' | translate }}</a>
+                            </li> -->
+                            <li ng-show="data.document_Status != -2">
+                                <a ng-click="cancelPlan(data)">
+                                    <i class="fa fa-times"></i> {{ 'CANCEL' | translate }}</a>
+                            </li>
+                            <li>
+                                <a ng-click="closeDocument(data)">
+                                    <i class="fa fa-times"></i> {{ 'CLOSE_DOCUMENT' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="k50">{{data.row}}</td>
+                <td class="k150">{{data.planGoodsReceive_No}}</td>
+                <td class="k150">{{data.documentRef_No1}}</td>
+                <td class="k150">{{data.planGoodsReceive_date|dateFormate}}</td>
+                <td class="k150">{{data.owner_Name}}</td>
+                <td class="k150">{{data.documentType_Name}}</td>
+                <td class="k80">{{data.processStatus_Name}}</td>
+                <td class="k100">{{data.create_By}}</td>
+                <td class="k100">{{data.update_By}}</td>
+                <td class="k100">{{data.cancel_By}}</td>
+                <td class="k100">{{data.status_SAP}}</td>
+                <td class="k100">{{data.matdoc}}</td>
+                <td class="k100">{{data.message}}</td>
+
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                <button type="button " ng-init="colortab1 = '#990000'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow"
+                uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+<plan-form on-show="onShow" ng-hide="$vm.isFilter"></plan-form>
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes'
+    delegates='popupReport.delegates'>
+</report-popup>

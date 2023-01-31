@@ -1,0 +1,161 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;" ng-hide='checkbox.Show'>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-left" style="margin-bottom:15px;">
+
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-right" style="margin-bottom:15px;">
+        <button class="btn btn-success hidden-xs" ng-click="SentToSap()">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ 'SENT_TO_SAP' | translate }}</button>
+        <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="SentToSap()">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ 'SENT_TO_SAP' | translate }}</button>
+    </div>
+</div>
+<div class="table-responsive table-overflow div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;height: 656px;" aria-hidden="false">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <th class="text-center k250">{{ 'ACTION' | translate }}</th>
+                <th class="text-center k50">{{ 'NO' | translate }}</th>
+                <th class="text-center k150">{{ 'GR_NO' | translate }}</th>
+                <th class="text-center k150">{{ 'GR_DATE' | translate }}</th>
+                <th class="text-center k150">{{ 'PLAN_NO' | translate }}</th>
+                <th class="text-center k200">{{ 'DOCUMENT_TYPE' | translate }}</th>
+                <th class="text-center k150">{{ 'OWNER_NAME' | translate }}</th>
+                <th class="text-center k150">{{ 'STATUS' | translate }}</th>
+                <th class="text-center k150">{{ 'PUTAWAY_STATUS' | translate }}</th>
+                <th class="text-center k150">{{ 'DOCUMENT_REF2' | translate }}</th>
+                <th class="text-center k200">{{ 'USER_CREATE' | translate }}</th>
+                <th class="k100">{{ 'USER_CREATE_Date' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel" ng-if="$vm.searchResultModel.length != 0">
+                <!-- <td class="text-center k100">
+                    <input ng-click="hide($index)" ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked />
+                    <label for="check_{{$index}}"></label>
+                </td> -->
+                <td ng-show="show.action" class="text-center k250">
+                    <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit" data-placement="bottom">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-groub-Search" ng-click="comfirmStatus(data)" data-toggle="tooltip" title="Confirm Status" data-placement="bottom" ng-disabled="data.document_Status == 1 || data.document_Status == -1 || data.document_Status == 2 || data.document_Status == 3 || data.document_Status == 4">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <div class="btn-group">
+                        <button  title="Other" ng-disabled="data.document_Status == -1" type="button" class="mb-xs mt-xs btn btn-blue dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-print"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- <li >
+                                <a ng-click="popupSigner.onClick(data)" href="#">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'PRINT_OUT_GR' | translate }}</a>
+                            </li> -->
+                            <li>
+                                <a href="#" ng-click="printPutawayGR(data)">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Putaway List' | translate }}</a>
+                            </li>
+                            <li>
+                                <a href="#" ng-click="printOutGR(data)">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'PRINT_OUT_GR' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button  title="Other" ng-disabled="data.document_Status == -1" type="button" class="mb-xs mt-xs mr-xs btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-list"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" >
+                            <li >
+                                <a class="btn" ng-click="delete(data)" href="#" ng-disabled="data.document_Status == -1" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'CANCEL' | translate }}</a>
+                            </li>
+                            <li ng-show="data.document_Status != -1 || data.document_Status != 2 || data.document_Status != 3 || (data.tag_Status == null && data.tag_Status == -1)" >
+                                <a class="btn" ng-click="GoodsReceiveConfirm(data)"  ng-disabled="data.document_Status == 2 || data.document_Status == 3 || data.document_Status == 4" href="#" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'WAITING_TO_STORE' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="genTag(data.goodsReceive_No,data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'GEN_TAG' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="memo(data.goodsReceive_Index,data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'MEMO' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="Make_AMZ(data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'AMZ' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="Sales_return(data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Sales return' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="text-center k50">{{$index+1}}</td>
+                <td class="text-center k150" ng-click="editItem(data)">{{data.goodsReceive_No}}</td>
+                <td class="text-center k150">{{data.goodsReceive_Date|dateFormate}}</td>
+                <td class="text-center k150">{{data.ref_Plan_No}}</td>
+                <td class="text-center k200">{{data.documentType_Name}}</td>
+                <td class="text-center k150">{{data.owner_Name}}</td>
+                <td class="text-center k150">{{data.processStatus_Name}}</td>
+                <td class="text-center k150"ng-click="puyawayPopupTable.onClick(data)">{{data.statusPutaway}}</td>
+                <td class="text-center k150">{{data.documentRef_No2}}</td>
+
+                <!-- <td class="text-center k200">{{data.processStatus_Name}}</td> -->
+                <td class="text-center k200">{{data.create_By}}</td>
+                <td class="k100">{{data.create_Date|dateFormate}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="13" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- </div> -->
+    <!-- </div> -->
+</div>
+
+<div class="row table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px" ng-show="show.pagination">
+            <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                ng-options="v.value as v.value for v in pageOption" ng-init='$vm.filterModel.perPage = 30' ng-change='changeTableSize()'>
+            </select>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+            <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize"
+                class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div> -->
+    <div class="col-lg-12" style="padding-left:15px;padding-right:15px;margin-top:10px">
+        <div class="form-group">
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+<!-- </div> -->
+<gr-form on-show="onShow" ng-hide="$vm.isFilter"> </gr-form>
+
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes' delegates='popupReport.delegates'>
+</report-popup>
+
+<report-signer-popup on-show='popupSigner.onShow' config='popupSigner.config' invokes='popupSigner.invokes' delegates='popupSigner.delegates'>
+</report-signer-popup>
+
+<gr-putaway-popup-table on-show='puyawayPopupTable.onShow' config='puyawayPopupTable.config' invokes='puyawayPopupTable.invokes'
+    delegates='puyawayPopupTable.delegates'>
+</gr-putaway-popup-table>

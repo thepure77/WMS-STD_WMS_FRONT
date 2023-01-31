@@ -1,0 +1,91 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow">
+    <div class="modal-dialog" style="overflow:auto;width:96%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal" ng-click="Close(filterModel)"></a>
+                    </div>
+                    <h2 class="panel-title">{{ 'RETURN' | translate }}</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-lg-6 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'Item' | translate }}</span>
+                        </div>
+                        <div class="col-lg-6 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'Return' | translate }}</span>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-xs-5 padd">
+                            <select class='form-control' ng-model='dropdownsize.model'
+                                ng-options="v.return_Tote_Size for v in dropdownsize">
+                                <option value="">{{ 'โปรดเลือกขนาด' | translate }}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-xs-1 kw-p-zero"></div>
+                        <div class="col-lg-4 col-md-12 col-xs-5 padd">
+                            <input type="text" rows="2" cols="50" class="form-control" ng-model="defult.return_Tote_MAX"
+                                disabled></input>
+                            <div class="col-lg-1 col-md-4 col-xs-1 kw-p-zero"></div>
+                        </div>
+                    </div>
+                    <div ng-if="!checkdoc">
+                        <div class="form-group">
+                            <div class="col-lg-6 col-md-2 col-xs-6 kw-p-zero">
+                                <span>{{ 'GOOD' | translate }}</span>
+                            </div>
+                            <div class="col-lg-6 col-md-2 col-xs-6 kw-p-zero">
+                                <span>{{ 'DAMAGE' | translate }}</span>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-xs-5 kw-p-zero">
+                                <input type="number" rows="2" cols="50" class="form-control"
+                                    ng-model="filterModelitem.return_qty"></input>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-xs-1 padd"></div>
+                            <div class="col-lg-4 col-md-12 col-xs-5 padd">
+                                <input type="number" rows="2" cols="50" class="form-control"
+                                    ng-model="filterModelitem.return_qty_damage"></input>
+                                <div class="col-lg-1 col-md-12 col-xs-1 padd"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'Document' | translate }}</span>
+                        </div>
+                        <div class="col-lg-6 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'Return Document' | translate }}</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-xs-5 kw-p-zero">
+                            <input type="number" rows="2" cols="50" class="form-control" ng-model="defult.doccount"
+                                disabled></input>
+                        </div>
+                        <div class="col-lg-2 col-md-12 col-xs-1 padd"></div>
+                        <div class="col-lg-4 col-md-12 col-xs-5 padd">
+                            <input type="number" rows="2" cols="50" class="form-control"
+                                ng-model="filterModelitem.re_doc"></input>
+                            <div class="col-lg-1 col-md-12 col-xs-1 padd"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-2 col-xs-12 kw-p-zero">
+                            <span>{{ 'Remark' | translate }}</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                            <input type="text" rows="2" cols="50" class="form-control"
+                                ng-model="filterModelitem.remark"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                    ng-click="addsItem(filterModel)">{{ 'ADD' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

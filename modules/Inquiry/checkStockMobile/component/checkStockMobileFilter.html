@@ -1,0 +1,35 @@
+<meta http-equiv="Pragma" content="no-cache">
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-12 col-sm-12" >
+                <select ng-model="filterModel.actionProduct" class="form-control" ng-init="filterModel.actionProduct = '1' ">
+                    <option value="1">{{ 'PRODUCT_ID' | translate }}</option>
+                    <option value="2">{{ 'LOCATION_NAME' | translate }}</option>
+                    <option value="3">{{ 'TAG_NO' | translate}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:10px;">
+            <div ng-switch="filterModel.actionProduct" class="col-lg-12 col-md-12 col-sm-12" style="padding-left: 0px; padding-right: 0px;">
+                <div class="col-lg-4 col-md-12 col-sm-12" ng-switch-when="1">
+                    <input type="text" class="form-control bgwrite"
+                    ng-model="filterModel.product_Id" ks-enter="searchFilter()"/>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12" ng-switch-when="2">
+                    <input type="text" class="form-control bgwrite"
+                    ng-model="filterModel.location_Name" ks-enter="searchFilter()"/>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12" ng-switch-when="3">
+                    <input type="text" class="form-control bgwrite"
+                    ng-model="filterModel.tag_No" ks-enter="searchFilter()"/>
+                </div>
+            </div>
+        </div>
+       
+        
+    </form>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

@@ -1,0 +1,164 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="row">
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-lg-12 col-md-12 col-xs-12 ">
+
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'TL_TRUCKLOAD_NO' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <auto-comple ng-model="$vm.filterModel.Truckload_Index" value="$vm.filterModel.Truckload_No"
+                        sourceurl="autoComplete.truckload_No" api="url.Load"></auto-comple>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'DOCUMENT_NO' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <auto-comple ng-model="$vm.filterModel.PlanGoodsIssue_Index"
+                        value="$vm.filterModel.PlanGoodsIssue_No" sourceurl="autoComplete.planGoodsIssue_No"
+                        api="url.PlanGI"></auto-comple>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'TAGOUT_NO' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <input type="text" ng-model="$vm.filterModel.TagOut_No" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'DOCK' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <select class='form-control' ng-model='dropdowndock.model'
+                    ng-options="v.dock_Name for v in dropdowndock">
+                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'CHUTE_ID' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <select class='form-control' ng-model='$vm.filterModel.Chute_Id'>
+                        <option value="">{{ 'SELECT' | translate }}</option>
+                        <option value="1">-- 1 --</option>
+                        <option value="2">-- 2 --</option>
+                        <option value="3">-- 3 --</option>
+                        <option value="4">-- 4 --</option>
+                        <option value="5">-- 5 --</option>
+                        <option value="6">-- 6 --</option>
+                        <option value="7">-- 7 --</option>
+                        <option value="8">-- 8 --</option>
+                        <option value="9">-- 9 --</option>
+                        <option value="10">-- 10 --</option>
+                        <option value="11">-- 11 --</option>
+                        <option value="12">-- 12 --</option>
+                        <option value="13">-- 13 --</option>
+                        <option value="14">-- 14 --</option>
+                        <option value="15">-- 15 --</option>
+                        <option value="16">-- 16 --</option>
+                        <option value="17">-- 17 --</option>
+                        <option value="18">-- 18 --</option>
+                        <option value="19">-- 19 --</option>
+                        <option value="20">-- 20 --</option>
+                        <option value="21">-- 21 --</option>
+                        <option value="22">-- 22 --</option>
+                        <option value="23">-- 23 --</option>
+                        <option value="24">-- 24 --</option>
+                        <option value="25">-- 25 --</option>
+                        <option value="26">-- 26 --</option>
+                        <option value="27">-- 27 --</option>
+                        <option value="28">-- 28 --</option>
+                        <option value="29">-- 29 --</option>
+                        <option value="30">-- 30 --</option>
+                        <option value="31">-- 31 --</option>
+                        <option value="32">-- 32 --</option>
+                        <option value="33">-- 33 --</option>
+                        
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'ROLLCAGE' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <select class='form-control' ng-model='Rollcagedock.model'
+                    ng-options="v.rollCage_Name for v in Rollcagedock">
+                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'STATUS' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <select class='form-control' ng-model='$vm.filterModel.status'>
+                        <option value="">{{ 'SELECT' | translate }}</option>
+                        <option value="yes">-- Yes --</option>
+                        <option value="no">-- No --</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span> {{'D_START'|translate}} - {{'D_END'|translate}}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <input type="button" name="datefilter" ng-model="$vm.filterModel.date"
+                        class="form-control daterange text-center">
+
+                </div>
+            </div>
+           
+            
+            <div class="col-lg-4 col-md-4 col-xs-12" style="margin-bottom: 15px;margin-top: 15px;">
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <span>{{ 'Appointment Time' | translate }}</span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                    <select class='form-control' ng-model='dropdownAppointtime.model'
+                    ng-options="v.appointment_Time for v in dropdownAppointtime">
+                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                </select>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-2 col-xs-6 text-right" style="margin-top: 35px;">
+            </div>
+            <div class="col-lg-2 col-md-2 col-xs-6 text-right" style="margin-top: 35px;">
+                <button class="btn btn-primary" type="button" ng-click="filterSearch(filterModel)"
+                    style="width: 145.4px;">
+                    <i class="fa fa-search"></i>{{ 'SEARCH' | translate }}
+                </button>
+            </div>
+            <div class="col-lg-1 col-md-2 col-xs-6 text-right" style="margin-top: 35px;">
+                <button class="btn btn-success" type="button" ng-click="export(filterModel)"
+                    style="width: 145.4px;">
+                    {{ 'EXECEL' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

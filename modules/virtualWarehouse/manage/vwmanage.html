@@ -1,0 +1,61 @@
+<div class="col-lg-12">
+    <div class="col-lg-1">
+          <label style="font-size: 12px; padding-top: 10px;">{{ 'WAREHOUSE' | translate }}</label>
+    </div>
+    <div class="col-lg-5">
+        <select class="form-control" ng-model="warehouse_Selected">
+            <option ng-repeat="(key, value) in $vm.warehouseList" value="{{value.warehouse_Index}}">
+                {{value.warehouse_Name}}</option>
+        </select>
+    </div>
+    <div class="col-lg-6">
+        <div style="float: left;">
+            <button class="btn btn-primary" 
+                    ng-click="updateDataWarehouse();" 
+                    style="height: 40px;width: 200px;margin-bottom: 10px;">{{ 'UPDATE_DATA_WAREHOUSE' | translate }}</button>    
+        </div>
+        <div style="float: left;padding-left: 20px;padding-top: 8px;" id="olaStatusUpd">
+            {{statusUpdataWah}}
+        </div>
+    </div>    
+</div>
+
+
+
+<!-- <div class="col-lg-6">
+    <div class="col-lg-2">
+        Zoom
+    </div>
+    <div class="col-lg-10">
+        <button ng-click="zoomin()">+</button>
+        <button ng-click="zoomout()">-</button>
+    </div>
+</div> -->
+<div class="col-lg-12">
+    <div id="gameContainer"></div>
+</div>
+<div class="col-lg-12">
+    <top-view-rack-property trigger="popupObj.rack.trigger" callback="topViewCallBack">
+    </top-view-rack-property>
+</div>
+
+<div class="col-lg-12">
+    <top-view-floor-property trigger="popupObj.floor.trigger" callback="topViewCallBack">
+    </top-view-floor-property>
+</div>
+
+<div class="col-lg-12">
+    <top-view-label-property trigger="popupObj.label.trigger" callback="topViewCallBack">
+    </top-view-label-property>
+</div>
+
+<div class="col-lg-12">
+    <side-view-rack-property model="popupObj.siderack.model" trigger="popupObj.siderack.trigger"
+        callback="sideRackCallBack">
+    </side-view-rack-property>
+</div>
+<div class="col-lg-12">
+    <side-view-floor-property model="popupObj.sidefloor.model" trigger="popupObj.sidefloor.trigger"
+        callback="sideFloorCallBack">
+    </side-view-floor-property>
+</div>

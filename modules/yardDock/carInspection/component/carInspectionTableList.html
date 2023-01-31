@@ -1,0 +1,132 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter" style="margin-bottom:15px;">
+    <div>
+        <ul class="nav nav-tabs">
+
+            <li class="active">
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}"
+                    ng-click="clickTab(1)">{{ 'InBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(2)">{{ 'OutBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(3)">{{ 'Frozen' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="text-center k150" style="width:200px;">{{ 'ACTION' | translate }}</th>
+                <th class="k100 text-center">{{ 'NO' | translate }}</th>
+                <th class="k100 text-center">{{ 'Shipment No' | translate }}</th>
+                <th class="k100 text-center">{{ 'LICENSE' | translate }}</th>
+                <th class="k200 text-center">{{ 'DRIVER_NAME' | translate }}</th>
+                <th class="k150 text-center">{{ 'STATUS' | translate }}</th>
+                <th class="k150 text-center">{{ 'VEHICLE_TYPE' | translate }}</th>
+                <th class="k200 text-center">{{ 'APPOINTMENT_NO' | translate }}</th>
+                <th class="k150 text-center">{{ 'ACTIVITY_TYPE' | translate }}</th>
+                <th class="k150 text-center">{{ 'BOOKING_DATE' | translate }}</th>
+                <th class="k150 text-center">{{ 'TIME' | translate }}</th>
+                <th class="k150 text-center">{{ 'DOCK' | translate }}</th>
+                <th class="k150 text-center">{{ 'STATUS_BY' | translate }}</th>
+
+            </tr>
+        </thead>
+        <tbody ng-if="click == 1">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'7f139afb-b712-4562-911e-0ed654c6f7af'}">
+                <td class="k150 text-center tr-height">
+                    <a class="btn btn-success" ng-click="comfirmStatus(data)" data-toggle="tooltip" ng-disabled="data.is_Inspection == 1"
+                        title="Confirm Document" data-placement="bottom">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-danger" ng-click="rejectStatus(data)" data-toggle="tooltip" ng-disabled="data.is_Inspection == 1"
+                        title="Confirm Document" data-placement="bottom">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </td>
+
+                <td class="k100 text-center">
+                    {{($index + 1) + ($vm.filterModel.perPage * ($vm.filterModel.currentPage - 1))}}</td>
+                <td class="k100 text-center">{{data.vehicle_No}}</td>
+                <td class="k100 text-center">{{data.ref_Document_No}}</td>
+                <td class="k200 text-center">{{data.driver_Name}}</td>
+                <td class="k150 text-center">{{data.car_Inspection}}</td>
+                <td class="k150 text-center">{{data.vehicleType_Name}}</td>
+                <td class="k200 text-center">{{data.appointment_Id}}</td>
+                <td class="k150 text-center">{{data.documentType_Name}}</td>
+                <td class="k150 text-center">{{data.date_booking}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="k150 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.user_carInspection}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="15" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 2">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'c392d865-8e69-4985-b72f-2421ebe8bcdb'}">
+                <td class="k150 text-center tr-height">
+                    <a class="btn btn-success" ng-click="comfirmStatus(data)" data-toggle="tooltip" ng-disabled="data.is_Inspection == 1"
+                        title="Confirm Document" data-placement="bottom">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-danger" ng-click="rejectStatus(data)" data-toggle="tooltip" ng-disabled="data.is_Inspection == 1"
+                        title="Confirm Document" data-placement="bottom">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </td>
+
+                <td class="k100 text-center">
+                    {{($index + 1) + ($vm.filterModel.perPage * ($vm.filterModel.currentPage - 1))}}</td>
+                <td class="k100 text-center">{{data.vehicle_No}}</td>
+                <td class="k200 text-center">{{data.driver_Name}}</td>
+                <td class="k150 text-center">{{data.car_Inspection}}</td>
+                <td class="k150 text-center">{{data.vehicleType_Name}}</td>
+                <td class="k200 text-center">{{data.appointment_Id}}</td>
+                <td class="k150 text-center">{{data.documentType_Name}}</td>
+                <td class="k150 text-center">{{data.date_booking}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="k150 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.user_carInspection}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="15" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 3">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'13091631-5829-4341-bcb4-272b0ed854d7'}">
+                <td class="k150 text-center tr-height">
+                    <a class="btn btn-success" ng-click="comfirmStatus(data)" data-toggle="tooltip" ng-disabled="data.is_Inspection == 1"
+                        title="Confirm Document" data-placement="bottom">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-danger" ng-click="rejectStatus(data)" data-toggle="tooltip" ng-disabled="data.is_Inspection == 1"
+                        title="Confirm Document" data-placement="bottom">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </td>
+
+                <td class="k100 text-center">
+                    {{($index + 1) + ($vm.filterModel.perPage * ($vm.filterModel.currentPage - 1))}}</td>
+                <td class="k100 text-center">{{data.vehicle_No}}</td>
+                <td class="k200 text-center">{{data.driver_Name}}</td>
+                <td class="k150 text-center">{{data.car_Inspection}}</td>
+                <td class="k150 text-center">{{data.vehicleType_Name}}</td>
+                <td class="k200 text-center">{{data.appointment_Id}}</td>
+                <td class="k150 text-center">{{data.documentType_Name}}</td>
+                <td class="k150 text-center">{{data.date_booking}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="k150 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.user_carInspection}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="15" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

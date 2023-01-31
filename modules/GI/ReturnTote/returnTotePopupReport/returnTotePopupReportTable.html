@@ -1,0 +1,196 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow">
+    <div class="modal-dialog" style="overflow:auto;width:80%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal"></a>
+                    </div>
+
+                    <h2 class="panel-title">{{ 'History Tote' | translate }}</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <!-- <div class="row" > -->
+                            <div class="col-lg-2 col-md-3 col-xs-6 padd">
+                                <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                    <span>{{ 'Shipment No' | translate }}</span>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                    <auto-comple name="filteritem.truckload_No" value="filterModel.truckload_No"
+                                        sourceurl="autoComplete.TruckloadNo" api="url.Load"></auto-comple>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                    <span>{{ 'Load Date' | translate }}</span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="button" name="datefilter" ng-model="filterModel.date"
+                                        class="form-control daterange text-center" value="01/01/2019 - 01/31/2019">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 col-xs-6 padd">
+                                <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                    <span>{{ 'Return Date' | translate }}</span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="button" name="datefilterReturn" ng-model="filterModel.Returndate"
+                                        class="form-control daterange text-center" value="01/01/2019 - 01/31/2019">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-1 col-md-3 col-sm-12 padd">
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <label>{{ 'Uncheck Load' | translate }}</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                    <div class="ig-control">
+                                        <input type="checkbox" ng-model="filterModel.isDateLoad"
+                                            ng-checked="getCheckIsLot" ng-true-value="1" ng-false-value="0" id="isDate"
+                                            class="ig-control__cbx" />
+                                        <label for="isDate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-3 col-sm-12 padd">
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <label>{{ 'Uncheck Return' | translate }}</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                    <div class="ig-control">
+                                        <input type="checkbox" ng-model="filterModel.isDateRerurn"
+                                            ng-checked="getCheckIsLot" ng-true-value="1" ng-false-value="0"
+                                            id="isDateRerurn" class="ig-control__cbx" />
+                                        <label for="isDateRerurn"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-xs-4 padd">
+                                <div class="col-lg-12 col-md-10 col-xs-12  kw-p-zero" style="height: 20px;">
+                                    <span></span>
+                                </div>
+                                <div class="col-lg-12 col-md-10 col-xs-12  kw-p-zero">
+                                    <status class="inline" multiple="true" order="true" ng-model="filterModel.status"
+                                        checked="row.display" options="row.display for row in status"
+                                        change="sortBy(row.display)" style="width: 100%;">
+                                    </status>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-sm-3 col-xs-4 padd">
+                                <div class="col-lg-12 col-md-10 col-xs-12  kw-p-zero" style="height: 20px;">
+                                    <span></span>
+                                </div>
+                                <div class="col-lg-12 col-md-10 col-xs-12  kw-p-zero">
+                                    <button ng-click="Search(filterModel)" class="btn kw-button-search">
+                                        <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                        <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-3 col-xs-12  kw-p-zero">
+                                <div class="col-lg-12 col-md-10 col-xs-12  kw-p-zero" style="height: 22px;">
+                                    <span></span>
+                                </div>
+                                <div class="col-lg-12 col-md-10 col-xs-12  kw-p-zero">
+                                    <button class="btn btn-success" ng-click="export()"
+                                        style="float: left;background-color: #60b0ff">
+                                        Export</button>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12"style="padding-top: 15px;">
+                            <div class="col-lg-1 col-md-10 col-xs-12  kw-p-zero"></div>
+                            <div class="col-lg-3 col-md-10 col-xs-12  kw-p-zero">
+                                <input type="checkbox" id="diff_Doc" name="diff_Doc" ng-model="filterModel.diff_Doc">
+                                <label for="diff_Doc"> Diff Document</label><br>
+                            </div>
+                            <div class="col-lg-3 col-md-10 col-xs-12  kw-p-zero">
+                                <input type="checkbox" id="diff_L" name="diff_L" ng-model="filterModel.diff_L">
+                                <label for="diff_L"> Diff Tote L</label><br>
+                            </div>
+                            <div class="col-lg-3 col-md-10 col-xs-12  kw-p-zero">
+                                <input type="checkbox" id="diff_M" name="diff_M" ng-model="filterModel.diff_M">
+                                <label for="diff_M"> Diff Tote M</label><br>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 table-responsive"
+                            style="padding:0px; margin-top:15px;">
+                            <div class="table-responsive table-overflow">
+                                <table class="table  table-width-100 tableHeight-350">
+                                    <thead>
+                                        <tr>
+                                            <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Shipment No' | translate }}</th>
+                                            <th class="k100 text-center">{{ 'VehicleCompany Name' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Load Date' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Return Date' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Max L' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Max M' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Max Doc' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Return Qty L' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Return Qty M' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Return DMG Qty L' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Return DMG Qty M' | translate }}</th>
+                                            <th class="k50 text-center">{{ 'Return Doc' | translate }}</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in ResultData">
+                                            <td class="k50 text-center">{{$index+1}}</td>
+                                            <td class="k50 text-center">{{data.truckLoad_No}}</td>
+                                            <td class="k100 text-center">{{data.vehicleCompany_Name}}</td>
+                                            <td class="k50 text-center">{{data.appointment_date}}</td>
+                                            <td class="k50 text-center">{{data.truckLoad_Return_Date}}</td>
+                                            <td class="k50 text-center">{{data.return_Tote_MAX_XL}}</td>
+                                            <td class="k50 text-center">{{data.return_Tote_MAX_M}}</td>
+                                            <td class="k50 text-center">{{data.docReturn_Max}}</td>
+                                            <td class="k50 text-center">{{data.return_Tote_Qty_XL}}</td>
+                                            <td class="k50 text-center">{{data.return_Tote_Qty_M}}</td>
+                                            <td class="k50 text-center">{{data.return_Tote_Qty_DMG_XL}}</td>
+                                            <td class="k50 text-center">{{data.return_Tote_Qty_DMG_M}}</td>
+                                            <td class="k50 text-center">{{data.return_Doc}}</td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'CLOSE' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

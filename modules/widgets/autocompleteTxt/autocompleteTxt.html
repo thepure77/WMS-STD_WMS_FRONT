@@ -1,0 +1,36 @@
+<style>
+    .typeahead-demo .custom-popup-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: #f9f9f9;
+    }
+    
+    .typeahead-demo .custom-popup-wrapper>.message {
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        color: #868686;
+    }
+    
+    .typeahead-demo .custom-popup-wrapper>.dropdown-menu {
+        position: static;
+        float: none;
+        display: block;
+        min-width: 160px;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+</style>
+
+<div class='typeahead-demo'>
+    <input type="text" ng-change="onChange()" ng-model="value" typeahead-on-select="onSelect($item, $model, $label)" uib-typeahead="item.name for item in loadMatchList($viewValue)" typeahead-loading="Loading" typeahead-no-results="noResults" class="form-control"
+        ng-disabled="isDisabled">
+    <!--<i ng-show="Loading" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+        <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>-->
+</div>

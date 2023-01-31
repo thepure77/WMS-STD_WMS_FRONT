@@ -1,0 +1,83 @@
+<meta http-equiv="Pragma" content="no-cache">
+<!-- PC -->
+<div class="table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped fixed-header">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <!-- <th class="k100 {{ddl}}">
+                    <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown"
+                        ng-click="ddlClick()">Action
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation" ng-click="$vm.productConversion($vm.searchResultModel)">
+                            <a role="menuitem" tabindex="-1">{{ 'PRODUCT_CONVERSION' | translate }}</a>
+                        </li>
+                    </ul>
+                </th> -->
+                <th class="text-center k50">{{ 'NO' | translate }}.</th>
+                <th class="text-center k150">{{ 'PRODUCT_ID' | translate }}</th>
+                <th class="text-center k300">{{ 'PRODUCT_NAME' | translate }}</th>
+                <th class="text-center k150">{{ 'TAG_NO' | translate }}</th>
+                <th class="text-center k100">{{ 'LOCATION' | translate }}</th>
+                <th class="text-center k150">{{ 'STOCK_ON_HAND' | translate }}</th>
+                <th class="text-center k150">{{ 'STOCK_ALLOCATED' | translate }}</th>
+                <th class="text-center k150">{{ 'STOCK_AVAILABLE' | translate }}</th>
+                <th class="text-center k150">{{ 'PRODUCT_CONVERSION_NAME' | translate }}</th>
+                <th class="text-center k100">{{ 'OWNER_ID' | translate }}</th>
+                <th class="text-center k200">{{ 'OWNER_NAME' | translate }}</th>
+                <th class="text-center k100">{{ 'TI' | translate }}x{{ 'HI' | translate }}</th>
+                <th class="text-center k250">{{ 'Factor' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <!-- <td class="text-center k100">
+                    <div class="ig-control">
+                        <input ng-model="data.selected" ng-click="clearCheck($index)" type="checkbox"
+                            id="check_{{$index}}" class="ig-control__cbx" checked />
+                        <label for="check_{{$index}}"></label>
+                    </div>
+                </td> -->
+                <td class="text-center k50">{{$index+1}}</td>
+                <td class="text-center k150">{{data.productId}}</td>
+                <td class="k300">{{data.productName}}</td>
+                <td class="text-center k150">{{data.tagNo}}</td>
+                <td class="text-center k100">{{data.locationName}}</td>
+                <td class="text-center k150">{{data.stockONHand}}</td>
+                <td class="text-center k150">{{data.stockAllocated}}</td>
+                <td class="text-center k150">{{data.stockAvailable}}</td>
+                <td class="text-center k150">{{data.productConversionName}}</td>
+                <td class="text-center k100">{{data.owner_Id}}</td>
+                <td class="text-center k200">{{data.owner_Name}}</td>
+                <td class="text-center k100">{{data.productConversion_Ref1}} * {{data.productConversion_Ref2}}</td>
+                <td class="text-center k250">{{data.productConversion_Ref3}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:0px;margin-top:20px"
+            ng-show="show.pagination">
+            <select class='form-control' style='width:70px;display:inline;' ng-model='$vm.filterModel.perPage'
+                ng-options="v.value as v.value for v in pageOption" ng-init='$vm.filterModel.perPage = 1000'
+                ng-change='changeTableSize()'>
+            </select>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+            <ul uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="$vm.filterModel.maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+
+<sku-product-conversion is-loading="isLoading" ng-hide="$vm.isFilter"> </sku-product-conversion>
+<sku-stock-detail is-stock="isStock" ng-hide="$vm.isFilter"> </sku-stock-detail>
+<sku-allocated is-allocated="isAllocated" ng-hide="$vm.isFilter"></sku-allocated>

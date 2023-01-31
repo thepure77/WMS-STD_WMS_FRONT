@@ -1,0 +1,171 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-2 control-label kw-p-zero">{{ 'ROUNDWAVE' | translate }}</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+        </header>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'Loading date' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+
+                                <dir-date-picker ng-model="filterModel.appointment_Date">
+                                </dir-date-picker>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span> {{ 'Loading Time' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='dropdownTime.model'
+                                    ng-options="v.appointment_Time for v in dropdownTime">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                                <button ng-click="filterSearch(filterModel)" ng-disabled="Run"
+                                    class="btn kw-button-search">
+                                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+        <div class="table-responsive table-overflow">
+            <table class="table table-striped table-width-100 table-bordeered">
+                <thead>
+                    <tr style="overflow-y: auto;">
+                        <th class="text-center k100">
+                            <div>
+                                <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all_"
+                                    class="ig-control__cbx" checked />
+                                <label for="all_"></label>
+                            </div>
+                        </th>
+                        <th class="tr100 text-center">{{ 'ACTION' | translate}}</th>
+                        <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'BOOKING_DATE' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'TIME' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'TL_TRUCKLOAD_NO' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'VehicleType' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'Map round wave' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'DOCK' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'APPOINTMENT_NO' | translate}}</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in filterModellist.itemsDetail">
+                        <td class="text-center k100">
+                            <input ng-click="hide($index)" ng-model="data.selected" type="checkbox"
+                                id="check_{{$index}}" class="ig-control__cbx" checked />
+                            <label for="check_{{$index}}"></label>
+                        </td>
+                        <td class="tr100 text-center">
+                            <a class="btn btn-groub-Search" ng-click="Delete_Round(data)"
+                                data-toggle="tooltip" title="Rollback Round" data-placement="bottom">
+                                <i class="fa fa-repeat"></i>
+                            </a></td>
+                        <td class="tr100 text-center">{{$index+1}}</td>
+                        <td class="tr150 text-center">{{data.appointment_Date}}</td>
+                        <td class="tr150 text-center">{{data.appointment_Time}}</td>
+                        <td class="tr150 text-center">{{data.tM_No}}</td>
+                        <td class="tr150 text-center">{{data.vehicleType_Name}}</td>
+                        <td class="tr150 text-center">{{data.is_map}}</td>
+                        <td class="tr150 text-center">{{data.dock_Name}}</td>
+                        <td class="tr150 text-center">{{data.appointment_Id}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-lg-2 col-md-3 col-xs-12 kw-p-zero">
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <span> {{ 'Sum Order ' | translate }}</span>
+            </div>
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <input type="text" class="form-control bgwrite" ng-model="countdataRow" disabled />
+            </div>
+
+        </div>
+
+
+
+        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <span> {{ 'ROUND' | translate }}</span>
+            </div>
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <select class='form-control' ng-model='dropdownRound.model'
+                    ng-options="v.round_Name for v in dropdownRound">
+                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                <label style="margin-bottom: 0px;">{{ 'Pick date' | translate }}</label>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+
+                <dir-date-picker ng-model="filterModel.planGoodsIssue_Due_Date">
+                </dir-date-picker>
+            </div>
+        </div>
+
+        <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                <!-- <label style="margin-bottom: 0px;">{{ 'PLAN_GI_DATE' | translate }}</label> -->
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <button ng-click="Update()" ng-disabled="!ready"
+                    class="btn btn-primary ">{{ 'Update Round' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

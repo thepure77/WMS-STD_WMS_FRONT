@@ -1,0 +1,30 @@
+﻿/*.nonewline {
+    white-space:nowrap;
+}
+.scrollbar-outer {
+    width:1000px;
+    height:200px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    position:unset
+}
+.scrollbar-inner {
+    table-layout: fixed;
+    margin:40px auto 0px auto;
+}*/
+/*
+.table-fixed thead {
+  width: 100%;
+}
+.table-fixed tbody {
+  height: 230px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}*/

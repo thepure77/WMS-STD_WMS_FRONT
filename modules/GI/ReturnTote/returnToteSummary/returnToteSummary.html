@@ -1,0 +1,267 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <div class="row tab" id="step-1">
+        <div id="tab1" class="tab-pane active">
+            <div class="form-group" style="margin-top:70px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-4" style="text-align: left;">
+                            <span>{{ 'TRUCK_LOAD_NO' | translate }}:</span>
+                        </div>
+                        <div class="col-lg-5 col-md-9 col-xs-6">
+                            <input type="text" class="form-control" ng-model="filterModel.shipment_no" />
+                        </div>
+                        <!-- <div class="col-lg-5 col-md-9 col-xs-6">
+                            <input type="text" class="form-control" ng-model="filterModel.shipment_no"
+                                ks-enter="ScanShipment(filterModel)" />
+                        </div> -->
+                        <div class="col-lg-4 col-md-9 col-xs-2">
+                            <button class="btn btn-primary hidden-xs" ng-click="ScanShipment(filterModel)" >{{ 'SEARCH' | translate }}</button>
+                            <button class="btn btn-primary hidden-xs" ng-click="reportReturntote.onClick(data)" >{{ 'Report Return Tote' | translate }}</button>
+                            <button class="btn btn-primary visible-xs"
+                                ng-click="ScanShipment(listfilterModel)">{{ 'SEARCH' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-4" style="text-align: left;">
+                            <span>{{ 'TL_VEHICLE_REGISTRATION' | translate }}:</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-8">
+                            <input type="text" class="form-control" ng-model="filterModel.vehicle_Registration" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-4" style="text-align: left;">
+                            <span>{{ 'TRUCK_LOAD_DATE' | translate }}:</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-8">
+                            <dir-date-picker ng-model="filterModel.truckLoad_Date" disabled="disabled == 1">
+                            </dir-date-picker>
+                            <!-- <input type="text" class="form-control" ng-model="filterModel.truckLoad_Date" disabled /> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-4" style="text-align: left;">
+                            <span style="color:red">*</span>{{ 'RETURN_DATE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-8">
+                            <dir-date-picker ng-model="filterModel.truckLoad_Return_Date">
+                            </dir-date-picker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:10px;" ng-if='showDoc'>
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-xs-3"
+                                style="text-align: left; padding-left: 0px;padding-right: 0px;">
+                                <span>{{ 'Document ' | translate }} {{data.return_Tote_Size}}:</span>
+                            </div>
+                            <div class="col-lg-3 col-md-9 col-xs-3"
+                                style="text-align: center; padding-left: 0px;padding-right: 0px;">
+                                <input type="text" class="form-control" ng-model="filterModel.docReturn" disabled />
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-xs-3"
+                                style="text-align: left;padding-right: 0px;padding-left: 7px;">
+                                <span>{{ 'คืนแล้ว' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-3 col-md-9 col-xs-3"
+                                style=" text-align: center;padding-left: 0px;padding-right: 0px;">
+                                <input type="text" class="form-control" ng-model="filterModel.return_docReturn_XX"
+                                    disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="data in filterModel.returntoteitemLists | filter :{'return_Tote_Size':'!Doc'}" style="margin-top:10px;">
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-xs-3"
+                                style="text-align: left; padding-left: 0px;padding-right: 0px;">
+                                <span>{{ 'tote ' | translate }} {{data.return_Tote_Size == "XL" ? "L" : data.return_Tote_Size }}:</span>
+                            </div>
+                            <div class="col-lg-3 col-md-9 col-xs-3"
+                                style="text-align: center; padding-left: 0px;padding-right: 0px;">
+                                <input type="text" class="form-control" ng-model="data.return_Tote_MAX"disabled />
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-xs-3"
+                                style="text-align: left;padding-right: 0px;padding-left: 7px;">
+                                <span>{{ 'คืนแล้ว' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-3 col-md-9 col-xs-3"
+                                style=" text-align: center;padding-left: 0px;padding-right: 0px;">
+                                <input type="text" class="form-control" ng-model="data.return_Tote_Qty_XX"disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row tab" id="step-2">
+
+            <!-- <div class="row"> -->
+            <ul class="nav nav-tabs" style="padding-left: 27px;">
+                <li class="active">
+                    <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}"
+                        ng-click="clickTab(1)">{{ 'Return' | translate }}</a>
+                </li>
+                <li>
+                    <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                        ng-click="clickTab(2)">{{ 'History' | translate }}</a>
+                </li>
+            </ul>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="row">
+                    <button class="btn btn-success" type="button" ng-click="remarkPopup.onClick()" ng-show="click == 1"
+                        style="float: right;margin-right: 26px;">
+                        {{ 'ADD' | translate }} </button>
+                </div>
+            </div>
+            <div id="tab1" class="tab-pane active" ng-if="click == 1">
+                <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+                    <div class="table-responsive table-overflow">
+                        <table class="table table-striped table-width-100 table-bordeered">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="tr100 text-center">{{ 'ACTION' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'NO' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Item' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Return Good' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Return Damage' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Return Document' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Remark' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in filterModel.select_returntoteitemLists">
+                                    <td class="k100 text-center">
+                                        <a class="btn btn-danger"
+                                            ng-click="deleteItem(filterModel.select_returntoteitemLists, $index)">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                    <td class="k100 text-center">{{$index+1}}</td>
+                                    <td class="tr100 text-center">{{data.return_Tote_Size == "XL" ? "L" : data.return_Tote_Size}}</td>
+                                    <td class="tr100 text-center">{{data.return_qty}}</td>
+                                    <td class="tr100 text-center">{{data.return_qty_damage}}</td>
+                                    <td class="tr100 text-center">{{data.re_doc}}</td>
+                                    <td class="tr100 text-center">{{data.remark}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="text-right padding-m" style="margin-bottom:15px;">
+
+                    <button class="btn btn-primary hidden-xs"
+                        ng-click="SavereturnTote(listfilterModel)">{{ 'SAVE' | translate }}</button>
+                    <button class="btn btn-primary btn-block btn-lg visible-xs mt-lg"
+                        ng-click="SavereturnTote(listfilterModel)">{{ 'SAVE' | translate }}</button>
+                </div>
+            </div>
+
+            <div id="tab2" class="tab-pane active" ng-if="click == 2">
+
+                <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+                    <div class="table-responsive table-overflow">
+                        <table class="table table-striped table-width-100 table-bordeered">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="tr100 text-center">{{ 'NO' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Item' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Qty Return' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Status' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Return Date' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Remark' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'User' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'Posting Date' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in tran_returntoteitemLists">
+                                    <td class="k100 text-center">{{$index+1}}</td>
+                                    <td class="tr100 text-center">{{data.return_Tote_Size == "XL" ? "L" : data.return_Tote_Size}}</td>
+                                    <td class="tr100 text-center">{{data.return_Tote_Qty}}</td>
+                                    <td class="tr100 text-center">
+                                        {{data.return_Tote_Size == 'Document' ? '-' : data.truckLoad_Return_Status == true ? 'Damage' : 'Good'}}
+                                    </td>
+                                    <td class="tr100 text-center">{{data.truckLoad_Return_Date}}</td>
+                                    <td class="tr100 text-center">{{data.remark}}</td>
+                                    <td class="tr100 text-center">{{data.user}}</td>
+                                    <td class="tr100 text-center">{{data.load_date}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr style="overflow-y: auto;">
+                            <th class="tr100 text-center">{{ 'NO' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'SIZE' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'Qty Return' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'RETRUN' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'DAMAGE' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in returntoteitemLists">
+                            <td class="k100 text-center">{{$index+1}}</td>
+                            <td class="tr100 text-center">{{data.return_Tote_Size}}</td>
+                            <td class="tr100 text-center">{{data.return_Tote_Qty}}</td>
+                            <td class="tr100 text-center" ng-click="remarkPopup.onClick(data)">
+                                {{data.return_qty == null ? '0' :data.return_qty}}</td>
+                            <td class="text-center k100">
+                                <input ng-click="hide($index)" ng-model="data.truckLoad_Return_Status" type="checkbox"
+                                    id="check_{{$index}}" class="ig-control__cbx" checked />
+                                <label for="check_{{$index}}"></label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> -->
+
+
+    </div>
+</div>
+
+<return-tote-popup on-show='remarkPopup.onShow' config='remarkPopup.config' invokes='remarkPopup.invokes'
+    delegates='remarkPopup.delegates'>
+</return-tote-popup>
+
+<return-tote-popup-report-table on-show='reportReturntote.onShow' config='reportReturntote.config' invokes='reportReturntote.invokes'
+    delegates='reportReturntote.delegates'>
+</return-tote-popup-report-table>

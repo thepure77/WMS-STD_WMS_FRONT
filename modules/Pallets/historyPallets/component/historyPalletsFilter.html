@@ -1,0 +1,61 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="col-md-12" style="margin-bottom: 1%;">
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-12 col-xs-12 padd">
+            <div class="col-md-6 col-xs-6 padd" style="font-size:30px;">{{ 'ประวัติการยืมคืนพาเลท (Lent Pallet History)' | translate }} </div>
+        </div>
+        <div class="col-md-12 col-xs-12 padd">
+        <br>        
+        </div>
+        <div class="col-md-12 col-xs-12 padd">
+            <div class="col-md-2 col-xs-6 padd">{{ 'CUSTOMER_ID_COMPANY' | translate }} :</div>
+            <div class="col-md-2 col-xs-6 padd">{{ 'DOCUMENT_NO' | translate }} :</div>
+            <div class="col-md-2 col-xs-6 padd">{{ 'PALLET_DATE' | translate }} :</div>
+            <div class="col-md-1 col-xs-6 padd">{{ 'STATUS' | translate }} :</div>
+            <div class="col-md-5 col-xs-6 padd"></div>
+            
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.vender_Index" value="filterModel.vender_Name" id="filterModel.vender_Id" sourceurl="autoComplete.vendor" api="url.Palletmanage"></auto-comple>
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.pallet_Index" value="filterModel.pallet_Id" id="filterModel.pallet_Name" sourceurl="autoComplete.document" api="url.Palletmanage"></auto-comple>
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <div class="input-group">
+                <input type="text" ng-model="filterModel.date" class="form-control daterange text-center">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-1 col-xs-6 padd">
+            <status class="inline hidden-sm hidden-xs" multiple="true" order="true"
+                        ng-model="filterModel.status" checked="row.display" options="row.display for row in status"
+                        change="sortBy(row.display)" style="width: 100%;">
+            </status>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 p-zero">
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <i class="fa fa-search"></i>{{ 'SEARCH' | translate }}
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12 padd">
+                <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success col-md-12 col-xs-6">
+                    <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                    {{ 'EXECEL' | translate }}</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+
+

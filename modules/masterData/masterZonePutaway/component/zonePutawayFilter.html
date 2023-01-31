@@ -1,0 +1,148 @@
+<div class="col-md-12 kw-mg-tb" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="">
+            <div class="col-md-3 col-xs-6 padd">
+                <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.zonePutaway"
+                    api="url.Master"></auto-comple>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <div class="input-group">
+                    <input type="text" ng-model="filterModel.date" class="form-control daterange text-center"
+                        >
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="margin-top:5px;">
+                        <div class="ig-control">
+                            <input type="checkbox" ng-model="filterModel.useDate"  ng-change="changeSet()"
+                                ng-checked="getuseDate" ng-true-value="1"
+                                ng-false-value="0" id="useDate" class="ig-control__cbx" />
+                                <label for="useDate">
+                                    <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="margin-top:3px;">
+                                    </div>{{'Clear Date'}}
+                                </label>
+                        </div>
+                    </div>
+                    
+            </div>
+             
+        </div>
+        <div class="">
+            <div class="col-md-4 p-zero">
+                <!-- <div class="col-md-3 padd"></div> -->
+                <div class="col-md-4 padd">
+                        <button ng-click="searchFilter(filterModel)" class="btn kw-button-search"> <span class="kw-icon-button icon-magnify" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+                </div>
+                <div class="col-md-3 padd">
+                    <button class="btn btn-success" type="button" ng-click="export()">
+                        {{ 'EXPORT' | translate }}
+                    </button>
+                </div>
+                <div class="col-md-1 col-xs-2 padd">
+                    <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()"> <i class="kw-icon-button icon-add_24px_outlined" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+<!-- <div class="col-lg-12 col-md-12 col-xs-12 form-group" style="margin-top:10px; padding-right:0px;margin-bottom:10px;">
+    <div class="col-lg-2 col-md-2 col-xs-12 dropdown display-inline" style="margin-left:-15px;">
+        <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.zonePutaway" api="url.Master"></auto-comple>
+    </div>
+    <div class="col-lg-2 col-md-2 col-xs-12">
+        <button class="btn btn-primary btn-md inline" ng-click="searchFilter(filterModel)">
+                    <i class="fa fa-search"  aria-hidden="true"></i>
+                </button>
+    </div>
+    <div class="text-right col-lg-8 col-md-8 col-xs-12">
+        <button class="btn btn-success btn-md inline" ng-click="$vm.triggerCreate()">
+                        {{ 'CREATE' | translate }}</button>
+    </div>
+</div> -->
+
+
+
+<!-- <div class="row">
+    <div class="col-lg-6 col-md-3 col-xs-4" style="margin-top:10px; padding-right:0px" ng-hide='model.advanceSearch'>
+        <div class="input-group-btn mb-md" style="padding:0!important;">
+            <div class="col-lg-6 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1' ">
+                    <option value="1">Zone ID</option>
+                    <option value="2">Zone Name</option>                          
+                </select>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12" style="padding-left:0px ">
+                <span class="input-group-btn">
+                    <div ng-switch="actionPS">
+                        <div class="input-group" ng-switch-when="1">
+                            <input type="text" ng-model="filterModel.zoneId" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="searchFilter(filterModel)" class="btn btn-primary form-control" style="padding: 8.5px;">
+                                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group" ng-switch-when="2">
+                            <input type="text" ng-model="filterModel.zoneName" class="form-control">
+                            <span class="input-group-btn">
+                                <button ng-click="searchFilter(filterModel)" class="btn btn-primary form-control" style="padding: 8.5px;">
+                                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>                        
+                    </div>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-xs-3" ng-show='$vm.filterModel.advanceSearch'></div>
+    <div class="col-lg-6 col-md-9 col-xs-9 text-right" style="margin-top: 5px;">
+        <button class="ks-btn" ng-click="$vm.triggerCreate()" style="padding: 8.5px; background-color: #57b5a7; border-color: #57b5a7;">
+        Create</button>
+    </div>
+</div>
+
+<div ng-show="$vm.filterModel.advanceSearch" class="row div-shadow default-bg">
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Zone ID :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.code" type="text" class="form-control" />
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                Zone Name :
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="$vm.filterModel.name" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-11 col-md-12 col-sm-11 col-xs-11 text-right container-margin" style="margin-top:20px; padding:0px; margin-left:10px;">
+        <button ng-click="filter()" class="ks-btn primary" style="margin:5px;min-width:100px">
+            <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+    </div>
+</div> -->

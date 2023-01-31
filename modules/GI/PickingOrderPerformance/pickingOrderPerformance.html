@@ -1,0 +1,362 @@
+﻿<style>
+    .body {
+        width: 2000px;
+        background-color: #eaeaea;
+        color: black;
+    }
+
+    .cardRoute {
+        display: block;
+        float: left;
+        margin-left: 20px;
+        width: auto;
+        height: 5000px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px #f6f6f6;
+        background-color: #f6f6f6;
+    }
+
+    .displayblock {
+        display: block;
+        float: left;
+    }
+
+    .headFilter {
+        font-size: 15px;
+    }
+
+    .headStatus {
+        font-size: 13px;
+    }
+
+    .w50 {
+        min-width: 50px;
+        max-width: 50px;
+    }
+
+    .w25 {
+        min-width: 20px;
+        max-width: 20px;
+    }
+
+    .w100 {
+        min-width: 100px;
+        max-width: 100px;
+    }
+
+    .statPurple {
+        background-color: #990099;
+    }
+
+    .statBlue {
+        background-color: #1E90FF;
+    }
+
+    .statYellow {
+        background-color: #FFFF33;
+    }
+
+    .statRed {
+        background-color: #FF3300;
+    }
+
+    .statGreen {
+        background-color: #66CC00;
+    }
+
+    .statCyan {
+        background-color: #696969;
+    }
+
+    .statOrange {
+        background-color: #ffa500;
+    }
+
+    .statLightBlue {
+        background-color: #33c1f7;
+    }
+
+
+    .cardStatus {
+        /* display: block;
+        float: left; */
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+    }
+
+    .iconPrev {
+        background-image: url("img/icons/icon-prev.png");
+    }
+
+    .iconRight {
+        background-image: url("img/icons/icon-right-button.png");
+    }
+
+    .iconRinger {
+        background-image: url("img/icons/icon-ringer-volume.png");
+    }
+
+    .iconDollarRed {
+        background-image: url("img/icons/icon-us-dollar-red.png");
+    }
+
+    .iconDollar {
+        background-image: url("img/icons/icon-us-dollar.png");
+    }
+
+    .iconTruck {
+        background-image: url("img/icons/icon-truck.png");
+    }
+
+    .iconChecked {
+        background-image: url("img/icons/icon-checked-checkbox.png");
+    }
+
+    .iconClose {
+        background-image: url("img/icons/icon-close-window.png");
+    }
+
+    .iconSize {
+        background-repeat: no-repeat;
+        background-size: 30px;
+    }
+
+    .iconSizeStatus {
+        background-repeat: no-repeat;
+        background-size: 20px;
+    }
+
+    .circle {
+        width: 120px;
+        height: 120px;
+        background: white;
+        -moz-border-radius: 100px;
+        -webkit-border-radius: 100px;
+        border-radius: 100px;
+        border: 4px solid black;
+    }
+
+    #hour,
+    #min,
+    #sec {
+        fill: black;
+        stroke: black;
+    }
+</style>
+
+<header class="page-header">
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2> {{ 'OUTBOUND' | translate }}</h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="indexS.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span> {{ 'OUTBOUND' | translate }} </span>
+                </li>
+                <li>
+                    <span>Picking Order Performance</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label">Picking Order Performance</label>
+</div>
+
+<div class="col-md-12">
+    <table class="displayblock">
+        <tr>
+            <td style="background-color: #7caaf1;padding-top: 15px;padding-bottom: 15px;">
+                <!-- <div class="col-md-12" style="padding-top: 15px;padding-bottom: 15px; background-color: #7caaf1; margin-top: -37px; margin-left: -40px; width: 1200px;"> -->
+                <div class="col-md-12">
+                    <div class="displayblock" style="width: 150px;" align="center">
+                        <div class="circle" style="border-color: black !important;">
+                            <svg id="clock" viewBox="5 5 90 90">
+                                <g id="hands">
+                                    <rect id="hour" x="48" y="24.5" width="4" height="27" rx="2" ry="2.55" />
+                                    <rect id="min" x="48.5" y="12.5" width="3" height="40" rx="2" ry="2" />
+                                    <line id="sec" x1="50" y1="50" x2="50" y2="16" />
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="headFilter displayblock" style="width: 280px;">
+                        <div class="col-md-12">
+                            <div class="displayblock" style="margin-top: 10px;width: 60px;">
+                                <b>วันที่ :</b>
+                            </div>
+                            <div class="displayblock" style="margin-top: 5px;width: 180px">
+                                <dir-date-picker ng-model="filterModel.PickDate"></dir-date-picker>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 10px;">
+                            <div class="displayblock" style="margin-top: 5px;width: 60px;">
+                                <b>รอบ :</b>
+                            </div>
+                            <div class="displayblock">
+                                <select style="height:32px;width:180px;font-size: 15px;padding: 5px;" ng-model="filterModel.PickTime" ng-change="search()"
+                                    ng-options="x.round_Name as x.round_Name for x in RoundList" ng-init="filterModel.PickTime = 'รอบที่ 1'">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 displayblock" style="margin-top: 15px;">
+                            <b>ออเดอร์ทั้งหมด : {{model.orderQty}}</b>
+                        </div>
+                        <div class="col-md-12 displayblock" style="margin-top: 15px;">
+                            <div style="width: 55px;display: block;float: left;margin-top: 9px;">
+                                <select style="height:32px;width:55px;font-size: 10px;padding: 5px;" ng-model="refreshSec" ng-change="refresh_Sec()">
+                                    <option>30</option>
+                                    <option>60</option>
+                                    <option>90</option>
+                                    <option>120</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 headStatus displayblock">
+                        <Table>
+                            <tr>
+                                <td class="w100">Overall status :</td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus iconRinger iconSize"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus iconDollarRed iconSize"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus iconDollar iconSize"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus iconTruck iconSize"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus iconChecked iconSize"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus iconClose iconSize"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-center">ติดต่อลูกค้า</td>
+                                <td class="text-center">พร้อมเข้า POS</td>
+                                <td class="text-center">Pos เสร็จสิ้น</td>
+                                <td class="text-center">เตรียม Load</td>
+                                <td class="text-center">เสร็จสิ้น</td>
+                                <td class="text-center">ยกเลิก</td>
+                            </tr>
+                        </Table>
+                        <br>
+                        <Table>
+                            <tr>
+                                <td class="w100">Picking status :</td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus statPurple"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus statBlue"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus statYellow"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus statRed"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus statGreen"></div>
+                                </td>
+                                <td class="w100" align="center">
+                                    <div class="cardStatus statCyan"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-center">ยังไม่ได้มอบหมาย</td>
+                                <td class="text-center">มอบหมายแล้ว</td>
+                                <td class="text-center">กำลังหยิบ</td>
+                                <td class="text-center">พบปัญหา</td>
+                                <td class="text-center">เสร็จสิ้น</td>
+                                <td class="text-center">ยกเลิก</td>
+                            </tr>
+                        </Table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="col-md-12" style="margin-top: 10px">
+                    <div class="card cardRoute" ng-repeat="item in model.pickingRouteViewModel" style="margin: 2px;">
+                        <table align="center" style="margin: 5px;">
+                            <thead>
+                                <tr ng-show="item.route != 'EXPRESS'" style="background-color:#A4C8F0;">
+                                    <th class="text-center" style="border-radius: 30px;" colspan="4">
+                                        <span style="font-size: 15px;">{{item.route}}</span>
+                                        <br>
+                                        <br>
+                                        <span style="font-size: 40px;">{{item.routeOrderQty}}</span>
+                                        <br>Orders
+                                    </th>
+                                </tr>
+                                <tr ng-show="item.route == 'EXPRESS'" style="background-color:#FFFF88;">
+                                    <th class="text-center" style="border-radius: 30px; width: 160px !important;" colspan="4">
+                                        <span style="font-size: 15px;">{{item.route}}</span>
+                                        <br>
+                                        <br>
+                                        <span style="font-size: 40px;">{{item.routeOrderQty}}</span>
+                                        <br>Orders
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr valign="top">
+                                    <td class="text-center">
+                                        <table border="1" style="margin-top: 10px;">
+                                            <thead style="border: 1px solid #f6f6f6;">
+                                                <tr>
+                                                    <th class="w25"></th>
+                                                    <th class="w50 text-center">Order</th>
+                                                    <th class="w25 text-center" ng-repeat="item3 in item.pickingRouteOrderViewModel[0].pickingRouteOrderDetailViewModel">{{item3.zone}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="border: 1px solid #f6f6f6;">
+                                                <tr ng-repeat="item2 in item.pickingRouteOrderViewModel">
+                                                    <td ng-class="{'iconRinger iconSizeStatus': item2.overallStatus == '1', 'iconDollarRed iconSizeStatus': item2.overallStatus == '2', 
+                                                                'iconDollar iconSizeStatus': item2.overallStatus == '3', 'iconTruck iconSizeStatus': item2.overallStatus == '4', 
+                                                                'iconChecked iconSizeStatus': item2.overallStatus == '5', 'iconClose iconSizeStatus': (item2.overallStatus == '6' || item2.overallStatus == '7')}"></td>
+                                                    <td ng-class="{'statOrange':(item2.overallStatus == '7' && item2.documentType_Id == 'JD'),'statOrange': item2.overallStatus == '7','statLightBlue':(item2.documentType_Id == 'JD' && item2.overallStatus != '7')}">{{item2.order}}</td>
+                                                    <td style="border-radius: 5px;border: 1px solid white;" ng-repeat="item3 in item2.pickingRouteOrderDetailViewModel" ng-class="{'statPurple': item3.pickingStatus == '1', 'statBlue': item3.pickingStatus == '2', 
+                                                                'statYellow': item3.pickingStatus == '3', 'statRed': item3.pickingStatus == '4', 
+                                                                'statGreen': item3.pickingStatus == '5', 'statCyan': item3.pickingStatus == '6'}">
+                                                        <span ng-if="item3.pickingStatus == '*'">
+                                                            <img src="./img/weight.png" style="color: red;" width="21px;" height="21px;" />
+                                                        </span>
+                                                    </td>
+                                                    <!-- <td ng-repeat="item3 in item2.pickingRouteOrderDetailViewModel"
+                                                                >{{item3.pickingStatus}}</td> -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

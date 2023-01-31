@@ -1,0 +1,77 @@
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../icomoon.eot?cka8zr');
+    src:  url('../icomoon.eot?cka8zr#iefix') format('embedded-opentype'),
+      url('../icomoon.ttf?cka8zr') format('truetype'),
+      url('../icomoon.woff?cka8zr') format('woff'),
+      url('../icomoon.svg?cka8zr#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+.kw-icon-header {
+    display: inline-block;
+    width: 21.42px;
+    height: 20.45px;
+    font: normal normal normal 50px/1 icomoon;
+}
+
+.kw-icon-button {
+    display: inline-block;
+    height: 22.74px;
+    width: 23.82px;
+    text-rendering: auto;
+    font: normal normal normal 24px/1 icomoon;
+}
+
+.icomoon {
+    display: inline-block;
+    font: normal normal normal 19px/1 icomoon;
+    height: 19px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.icon-sort:before {
+    content: "\e908";
+}
+
+.icon-magnify:before {
+    content: "\e909";
+}
+
+.icon-cloud_queue_24px_outlined:before {
+    content: "\e905";
+}
+
+.icon-star_border_24px_outlined:before {
+    content: "\e906";
+}
+
+.icon-drag_indicator_24px_outlined:before {
+    content: "\e904";
+    color: #FFF;
+}
+
+.icon-add_24px_outlined:before {
+    content: "\e900";
+}
+
+.icon-check_24px_outlined:before {
+    content: "\e901";
+    font-weight: 600;
+}
+
+.icon-create_24px_outlined:before {
+    content: "\e902";
+}
+
+.icon-home_24px_outlined:before {
+    content: "\e907";
+}
+
+.icon-print_24px_outlined:before {
+    content: "\e903";
+}

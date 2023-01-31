@@ -1,0 +1,137 @@
+<div class="row" ng-show="isLoading">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-3">
+                    <span>Carton</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-9">
+                    <input type="text" ng-model="$vm.filterModel.tagOutNo" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-3">
+                    <span>Location</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-9">
+                    <input type="text" ng-model="$vm.filterModel.locationName" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-3">
+                    <span>Item</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-9">
+                    <input type="text" ng-model="$vm.filterBarcode.productId" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-3">
+                    <span>Description</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-9">
+                    <input type="text" ng-model="$vm.filterBarcode.productName" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="div-shadow" style="margin-top:15px;margin-left:15px;margin-right:15px;">
+            <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr>
+                            <th class="tr75 ">
+                                <!-- <input  ng-model="checkAll" type="checkbox" id="all_"
+                                    class="ig-control__cbx" checked />
+                                <label for="all_">All</label> -->
+                            </th>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>QTY</th>
+                            <th>UOM</th>
+                            <th>Status</th>
+                            <th>Expire Date</th>
+                            <th>UDF 1</th>
+                            <th>UDF 2</th>
+                            <th>UDF 3</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in $vm.searchResultModel" ng-if="$vm.searchResultModel.length != 0">
+                            <td>
+                                <div class="ig-control">
+                                    <input ng-model="data.selected" ng-change="detectCheck(data)" type="checkbox" id="check_{{$index}}" class="ig-control__cbx"
+                                        checked />
+                                    <label for="check_{{$index}}"></label>
+                                </div>
+                            </td>
+                            <td>{{data.productId}}</td>
+                            <td>{{data.productName}}</td>
+                            <td>{{data.qty}}</td>
+                            <td>{{data.productConversionName}}</td>
+                            <td>{{data.itemStatusName_From}}</td>
+                            <td>{{data.expireDate}}</td>
+                            <td>{{data.udf1}}</td>
+                            <td>{{data.udf2}}</td>
+                            <td>{{data.udf3}}</td>
+                        </tr>
+                        <tr ng-if="$vm.searchResultModel.length == 0">
+                            <td colspan="11" class="text-center">No Data</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="align-right">
+            <div style="margin-top:15px;margin-left:15px;margin-right:15px;">
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="col-lg-5 col-md-5 col-xs-5">สินค้า</th>
+                                <th class="col-lg-4 col-md-4 col-xs-4">รวม</th>
+                                <th class="col-lg-5 col-md-5 col-xs-5">หน่วย</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in SumModel" ng-if="SumModel.length != 0">
+                                <td>
+                                    <div class="col-lg-8 col-md-5 col-xs-12" style="margin-top:5px;">
+                                        <input type="text" class="form-control" ng-model="data.productName" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-lg-8 col-md-4 col-xs-12" style="margin-top:10px;">
+                                        <input type="text" class="form-control" ng-model="data.binBalanceQtyBal" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-lg-8 col-md-5 col-xs-12" style="margin-top:10px;">
+                                        <input type="text" class="form-control" ng-model="data.productConversionName" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="text-right padding-m">
+                <button ng-click="select(filterModel)" class="btn btn-success hidden-xs">Select</button>
+                <button ng-click="select(filterModel)" class="btn btn-success btn-block btn-md visible-xs mt-lg">Select</button>
+                <button ng-click="back()" class="btn btn-filter hidden-xs">Back</button>
+                <button ng-click="back()" class="btn btn-filter btn-block btn-md visible-xs mt-lg">Back</button>
+            </div>
+        </div>
+    </div>

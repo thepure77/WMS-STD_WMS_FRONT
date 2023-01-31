@@ -1,0 +1,19 @@
+﻿<div class="table div-shadow">
+    <table class="table table-striped table-bordeered table-responsive">
+        <thead>
+            <th width="50%">{{ 'ITEM' | translate }}</th>
+            <th width="30%">{{ 'QUATITY' | translate }}</th>
+            <th width="20%">{{ 'ACTION' | translate }}</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in listData track by $index" ng-if="data.Item!==undefined">
+                <td>{{data.Item}}</td>
+                <td>{{data.Qty}}</td>
+                <td>
+                    <button class="btn btn-success">{{ 'EDIT' | translate }}</button>
+                    <button class="btn btn-danger" >{{ 'DELETE' | translate }}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

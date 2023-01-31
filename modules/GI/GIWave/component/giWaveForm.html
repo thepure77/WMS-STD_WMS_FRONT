@@ -1,0 +1,614 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-2 control-label kw-p-zero">{{ 'RUNWAVE' | translate }}</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+        </header>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'Pick date' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+
+                                <dir-date-picker ng-model="filterModel.planGoodsIssue_Due_Date">
+                                </dir-date-picker>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span> {{ 'ROUND' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='dropdownRound.model'
+                                    ng-options="v.round_Name for v in dropdownRound">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                                <button ng-click="filterSearch(filterModel)" ng-disabled="Run"
+                                    class="btn kw-button-search">
+                                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+        <div class="table-responsive table-overflow">
+            <table class="table table-striped table-width-100 table-bordeered">
+                <thead>
+                    <tr style="overflow-y: auto;">
+                        <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'Round Id' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'Round Name' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'PLAN_GI_DATE' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'TOTALORDER' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'TOTALLINEORDER' | translate}}</th>
+                        <th class="tr150 text-center">{{ 'CALMIN' | translate}}</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in filterModellist.checkWave_Roundmodel" ng-click="select(data)"
+                        style="background-color: {{chkIsuse(data)}}">
+                        <td class="tr100 text-center">{{$index+1}}</td>
+                        <td class="tr150 text-center">{{data.round_Id}}</td>
+                        <td class="tr150 text-center">{{data.round_Name}}</td>
+                        <td class="tr150 text-center">{{data.planGoodsIssue_Due_Date}}</td>
+                        <td class="tr150 text-center">{{data.countPlangi}}</td>
+                        <td class="tr150 text-center">{{data.countPlanGIItem}}</td>
+                        <td class="tr150 text-center">{{data.calMin}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero">
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <span>
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                <button ng-click="Runwave()" ng-disabled="!checkdata || !ready || Run"
+                    class="btn btn-primary ">{{ 'RUNWAVE' | translate }}</button>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-xs-12 kw-p-zero">
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                <input type="text" class="form-control bgwrite" ng-model="mess" disabled />
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-xs-12 kw-p-zero">
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <span>
+            </div>
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                <input type="text" class="form-control bgwrite" ng-model="filterModellist.goodsIssue_No" disabled />
+            </div>
+        </div>
+
+        <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="float: right;">
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <span>
+            </div>
+            <div class="col-lg-12 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;" ng-if="selectedTable == 2">
+                <button ng-click="exportbywave(filterModellist.checkWaveDipmodel)" 
+                    class="btn btn-primary ">{{ 'Export by Wave ' | translate }}</button>
+            </div>
+            <div class="col-lg-12 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;" ng-if="selectedTable == 3">
+                <button ng-click="exportallwave(filterModellist.checkWaveDipbyWavemodel)" 
+                    class="btn btn-primary ">{{ 'Export all Wave' | translate }}</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <ul class="nav nav-tabs col-lg-8">
+        <li class="active">
+            <a data-target="#table1" data-toggle="tab" style="color:black;background-color:{{colortable1}}"
+                ng-click="selectedTabTable(1)">Wave</a>
+        </li>
+        <li class="active">
+            <a data-target="#table2" data-toggle="tab" style="color:black;width: 108%;background-color:{{colortable2}}"
+                ng-click="selectedTabTable(2)">check short by Wave</a>
+        </li>
+        <li class="active">
+            <a data-target="#table3" data-toggle="tab" style="color:black;width: 108%;background-color:{{colortable3}}"
+                ng-click="selectedTabTable(3)">check short all by Wave</a>
+        </li>
+        <li class="active" ng-hide="hide">
+            <a data-target="#table4" data-toggle="tab" style="color:black;width: 108%;background-color:{{colortable4}}"
+                ng-click="selectedTabTable(4)">Fix Wave</a>
+        </li>
+    </ul>
+    <div class="row tab" id="step-1" ng-if="selectedTable == 1" style="margin-left: 4px;">
+
+
+
+
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr style="overflow-y: auto;">
+                            <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                            <th class="tr50 text-center">{{ 'ACTION' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'GI_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'GI_DATE' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'ROUND' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'MIN Create Date' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'MAX Create Date' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'Total time / Minute' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'CounRows' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'Document status' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'GI Status' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'Task GI status' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'Tagout status' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'WCS Status' | translate}}</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in filterModellist.checkStatusWavemodel" ng-click="selectnextstep(data)"
+                            style="background-color: {{chkIsuse(data)}}">
+                            <td class="tr100 text-center">{{$index+1}}</td>
+                            <td class="k50" >
+                                <a class="btn btn-groub-Search" ng-click="repaireWave(data)" data-toggle="tooltip"
+                                    ng-disabled="data.document_Status != -2" title="repair Wave" data-placement="bottom">
+                                    <i class="fa fa-repeat"></i>
+                                </a>
+                            </td>
+                            <td class="tr150 text-center">{{data.goodsIssue_No}}</td>
+                            <td class="tr150 text-center">{{data.goodsIssue_Date}}</td>
+                            <td class="tr150 text-center">{{data.wave_Round}}</td>
+                            <td class="tr150 text-center">{{data.minCreate_Date}}</td>
+                            <td class="tr150 text-center">{{data.maxCreate_Date}}</td>
+                            <td class="tr150 text-center">{{data.minUse}}</td>
+                            <td class="tr150 text-center">{{data.counRows}}</td>
+                            <td class="tr150 text-center">{{data.document_Status}}</td>
+                            <td class="tr150 text-center">{{data.gI_status}}</td>
+                            <td class="tr150 text-center">{{data.taskGI_status}}</td>
+                            <td class="tr150 text-center">{{data.tagOut_status}}</td>
+                            <td class="tr150 text-center">{{data.wcS_status}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <!-- <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                    <input type="text" class="form-control bgwrite" ng-model="mess" disabled />
+                </div>
+            </div> -->
+
+            <!-- <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                    <input type="text" class="form-control bgwrite" ng-model="filterModellist.goodsIssue_No" disabled />
+                </div>
+            </div> -->
+
+            <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="float: right;">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                    <button ng-click="gen_wcs(filterModellist)" ng-disabled="!wcs" ng-hide="wcs_repair"
+                        class="btn btn-primary ">{{ 'Gen Robot' | translate }}</button>
+                    <button style="font-size:11px;" ng-click="gen_wcs_repair(filterModellist)" ng-disabled="!wcs_repair" ng-hide="!wcs_repair"
+                        class="btn btn-warning ">{{ 'Repair Gen Robot' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="float: right;">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                    <button ng-click="picking_plan(filterModellist)" ng-disabled="!picking"
+                        class="btn btn-primary ">{{ 'Picking plan' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="float: right;">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                    <button ng-click="Make_tagout_V3(filterModellist)" ng-disabled="!tag"
+                        class="btn btn-primary ">{{ 'Gen Tagout' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="float: right;">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <span>
+                </div>
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                    <button ng-click="Gentask(filterModellist)" ng-disabled="!task"
+                        class="btn btn-primary ">{{ 'Gen Task' | translate }}</button>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-1 col-md-3 col-xs-12 kw-p-zero" style="float: right;">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <span>
+                </div>
+
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero" style="padding-top: 19px;">
+                    <button ng-click="Runwave()" ng-disabled="!checkdata || !ready || Run"
+                        class="btn btn-primary ">{{ 'RUNWAVE' | translate }}</button>
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
+
+    <div class="row tab" id="step-2" ng-if="selectedTable == 2">
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr style="overflow-y: auto;">
+                            <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'TL_TRUCKLOAD_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'APPOINTMENT_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'DOCK' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'BOOKING_DATE' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'TIME' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'PLANGI_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'SHIPTO_ID' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'SHIPTO_NAME' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'BRANCH_CODE' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'PRODUCT_ID' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'PRODUCT_NAME' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'ORDER_QTY' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'UNIT' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'Order Claim Return' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in filterModellist.checkWaveDipmodel">
+                            <td class="tr100 text-center">{{$index+1}}</td>
+                            <td class="tr150 text-center">{{data.truckLoad_No}}</td>
+                            <td class="tr150 text-center">{{data.appointment_Id}}</td>
+                            <td class="tr150 text-center">{{data.dock_Name}}</td>
+                            <td class="tr150 text-center">{{data.appointment_Date}}</td>
+                            <td class="tr150 text-center">{{data.appointment_Time}}</td>
+                            <td class="tr150 text-center">{{data.planGoodsIssue_No}}</td>
+                            <td class="tr150 text-center">{{data.shipTo_Id}}</td>
+                            <td class="tr150 text-center">{{data.shipTo_Name}}</td>
+                            <td class="tr150 text-center">{{data.branchCode}}</td>
+                            <td class="tr150 text-center">{{data.product_Id}}</td>
+                            <td class="tr150 text-center">{{data.product_Name}}</td>
+                            <td class="tr150 text-center">{{data.order_Qty}}</td>
+                            <td class="tr150 text-center">{{data.order_Unit}}</td>
+                            <td class="tr150 text-center">{{data.flag_ClaimReturn}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row tab" id="step-3" ng-if="selectedTable == 3">
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr style="overflow-y: auto;">
+                            <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'APPOINTMENT_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'BOOKING_DATE' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'TIME' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'TL_TRUCKLOAD_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'ORDERSEQ' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'PLANGI_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'LINENUM' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'PRODUCT_ID' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'PRODUCT_NAME' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'BU_Order_TotalQty' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'BU_GI_TotalQty' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'SU_Order_TotalQty' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'SU_GI_TotalQty' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'SU_Unit' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'ERP_Location' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'PRODUCT_LOT' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'SU_Diff' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'GI_NO' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'REMARK' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'DocumentRef No' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'Order Claim Return' | translate}}</th>
+                            <th class="tr150 text-center">{{ 'Order Export' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in filterModellist.checkWaveDipbyWavemodel">
+                            <td class="tr100 text-center">{{$index+1}}</td>
+                            <td class="tr150 text-center">{{data.appointment_Id}}</td>
+                            <td class="tr150 text-center">{{data.appointment_Date}}</td>
+                            <td class="tr150 text-center">{{data.appointment_Time}}</td>
+                            <td class="tr150 text-center">{{data.truckLoad_No}}</td>
+                            <td class="tr150 text-center">{{data.order_Seq}}</td>
+                            <td class="tr150 text-center">{{data.planGoodsIssue_No}}</td>
+                            <td class="tr150 text-center">{{data.lineNum}}</td>
+                            <td class="tr150 text-center">{{data.product_Id}}</td>
+                            <td class="tr150 text-center">{{data.product_Name}}</td>
+                            <td class="tr150 text-center">{{data.bU_Order_TotalQty}}</td>
+                            <td class="tr150 text-center">{{data.bU_GI_TotalQty}}</td>
+                            <td class="tr150 text-center">{{data.sU_Order_TotalQty}}</td>
+                            <td class="tr150 text-center">{{data.sU_GI_TotalQty}}</td>
+                            <td class="tr150 text-center">{{data.sU_Unit}}</td>
+                            <td class="tr150 text-center">{{data.erP_Location}}</td>
+                            <td class="tr150 text-center">{{data.product_Lot}}</td>
+                            <td class="tr150 text-center">{{data.sU_Diff}}</td>
+                            <td class="tr150 text-center">{{data.goodsIssue_No}}</td>
+                            <td class="tr150 text-center">{{data.document_Remark}}</td>
+                            <td class="tr150 text-center">{{data.documentRef_No3}}</td>
+                            <td class="tr150 text-center">{{data.flag_ClaimReturn}}</td>
+                            <td class="tr150 text-center">{{data.flag_Export}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row tab" id="step-4" ng-if="selectedTable == 4">
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr style="overflow-y: auto;">
+                            <th class="tr50 text-center">{{ 'No' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'Detail' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'Tag_No' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'Product_Id' | translate}}</th>
+                            <th class="tr200 text-center">{{ 'Product_Name' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'BinBalance_QtyBal' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'BinBalance_QtyReserve' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'GI_TotalQty' | translate}}</th>
+                            <th class="tr100 text-center">{{ 'diff' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in filterModellist.fixwavemodel"ng-click="selectchecktag(data)"
+                        style="background-color: {{chkIsuse(data)}}" ng-href="{{ data.detail=='Case Update' ? '#modal-form1' : '#modal-form2'}}" data-toggle="modal">
+                            <td class="tr50 text-center">{{$index+1}}</td>
+                            <td class="tr100 text-center">{{data.detail}}</td>
+                            <td class="tr100 text-center">{{data.tag_No}}</td>
+                            <td class="tr100 text-center">{{data.product_Id}}</td>
+                            <td class="tr200 text-center">{{data.product_Name}}</td>
+                            <td class="tr100 text-center">{{data.binBalance_QtyBal}}</td>
+                            <td class="tr100 text-center">{{data.binBalance_QtyReserve}}</td>
+                            <td class="tr100 text-center">{{data.gI_TotalQty}}</td>
+                            <td class="tr100 text-center">{{data.diff}}</td>
+                            <td class="tr150 text-center" hidden>{{data.binbalance_index}}</td>
+                            <td class="tr150 text-center" hidden>{{data.goodsIssue_No}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="modal-form1" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="panel-actions">
+                    <a class="fa fa-times" data-dismiss="modal" ng-click="Close(filterModel)"></a>
+                </div>
+                <h4 class="blue bigger">{{ 'CHECK TAG UPDATE' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <table class="table table-striped table-width-100 table-bordeered">
+                                    <thead>
+                                        <tr style="overflow-y: auto;">
+                                            <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'Tag_No' | translate}}</th>
+                                            <th class="tr150 text-center">{{ 'GoodsIssue_No' | translate}}</th>
+                                            <th class="tr150 text-center">{{ 'Location_Name' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'GITotalQty' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in filterModellist.checktaggimodel">
+                                            <td class="tr100 text-center">{{$index+1}}</td>
+                                            <td class="tr100 text-center">{{data.tag_No}}</td>
+                                            <td class="tr150 text-center">{{data.goodsIssue_No}}</td>
+                                            <td class="tr150 text-center">{{data.location_Name}}</td>
+                                            <td class="tr100 text-center">{{data.giTotalQty}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <table class="table table-striped table-width-100 table-bordeered">
+                                    <thead>
+                                        <tr style="overflow-y: auto;">
+                                            <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                                            <th class="tr150 text-center">{{ 'GoodsTransfer_No' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'Tag_No' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'Product_Id' | translate}}</th>
+                                            <th class="tr200 text-center">{{ 'Product_Name' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'Qty' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'TotalQty' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'ERP_Location' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in filterModellist.checktagtfmodel">
+                                            <td class="tr100 text-center">{{$index+1}}</td>
+                                            <td class="tr150 text-center">{{data.goodsTransfer_No}}</td>
+                                            <td class="tr100 text-center">{{data.tag_No}}</td>
+                                            <td class="tr100 text-center">{{data.product_Id}}</td>
+                                            <td class="tr200 text-center">{{data.product_Name}}</td>
+                                            <td class="tr100 text-center">{{data.qty}}</td>
+                                            <td class="tr100 text-center">{{data.totalQty}}</td>
+                                            <td class="tr100 text-center">{{data.erP_Location}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                    <a class="btn btn-groub-Search" ng-click="repaireBinBalance(data)" data-toggle="tooltip"
+                        title="repair BinBalance" data-placement="bottom">
+                        <i class="fa fa-repeat"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-form2" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="panel-actions">
+                    <a class="fa fa-times" data-dismiss="modal" ng-click="Close(filterModel)"></a>
+                </div>
+                <h4 class="blue bigger">{{ 'CHECK TAG DELETE' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <table class="table table-striped table-width-100 table-bordeered">
+                                    <thead>
+                                        <tr style="overflow-y: auto;">
+                                            <th class="tr100 text-center">{{ 'No' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'Tag_No' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'Product_Id' | translate}}</th>
+                                            <th class="tr200 text-center">{{ 'Product_Name' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'TotalQty' | translate}}</th>
+                                            <th class="tr100 text-center">{{ 'ProductConversion_Name' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in filterModellist.checktagbygimodel"ng-click="selectgoodsIssueItemLocation(data)"
+                                        style="background-color: {{chkIsuse(data)}}">
+                                            <td class="tr100 text-center">{{$index+1}}</td>
+                                            <td class="tr100 text-center">{{data.tag_No}}</td>
+                                            <td class="tr100 text-center">{{data.product_Id}}</td>
+                                            <td class="tr200 text-center">{{data.product_Name}}</td>
+                                            <td class="tr100 text-center">{{data.totalQty}}</td>
+                                            <td class="tr100 text-center">{{data.productConversion_Name}}</td>
+                                            <td class="tr150 text-center" hidden>{{data.goodsIssueItemLocation_Index}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                    <a class="btn btn-groub-Search" ng-click="repaireGoodsIssueItemLocation(data)" data-toggle="tooltip"
+                        title="repair GoodsIssueItemLocation" data-placement="bottom">
+                        <i class="fa fa-repeat"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'WAVE_STATUS' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <pop-up-check-wave-table invokes='datalist.invokes' delegates='datalist.delegates'
+                                    config='datalist.config'></pop-up-check-wave-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="">{{ 'CONFIRM' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<pop-up-check-wave-filter on-show='popUpCheckWaveFilter.onShow' config='popUpCheckWaveFilter.config' invokes='popUpCheckWaveFilter.invokes' delegates='popUpCheckWaveFilter.delegates'>
+</pop-up-check-wave-filter>

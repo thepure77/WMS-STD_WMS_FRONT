@@ -1,0 +1,262 @@
+<style>
+    .div-shadow {
+        -webkit-box-shadow: -1px 8px 10px -9px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 8px 10px -9px rgba(0,0,0,0.75);
+        box-shadow: -1px 8px 10px -9px rgba(0,0,0,0.75);
+    }
+      form.tab-form-demo .tab-pane {
+        margin: 20px 20px;
+      }
+</style>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div id="page-wrapper">
+                    <div class="col-md-12" style="margin-top:10px;">
+                        <div class="panel panel-default" style="padding-bottom:15px;">
+                            <div class="panel-heading">
+                                <div class="panel-heading-text">{{ 'TRANSFER_ORDER' | translate }}</div>
+                            </div>
+
+                            <!-- /.row -->
+                            <div class="row">
+                                <div class="col-md-6" style="margin-top:10px;">
+                                    <span class="col-md-4">{{ 'OMS_NO' | translate }}:</span>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top:10px;">
+                                    <span class="col-md-4">{{ 'REQUEST_DATE' | translate }}:</span>
+                                    <div class="col-md-8" style="">
+                                        <div class="col-md-12" style="padding:0!important;">
+                                            <mydatepicker class="col-md-12" ng-model="formData.date1" date-options="dateOptions" opened="opened" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top:10px;">
+                                    <span class="col-md-4">{{ 'CUSTOMER' | translate }}:</span>
+                                    <div class="col-md-8">
+                                        <select class="form-control">
+                                            <option>John</option>
+                                            <option>Smith</option>
+                                            <option>Jason</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top:10px;">
+                                    <span class="col-md-4">{{ 'CUSTOMER_REFERENCE' | translate }}:</span>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top:10px;">
+                                    <span class="col-md-4">{{ 'CUSTOMER_ORDER' | translate }}:</span>
+                                    <div class="col-md-8">
+                                        <select class="form-control">
+                                            <option>John</option>
+                                            <option>Smith</option>
+                                            <option>Jason</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="margin-top:10px;">
+                                </div>
+                                <div class="col-md-12" style="margin-top:10px;">
+                                    <span class="col-md-2">{{ 'ORDER_TYPE' | translate }}:</span>
+                                    <div class="col-md-10">
+                                        <form class="col-md-12">
+                                            <label class="radio-inline col-md-3">
+                                                <input type="radio" name="optradio">{{ 'GENERAL' | translate }}
+                                            </label>
+                                            <label class="radio-inline col-md-3">
+                                                <input type="radio" name="optradio">{{ 'FREE_ORDER' | translate }}
+                                            </label>
+                                        </form>
+                                        <form class="col-md-12">
+                                            <label class="radio-inline col-md-3">
+                                                <input type="radio" name="optradio">{{ 'FREE_OF_CHARGE' | translate }}
+                                            </label>
+                                            <label class="radio-inline col-md-3">
+                                                <input type="radio" name="optradio">{{ 'FREE_OF_CHARGE' | translate }}
+                                            </label>
+                                        </form>
+                                        <form class="col-md-12">
+                                            <label class="radio-inline col-md-3">
+                                                <input type="radio" name="optradio">{{ 'FREE_OF_CHARGE' | translate }}
+                                            </label>
+                                            <label class="radio-inline col-md-3">
+                                                <input type="radio" name="optradio">{{ 'FREE_OF_CHARGE' | translate }}
+                                            </label>
+                                        </form>
+                                   </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding:0 15px;">
+                    <div id="page-wrapper">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <tabset>
+                                    <tab ng-repeat="tab in tabs" heading="{{ tab.title }}" active="tab.active">
+                                        <div ng-include="tab.url"></div>
+                                    </tab>
+                                </tabset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pull-right" style="padding:10px 30px;">
+                    <button class="btn btn-filter">{{ 'CREATE' | translate }}</button>
+                    <button class="btn btn-danger">{{ 'CANCEL' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<modal visible="showModal2" backdrop="static">
+    <modal-header title="Add Bagging"></modal-header>
+    <modal-body>
+        <div class="col-md-12">
+            <span class="col-md-4">Item:</span>
+            <div class="col-md-8">
+                <select class="form-control">
+                    <option>Item1</option>
+                    <option>Item1</option>
+                    <option>Item1</option>
+                    <option>Item1</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+            <span class="col-md-4">QTY:</span>
+            <div class="col-md-8">
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+        <button style="margin-top:20px;" class="btn btn-filter" ng-click="hide(2)">Save</button>
+        <button style="margin-top:20px;" class="btn btn-danger" ng-click="hide(2)">Cancel</button>
+    </modal-body>
+</modal>
+
+ <script type="text/ng-template" id="warehouse-table.html">
+
+                           <table class="table table-striped table-bordeered table-responsive">
+                               <thead>
+                               <th width="35%">{{ 'MATERIAL' | translate }}</th>
+                               <th width="10%">{{ 'TYPE' | translate }}</th>
+                               <th width="15%">{{ 'BATCH' | translate }}</th>
+                               <th width="10%">{{ 'QUATITY' | translate }}</th>
+                               <th width="10%">{{ 'UOM' | translate }}</th>
+                               <th width="30%">{{ 'ACTION' | translate }}</th>
+                               </thead>
+                               <tbody>
+                                   <tr>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>
+                                           <button class="btn btn-success">{{ 'EDIT' | translate }}</button>
+                                           <button class="btn btn-danger" >{{ 'DELETE' | translate }}</button>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>1</td>
+                                       <td>
+                                           <button class="btn btn-success">{{ 'EDIT' | translate }}</button>
+                                           <button class="btn btn-danger" >{{ 'DELETE' | translate }}</button>
+                                       </td>
+                                   </tr>
+                               </tbody>
+                           </table>
+        
+                           <nav aria-label="Page navigation">
+                               <ul class="pagination pull-right">
+                                   <li>
+                                       <a href="#" aria-label="{{ 'PREVIOUS' | translate }}">
+                                           <span aria-hidden="true">&laquo;</span>
+                                       </a>
+                                   </li>
+                                   <li><a href="#">1</a></li>
+                                   <li><a href="#">2</a></li>
+                                   <li><a href="#">3</a></li>
+                                   <li><a href="#">4</a></li>
+                                   <li><a href="#">5</a></li>
+                                   <li>
+                                       <a href="#" aria-label="{{ 'NEXT' | translate }}">
+                                           <span aria-hidden="true">&raquo;</span>
+                                       </a>
+                                   </li>
+                               </ul>
+                           </nav>
+                 
+
+ </script>
+    <script type="text/ng-template" id="transporter-table.html">
+
+        <table class="table table-striped table-bordeered table-responsive">
+            <thead>
+                <th width="35%">{{ 'MATERIAL' | translate }}</th>
+                <th width="10%">{{ 'TYPE' | translate }}</th>
+                <th width="15%">{{ 'BATCH' | translate }}</th>
+                <th width="10%">{{ 'QUATITY' | translate }}</th>
+                <th width="10%">{{ 'UOM' | translate }}</th>
+                <th width="30%">{{ 'ACTION' | translate }}</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>
+                        <button class="btn btn-success">{{ 'EDIT' | translate }}</button>
+                        <button class="btn btn-danger" >{{ 'DELETE' | translate }}</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>
+                        <button class="btn btn-success">{{ 'EDIT' | translate }}</button>
+                        <button class="btn btn-danger" >{{ 'DELETE' | translate }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination pull-right">
+                <li>
+                    <a href="#" aria-label="{{ 'PREVIOUS' | translate }}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="{{ 'NEXT' | translate }}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </script>

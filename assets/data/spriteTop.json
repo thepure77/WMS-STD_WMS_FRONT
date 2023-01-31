@@ -1,0 +1,177 @@
+[
+    {
+        "layout_Index": "658AFB48-41FC-4F48-951F-3DF059358999",
+        "type": "rack",
+        "level": "3",
+        "bay": "2",
+        "deep": "1",
+        "x": 384,
+        "y": 256,
+        "angle": "90",
+        "sprite_items": [
+            {
+                "type": "rack_bar",
+                "sprite_index": "BD5E101B-8B38-44A5-3457-08D7E7629A7D",
+                "seq":"1",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "157E210D-4FE2-4460-3458-08D7E7629A7D",
+                "seq":"2",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "8C3338C1-8A66-4D82-3459-08D7E7629A7D",
+                "seq":"3",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "0A748F74-7200-4491-345A-08D7E7629A7D",
+                "seq":"4",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "63B25FD5-F234-4937-9E38-08D7E76586A0",
+                "seq":"5",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "5F649BB3-D3C9-4A26-9E39-08D7E76586A0",
+                "seq":"6",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            }
+        ]
+    },
+    {
+        "Layout_Index": "2",
+        "type": "floor",
+        "x": 64,
+        "y": 64,
+        "sprite_items": [
+            {
+                "type": "floor_area",
+                "layoutIndex": ""
+            }
+        ]
+    },
+    {
+        "layout_Index": "658AFB48-41FC-4F48-951F-3DF059358999",
+        "type": "rack",
+        "level": "2",
+        "bay": "3",
+        "deep": "1",
+        "x": 64,
+        "y": 64,
+        "angle": "0",
+        "sprite_items": [
+            {
+                "type": "rack_bar",
+                "sprite_index": "BD5E101B-8B38-44A5-3457-08D7E7629A7D",
+                "seq":"1",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "157E210D-4FE2-4460-3458-08D7E7629A7D",
+                "seq":"2",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "8C3338C1-8A66-4D82-3459-08D7E7629A7D",
+                "seq":"3",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "0A748F74-7200-4491-345A-08D7E7629A7D",
+                "seq":"4",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "63B25FD5-F234-4937-9E38-08D7E76586A0",
+                "seq":"5",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "5F649BB3-D3C9-4A26-9E39-08D7E76586A0",
+                "seq":"6",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            }
+        ]
+    }
+    ,
+    {
+        "layout_Index": "658AFB48-41FC-4F48-951F-3DF059358999",
+        "type": "rack",
+        "level": "2",
+        "bay": "3",
+        "deep": "1",
+        "x": 64,
+        "y": 96,
+        "angle": "0",
+        "sprite_items": [
+            {
+                "type": "rack_bar",
+                "sprite_index": "BD5E101B-8B38-44A5-3457-08D7E7629A7D",
+                "seq":"1",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "157E210D-4FE2-4460-3458-08D7E7629A7D",
+                "seq":"2",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "8C3338C1-8A66-4D82-3459-08D7E7629A7D",
+                "seq":"3",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "0A748F74-7200-4491-345A-08D7E7629A7D",
+                "seq":"4",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "63B25FD5-F234-4937-9E38-08D7E76586A0",
+                "seq":"5",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            },
+            {
+                "type": "rack_bar",
+                "sprite_index": "5F649BB3-D3C9-4A26-9E39-08D7E76586A0",
+                "seq":"6",
+                "left_pillar" : "1",
+                "right_pillar" : "0"
+            }
+        ]
+    }
+]

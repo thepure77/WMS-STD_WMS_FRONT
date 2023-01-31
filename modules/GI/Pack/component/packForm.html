@@ -1,0 +1,292 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="container " ng-show="isLoading">
+    <div class="row panel-body">
+
+        <div class="tabs">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a data-target="#table1" data-toggle="tab" ng-click="clickTab(1)">{{ 'SCAN_PACK' | translate }}</a>
+                </li>
+                <li>
+                    <a data-target="#table2" data-toggle="tab" ng-click="clickTab(2)">{{ 'PACK_LIST' | translate }}</a>
+                </li>
+                <li>
+                    <a data-target="#table3" data-toggle="tab"
+                        ng-click="clickTab(3)">SO List</a>
+                </li>
+            </ul>
+
+            <div id="table1" class="tab-pane active">
+                <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="padding:0px;" ng-if="click == 1">
+
+                    <div class="form-group" style="margin-top:20px">
+                        <div class="col-lg-12 col-md- col-xs-12">
+
+                            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <label>{{ 'PACKING_NO' | translate }}</label>
+                                </div>
+
+                                <div class="col-lg-10 col-md-10 col-sm-10 kw-p-zero">
+                                    <input type="text" ng-model="model.pack_No" class="form-control" disabled />
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <label>{{ 'PACK_SIZE' | translate }}</label>
+                                </div>
+
+                                <div class="col-lg-10 col-md-10 col-sm-10 kw-p-zero">
+                                    <select class="form-control" ng-model="model.packSize">
+                                        <option value="{{row.value}} " ng-repeat="row in packSize track by $index ">
+                                            {{ row.display | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <label>{{ 'QTY' | translate }}</label>
+                                </div>
+
+                                <div class="col-lg-10 col-md-10 col-sm-10 kw-p-zero">
+                                    <input type="number" ng-model="model.packQty" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <label>{{ 'PRODUCT_BARCODE' | translate }}</label>
+                                </div>
+
+                                <div class="col-lg-10 col-md-10 col-sm-10 kw-p-zero">
+                                    <input type="text" class="form-control" ks-enter="checkScanBarcode(model)"
+                                        ng-model="model.productBarcode">
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="margin-top:15px;"
+                                ng-hide="!chkscan">
+                                <div class="form-group col-sm-12 col-xs-12 text-left" style="margin-top:20px">
+                                    <button class="btn btn-primary btn-md inline" ng-click="clearpack()">
+                                        <i class="fa fa-rotate-left"></i> {{ 'CLEAR_PACK' | translate }}
+                                    </button>
+
+                                    <button class="btn btn-primary btn-md inline" ng-click="closepack()">
+                                        <i class="fa  fa-plus-circle"></i> PACK
+                                    </button>
+                                    <button class="btn btn-danger btn-md inline" ng-click="deletechk(itemScan, index)">
+                                        <i class="fa  fa-plus-circle"></i> {{ 'DELETE' | translate }}
+                                    </button>
+                                </div>
+                                <div class="ttable-responsive table-overflow div-shadow">
+                                    <table class="table table-striped table-fixed">
+                                        <thead>
+                                            <tr style="overflow-y: auto;">
+                                                <th class="k100">
+                                                    <!-- <input ng-change="CheckAll()" ng-model="checkAll" type="checkbox" id="all" class="ig-control__cbx" checked />
+                                            <label for="all"></label> -->
+                                                </th>
+                                                <th class="k200">{{ 'PRODUCT_ID' | translate }}</th>
+                                                <th class="k300">{{ 'PRODUCT_NAME' | translate }}</th>
+                                                <th class="k150">{{ 'QTY' | translate }}</th>
+                                                <th class="k150">{{ 'PACKAGE' | translate }}</th>
+                                                <!-- <th class="k150">Pack Size</th> -->
+                                                <th class="k200">{{ 'SO_NO' | translate }}</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in itemScan">
+                                                <td class="k100">
+                                                    <input ng-model="data.selected" type="checkbox" id="{{$index}}"
+                                                        class="ig-control__cbx" checked />
+                                                    <label for="{{$index}}"></label>
+                                                    </a>
+                                                </td>
+                                                <td class="k200">{{data.product_Id}}</td>
+                                                <td class="k300">{{data.product_SecondName}}</td>
+                                                <td class="k150">{{data.packQty}}</td>
+                                                <td class="k150">{{data.productConversion_Name}}</td>
+                                                <!-- <td class="k150">{{data.packsize}}</td> -->
+                                                <td class="k200">{{data.ref_Document_No}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="table2" class="tab-pane active" ng-if="click == 2">
+                <div class="ttable-responsive table-overflow div-shadow">
+                    <table class="table table-striped table-fixed">
+                        <thead>
+                            <tr style="overflow-y: auto;">
+                                <th class="k100"> </th>
+                                <th class="k150">{{ 'PACKAGE' | translate }}</th>
+                                <th class="k200">{{ 'PRODUCT_ID' | translate }}</th>
+                                <th class="k300">{{ 'PRODUCT_NAME' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModelItems2">
+                                <td class="k100">
+                                    <a class="btn btn-danger" ng-click="IsDeletePack(data)">
+                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+
+                                <td class="k150">{{data.pack_No}}</td>
+                                <td class="k200">{{data.product_Id}}</td>
+                                <td class="k300">{{data.product_Name}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="table3" class="tab-pane active" ng-if="click == 3">
+                <div class="ttable-responsive table-overflow div-shadow">
+                    <table class="table table-striped table-fixed">
+                        <thead>
+                            <tr style="overflow-y: auto;">
+                                <th class="k100"> </th>
+                                <th class="k150">So No</th>
+                                <th class="k150">Qty So</th>
+                                <th class="k150">Qty Pack</th>
+                                <th class="k150">Diff</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModelItemsSum">
+                                <td class="k100">
+                                    <a class="btn btn-danger" ng-click="IsDeletePack(data)">
+                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+
+                                <td class="k150">{{data.ref_Document_No}}</td>
+                                <td class="k200">{{data.qtySo}}</td>
+                                <td class="k300">{{data.qty}}</td>
+                                <td class="k300">{{data.diff}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- <div id="table2" class="tab-pane">
+                        <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="padding:0px;" ng-if="click == 2">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="margin-top:15px;">
+                                <div class="ttable-responsive table-overflow div-shadow">
+                                    <table class="table table-striped table-fixed">
+                                        <thead>
+                                            <tr style="overflow-y: auto;">
+                                                <th class="k150">{{ 'PRODUCT_ID' | translate }}</th>
+                                                <th class="k250">{{ 'PRODUCT_NAME' | translate }}</th>
+                                                <th class="k150">{{ 'QTY' | translate }}</th>
+                                                <th class="k200">{{ 'PACKAGE' | translate }}</th>
+                                                <th class="k150">{{ 'QTY_PACKED' | translate }}</th>
+                                                <th class="k200">{{ 'PRODUCT_BARCODE' | translate }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in filterModelItems">
+                                                <td class="k150">{{data.product_Id}}</td>
+                                                <td class="k250">{{data.product_SecondName}}</td>
+                                                <td class="k150">{{data.qty}}</td>
+                                                <td class="k200">{{data.productConversion_Name}}</td>
+                                                <td class="k150">{{data.countQty}}</td>
+                                                <td class="k200">{{data.productConversionBarcode}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+            <!-- <div id="table3" class="tab-pane active">
+                        <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="padding:0px;" ng-if="click == 3">
+
+                            <div class="form-group col-sm-12 col-xs-12 text-left" style="margin-top:20px">
+                                <button class="btn btn-danger btn-md inline" ng-click="delete(packReceiveModel)">
+                                    <i class="fa fa-trash-o"></i> {{ 'DELETE' | translate }}
+                                </button>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive" style="margin-top:15px;">
+                                <div class="ttable-responsive table-overflow div-shadow">
+                                    <table class="table table-striped table-fixed">
+                                        <thead>
+                                            <tr style="overflow-y: auto;">
+                                                <th class="text-center k100">
+                                                    <div>
+                                                        {{ 'SELECT_ALL' | translate }}
+                                                    </div>
+                                                    <div>
+                                                        <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked />
+                                                        <label for="all_"></label>
+                                                    </div>
+                                                </th>
+                                                <th class="k150">{{ 'PACKING_NO' | translate }}</th>
+                                                <th class="k150">{{ 'PRODUCT_ID' | translate }}</th>
+                                                <th class="k250">{{ 'PRODUCT_NAME' | translate }}</th>
+                                                <th class="k150 text-center">{{ 'QTY_PACKED' | translate }}</th>
+                                                <th class="k200 text-center">{{ 'PACKAGE' | translate }}</th>
+                                                <th class="k100 text-center">{{ 'PACK_SIZE' | translate }}/th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in packReceiveModel">
+                                                <td class="text-center k100">
+                                                    <input ng-click="hide($index)" ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked
+                                                    />
+                                                    <label for="check_{{$index}}"></label>
+                                                </td>
+                                                <td class="k150">{{data.pack_No}}</td>
+                                                <td class="k150">{{data.product_Id}}</td>
+                                                <td class="k250">{{data.product_SecondName}}</td>
+                                                <td class="k150 text-center">{{data.packQty}}</td>
+                                                <td class="k200 text-center">{{data.productConversion_Name}}</td>
+                                                <td class="k100 text-center">{{data.packSize}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px; margin-bottom:20px;">
+            <button class="btn btn-danger hidden-back" ng-click="back()">
+                <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>{{ 'BACK' | translate }}</button>
+        </div>
+    </div>
+
+
+
+</div>
+
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes'
+    delegates='popupReport.delegates'>
+</report-popup>
+
+<pack-product-popup on-show='popupPackProduct.onShow' config='popupPackProduct.config'
+    invokes='popupPackProduct.invokes' delegates='popupPackProduct.delegates'>
+</pack-product-popup>

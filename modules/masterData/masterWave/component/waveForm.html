@@ -1,0 +1,219 @@
+<div ng-show="onShow">
+    <div class="tab-content">
+        <div class="wizard-progress wizard-progress-lg">
+            <div class="steps-progress">
+                <div class="progress-indicator" style="width: {{menu_width}}%"></div>
+            </div>
+            <ul class="wizard-steps">
+                <li class="{{menu[0].completed}} {{menu[0].active}}" style="pointer-events:none" disabled>
+                    <a href="#plan-summary" data-toggle="tab">
+                        <span>1</span>{{ 'CREATE_HEADER' | translate }}</a>
+                </li>
+                <li class="{{menu[1].completed}} {{menu[1].active}}" style="pointer-events:none" disabled>
+                    <a href="#plan-summary" data-toggle="tab">
+                        <span>2</span>{{ 'CREATE_DETAIL' | translate }}</a>
+                </li>
+                <li class="{{menu[2].completed}} {{menu[2].active}}" style="pointer-events:none" disabled>
+                    <a href="#plan-summary" data-toggle="tab">
+                        <span>3</span>{{ 'PREVIEW' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row tab col-md-12 kw-mg-tb" ng-if="menu[0].active == 'active'" >
+            <div class="form-group">
+                <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label>{{ 'WAVE_ID' | translate }}</label>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                        <input ng-model="filterModel.wave_Id" type="text" class="form-control"/>
+                    </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label><span style="color:red">*</span>{{ 'WAVE_NAME' | translate }}</label>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                        <input ng-model="filterModel.wave_Name" type="text" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label><span style="color:red">*</span>{{ 'SEQUENCE' | translate }}</label>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                        <input ng-model="filterModel.wave_Case" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="{{ 'INPUT_NUMBER' | translate }}"/>
+                    </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label>{{ 'ISACTIVE' | translate }}</label>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                        <div class="ig-control">
+                            <input type="checkbox" ng-model="filterModel.isActive" class="ig-control__cbx" ng-checked="getCheck" ng-true-value="1" ng-false-value="0"
+                                id="table_setting_1" />
+                            <label for="table_setting_1"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row tab col-md-12 kw-mg-tb" id="plan-summary" ng-if="menu[1].active == 'active'">
+            <div class="form-group">
+                <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label><span style="color:red">*</span>{{ 'RULE' | translate }}</label>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                        <auto-comple ng-model="filterItemModel.rule_Index" value="filterItemModel.key" sourceurl="autoComplete.rule" api="url.Master"></auto-comple>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label><span style="color:red">*</span>{{ 'SEQUENCE' | translate }}</label>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                        <input ng-model="filterItemModel.waveRule_Seq" maxlength ="10" chars="only-numbers" type="text" class="form-control" placeholder="{{ 'INPUT_NUMBER' | translate }}"/>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+                <button class="btn btn-success" type="button" ng-click="addsItem(filterItemModel)">
+                    {{ 'ADD' | translate }} </button>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+                <div class="table-responsive table-overflow">
+                    <table class="table  table-width-100 fixed-header tableHeight-350">
+                        <thead>
+                            <tr>
+                                <th class="k150 text-center">{{ 'ACTION' | translate }}</th>
+                                <th class="k100">{{ 'NO' | translate }}</th>
+                                <th class="k150">{{ 'SEQUENCE' | translate }}</th>
+                                <th class="k250">{{ 'RULE_ID' | translate }}</th>
+                                <th class="k250">{{ 'RULE_NAME' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listWaveRuleItemViewModel">
+                                <td class="k150">
+                                    <div>
+                                        <a class="btn btn-filter nextBtn" ng-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3"
+                                            ng-click="editItem($index)">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </a>
+                                        <a class="btn btn-danger" ng-click="deleteItem(filterModel.listWaveRuleItemViewModel, $index)" ng-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="k100">{{$index+1}}</td>
+                                <td class="k150">{{data.waveRule_Seq}}</td>
+                                <td class="k250">{{data.rule_Id}}</td>
+                                <td class="k250">{{data.rule_Name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row tab" id="plan-summary" ng-if="menu[2].active == 'active'">
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'WAVE_ID' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.wave_Id}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'WAVE_NAME' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.wave_Name}}
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>
+                                <h6>{{ 'SEQUENCE' | translate }}</h6>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            {{filterModel.wave_Case}}
+                        </div>
+                    </div>
+                    
+                  
+                </div>
+            </div>
+          
+            <div class="col-lg-12 col-md-12 col-sm-12 div-shadow">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 " style="margin-top:15px;">
+                    <table class="table fixed-header tableHeight-350">
+                        <thead>
+                            <th class="k100">{{ 'NO' | translate }}</th>
+                            <th class="k150">{{ 'SEQUENCE' | translate }}</th>
+                            <th class="k250">{{ 'RULE_ID' | translate }}</th>
+                            <th class="k250">{{ 'RULE_NAME' | translate }}</th>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listWaveRuleItemViewModel">
+                                <td class="k100">{{$index+1}}</td>
+                                <td class="k150">{{data.waveRule_Seq}}</td>
+                                <td class="k250">{{data.rule_Id}}</td>
+                                <td class="k250">{{data.rule_Name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-if="menu[0].active == 'active'" ng-click="back()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+                <button type="button" class="btn btn-step-back" ng-if="menu[0].active != 'active'" ng-click="previous()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+                <button type="button" class="btn btn-step-next" ng-if="menu[2].active != 'active'" ng-click="next()">
+                    {{ 'NEXT' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-blue previous" ng-show="buttons.add" ng-if="menu[2].active == 'active'" ng-click="add()"
+                    style="float: right;background-color: #60b0ff">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-blue" ng-show="buttons.update" ng-if="menu[2].active == 'active'"
+                    ng-click="add()" style="float: right;background-color: #60b0ff">
+                    {{ 'UPDATE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>

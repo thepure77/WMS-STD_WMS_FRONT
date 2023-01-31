@@ -1,0 +1,291 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<header class="page-header">
+    <div class="pull-right">
+
+    </div>
+</header>
+
+<!-- Picking -->
+<div ng-show="$vm.isFilterTable">
+    <div class="tab-content">
+        <div class="row tab">
+
+            <!-- web -->
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'TASK_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.task_no" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'BATCH/LOT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.product_Lot" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'PRODUCT_ID' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.product_Id" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'PRODUCT_NAME' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.product_Name" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'MFG_date' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.goodsReceive_MFG_Date" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'Expire_Date' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.goodsReceive_EXP_Date" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'SAO_SLOC' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.eRP_Location" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'WMS_SLOC' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.eRP_Location" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'LOCATION_TYPE' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" class="form-control" id="locationType_Name" ng-model="filterModel.locationType_Name" 
+                        style="margin-bottom:5px;" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" class="form-control" id="location_Name" ng-model="filterModel.confirmlocation_Name" 
+                        style="margin-bottom:5px;" ks-enter="scanLocation()"  blur-on-enter>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.goodsReceive_ProductConversion_Name" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <span>{{ 'QTY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.Qty_Count" class="form-control" style="margin-bottom:5px;" id="Qty"
+                        ng-disabled="!filterModel.isconfirmlocation"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group hidden-xs" style="margin-top: 30px;">
+                <div class="col-lg-5 col-md-5 col-xs-5" style="padding:0px">
+                    <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;margin-right: 5px">
+                        {{ 'BACK' | translate }}
+                    </button>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5" style="padding:0px;">
+                    <button type="button" class="btn btn-success" ng-click="confirmTask()" ng-disabled="isBlock" style="float: right;margin-left: 5px">
+                        {{ 'CONFIRM' | translate }}</button>
+                    <button type="button" class="btn btn-groub-Search" ng-click="clearScan()" style="float: right;">
+                        {{ 'CLEAR' | translate }}
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- mobile -->
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'TASK_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.task_no" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'PRODUCT_ID' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.product_Id" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'PRODUCT_NAME' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.product_Name" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'BATCH/LOT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.lot" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'MFG_date' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.mfg_date" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'Expire_Date' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.product_Name" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'SAP_Sloc' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.sap_Sloc" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'WMS_Sloc' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.product_Name" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" class="form-control" id="location_Name" ng-model="filterModel.confirmlocation_Name" 
+                        style="margin-bottom:5px;" ks-enter="scanLocation()"  blur-on-enter>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'QTY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.Qty_Count" class="form-control" style="margin-bottom:5px;" id="Qty"
+                        ng-disabled="!filterModel.isconfirmlocation"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.Unit" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-disabled="isBlock" ng-click="confirmTask()">
+                        {{ 'CONFIRM' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:-20px;">
+                    <button class="btn btn-danger btn-block btn-md visible-xs mt-lg" ng-click="back()">
+                        {{ 'BACK' | translate }}</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

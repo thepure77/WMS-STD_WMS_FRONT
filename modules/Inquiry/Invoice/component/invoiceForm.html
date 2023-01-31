@@ -1,0 +1,351 @@
+<div class="tabs" ng-show="$vm.isFilterTable">
+
+    <div class="tab-content">
+        <!-- Header -->
+        <section class="panel">
+
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'เลขใบแจ้งหนี้' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="filterModel.invoice_No" class="form-control" disabled />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'วันที่เอกสาร' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <dir-date-picker ng-model="filterModel.invoice_Date">
+                            </dir-date-picker>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'หมายเลขประจำตัวผู้เสียภาษี' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <input type="text" ng-model="filterModel.tax_No" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'DOCUMENT_TYPE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <select class='form-control' ng-model='dropdownDocumentType.model'
+                                ng-options="v.documentType_Name for v in dropdownDocumentType">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'สถานะ' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="filterModel.status" class="form-control" disabled />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'เอกสารอ้างอิง 1' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <input type="text" ng-model="filterModel.documentRef_No1" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'OWNER_ID' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Id"
+                                id="filterModel.owner_Name" value4="filterModel.billing_Address"
+                                sourceurl="autoComplete.owner" api="url.BinBalance">
+                            </auto-comple>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'OWNER_NAME' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" class="form-control" ng-model="filterModel.owner_Name" disabled />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'เอกสารอ้างอิง 2' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <input type="text" ng-model="filterModel.documentRef_No2" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'เงื่อนไขชำระเงิน' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select ng-model="filterModel.payment_Ref" class="form-control">
+                                <option value="เงินสด"> เงินสด </option>
+                                <option value="เก็บเงินปลายทาง"> เก็บเงินปลายทาง </option>
+                            </select> </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'เครดิต' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="filterModel.Credit_Term" class="form-control" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'กำหนดชำระ' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <dir-date-picker ng-model="filterModel.due_Date">
+                            </dir-date-picker>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'สกุลเงิน' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model='dropdownCurrency.model'
+                                ng-options="v.currency_Name for v in dropdownCurrency">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'ผู้ออกเอกสาร' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="filterModel.create_By" class="form-control" disabled />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <span>{{ 'REMARK' | translate }}</span>
+                        </div>
+                        <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                            <textarea rows="3" cols="50" class="form-control"
+                                ng-model="filterModel.document_Remark"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab" style="background-color:{{colortable1}}"
+                            ng-click="selectedTabTable(1)">รายการ Invoice</a>
+                    </li>
+                    <!-- <li class="active">
+                        <a data-target="#table2" data-toggle="tab" style="background-color:{{colortable2}}"
+                            ng-click="selectedTabTable(2)">รายการ Other Charge</a>
+                    </li> -->
+                    <li class="active">
+                        <a data-target="#table2" data-toggle="tab" style="background-color:{{colortable3}}"
+                            ng-click="selectedTabTable(3)">รายการ Storage</a>
+                    </li>
+                </ul>
+
+
+                <div class="form-group" style="margin-top:15px;" ng-if="selectedTable == 1">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <span>{{ 'วันที่คิดเงิน' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <dir-date-picker ng-model="filterModel.doc_Date"></dir-date-picker>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <span>{{ 'ถึง' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <dir-date-picker ng-model="filterModel.doc_DateTo"></dir-date-picker>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-xs-12  kw-p-zero">
+
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-xs-12  kw-p-zero" style="margin-top:20px;">
+                            <button ng-click="$vm.invoiceStorageCharge()" type="button"
+                                ng-disabled="filterModel.new == 0" class="modal-with-form btn btn-default"
+                                style="float: left; margin-left: 10px;;">
+                                {{ 'StorageCharge Doc.' | translate }}
+                            </button>
+
+                            <button ng-click="loadMemo()" type="button" ng-disabled="filterModel.new == 0"
+                                class="modal-with-form btn btn-default" style="float: left; margin-left: 10px;;">
+                                {{ 'LoadMeMo' | translate }}
+                            </button>
+
+                            <button ng-click="manual.onClick(filterModel)" type="button" ng-disabled="filterModel.new == 0"
+                                class="modal-with-form btn btn-default" style="float: left; margin-left: 10px;;">
+                                {{ 'Manual' | translate }}
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="table-responsive table-overflow" ng-if="selectedTable == 1">
+                    <table class="table table-striped fixed-header tableHeight-350">
+                        <thead>
+                            <tr>
+                                <th class="text-center k150" style="width:200px;">{{ 'ACTION' | translate }}</th>
+                                <th class="k150 text-center">{{ 'NO' | translate }}</th>
+                                <th class="k200 text-center">{{ 'ประเภทการคิดเงิน' | translate }}</th>
+                                <th class="k150 text-center">{{ 'จำนวน' | translate }}</th>
+                                <th class="k150 text-center">{{ 'ปริมาตร' | translate }}</th>
+                                <th class="k150 text-center">{{ 'น้ำหนัก' | translate }}</th>
+                                <th class="k150 text-center">{{ 'ปริมาณคิดเงิน' | translate }}</th>
+                                <th class="k200 text-center">{{ 'รวมเป็นเงิน' | translate }}</th>
+                                <th class="k100 text-center">{{ 'MEMO_NO' | translate }}</th>
+                                <th class="k100 text-center">{{ 'ref Doc No' | translate }}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listInvoice">
+                                <td class="k150 text-center">
+                                    <a class="btn btn-danger" ng-click="deleteItem(filterModel.listInvoice, $index)" data-toggle="tooltip"
+                                        title="Edit" data-placement="bottom">
+                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                                <td class="k150 text-center">{{$index+1}}</td>
+                                <td class="k200 text-center">{{data.serviceCharge_Name}}</td>
+                                <td class="k150 text-center">{{data.binBalance_QtyBal}}</td>
+                                <td class="k150 text-center">{{data.binBalance_VolumeBal}}</td>
+                                <td class="k150 text-center">{{data.binBalance_WeightBal}}</td>
+                                <td class="k150 text-center">{{data.volumeCal}}</td>
+                                <td class="k200 text-center">{{data.amount}}</td>
+                                <td class="k100 text-center">{{data.memo_No}}</td>
+                                <td class="k100 text-center">{{data.ref_Document_No}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="table-responsive table-overflow" ng-if="selectedTable == 3">
+                    <table class="table table-width-100 tableHeight-350">
+                        <thead>
+                            <tr>
+                                <th class="text-center k150" style="width:200px;">{{ 'ACTION' | translate }}</th>
+                                <th class="k150 text-center">{{ 'NO' | translate }}</th>
+                                <th class="k150 text-center">{{ 'Charge Date' | translate }}</th>
+                                <th class="k200 text-center">{{ 'ประเภทการคิดเงิน' | translate }}</th>
+                                <th class="k150 text-center">{{ 'จำนวน' | translate }}</th>
+                                <th class="k150 text-center">{{ 'ปริมาตร' | translate }}</th>
+                                <th class="k150 text-center">{{ 'น้ำหนัก' | translate }}</th>
+                                <th class="k150 text-center">{{ 'ปริมาณคิดเงิน' | translate }}</th>
+                                <th class="k200 text-center">{{ 'รวมเป็นเงิน' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listStorage">
+                                <td class="k150 text-center">
+                                    <a class="btn btn-danger" ng-click="deleteItemStorage(filterModel.listStorage, $index)" data-toggle="tooltip"
+                                        title="Edit" data-placement="bottom">
+                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                                <td class="k150 text-center">{{$index+1}}</td>
+                                <td class="k100 text-center">{{data.doc_Date|dateFormate}}</td>
+                                <td class="k200 text-center">{{data.serviceCharge_Name}}</td>
+                                <td class="k150 text-center">{{data.binBalance_QtyBal}}</td>
+                                <td class="k150 text-center">{{data.binBalance_VolumeBal}}</td>
+                                <td class="k150 text-center">{{data.binBalance_WeightBal}}</td>
+                                <td class="k150 text-center">{{data.volumeCal}}</td>
+                                <td class="k200 text-center">{{data.amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="footer-white" style="margin-top:20px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-blue previous" ng-click="saveInvoice()"
+                    style="float: right;background-color: #60b0ff">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button  type="button" id="table2" ng-if="selectedTable == 3" style="float: right;margin-right: 10px;" class="btn btn-success" 
+                ng-click="exportFile.ExportStorage()">
+                    <i class="fa fa-file-excel-o" aria-hidden="true"> {{ 'EXECEL' | translate }}</i>
+                </button>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<invoice-storage-charge is-loading="isLoading" ng-hide="$vm.isFilterTable" triggerSearch="$vm.triggerSearch">
+</invoice-storage-charge>
+
+<manual-invoice on-show='manual.onShow' config='manual.config' invokes='manual.invokes' delegates='manual.delegates'>
+</manual-invoice >

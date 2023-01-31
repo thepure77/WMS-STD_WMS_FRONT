@@ -1,0 +1,28 @@
+
+<div class="table-responsive table-overflow">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <!-- <td>#</td> -->
+                <th class="k200 text-center">{{ 'RULE_CONDITION_FIELD_NAME' | translate }}</th>
+                <th class="k350 text-center">
+                    {{ 'ACTION' | translate }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items">
+                <!-- <td>{{$index+1}}</td> -->
+                <td class="k200 text-center">{{data.ruleConditionField_Name}}</td>
+                <td class="k350 text-center">
+                        <a class="btn btn-primary" ng-click="selected(data)">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

@@ -1,0 +1,31 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'THE_ONE_CARD' | translate }}</h4>
+            </div>
+            <!-- <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-lg-12 col-md-12 col-xs12" style="margin-top:10px;">
+                <the-one-card-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></the-one-card-popup-table>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'YES' | translate }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

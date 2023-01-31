@@ -1,0 +1,82 @@
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-12 col-xs-12 padd">
+            <div class="col-md-2 col-xs-6 padd">{{ 'INVOICE' | translate }} :</div>
+            <div class="col-md-2 col-xs-6 padd">{{ 'OWNER_ID' | translate }} :</div>
+            <div class="col-md-3 col-xs-6 padd text-center" style="font-size: 11px">{{ 'D_START' | translate }} -
+                {{ 'D_END' | translate }}</div>
+            <div class="col-md-4 col-xs-6 padd"></div>
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.autoInvoice" 
+                api="url.BinBalance"></auto-comple>
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Id" id="filterModel.owner_Name"
+                value4="filterModel.billing_Address" sourceurl="autoComplete.owner" api="url.BinBalance">
+            </auto-comple>
+        </div>
+        <div class="col-md-3 col-xs-6 padd">
+            <div class="input-group">
+                <input type="text"  name="datefilter" ng-model="filterModel.date" class="form-control daterange text-center"
+                    value="01/01/2019 - 01/31/2019">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- <div class=""> -->
+        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 p-zero">
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <i class="fa fa-search"></i>{{ 'SEARCH' | translate }}
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <button ng-click="exportFile.ExportInvoice(filterModel)" class="btn btn-success">
+                    <i class="fa fa-file-excel-o"></i>{{ 'EXECEL' | translate }}
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-3 padd">
+
+            </div>
+            <div class="col-md-2 col-xs-2 padd">
+
+            </div>
+            <div class="col-md-1 col-xs-1 padd">
+                <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()">
+                    <i class="kw-icon-button icon-add_24px_outlined " aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <!-- </div> -->
+    </form>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+
+        $('input[name="datefilter"] , input[name="datefilterAdv"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    });
+</script>

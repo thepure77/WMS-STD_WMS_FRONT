@@ -1,0 +1,432 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a class="fa fa-caret-down" ng-click="ShowHeader()"></a>
+            </div>
+            <h2 class="panel-title">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-2 control-label kw-p-zero">{{ 'UNPACK' | translate }}</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+        </header>
+
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-disabled="disabled"
+                    ng-click="clickTabH(1)">{{ 'UNPACK' | translate }}</a>
+            </li>
+            <!-- <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTabH(2)">{{ 'DETAIL' | translate }}</a>
+            </li> -->
+        </ul>
+        <div id="tab1" class="tab-pane active" ng-if="clickH == 1">
+            <div class="row tab" id="step-1">
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top: 15px;">
+                                <span>
+                                    <span style="color:red">*</span> {{ 'MATERIAL_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-11" style="padding-right: 0px;">
+                                <input type="text" class="form-control " ng-model="filterModel.product_Id"
+                                    value="filterModel.product_Id" disabled />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <span>
+                                    <span style="color:red">*</span> {{ 'PRODUCT_NAME' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12">
+                                <input type="text" class="form-control " ng-model="filterModel.product_Name" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-10 col-md-10 col-xs-12 ">
+                                <span>
+                                    <span style="color:red">*</span> {{ 'QTY' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-xs-12">
+                                <input type="text" class="form-control " ng-model="filterModel.qty" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-xs-6 ">
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-10 col-md-10 col-xs-12 ">
+                                <span>{{ 'UNIT' | translate }} :</span>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-xs-12">
+                                <input type="text" class="form-control " ng-model="filterModel.product_conname"
+                                    disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-10 col-md-10 col-xs-12 ">
+                                <span>
+                                    <span style="color:red">*</span> {{ 'PICK' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-xs-12">
+                                <input type="text" class="form-control " ng-model="filterModel.Pick"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 col-xs-6 ">
+                        <div class="col-lg-6 col-md-6 col-xs-12 ">
+                            <div class="col-lg-10 col-md-10 col-xs-12 ">
+                                <span>{{ 'UNIT' | translate }} :</span>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-xs-12">
+                                <select class='form-control' ng-model='filterModel.unit'
+                                    ng-options="v.productConversion_Name for v in dropdownProductconversion">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="form-group" style="margin-top: 30px">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-10 col-md-10 col-xs-12">
+                                <button class="btn btn-filter" style="width: 100%" type="button"
+                                    ng-click="selected(filterModel)">{{ 'ACCEPTED' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div id="tab2" class="tab-pane active" ng-if="clickH == 2 ">
+            <div class="row tab" id="step-1">
+                <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs visible-lg" style="padding:0px; margin-top:15px;">
+                    <div class="table-responsive table-overflow">
+                        <table class="table table-striped table-width-100 table-bordeered">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th>{{ 'ACTION' | translate}}</th>
+                                    <th class="tr150">{{ 'MATERIAL_NO' | translate}}</th>
+                                    <th>{{ 'MATERIAL' | translate}}</th>
+                                    <th class="k150">{{ 'QTY' | translate}}</th>
+                                    <th>{{ 'UNIT' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in itemsReserve.item">
+                                    <td class="k100">
+                                        <div>
+                                            <a class="btn btn-danger" ng-click="deleteItem(data, $index)">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>{{data.product_Id}}</td>
+                                    <td style="width: 200%;">{{data.product_Name}}</td>
+                                    <td class="k150">{{data.qty}}</td>
+                                    <td>{{data.productConversion_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 visible-xs hidden-lg" style="padding:0px; margin-top:15px;">
+                    <div class="table-responsive table-overflow">
+                        <table class="table table-striped table-width-100 table-bordeered">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th>{{ 'ACTION' | translate}}</th>
+                                    <th class="tr150">{{ 'MATERIAL_NO' | translate}}</th>
+                                    <th>{{ 'MATERIAL' | translate}}</th>
+                                    <th class="k50">{{ 'QTY' | translate}}</th>
+                                    <th>{{ 'UNIT' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in itemsReserve.item">
+                                    <td class="k100">
+                                        <div>
+                                            <a class="btn btn-danger" ng-click="deleteItem(data, $index)">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>{{data.product_Id}}</td>
+                                    <td style="width: 200%;">{{data.product_Name}}</td>
+                                    <td class="k50">{{data.pick * data.unit.productconversion_Ratio}}</td>
+                                    <td>{{data.productConversion_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="panel">
+        <header class="panel">
+
+            <h2 class="panel-heading">
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="row">
+                            <label class="col-lg-2 control-label kw-p-zero">{{ 'Component' | translate }}</label>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+        </header>
+
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}"
+                    ng-click="clickTab(1)">{{ 'SCAN_COMPONETN' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(2)">{{ 'DETAIL' | translate }}</a>
+            </li>
+        </ul>
+
+        <div id="tab1" class="tab-pane active" ng-if="click == 1">
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top: 15px;">
+                            <span>
+                                <span style="color:red">*</span>{{ 'BARCODE' | translate }}
+                            </span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <input type="text" class="form-control bgwrite"
+                                ng-model="filterItemModel.productConversionBarcode" ks-enter="scanProduct()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <span>
+                                <span style="color:red">*</span> {{ 'PRODUCT_ID' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <input type="text" class="form-control bgwrite" ng-model="filterItemModel.product_Id"
+                                disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <span>
+                                <span style="color:red">*</span> {{ 'PRODUCT_NAME' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <input type="text" class="form-control bgwrite" ng-model="filterItemModel.product_Name"
+                                disabled />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <span>
+                                <span style="color:red">*</span> {{ 'QTY' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <input type="text" class="form-control " ng-model="filterItemModel.qty" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <span>
+                                <span>{{ 'UNIT' | translate }} :</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <select class='form-control' ng-model='filterItemModel.model'
+                                ng-options="v.productConversion_Name for v in dropdownProductconversion" disabled>
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <span>
+                                <span style="color:red">*</span> {{ 'LOCATION' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <input type="text" class="form-control bgwrite" ng-model="filterItemModel.location"
+                            ks-enter="scanLocation()" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <span>
+                                <span style="color:red">*</span> {{ 'PLANT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <input type="text" class="form-control " ng-model="filterItemModel.plant" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <span>
+                                <span style="color:red">*</span> {{ 'SAO_SLOC' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <input type="text" class="form-control " ng-model="filterItemModel.erp_location" />
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            
+            <div class="form-group" style="margin-top: 30px">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-10 col-md-10 col-xs-12">
+                            <button class="btn btn-filter" style="width: 100%" type="button"
+                                ng-click="addsItem(filterItemModel)">{{ 'ACCEPTED' | translate }}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-pane active" ng-if="click == 2">
+            <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs" style="padding:0px; margin-top:15px;">
+                <div class="table-responsive table-overflow">
+                    <table class="table table-striped table-width-100 table-bordeered">
+                        <thead>
+                            <tr style="overflow-y: auto;">
+                                <th>{{ 'ACTION' | translate}}</th>
+                                <th>{{ 'ROW_NUMBER' | translate}}</th>
+                                <th class="tr150">{{ 'MATERIAL_NO' | translate}}</th>
+                                <th>{{ 'MATERIAL' | translate}}</th>
+                                <th class="k150">{{ 'QTY' | translate}}</th>
+                                <th class="k150">{{ 'SUGESSTION_LOCATION' | translate}}</th>
+                                <th class="k150">{{ 'PLANT' | translate}}</th>
+                                <th>{{ 'UNIT' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listGoodsReceiveItemViewModels">
+                                <td class="k100">
+                                    <div>
+                                        <a class="btn btn-danger"
+                                            ng-click="deleteItemGR( filterModel.listGoodsReceiveItemViewModels, $index)">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>{{$index+1}}</td>
+                                <td>{{data.product_Id}}</td>
+                                <td style="width: 200%;">{{data.product_Name}}</td>
+                                <td class="k150">{{data.qty}}</td>
+                                <td class="k150">{{data.location_Name}}</td>
+                                <td class="k150">{{data.plant}}</td>
+                                <td>{{data.productConversion_Name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 visible-xs" style="padding:0px; margin-top:15px;">
+                <div class="table-responsive table-overflow">
+                    <table class="table table-striped table-width-100 table-bordeered">
+                        <thead>
+                            <tr style="overflow-y: auto;">
+                                <th>{{ 'ACTION' | translate}}</th>
+                                <th>{{ 'ROW_NUMBER' | translate}}</th>
+                                <th class="tr150">{{ 'MATERIAL_NO' | translate}}</th>
+                                <th>{{ 'MATERIAL' | translate}}</th>
+                                <th class="k100">{{ 'QTY' | translate}}</th>
+                                <th class="k150">{{ 'SUGESSTION_LOCATION' | translate}}</th>
+                                <th class="k150">{{ 'PLANT' | translate}}</th>
+                                <th>{{ 'UNIT' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listGoodsReceiveItemViewModels">
+                                <td class="k100">
+                                    <div>
+                                        <a class="btn btn-danger"
+                                            ng-click="deleteItemGR( filterModel.listGoodsReceiveItemViewModels, $index)">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>{{$index+1}}</td>
+                                <td>{{data.product_Id}}</td>
+                                <td style="width: 200%;">{{data.product_Name}}</td>
+                                <td class="k100">{{data.qty}}</td>
+                                <td class="k150">{{data.location_Name}}</td>
+                                <td class="k150">{{data.plant}}</td>
+                                <td>{{data.productConversion_Name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="text-right padding-m" style="margin-bottom:15px;">
+
+                <button ng-click="save()" class="btn btn-primary hidden-xs">{{ 'SAVE' | translate }}</button>
+                <button ng-click="save()" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">{{ 'SAVE' |
+                    translate }}</button>
+            </div>
+        </div>
+    </section>
+</div>

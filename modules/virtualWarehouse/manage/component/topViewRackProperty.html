@@ -1,0 +1,131 @@
+<div id="top-rack-modal-form" class="modal fade" tabindex="-1">
+    <div class="modal-dialog" style="overflow:auto;width:35%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">Rack Property</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <label for="Warehouse" class="col-md-5 control-label">Warehouse Name:</label>
+                    <div class="col-md-7">
+                        <input id="Warehouse" class="form-control" ng-model="$vm.model.warehouseName"
+                            readonly=readonly />
+                    </div>
+                    <label for="room" class="col-md-5 control-label">Room:</label>
+                  
+                    <div class="col-md-7">
+                        <select class="form-control" id="room" ng-model="$vm.model.roomIndex">
+                            <option ng-repeat="(key, value) in $vm.roomList" value="{{value.room_Index}}">
+                                {{value.room_Name}}</option>
+                        </select>
+                    </div>
+                    <label for="zone" class="col-md-5 control-label">Zone:</label>
+                    <div class="col-md-7">
+                        <!-- {{$vm.model.zoneIndex}} -->
+                        <select class="form-control" id="zone" ng-model="$vm.model.zoneIndex">
+                            <option ng-repeat="(key, value) in $vm.zoneList" value="{{value.zone_Index}}">
+                                {{value.zone_Name}}</option>
+                        </select>
+                    </div>
+                    <label for="locationType" class="col-md-5 control-label">Location Type:</label>
+
+                   
+                    <div class="col-md-7">
+
+                        <select class="form-control" id="locationType" ng-model="$vm.model.locationTypeIndex">
+                            <option ng-repeat="(key, value) in $vm.locationTypeList"
+                                value="{{value.locationType_Index}}">
+                                {{value.locationType_Name}}</option>
+                        </select>
+                    </div>
+                    <label for="Aisle" class="col-md-5 control-label">Aisle Name:</label>
+                    <!-- <div class="col-md-7">
+                        <input id="Aisle" class="form-control" ng-model="$vm.model.aisle" />
+                    </div> -->
+                    <div class="col-md-7">
+                        <!-- <input id="Aisle" class="form-control" ng-model="$vm.model.aisle" /> -->
+                      
+                        <auto-complete api-func="$vm.locationAisleAutoCompleteFunc" 
+                                selected-item="$vm.locationAisleItem" 
+                                id="locationlockId"
+                                async-selected="$vm.model.aisle"
+                                selected-value=""></auto-complete>
+                    </div>
+
+                    <label for="Prefix" class="col-md-5 control-label">Prefix:</label>
+                    <!-- <div class="col-md-7">
+                        <input id="Aisle" class="form-control" ng-model="$vm.model.aisle" />
+                    </div> -->
+                    <div class="col-md-7">
+                        <input id="Prefix" class="form-control" ng-model="$vm.model.prefix" />
+                      
+                    </div>
+
+                    <label for="Prefix" class="col-md-5 control-label">LR:</label>
+                    <!-- <div class="col-md-7">
+                        <input id="Aisle" class="form-control" ng-model="$vm.model.aisle" />
+                    </div> -->
+                    <div class="col-md-7">
+                          <select class="form-control" id="lr" ng-model="$vm.model.lr">
+                            <option value="L" selected>L</option>
+                            <option value="R">R</option>
+                          </select>
+                      
+                    </div>
+
+                    <label for="Bay" class="col-md-5 control-label">No Stat Bay :</label>
+                    <div class="col-md-7">
+                        <input type="number" id="noStartBay" class="form-control" ng-model="$vm.model.noStartBay" />
+                    </div>
+
+
+
+                    <label for="Bay" class="col-md-5 control-label">Bay Qty:</label>
+                    <div class="col-md-7">
+                        <input type="number" id="Bay" class="form-control" ng-model="$vm.model.bay" />
+                    </div>
+                    <label for="level" class="col-md-5 control-label">Level Qty:</label>
+                    <div class="col-md-7">
+                        <input type="number" id="level" class="form-control" ng-model="$vm.model.level" />
+                    </div>
+                    <label for="deep" class="col-md-5 control-label">Deep:</label>
+                    <div class="col-md-7">
+                        <input type="number" id="deep" class="form-control" ng-model="$vm.model.deep" />
+                    </div>
+                    <label for="Pallet" class="col-md-5 control-label">Pallet Qty Per Bay/Level:</label>
+                    <div class="col-md-7">
+                        <input type="number" id="Pallet" class="form-control" ng-model="$vm.model.pallet" />
+                    </div>
+                    <label for="TotalBin" class="col-md-5 control-label">Total Bin in Aisle:</label>
+                    <div class="col-md-7">
+                        <input type="number" id="TotalBin" class="form-control" ng-model="$vm.model.totalBin" />
+                    </div>
+                    <label for="Angle" class="col-md-5 control-label">Angle:</label>
+                    <div class="col-md-7">
+                        <input type="number" id="Angle" class="form-control" ng-model="$vm.model.angle" />
+                    </div>
+
+                  
+                </div>
+            </div>
+           
+            <div class="modal-footer">
+                <div class="col-md-9 col-md-offset-3">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-block" ng-click="$vm.save()"
+                            style="background-color: #008CBA;">Save</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-block" ng-click="$vm.delete()" ng-show="$vm.model.status"
+                            style="background-color: #008CBA;">Delete</button>
+                    </div>
+
+                    <button id="refreshTopRack" ng-click="refreshTopRack" style="display: none;"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

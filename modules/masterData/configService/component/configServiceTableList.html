@@ -1,0 +1,74 @@
+<div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-4"></div>
+
+    <div class="col-lg-2" style="margin-bottom:15px;">
+        <button  style="float: right;"ng-click="addServiceChargeList.onClick($vm.searchResultModel)" class="btn kw-button-search">
+            <label class="kw-pos">{{ 'ADD_CHARGE' | translate }}</label></button>
+</div>
+
+
+</div>
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="k250">#</th>
+                <th class="k200">{{ 'SERVICECHARHE_NAME' | translate }}</th>
+                <th class="k250">{{ 'STATUS' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="k250 actions">
+                    <div style="margin:0px">
+                        <a ng-click="editItem(data)" data-toggle="tooltip" title="Edit">
+                            <span class="kw-size-icon-action glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <!-- <a ng-click="delete(data)" data-toggle="tooltip" title="Delete">
+                            <span class="kw-size-icon-action glyphicon glyphicon-trash"></span>
+                        </a> -->
+                    </div>
+                </td>
+                <td class="k250">{{data.serviceCharge_Name}}</td>
+                <td class="k250">{{data.processName}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+
+    <!-- <div class="col-lg-2" style="margin-left:-10px;margin-bottom:15px;">
+        <button ng-click="addServiceChargeList.onClick($vm.searchResultModel)" class="btn kw-button-search">
+            <label class="kw-pos">{{ 'ADD_CHARGE' | translate }}</label></button>
+    </div> -->
+
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination
+                total-items="$vm.filterModel.totalRow" ng-change='changePage()' items-per-page="$vm.filterModel.perPage"
+                num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage"
+                max-size="$vm.filterModel.maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+</div>
+<add-service-charge-list on-show='addServiceChargeList.onShow' invokes='addServiceChargeList.invokes' delegates='addServiceChargeList.delegates'>
+</add-service-charge-list>
+
+<service-charge-fix-form on-show="onShow" ng-hide="$vm.isFilter"></service-charge-fix-form>
+
+<storage-charge on-storage="onStorage" ng-hide="$vm.isFilter"></storage-charge>

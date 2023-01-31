@@ -1,0 +1,84 @@
+<div class="kw-sizechart-dashboard">
+    <!-- <a href="#" ng-click="$vm.getData()">get data</a>
+    <div>
+        <canvas class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-options="options" chart-colors="chartColors">
+        </canvas>
+    </div> -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-p-zero  kw-txtlabel" style="width: 90%;padding-top: 17px;">
+        <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 12px;">Utilization</label>
+    </div>
+    <div class="kw-mg-dashboard">
+        <div class="innerbox-dashboard"></div>
+        <div id="pie-placeholder1" class="flot1" style="height: 225.67px;width: 88%;margin-left: 20px;"></div>
+        <!-- <canvas class="flot-base " style="height: 225.67px;width: 88%;"></canvas> -->
+        <!-- <canvas class="flot-overlay " style="height: 225.67px;width: 88%;"></canvas> -->
+        <div class="col-lg-12 col-md-12 visible-lg visible-md percent_1" style="position: absolute; top: 40%; left: -2%;">
+            <div style="font-size:56.67px; text-align:center; padding:0px; color: #6B6C6E; font-weight: 600;">%</div>
+        </div>
+        <div class="col-sm-12 col-xs-12 visible-sm visible-xs percent_1" style="position: absolute; top: 40%; left: 0%;">
+            <div style="font-size:56.67px; text-align:center; padding:0px; color: #6B6C6E; font-weight: 600;">%</div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-xs-12 percent_2" style="position: absolute; top: 30%; left: -19%;">
+        </div>
+        <!-- <span  style="position: absolute; top: 175px; left: 215px;">
+                <div style="font-size:13px; text-align:center; padding:2px; color: #FFF; font-weight: 600;"> 32%</div>
+            </span> -->
+        <div class="col-lg-12 col-md-12 col-xs-12 percent_3" style="position: absolute; top: 52%; left: 13%;">
+        </div>
+
+
+    </div>
+    <div class="col-lg-12 col-md-12 kw-box-detail-dashboard">
+        <div class="fa fa-square" style="color: #C4C5C7;"></div><span> Space Used </span>
+        <br>
+        <div class="fa fa-square" style="color: #FFC400;"></div><span> Space Not Used </span>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $(".click").click(function () {
+            if ($(this).hasClass("Isactive")) {
+                $(this).removeClass("Isactive");
+            } else {
+                $(".click").removeClass("Isactive");
+                $(this).addClass("Isactive");
+            }
+        });
+
+        // var data1 = [{
+        //     label: "Space Used",
+        //     data: 70
+        // }, {
+        //     label: "Space Not Used",
+        //     data: 66
+        // }
+        //     // , {
+        //     //     label: " Delayed : 99 Jobs",
+        //     //     data: 64
+        //     // }
+        // ];
+
+        // var options = {
+        //     series: {
+        //         pie: {
+        //             show: true,
+        //             innerRadius: 0.5,
+        //             radius: 1
+        //         }
+        //     },
+        //     grid: {
+        //         hoverable: true
+        //     },
+        //     tooltip: true,
+        //     tooltipOpts: {
+        //         cssClass: "flotTip",
+        //         content: "%s: %p.0%",
+        //         defaultTheme: false
+        //     }
+        // };
+        // console.log(data1)
+        // $.plot($("#pie-placeholder1"), data1, options);
+    });
+</script>

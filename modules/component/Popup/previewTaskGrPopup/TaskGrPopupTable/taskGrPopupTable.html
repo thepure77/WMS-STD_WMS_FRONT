@@ -1,0 +1,31 @@
+<div class="table-responsive table-overflow">
+    <table class="kw-custom-table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                <th class="k100 text-center">{{ 'TAG_NO' | translate }}</th>
+                <th class="k200 text-center">{{ 'MATERIAL_NO' | translate }}</th>
+                <th class="k200 text-center">{{ 'MATERIAL' | translate }}</th>
+                <th class="k100 text-center">{{ 'QTY' | translate }}</th>
+                <th class="k100 text-center">{{ 'UNIT' | translate }}</th>
+                <th class="k100 text-center">{{ 'LOCATION' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items" ng-if="items.length != 0">
+                <td class="k50 text-center">
+                    {{$index+1}}
+                </td>
+                <td class="k100 text-center">{{data.tag_No}}</td>
+                <td class="k200 text-center">{{data.product_Id}}</td>
+                <td class="k200 text-center">{{data.product_Name}}</td>
+                <td class="k100 text-center">{{data.qty}}</td>
+                <td class="k100 text-center">{{data.productConversion_Name}}</td>
+                <td class="k100 text-center">{{data.location_Name}}</td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="11" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

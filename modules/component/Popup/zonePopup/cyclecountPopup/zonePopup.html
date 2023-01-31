@@ -1,0 +1,34 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'ZONE' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="input-group col-lg-4">
+                                <input type="text" ng-model="zone.key" class="form-control">
+                                <span class="input-group-btn">
+                                    <button ng-click="filter()" class="btn btn-filter form-control"
+                                        style="padding: 8.5px;">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
+                                </span>
+                            </div>
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <zone-popup-table-cy invokes='datalist.invokes' delegates='datalist.delegates'
+                                    config='datalist.config'></zone-popup-table-cy>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT BEGINS -->
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+            </div> -->

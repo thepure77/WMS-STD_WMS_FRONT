@@ -1,0 +1,77 @@
+.div-shadow {
+    -webkit-box-shadow: 0 1px 4px $shadow-br-color;
+    -moz-box-shadow: 0 1px 4px $shadow-br-color;
+    box-shadow: 0 1px 4px $shadow-br-color;
+    display: block;
+}
+
+.txt-form {
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.form-right {
+    float: right;
+}
+
+.form-left {
+    float: left;
+}
+
+.newline {
+    display: block;
+    white-space: pre-line;
+}
+
+.form-inline {
+    display: inline;
+}
+
+.col-fixed-right {
+    position: absolute !important;
+    width: 150px;
+    right: 0;
+    background: #e0e0e0;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.form-topbox {
+    margin-top: 10px;
+    z-index: 1;
+}
+
+.form-textpanel {
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.input-margin {
+    margin-top: 10px;
+}
+
+.sidebar-list {
+    padding: 0 44px !important;
+    color: $dark-color !important;
+}
+
+.ng-scope {
+    padding-bottom: 5px;
+}
+
+.modal-header {
+    background-color: #337ab7 !important;
+    color: #ffffff !important;
+}
+
+.form-margin {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.radio-form {
+    margin-right: 15px;
+}
+

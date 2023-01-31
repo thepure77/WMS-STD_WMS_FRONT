@@ -1,0 +1,168 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+        <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'OUTBOUND' | translate }} </h2>
+            <div class="navigationLabel">
+                <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+                {{ 'HistoryCloseWave' | translate }}</div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+
+
+<div class="tabs">
+    <div class="panel-body">
+   
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">  
+            <div>
+                <section class="panel">
+                    <header class="panel-heading">
+                        <h2>
+                            <div class="row">
+                                <label class="col-lg-2 control-label kw-p-zero">{{ 'HistoryCloseWave' | translate }}</label>
+                            </div>
+                        </h2>
+                    </header>
+            
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group" style="margin-top:15px;">
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                            <label>{{ 'GI_NO' | translate }}</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                            <auto-comple ng-model="filterModel.goodsIssue_Index" value="filterModel.goodsIssue_No"
+                                            sourceurl="autoComplete.GoodsIssue_No" api="url.GI"></auto-comple>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                            <label>{{ 'WaveComplete_Date' | translate }}</label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                            <div class="input-group">
+                                                <input type="text" ng-model="filterModel.waveComplete_Date" class="form-control daterange text-center" name="datefilter">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                            <label></label>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                            <button ng-click="HistoryCloseWaveSearch()"
+                                                class="btn kw-button-search">
+                                                <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                                                <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+            
+                        </div>
+                    </div>
+                </section>
+            
+                <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+                    <div class="table-responsive table-overflow">
+                        <table class="table table-striped table-width-100 table-bordeered">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="tr50 text-center">{{ 'No' | translate}}</th>
+                                    <th class="tr100 text-center">{{ 'GI_NO' | translate}}</th>
+                                    <th class="tr50 text-center">{{ 'WaveComplete_Status' | translate}}</th>
+                                    <th class="tr150 text-center">{{ 'WaveComplete_Date' | translate}}</th>
+                                    <th class="tr500 text-center">{{ 'Wave_Remark' | translate}}</th>
+                                    <th class="tr50 text-center">{{ 'WCS_status' | translate}}</th>
+                                    <th class="tr150 text-center">{{ 'Document_Status' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in filterModellist.models">
+                                    <td class="tr50 text-center">{{$index+1}}</td>
+                                    <td class="tr100 text-center">{{data.goodsIssue_No}}</td>
+                                    <td class="tr50 text-center">{{data.waveComplete_Status == 10 ? 'WMS ส่งข้อมูล' : data.waveComplete_Status == 20 ? 'WCS รับข้อมูล' : data.waveComplete_Status == 30 ? 'WMS เตรียมข้อมูล' : data.waveComplete_Status == 35 ? 'WMS เตรียมข้อมูล Error' : data.waveComplete_Status == 40 ? 'Wave กำลังทำงาน' : data.waveComplete_Status == 45 ? 'ปิด Wave ไม่สมบูรณ์' : 'ปิด Wave สมบูรณ์'}}</td>
+                                    <td class="tr150 text-center">{{data.waveComplete_Date}}</td>
+                                    <td class="tr500 text-center">{{data.wave_Remark}}</td>
+                                    <td class="tr50 text-center">{{data.wCS_status == 10 ? 'WCS In Porocess':data.wCS_status == 15 ? 'Error WCS' : 'WCS Succeed'}}</td>
+                                    <td class="tr150 text-center">{{data.document_Status == -1 ? 'ยกเลิกเอกสาร':data.document_Status == 2 ? 'มอบหมายงาน':data.document_Status == 3 ? 'เสร็จสิ้น':'รอยืนยัน'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="tabs">
+    <div class="panel-body" style="padding: 5px;">
+   
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">  
+            <div>
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'GI_NO' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <auto-comple ng-model="filterModel.goodsIssue_Index" value="filterModel.waveNo"
+                                sourceurl="autoComplete.GoodsIssue_No" api="url.GI"></auto-comple>
+                            </div>
+                        </div>
+                
+                        <div class="col-lg-5 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'REMARK' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <textarea rows="2" cols="500" class="form-control"ng-model="filterModel.remark"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label></label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <button class="btn btn-primary" type="button" ng-click="CloseWave()">
+                                    {{ 'Close Wave 45' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

@@ -1,0 +1,107 @@
+<header class="page-header">
+
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'REPORT' | translate }} </h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a ui-sref="wms.index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'REPORT' | translate }}</span>
+                </li>
+                <li>
+                    <span>{{ 'REPORT_INVENTORY_ACCURACY' | translate }}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label"> {{ 'REPORT_INVENTORY_ACCURACY' | translate }}</label>
+</div>
+
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-2 col-xs-9 padd" style="text-align: left;font-size: 11px">Wherehouse</div>
+        <div class="col-md-2 col-xs-9 padd" style="text-align: left;font-size: 11px">SKU</div>
+        <div class="col-md-2 col-xs-9 padd" style="text-align: left;font-size: 11px">Batch/Lot</div>
+        <div class="col-md-2 col-xs-9 padd" style="text-align: left;font-size: 11px">Sloc</div>
+        <div class="col-md-2 col-xs-1 padd" style="text-align: left;font-size: 11px">Status</div>
+        <div class="col-md-2 col-xs-1 padd" style="text-align: left;min-height: 26px;"></div>
+        <div class="">
+            <div class="col-md-2 padd">
+                <div class="dropdown">
+                    <select ng-model="filterModel.ambientRoom" class="form-control">
+                        <option value=""> -- {{ 'SELECT' | translate }} -- </option>
+                        <option value="01">ambient</option>
+                        <option value="02">ห้องเย็น</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <auto-comple ng-model="filterModel.product_Index" id="filterModel.product_Name" value="filterModel.product_Id" sourceurl="autoComplete.autoProductId"
+                        api="url.Master"></auto-comple>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <input type="text" class="form-control" ng-model="filterModel.product_Lot">
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <input type="text" class="form-control" ng-model="filterModel.sloc">
+            </div>
+        </div>
+        <!-- <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <auto-comple ng-model="filterModel.Billing_Index" id="filterModel.Billing_No"
+                    value="filterModel.Billing_No" sourceurl="autoComplete.billing" api="url.PlanGI"></auto-comple>
+            </div>
+        </div> -->
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                <select class='form-control' ng-model='dropdownItemStatus.model' ng-options="v.itemStatus_Name for v in dropdownItemStatusList">
+                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="col-md-1 padd">
+                    <button ng-click="searchReport(filterModel)" class="btn kw-button-search">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    {{ 'SEARCH' | translate }}</button>
+            </div>
+            <div class="col-md-1 padd">
+                    <button style="background-color: green;" ng-click="exportFile.ExportExcel(filterModel)" class="btn kw-button-success">
+                    <i class="fa fa-file-excel-o"></i>{{ 'EXECEL' | translate }}
+            </div>  
+    </div>
+    </form>
+</div>
+
+<div style="display: block;" ng-show="isShow">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </center>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

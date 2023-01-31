@@ -1,0 +1,202 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="col-md-12" style="margin-bottom: 1%;">
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="card">
+            <div class="col-md-12 col-xs-12 padd">
+
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold; font-size: 11px;">{{ 'NUMBER_OF_PALLETS' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_Pallet_Plan" class="form-control" disabled />
+                </div>
+    
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;" >{{ 'DELIVERT_BALANCE' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text"  ng-model="filterSumModel.sum_Pallet_Outstanding" class="form-control"  disabled/>
+                </div>
+                
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;">{{ 'USED' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text"  ng-model="filterSumModel.sum_LentPallet_Lent_OR" class="form-control"  disabled/>
+                </div>
+    
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;">{{ 'DAMAGED_OR' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_LentPallet_ReturnDmg_OR" class="form-control" disabled />
+                </div>    
+            </div>
+
+            <div class="col-md-12 col-xs-12 padd">
+
+                <div class="col-md-1 col-xs-6 padd"></div>
+                <div class="col-md-2 col-xs-6 padd">
+                </div>
+    
+                <div class="col-md-1 col-xs-6 padd"></div>
+                <div class="col-md-2 col-xs-6 padd">
+                </div>
+                
+                <!-- <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;">{{ 'รับ Pallet ซ่อม (OR)' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_Pallet_ReturnOR" class="form-control"  disabled/>
+                </div> -->
+
+                 <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;"></div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <!-- <input type="text" ng-model="filterSumModel.sum_Pallet_ReturnOR" class="form-control"  disabled/> -->
+                </div>
+    
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;">{{ 'AVAILABLE' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_Pallet_Available" class="form-control"  disabled/>
+                </div>
+
+                
+    
+            </div>
+
+            <div class="col-md-12 col-xs-12 padd">
+
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;">{{ 'SUPPLIER_LEND' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_LentPallet_Lent_Supplier" class="form-control"  disabled/>
+                </div>
+    
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold; font-size: 11px;">{{ 'DAMAGED_SUPPLIER' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_LentPallet_ReturnDmg_Supplier" class="form-control" disabled />
+                </div>
+                
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;"></div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <!-- <input type="text" ng-model="filterSumModel.sum_Pallet_ReturnSupplier" class="form-control"  disabled/> -->
+                </div>
+
+                 <!-- <div class="col-md-1 col-xs-6 padd" style="font-weight: bold;">{{ 'รับ Pallet ซ่อม (Supplier)' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_Pallet_ReturnSupplier" class="form-control"  disabled/>
+                </div> -->
+    
+                <div class="col-md-1 col-xs-6 padd" style="font-weight: bold; font-size: 11px;">{{ 'PALLET_REPAIR_BALANCE' | translate }} :</div>
+                <div class="col-md-2 col-xs-6 padd">
+                    <input type="text" ng-model="filterSumModel.sum_Pallet_ReturnDmg" class="form-control"  disabled/>
+                </div>
+    
+            </div>            
+            
+            <div class="card-body" style="background-color:rgb(186, 186, 186);">
+                <div id="accordion_2">
+                    <div class="card">
+                        <div class="card-header" id="headingThree_2">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree_2" aria-expanded="false" aria-controls="collapseThree_2">
+                                <p style="color:rgb(72, 72, 72);font-weight: bold;" >{{ 'PALLET_YEAR' | translate }}  <span class="glyphicon glyphicon-chevron-down"></span></p>
+                            </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree_2" class="collapse" aria-labelledby="headingThree_2" data-parent="#accordion_2">
+                            <div class="card-body">
+                                <table class="table table-striped table-fixed">
+                                    <thead>
+                                        <tr style="overflow-y: auto;">                                            
+                                            <th class="k100">{{ 'YEAR' | translate }}</th>
+                                            <th class="k150">{{ 'NUMBER_OF_RECEIVING_PLANS' | translate }}</th>
+                                            <th class="k150">{{ 'AMOUNT_OF_BACKLOG' | translate }}</th>                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in filterSumModel.palletSumYear">
+                                            <td class="k100">{{data.year}}</td>
+                                            <td class="k150">{{data.sum_Pallet_Receive}}</td>
+                                            <td class="k150">{{data.sum_Pallet_Outstanding}}</td>
+                                        </tr>
+                                        <tr ng-if="filterSumModel.palletSumYear.length == 0">
+                                            <td colspan="3" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!-- <div class="col-md-12 col-xs-12 " style="background-color:rgb(186, 186, 186);">
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+            <div id="demo" class="collapse">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+         -->
+        
+        <div class="col-md-12 col-xs-12 padd">
+            <div class="col-md-6 col-xs-6 padd" style="font-size:30px;">{{ 'พาเลท (Pallets)' | translate }} </div>
+        </div>
+        <div class="col-md-12 col-xs-12 padd">
+            <div class="col-md-2 col-xs-6 padd">{{ 'ID_COMPANY_NAME' | translate }} :</div>
+            <!-- <div class="col-md-2 col-xs-6 padd">{{ 'ปีพาเลท' | translate }} :</div> -->
+            <div class="col-md-2 col-xs-6 padd">{{ 'PALLET_DELIVERY_DATE' | translate }}</div>
+            
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.vender_Index" value="filterModel.vender_Name" id="filterModel.vender_Id" sourceurl="autoComplete.vendor" api="url.Palletmanage"></auto-comple>
+        </div>
+
+        <div class="col-md-2 col-xs-6 padd">
+            <div class="input-group">
+                <input type="text" name="datefilter" ng-model="filterModel.date" class="form-control daterange text-center">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 p-zero">
+            <div class="col-md-3 col-sm-2 col-xs-2 padd">
+                <button ng-click="filter()" class="btn kw-button-search">
+                    <i class="fa fa-search"></i>{{ 'SEARCH' | translate }}
+            </div>
+           
+            <div class="col-md-4 col-sm-2 col-xs-2 padd">
+                <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                    <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                    {{ 'Export excel' | translate }}</button>
+            </div>
+            <div class="col-md-1 col-xs-1 padd">
+                <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()">
+                    <i class="kw-icon-button icon-add_24px_outlined " aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="col-md-4 col-sm-3 col-xs-3 padd">
+            </div>           
+        </div>
+        <div class="col-md-2 col-xs-6 padd">            
+        </div>
+    </form>
+</div>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+<!-- <script>
+    $(function () {
+        $('.daterange').daterangepicker();
+
+        $('input[name="datefilter"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datefilter"]').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datefilter"]').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+    });
+</script> -->
+

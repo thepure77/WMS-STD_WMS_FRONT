@@ -1,0 +1,34 @@
+<table class="table table-striped" style="min-width: 100% !important">
+    <thead>
+        <tr>
+            <th style="background-color: #66CCFF;" colspan="2">
+                <p style="color:white">{{ 'DASHBOARD4' | translate }}</p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="data in H">
+            <!-- <td class="text-center"> {{data | translate}} : {{items[$index]}}</td> -->
+            <td class="text-left" style="border-right:black;"> {{data | translate}}</td>
+            <td class="text-left" style="border-left:black;"> {{items[$index]}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class=" table-responsive table-overflow tab-pane active" style="margin-bottom:15px;">
+<div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+    <div class="form-group">
+
+        <!-- <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+            <button type="button " style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)" class="btn btn-back">
+                <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+            </button>
+
+            <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+            </button>
+        </div> -->
+        <ul style="margin:0px;" uib-pagination total-items="data.totalRow" uib-pagination total-items="data.totalRow"
+            ng-change='changePage()' items-per-page="data.perPage" num-pages="data.num" ng-model="data.currentPage"
+            max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- PC -->
+<div class="table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <!-- <th class="text-center k250" style="width:200px;">{{ 'ตัวเลือก' | translate }}</th> -->
+                <th class="k100">{{ 'ลำดับ' | translate }}</th>
+                <th class="k150">{{ 'รหัสบริษัท' | translate }}</th>
+                <th class="k150">{{ 'บริษัท' | translate }}</th>
+                <th class="k200">{{'วันที่/เวลาส่งพาเลทล่าสุด' | translate }}</th>
+                <th class="k100">{{ 'จำนวนแผนรับ' | translate }}</th>
+                <th class="k100">{{ 'จำนวนรับ' | translate }}</th>
+                <!-- <th class="k100">{{ 'จำนวนคืน' | translate }}</th> -->
+                <th class="k150">{{ 'จำนวนคืนเสียหาย' | translate }}</th>
+                <th class="k100">{{ 'จำนวนทั้งหมด' | translate }}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="k100">{{data.row}}</td>
+                <td class="k150">{{data.vender_Id}}</td>
+                <td class="k150">{{data.vender_Name}}</td>
+                <td class="k200">{{data.palletDate_text}}</td>
+                <td class="k100">{{data.pallet_QtyPlan}}</td>
+                <td class="k100">{{data.pallet_QtyReceive}}</td>
+                <!-- <td class="k100">{{data.pallet_QtyReturnGood}}</td> -->
+                <td class="k100">{{data.pallet_QtyReturnDmg}}</td>
+                <td class="k100">{{data.pallet_QtyTotal}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="10" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow"
+                uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+<add-pallet-form on-show="onShow" ng-hide="$vm.isFilter"></add-pallet-form>
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes'
+    delegates='popupReport.delegates'>
+</report-popup>

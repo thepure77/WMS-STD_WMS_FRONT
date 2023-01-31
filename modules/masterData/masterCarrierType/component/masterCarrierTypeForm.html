@@ -1,0 +1,71 @@
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+        <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'MASTERDATA' | translate }} </h2>
+            <div class="navigationLabel_mainPage" ng-click="back()"> <i class="kw-size-icon-mainpage fa fa-play"
+                    aria-hidden="true"></i>
+                <span class="nagivationSelect">{{ 'DOC_TYPE' | translate }}</span>
+            </div>
+            <div class="navigationLabel"> <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+                <span>{{ 'CREATE_CARRIER_TYPE' | translate }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+<div class="col-lg-12 col-md-12 col-sm-12" ng-show="onShow">
+    <div class="col-md-12 kw-mg-tb">
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-3 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'CARRIER_TYPE_ID' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.carrierType_Id" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label><span style="color:red">*</span>{{ 'CARRIER_TYPE_NAME' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input ng-model="filterModel.carrierType_Name" type="text" class="form-control" />
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'ISACTIVE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input type="checkbox" ng-model="filterModel.isActive" class="ig-control__cbx" ng-checked="getCheck"
+                        ng-true-value="1" ng-false-value="0" id="table_setting_1" />
+                    <label for="table_setting_1"></label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 kw-p-zero" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()" style="float: left;">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-primary previous" ng-show="create" ng-click="add()"
+                    style="float: right;">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-success" ng-show="update" ng-click="add()" style="float: right;">
+                    {{ 'UPDATE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+            </ul>
+        </div>
+    </div>
+
+</div>

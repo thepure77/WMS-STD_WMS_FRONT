@@ -1,0 +1,208 @@
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <!-- search box -->
+                    <div class="col-md-3" style="margin-top:10px;" ng-show='advanceSearch'>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default"  style="padding: 8.5px; background-color:#4087bf;color:white;"><span class="kw-icon-button icon-magnify" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <div class="col-md-3" ng-hide='advanceSearch'></div>
+                    <!-- end search box -->
+                    <div class="col-md-9 text-right" style="margin-top: 10px;">
+                        <button class="btn btn-filter" ng-click="toggleSearch()" style="padding: 8.5px;">Advance {{"SEARCH" | translate }}</button>
+                        <a href="#/customer/create-contract"><button class="btn btn-success" style="padding: 8.5px; background-color: #57b5a7; border-color: #57b5a7;">{{"CREATE" | translate }}</button></a>
+                        <button class="btn btn-default" style="padding: 8.5px;">{{"IMPORT" | translate }}</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top:10px;" ng-hide='advanceSearch'>
+                        <div class="panel panel-heading" style="margin: 0px;">
+                            <div class="panel-heading-text">Advance Search</div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="row" style="margin-bottom:10px;">
+                                <!--Customer-->
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;z-index:1;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:auto;">
+                                        Customer :
+                                    </div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="Customer Order" />
+                                    </div>
+                                </div>
+                                <!--Material FG.-->
+                                <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top:10px;z-index:1;">
+                                    <div class="col-lg-3 col-md-4 col-sm-12" style="vertical-align:middle;line-height:30px;">
+                                        Name :
+                                    </div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="Material FG." />
+                                    </div>
+                                </div>
+                                <!--Search-->
+                                <div class="col-lg-12 col-md-12 col-sm-12 text-right" style="">
+                                    <button class="btn btn-filter" style="font-size:1.2em;margin:10px;margin-right:15px;padding:5px;padding-left:40px;padding-right:40px;border-radius:2px;">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-12">
+                        <div class="panel panel-default" style="margin-bottom:0px;">
+                            <!-- Table -->
+                            <div class="table" >
+                                <table class="kw-custom-table table-striped table-fixed">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Customer</th>
+                                            <th>Name</th>
+                                            <th>Alias</th>
+                                            <th>Remark</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>10000216</td>
+                                            <td>บริษัท ไออาร์พีซี จำกัดมหาชน</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>2</td>
+                                            <td>10012320</td>
+                                            <td>บริษัท พีทีทีกอบอล เคมิคอลจำกัดมหาชน</td>
+                                            <td></td>
+                                            <td>PTTCG2</td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>3</td>
+                                            <td>10012059</td>
+                                            <td>บจ.พีทีที เอ็มซีซี ไบโอเคม</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>4</td>
+                                            <td>10012672</td>
+                                            <td>บจ.ซีเอ็นซี อินเตอร์เนชั่นแนล</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>5</td>
+                                            <td>10015555</td>
+                                            <td>บริษัท พีทีทีโพลีเมอร์ มาร์เก็ตติ้งจำกัด</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>7</td>
+                                            <td>10021539</td>
+                                            <td>บจ. พีทีที พีเอ็มเอ็มเอ</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>8</td>
+                                            <td>10022303</td>
+                                            <td>บริษัท ไทยแฟตตี้แอลกอฮอล จำกัด</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>9</td>
+                                            <td>10022464</td>
+                                            <td>บจม. สาลี่ คัลเล่อร์</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>10</td>
+                                            <td>10022905</td>
+                                            <td>บจ. เวริทรานส์ โกลบอล โลจิสติกส์</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                <a class="btn btn-filter"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a><a class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- End Table -->
+                        </div>
+                        <div class="col-md-6" style="text-align:left;">
+                            <select class='' style='width:100px;' '
+                                ng-model='numPerPage '
+                                ng-options="v.value as v.value for v in pageOption"
+                                ng-init='numPerPage=1 0 '
+                                ng-click='changeTableSize() '></select>
+                    </div>
+                    <div class="col-md-6" style="text-align:right;">
+                        <ul uib-pagination total-items="totalRow" ng-model="currentPage" max-size="maxSize" class="" boundary-link-numbers="true" rotate="false"></ul>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- /#page-content-wrapper -->

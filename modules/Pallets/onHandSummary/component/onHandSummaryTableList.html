@@ -1,0 +1,103 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="k30">code</th>
+                <th class="k30">{{ 'Supplier' | translate }}</th>
+                <th class="k30">{{ 'ปี Pallet' | translate }}</th> 
+                <th class="k30">{{ 'Ending lnv' | translate }}</th>
+                <th class="k30">{{ '1/3' | translate }}</th>
+                <th class="k30">{{ '2/3' | translate }}</th>
+                <th class="k30">{{ '3/3' | translate }}</th>
+                <th class="k30">{{ '4/3' | translate }}</th>
+                <th class="k30">{{ '5/3' | translate }}</th>
+                <th class="k30">{{ '6/3' | translate }}</th>
+                <th class="k30">{{ '7/3' | translate }}</th>
+                <th class="k30">{{ '8/3' | translate }}</th>
+                <th class="k30">{{ '9/3' | translate }}</th>
+                <th class="k30">{{ '10/3' | translate }}</th>
+                <th class="k30">{{ '11/3' | translate }}</th>
+                <th class="k30">{{ '12/3' | translate }}</th>
+                <th class="k30">{{ '13/3' | translate }}</th>
+                <th class="k30">{{ '14/3' | translate }}</th>
+                <th class="k30">{{ '15/3' | translate }}</th>
+                <th class="k30">{{ '16/3' | translate }}</th>
+                <th class="k30">{{ '17/3' | translate }}</th>
+                <th class="k30">{{ '18/3' | translate }}</th>
+                <th class="k30">{{ '19/3' | translate }}</th>
+                <th class="k30">{{ '20/3' | translate }}</th>
+                <th class="k30">{{ '21/3' | translate }}</th>
+                <th class="k30">{{ '22/3' | translate }}</th>
+            </tr>
+            <tfoot>
+                <tr >
+                    <td class="k30"></td>
+                    <td class="k30"></td>
+                    <td class="k30">Total</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                    <td class="k30">{{$vm.searchResultModel[0].create_Date}}</td>
+                </tr>
+            </tfoot>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="k50">{{data.storageLoc_Id}}</td>
+                <td class="k50">{{data.storageLoc_Name}}</td>
+                <td class="k50">{{data.create_By}}</td>
+                <td class="k50">{{data.create_Date}}</td>
+                <td class="k50">{{data.update_By}}</td>
+                <td class="k50">{{data.update_Date}}</td>
+                <td class="k50">{{data.cancel_By}}</td>
+                <td class="k50">{{data.cancel_Date}}</td>
+                <td class="k50">{{data.activeStatus}}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<div class="table-responsive table-overflow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)"
+                    class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination total-items="$vm.filterModel.totalRow"
+                ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage"
+                max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+    </div>
+
+<on-hand-summary-form on-show="onShow" ng-hide="$vm.isFilter"></on-hand-summary-form>

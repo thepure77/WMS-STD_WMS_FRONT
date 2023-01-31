@@ -1,0 +1,465 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div id="modal-form" class="modal" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog " style="overflow:auto;width:90%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal"></a>
+                    </div>
+
+                    <h2 class="panel-title">Add Detail Item</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px; margin-bottom:20px;">
+                    <h4>{{ 'METERIAL_INFORMATION' | translate }}</h4>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span> <span
+                                        style="color:red">*</span>{{ 'SKU' | translate }}/{{ 'MATERIAL_NO' | translate }}
+                                </span>
+                            </div>  
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <auto-comple-id ng-model="filterItemModel.product_Index"
+                                    value="filterItemModel.product_Id" id="filterItemModel.product_Name" value1 ="filterItemModel.productId_Ref1" value2 ="filterItemModel.productId_Ref2"
+                                    sourceurl="autoComplete.sku" api="url.PO" key2="filterItemModel.owner_Index">
+                                </auto-comple-id>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>
+                                    <span style="color:red">*</span>{{ 'MATERIAL_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                <auto-comple ng-model="filterItemModel.product_Index" value="filterItemModel.product_Name" value1 ="filterItemModel.productId_Ref1" value2 ="filterItemModel.productId_Ref2"
+                                    id="filterItemModel.product_Id" sourceurl="autoComplete.product" api="url.PO">
+                                </auto-comple>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'Ref_Po_No' | translate }}</span>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" disabled />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 ">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'Line_No' | translate }}</span>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" disabled />
+                                </div>
+                            </div>
+
+                        </div> -->
+
+                    </div>
+                </div>
+
+
+                <div class="form-group" style="margin-top:15px;">
+
+                    <div class="col-lg-12 col-md-12 col-xs-12 ">
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'LOT' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <input type="text" class="form-control" ng-model="filterItemModel.product_Lot">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'QTY' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input id="fixed3"  class="form-control" ng-model="filterItemModel.qty" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>
+                                        <span style="color:red">*</span>
+                                        {{ 'UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select class='form-control' name="Productconversion"
+                                        ng-model='dropdownProductconversion.model'
+                                        ng-options="v.productConversion_Name for v in dropdownProductconversion">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'TOTAL_QTY' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" ng-model="filterItemModel.totalQty" disabled />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select class='form-control' name="Productconversion"
+                                        ng-model='dropdownProductconversion.model'
+                                        ng-options="v.productConversion_Name for v in dropdownProductconversion" disabled>
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div> -->
+
+                        <!-- <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'UNIT_PRICE' | translate }}</span>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" ng-model="filterItemModel.unitPrice" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 ">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'CURRENCY' | translate }}</span>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-xs-12 kw-p-zero">
+                                    <select class='form-control' ng-model='dropdownCurrency.priceModel'
+                                        ng-options="v.currency_Name for v in dropdownCurrency">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div> -->
+
+                        <!-- <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'TOTAL_PRICE' | translate }}</span>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" ng-model="filterItemModel.totalPrice" disabled/>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 ">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'CURRENCY' | translate }}</span>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-xs-12 kw-p-zero">
+                                    <select class='form-control' ng-model='dropdownCurrency.priceModel'
+                                        ng-options="v.currency_Name for v in dropdownCurrency" disabled>
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div> -->
+
+                    </div>
+                </div>
+
+                <!-- <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'LOT' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <input type="text" class="form-control" ng-model="filterItemModel.product_Lot">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <span>{{ 'MFG' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                <dir-date-picker ng-model="filterItemModel.mFG_Date"></dir-date-picker>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <span>{{ 'EXP' | translate }}</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <dir-date-picker ng-model="filterItemModel.eXP_Date"></dir-date-picker>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> -->
+
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12 ">
+
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'UNIT_WEIGHT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" ng-model="filterItemModel.unitWeight" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'WT_UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select class='form-control' ng-model='dropdownWeight.weightModel'
+                                        ng-options="v.weight_Name for v in dropdownWeight">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'NET_WEIGHT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" ng-model="filterItemModel.netWeight" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'WT_UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select class='form-control' ng-model='dropdownWeight.netWeightModel'
+                                        ng-options="v.weight_Name for v in dropdownWeight">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'GRS_WEIGHT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input type="text" class="form-control" ng-model="filterItemModel.grsWeight" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'WT_UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select class='form-control' ng-model='dropdownWeight.grsWeightModel'
+                                        ng-options="v.weight_Name for v in dropdownWeight">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12 ">
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'WIDTH' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input  id="w2" class="form-control" ng-model="filterItemModel.unitWidth" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select class='form-control' ng-model='dropdownVolume.model'
+                                        ng-options="v.volume_Name for v in dropdownVolume">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'LENGTH' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input  id="l2" class="form-control" ng-model="filterItemModel.unitLength" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select class='form-control' ng-model='dropdownVolume.model'
+                                        ng-options="v.volume_Name for v in dropdownVolume">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'HEIGTH' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input  id="h2" class="form-control" ng-model="filterItemModel.unitHeight" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <select dis class='form-control' ng-model='dropdownVolume.model'
+                                        ng-options="v.volume_Name for v in dropdownVolume">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'TOTAL_VOLUME' | translate }}</span>
+                                </div>
+                                <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                    <input  class="form-control" ng-model="filterItemModel.volume" disabled/>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'VOLUME_UNIT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                                    <span> M3 </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12 ">
+
+                        <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <span>
+                                    <span>{{ 'REFERENCE' | translate }} 1</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <input type="text" class="form-control" ng-model="filterItemModel.documentRef_No1"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <span>
+                                    <span>{{ 'REFERENCE' | translate }} 2</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <input type="text" class="form-control" ng-model="filterItemModel.documentRef_No2"/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <span>
+                                    <span>{{ 'REFERENCE' | translate }} 3</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <input type="text" class="form-control" ng-model="filterItemModel.documentRef_No3"/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <span>
+                                    <span>{{ 'REFERENCE' | translate }} 4</span>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                <input type="text" class="form-control" ng-model="filterItemModel.documentRef_No4"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'CLOSE' | translate }}</button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                    ng-click="addsItem(filterItemModel)">{{ 'ADD' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

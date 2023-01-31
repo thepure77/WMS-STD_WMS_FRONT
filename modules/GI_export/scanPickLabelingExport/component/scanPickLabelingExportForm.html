@@ -1,0 +1,439 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<header class="page-header">
+    <div class="pull-right">
+
+    </div>
+</header>
+
+<!-- Picking -->
+<div ng-show="$vm.isFilterTable">
+    <div class="tab-content">
+        <div class="row tab">
+
+            <!-- web -->
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-7">
+                        <b style="font-size: 22px">{{ 'MATERIAL_NO' | translate }}</b>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" class="form-control" ng-model="filterModel.product_Id" disabled />
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <b style="font-size: 22px">{{ 'PRODUCT' | translate }}</b>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel.product_Name" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <img ng-src="{{filterModel.imageUri}}" width="82%" height="200">
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 10px">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <b style="font-size: 22px">{{ 'QTY' | translate }}</b>
+                    </div>
+
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <div class="col-lg-5 col-md-5 col-xs-5" style="padding: 0px">
+                            <input type="text" ng-model="filterModel.qty" class="form-control" disabled />
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-xs-2 " style="padding: 3px">
+                            <b style="font-size: 22px">{{ 'UNIT' | translate }}</b>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-xs-5" style="padding: 0px">
+                            <input type="text" ng-model="filterModel.productConversion_Name" class="form-control" disabled />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 15px">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <b style="font-size: 22px">{{ 'STATUS' | translate }}</b>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel.itemStatus_Name" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 15px">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <b style="font-size: 22px">{{ 'LOCATION' | translate }}</b>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.location_Name" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <!-- <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 15px">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <b style="font-size: 22px">{{ 'CONFIRM_LOCATION' | translate }}</b>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.confirmlocation_Name" class="form-control" ks-enter="ScanLocationPick()" />
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <b style="font-size: 22px">{{ 'TAG_NO' | translate }}</b>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.tagNo" class="form-control" ks-enter="ScanBarcode()"/>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="margin-left: -120px">
+                        <b style="font-size: 22px">{{ 'CONFIRM_QTY' | translate }}</b>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <div class="col-lg-5 col-md-5 col-xs-5" style="padding: 0px">
+                            <!-- <input type="text" ng-model="filterModel.pick_Qty" id="pick_Qty" ng-change="chkPickQty()" min="0" 
+                                class="form-control" ng-disabled="!filterModel.isPickQty" /> -->
+                                <input type="text" ng-model="filterModel.pick_Qty" class="form-control" disabled/>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-xs-2 " style="padding: 3px">
+                            <b style="font-size: 22px">{{ 'UNIT' | translate }}</b>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-xs-5" style="padding: 0px">
+                            <input type="text" ng-model="filterModel.pick_ProductConversion_Name" class="form-control" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group hidden-xs">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <b style="font-size: 22px">{{ 'CONFIRM_LOCATION' | translate }}</b>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" class="form-control" ks-enter="scanLocationConfrim()" ng-model="filterModel.confirm_location_Id"  ng-disabled="!filterModel.isCarton">
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="form-group hidden-xs" style="margin-top: -15px">
+                <div class="col-lg-5 col-md-5 col-xs-5">
+                    <div class="col-lg-3 col-md-3 col-xs-3">
+                        <b style="font-size: 22px">{{ 'CARTON_NO' | translate }}</b>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" ng-model="filterModel.tagOut_No" ks-enter="ScanCartonPick()" ng-disabled="!filterModel.isCarton">
+                            <span class="input-group-btn">
+                                <button ng-click='getTagOut()' class="btn btn-success" type="button" ng-disabled="!filterModel.isCarton">
+                                    GEN
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="form-group hidden-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-disabled="isBlock" ng-click="confirmPick()">
+                        {{ 'CONFIRM' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="form-group hidden-xs" style="margin-top: 30px;">
+                <div class="col-lg-5 col-md-5 col-xs-5" style="padding:0px">
+                    <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;margin-right: 5px">
+                        {{ 'BACK' | translate }}
+                    </button>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-5" style="padding:0px;">
+                    <button type="button" class="btn btn-success" ng-click="confirmPick()" ng-disabled="isBlock" style="float: right;margin-left: 5px">
+                        {{ 'CONFIRM' | translate }}</button>
+                    <button type="button" class="btn btn-groub-Search" ng-click="clear()" style="float: right;">
+                        {{ 'CLEAR' | translate }}
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- mobile -->
+            <div class="form-group visible-xs">
+                <div class="col-lg-6 col-md-6 col-xs-4" style="padding:0px;">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>{{ 'MATERIAL_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" class="form-control" ng-model="filterModel.product_Id" disabled />
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xs-8" style="padding:0px;">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>{{ 'PRODUCT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel.product_SecondName" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-6 col-md-6 col-xs-6" style="margin-top:18px;margin-left: -15px">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <img ng-src="{{filterModel.imageUri}}" width="120%" height="150">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px;">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>{{ 'QTY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel.qty" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px;">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel.productConversion_Name" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-xs-6" style="padding:0px;">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>{{ 'STATUS' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel.itemStatus_Name" class="form-control" disabled />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.location_Name" class="form-control" style="margin-bottom:5px;" disabled />
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'CONFIRM_LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" readonly id="confirmlocation_Name" ng-model="filterModel.confirmlocation_Name" class="form-control" style="margin-bottom:5px;"
+                            ks-enter="ScanLocationPick()" blur-on-enter required />
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'TAG_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" readonly ng-model="filterModel.tagNo" id="productConversionBarcodeM" class="form-control"
+                            style="margin-bottom:5px;" ks-enter="ScanBarcode()" blur-on-enter
+                            required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'CONFIRM_QTY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <!-- <div class="col-lg-5 col-md-5 col-xs-5" style="padding: 0px"> -->
+                        <!-- <input type="number" ng-model="filterModel.pick_Qty" id="pick_QtyM" ng-change="chkPickQty()" min="0" 
+                            class="form-control" ng-disabled="!filterModel.isPickQty" ks-enter="pickQty()" /> -->
+                            <input type="text" ng-model="filterModel.pick_Qty" class="form-control" disabled/>
+                        <!-- </div> -->
+                        <!-- <div class="col-lg-2 col-md-2 col-xs-2 " style="padding: 3px">
+                            <span>{{ 'UNIT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-xs-5" style="padding: 0px">
+                            <input type="text" ng-model="filterModel.pick_ProductConversion_Name" class="form-control" disabled />
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" ng-model="filterModel.pick_ProductConversion_Name" class="form-control" disabled />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'CONFIRM_LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <input type="text" class="form-control" readonly id="tagOut_No" ng-model="filterModel.confirm_location_Id" ks-enter="scanLocationConfrim()"
+                        ng-disabled="!filterModel.isCarton" blur-on-enter required>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-5 col-md-5 col-xs-5">
+                        <span>{{ 'CARTON_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-xs-7">
+                        <div class="input-group" style="padding:0!important;">
+                            <input type="text" class="form-control" readonly id="tagOut_No" ng-model="filterModel.tagOut_No" ks-enter="ScanCartonPick()"
+                                ng-disabled="!filterModel.isCarton" blur-on-enter required>
+                            <span class="input-group-btn">
+                                <button ng-click='getTagOut()' class="btn btn-success" type="button" ng-disabled="!filterModel.isCarton">
+                                    GEN
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="form-group visible-xs" style="margin-top:-10px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-disabled="isBlock" ng-click="confirmPick()">
+                        {{ 'CONFIRM' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:-20px;">
+                    <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="clearPick()">
+                        {{ 'CLEAR' | translate }}</button>
+
+                </div>
+            </div>
+
+            <div class="form-group visible-xs">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:-20px;">
+                    <button class="btn btn-danger btn-block btn-md visible-xs mt-lg" ng-click="back()">
+                        {{ 'BACK' | translate }}</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Confirm Location -->
+<div ng-show="isConfirm">
+    <div class="tab-content">
+        <div class="row tab">
+
+            <div class="form-group visible-xs">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>{{ 'CONFIRM_LOCATION' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" class="form-control" readonly id="dropconfirmLocation" ng-model="filterModel2.confirmLocation" ks-enter="scanLocation()"
+                            blur-on-enter required>
+                    </div>
+                </div>
+            </div>
+            <!-- 
+            <div class="form-group visible-xs" style="margin-top:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                        <span>{{ 'CARTON_NO' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" ng-model="filterModel2.tagOut_No" class="form-control bgwrite" ks-enter="scanCartonLocation()" />
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="form-group visible-xs" style="margin-top:160px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-disabled="isBlock" ng-click="confirmLocation()">
+                        {{ 'CONFIRM' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="form-group visible-xs">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:-20px;">
+                    <button class="btn btn-primary btn-block btn-md visible-xs mt-lg" ng-click="clearLocation()">
+                        {{ 'CLEAR' | translate }}</button>
+
+                </div>
+            </div>
+
+            <div class="form-group visible-xs">
+                <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:-20px;">
+                    <button class="btn btn-danger btn-block btn-md visible-xs mt-lg" ng-click="back()">
+                        {{ 'BACK' | translate }}</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="tab-content" ng-show="isShortPick">
+    <div>
+        <h3>Short Pick?</h3>
+    </div>
+    <div class="form-group" style="margin-top:15px;">
+        <div class="col-xs-7">
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-2 col-md-7 col-xs-12 text-left">
+                <h5>
+                    <span> Reason Code </span>
+                </h5>
+            </div>
+            <div class="col-lg-5 col-md-5 col-xs-12 ">
+                <select ng-model="formData.reasonCodeName" class="form-control" ng-options="option.reasonCodeName  as option.reasonCodeName for option in reasonCodeAllItem "
+                    ng-change="reasonCode()">
+                    <option value=""> -- Please Select Reason -- </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right padding-m">
+        <button class="btn btn-info hidden-xs" ng-click="Confirm()">Yes</button>
+        <button class="btn btn-info btn-block btn-md visible-xs mt-lg" ng-click="Confirm()">Yes</button>
+        <button class="btn btn-default hidden-xs" ng-click="NotConfirm()">No</button>
+        <button class="btn btn-default btn-block btn-md visible-xs mt-lg" ng-click="NotConfirm()">No</button>
+
+    </div>
+</div>

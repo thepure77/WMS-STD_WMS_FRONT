@@ -1,0 +1,30 @@
+
+<div class="table-responsive table-overflow">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <!-- <td>#</td> -->
+                <th class="k250 text-center">{{ 'RULE_PUTAWAY_CONDITION_FIELD_ID' | translate }}</th>
+                <th class="k250 text-center">{{ 'RULE_PUTAWAY_CONDITION_FIELD_NAME' | translate }}</th>
+                <th class="k120 text-center">
+                    {{ 'ACTION' | translate }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items">
+                <!-- <td>{{$index+1}}</td> -->
+                <td class="k250 text-center">{{data.ruleputawayConditionField_Id}}</td>
+                <td class="k250 ">{{data.ruleputawayConditionField_Name}}</td>
+                <td class="k120 text-center">
+                        <a class="btn btn-primary" ng-click="selected(data)">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

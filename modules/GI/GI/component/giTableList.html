@@ -1,0 +1,380 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- PC -->
+<div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;" ng-hide='checkbox.Show'>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-left" style="margin-bottom:15px;">
+    </div>
+    <!-- <div class="col-lg-6 col-md-6 col-sm-12 text-right" style="margin-bottom:15px;">
+        <button class="btn btn-success hidden-xs" ng-click="SentToSap()">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ 'SENT_TO_SAP' | translate }}</button>
+        <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-click="SentToSap()">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            {{ 'SENT_TO_SAP' | translate }}</button>
+    </div> -->
+</div>
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter" style="margin-bottom:15px;height: 656px;">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">
+                    <div>
+                        <input ng-change="detectCheckAll()" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked />
+                        <label for="all_"></label>
+                    </div>
+                </th>
+                <th class="text-center k250" style="width:200px;">{{ 'ACTION' | translate }}</th>
+                <th class="text-center k100">{{ 'ROW_NUMBER' | translate }}</th>
+                <th class="text-center k150">{{ 'GI_NO' | translate }}</th>
+                <th class="text-center k300">{{ 'PLAN_GI_NO' | translate }}</th>
+                <th class="text-center k150">{{ 'GI_DATE' | translate }}</th>
+                <th class="text-center k150">{{ 'GI_DUE_DATE' | translate }}</th>
+                <th class="text-center k150">{{ 'DOCUMENT_TYPE' | translate }}</th>
+                <th class="text-center k100">{{ 'ROUND' | translate }}</th>
+                <!-- <th class="k100">{{ 'QTY' | translate }}</th>
+                <th class="k100">{{ 'WEIGHT' | translate }}</th> -->
+                <th class="text-center k150">{{ 'STATUS' | translate }}</th>
+                <th class="text-center k150">{{ 'OWNER' | translate }}</th>
+                <th class="text-center k150">{{ 'SHIPTO' | translate }}</th>
+                <th class="text-center k100">{{ 'USER' | translate }}</th>
+                <th class="text-center k100">{{ 'USER_UPDATE' | translate }}</th>
+                <th class="text-center k100">{{ 'USER_CANCEL' | translate }}</th>
+                <th class="text-center k150">{{ 'REF' | translate }}1</th>
+                <th class="text-center k150">{{ 'REF' | translate }}2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="text-center k100">
+                    <input ng-click="hide($index)" ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked
+                    />
+                    <label for="check_{{$index}}"></label>
+                </td>
+                <td class="k250 tr-height" ng-if="data.row == $vm.searchDataRow">
+                    <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit" data-placement="bottom" 
+                    ng-disabled="data.document_Status == -2">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-groub-Search" ng-click="comfirmStatus(data)" data-toggle="tooltip" title="Confirm Document" data-placement="bottom"
+                        ng-disabled="data.document_Status == -2 ||data.document_Status == 1 || data.document_Status == -1 || data.document_Status == 2 || data.document_Status == 3 ||data.document_Status == 4">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-blue" ng-click="print(data)" data-toggle="tooltip" title="Print" data-placement="bottom">
+                        <i class="fa fa-print"></i>
+                    </a>
+                    <div class="btn-group" style="padding-top: 4px;">
+                        <button ng-disabled="data.document_Status == 4" title="Other" type="button" class="mb-xs mt-xs mr-xs btn btn-warning dropdown-toggle"
+                            data-toggle="dropdown">
+                            <i class="fa fa-list"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-show="data.document_Status != 4">
+                                <a ng-click="delete(data)" href="#">
+                                    <i class="fa fa-trash-o"></i> {{ 'DELETE' | translate }}</a>
+                            </li>
+                            <li>
+                                <a ng-click="closeDocument(data)" href="#">
+                                    <i class="fa fa-times"></i> {{ 'CLOSE_DOCUMENT' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="memo(data.goodsReceive_Index,data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'MEMO' | translate }}</a>
+                            </li>
+                            <!-- <li>
+                                <a class="btn"  href="#" ng-click="Make_AMZ(data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'AMZ' | translate }}</a>
+                            </li> -->
+                            <li>
+                                <a class="btn"  href="#" ng-click="Check_Budget(data.goodsIssue_Index)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Check Budget' | translate }}</a>
+                            </li>
+                            <!-- <li>
+                                <a class="btn"  href="#" ng-click="Cancel_GI(data.goodsIssue_Index)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Cancel GI Other' | translate }}</a>
+                            </li> -->
+                            <li>
+                                <a class="btn"  href="#" ng-click="Cancel_GI_WB(data.goodsIssue_Index)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Cancel GI WB' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="Make_tagout_V3(data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Gen tagout' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-success"  ng-click="exportFile.ExportExcel(data)" ng-disabled="data.gI_status != 3" data-toggle="tooltip" title="Excel" data-placement="bottom">
+                        <i class="fa fa-file-excel-o"></i>
+                    </a>
+                    <a class="btn btn-success" ng-click="StartWave(data)" data-toggle="tooltip" ng-disabled="data.wcS_status != 20" title="Start Wave" data-placement="bottom">
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </a>
+                    <a class="btn btn-danger" ng-click="CloseWave(data)" data-toggle="tooltip" ng-disabled="data.gI_status != 100" title="Close Wave" data-placement="bottom">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </td>
+                <td class="k250" ng-if="data.row != $vm.searchDataRow">
+                    <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit" data-placement="bottom"
+                    ng-disabled="data.document_Status == -2">
+                        <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                    </a>
+                    <a class="btn btn-groub-Search" ng-click="comfirmStatus(data)" data-toggle="tooltip" title="Confirm Document" data-placement="bottom"
+                    ng-disabled="data.document_Status == -2 ||data.document_Status == 1 || data.document_Status == -1 || data.document_Status == 2 || data.document_Status == 3 ||data.document_Status == 4">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </a>
+                    <!-- <a class="btn btn-info" ng-click="CutSlots(data)" data-toggle="tooltip" title="Confirm Stock" data-placement="bottom" ng-disabled=" data.document_Status == -1 ||  data.document_Status == 3 ">
+                        <i class="glyphicon glyphicon-saved"></i>
+                    </a> -->
+                    <!-- <a class="btn btn-blue" ng-click="popupSignerGI.onClick(data)" data-toggle="tooltip" title="Print" data-placement="bottom">
+                            <i class="fa fa-print"></i>
+                        </a> -->
+                    <a class="btn btn-blue" ng-click="printOutGI(data)" data-toggle="tooltip" title="Print" data-placement="bottom" ng-disabled="data.document_Status == -2">
+                        <i class="fa fa-print"></i>
+                    </a>
+                    <div class="btn-group" style="padding-top: 4px;">
+                        <button title="Other" type="button" class="mb-xs mt-xs mr-xs btn btn-warning dropdown-toggle" 
+                            data-toggle="dropdown">
+                            <i class="fa fa-list"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-show="data.document_Status != 4">
+                                <a class="btn" ng-click="delete(data)" href="#" ng-disabled="data.document_Status == 1 || data.document_Status == -1 || data.document_Status == 2 || data.document_Status == 3 ||data.document_Status == 4"
+                                    style="text-align: left">
+                                    <i class="fa fa-trash-o"></i> {{ 'CANCEL' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn" ng-click="closeDocument(data)" style="text-align: left" href="#" ng-disabled="data.document_Status == -2 || data.document_Status == -1 ">
+                                    <i class="fa fa-times"></i> {{ 'CLOSE_DOCUMENT' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn" ng-click="CutSlots(data)" href="#" ng-disabled="!data.isConfirmStock || (data.document_Status == 4 || data.document_Status == 0 || data.document_Status == 1  || data.document_Status == -1  || data.document_Status == -2)"
+                                    style="text-align: left">
+                                    <i class="glyphicon glyphicon-saved"></i> {{ 'COMFIRM_STOCK' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="memo(data.goodsIssue_Index,data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'MEMO' | translate }}</a>
+                            </li>
+                            <!-- <li>
+                                <a class="btn"  href="#" ng-click="Make_AMZ(data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'AMZ' | translate }}</a>
+                            </li> -->
+                            <li>
+                                <a class="btn"  href="#" ng-click="Check_Budget(data.goodsIssue_Index)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Check Budget' | translate }}</a>
+                            </li>
+                            <!-- <li>
+                                <a class="btn"  href="#" ng-click="Cancel_GI(data.goodsIssue_Index)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Cancel GI Other' | translate }}</a>
+                            </li> -->
+                            <li>
+                                <a class="btn"  href="#" ng-click="Cancel_GI_WB(data.goodsIssue_Index)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Cancel GI WB' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="Send_Retail(data.goodsIssue_Index)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Send Retail' | translate }}</a>
+                            </li>
+                            <li>
+                                <a class="btn"  href="#" ng-click="Make_tagout_V3(data)" style="text-align: left">
+                                    <span class="glyphicon glyphicon-file" aria-hidden="true"></span> {{ 'Gen tagout' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-success"  ng-click="exportFile.ExportExcel(data)" ng-disabled="data.gI_status != 3" data-toggle="tooltip" title="Excel" data-placement="bottom">
+                        <i class="fa fa-file-excel-o"></i>
+                    </a>
+                    <a class="btn btn-success" ng-click="StartWave(data)" data-toggle="tooltip"  ng-disabled="data.wcS_status != 20" title="Start Wave" data-placement="bottom">
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </a>
+                    <!-- <a class="btn btn-success" ng-click="popUpCheckWaveFilter.onClick(filterModel)" data-toggle="tooltip" title="Start Wave" data-placement="bottom">
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </a> -->
+                    <a class="btn btn-danger" ng-click="CloseWave(data)" data-toggle="tooltip" ng-disabled="data.gI_status != 100" title="Close Wave" data-placement="bottom">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </td>
+                <td class="text-center k100">{{data.row}}</td>
+                <td class="text-center k150">{{data.goodsIssue_No}}</td>
+                <td class="text-center k300">{{data.planGoodsIssue_No}}</td>
+                <td class="text-center k150">{{data.goodsIssue_Date|dateFormate}}</td>
+                <td class="text-center k150">{{data.planGoodsIssue_Due_Date|dateFormate}}</td>
+                <td class="text-center k150">{{data.documentType_Name}}</td>
+                <td class="text-center k100">{{data.round_Name}}</td>
+                <!-- <td class="k100">{{data.qty}}</td>
+                <td class="k100">{{data.weight}}</td> -->
+                <td class="text-center k150">{{data.processStatus_Name}}</td>
+                <td class="text-center k150">{{data.owner_Name}}</td>
+                <td class="text-center k150">{{data.shipTo_address}}</td>
+                <td class="text-center k100">{{data.create_By}}</td>
+                <td class="text-center k100">{{data.update_By}}</td>
+                <td class="text-center k100">{{data.cancel_By}}</td>
+                <td class="text-center k150">{{data.documentRef_No1}}</td>
+                <td class="text-center k150">{{data.documentRef_No2}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="table  visible-xs  visible-sm div-shadow" style="overflow: auto" ng-show=" $vm.isFilter">
+    <table>
+
+        <thead>
+            <th class="col-lg-2 col-md-2 col-xs-12  size ">
+            </th>
+        </thead>
+
+
+        <thead ng-repeat="data in $vm.searchResultModel" class="trStyle">
+            <tr style="margin-bottom:10px;">
+                <th class="col-lg-2 col-md-2 col-xs-12 size form-group">
+                    <div class="col-xs-4" style="padding-right:0px;">
+                        Action :
+                    </div>
+                    <div class="col-xs-2" style="padding-left:0px;">
+                        <a class="btn btn-danger" ng-click="delete(data)" data-toggle="tooltip" title="Delete" data-placement="bottom" ng-disabled="data.documentStatus == -1 || data.documentStatus == 2 || data.documentStatus == 3">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-2" style="padding-left:0px;">
+                        <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit" data-placement="bottom">
+                            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-2" style="padding-left:0px;">
+                        <a class="btn btn-groub-Search" ng-click="comfirmStatus(data)" data-toggle="tooltip" title="Confirm Status" data-placement="bottom"
+                            ng-disabled="data.documentStatus == 1 || data.documentStatus == -1 || data.documentStatus == 2 || data.documentStatus == 3">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- <div class="col-xs-2" > -->
+                    <div class="btn-group col-xs-2" style="padding-left:0px;">
+                        <button type="button" class=" btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-list"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-show="data.document_Status != 2">
+                                <a ng-click="delete(data)" href="#">
+                                    <i class="fa fa-trash-o"></i> {{ 'DELETE' | translate }}</a>
+                            </li>
+                            <li>
+                                <a ng-click="closeDocument(data)" href="#">
+                                    <i class="fa fa-times"></i> {{ 'CLOSE_DOCUMENT' | translate }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- </div> -->
+                </th>
+            </tr>
+            <tr style="margin-bottom:10px;">
+                <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                    <div class="col-xs-5" style="padding-right:0px;">
+                        {{ 'GI_NO' | translate }} :
+                    </div>
+                    <div class="col-xs-3" style="padding-right:0px;margin:0px;">
+                        <h5 style="margin:0px;">{{data.GoodsIssue_No}}</h5>
+                    </div>
+                </th>
+            </tr>
+            <tr style="margin-bottom:10px;">
+                <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                    <div class="col-xs-5" style="padding-right:0px;">
+                        {{ 'GI_DATE' | translate }} :
+                    </div>
+                    <div class="col-xs-3" style="padding-right:0px;margin:0px;">
+                        <h5 style="margin:0px;">{{data.GoodsIssue_date|dateFormate}}</h5>
+                    </div>
+                </th>
+            </tr>
+            <tr style="margin-bottom:10px;">
+                <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                    <div class="col-xs-5" style="padding-right:0px;">
+                        {{ 'DOCUMENT_TYPE' | translate }} :
+                    </div>
+                    <div class="col-xs-6" style="padding-right:0px;margin:0px;">
+                        <h5 style="margin:0px;">{{data.documentType_Name}}</h5>
+                    </div>
+                </th>
+            </tr>
+            <tr style="margin-bottom:10px;">
+                <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                    <div class="col-xs-5" style="padding-right:0px;">
+                        {{ 'QTY' | translate }} :
+                    </div>
+                    <div class="col-xs-7" style="padding-right:0px;margin:0px;">
+                        <h5 style="margin:0px;">{{data.qty}}</h5>
+                    </div>
+                </th>
+            </tr>
+            <tr style="margin-bottom:10px;">
+                <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                    <div class="col-xs-5" style="padding-right:0px;">
+                        {{ 'WEIGHT' | translate }} :
+                    </div>
+                    <div class="col-xs-7" style="padding-right:0px;margin:0px;">
+                        <h5 style="margin:0px;">{{data.weight}}</h5>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                    <div class="col-xs-5" style="padding-right:0px;">
+                        {{ 'STATUS' | translate }} :
+                    </div>
+                    <div class="col-xs-6" style="padding-right:0px;margin:0px;">
+                        <h5 style="margin:0px;">{{data.processStatus_Name}}</h5>
+                    </div>
+                </th>
+            </tr>
+            <tr style="margin-bottom:10px;">
+                <th class="col-lg-2 col-md-2 col-xs-12 size ">
+                    <div class="col-xs-5" style="padding-right:0px;">
+                        {{ 'USER' | translate }} :
+                    </div>
+                    <div class="col-xs-7" style="padding-right:0px;margin:0px;">
+                        <h5 style="margin:0px;">{{data.create_By}}</h5>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+<div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)"
+                    class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}" class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination total-items="$vm.filterModel.totalRow"
+                ng-change='changePage()' items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num" ng-model="$vm.filterModel.currentPage"
+                max-size="maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+<gi-form on-show="onShow" ng-hide="$vm.isFilter"></gi-form>
+
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes' delegates='popupReport.delegates'>
+</report-popup>
+<report-signer-g-i-popup on-show='popupSignerGI.onShow' config='popupSignerGI.config' invokes='popupSignerGI.invokes' delegates='popupSignerGI.delegates'>
+</report-signer-g-i-popup>
+
+<pop-up-check-wave-filter on-show='popUpCheckWaveFilter.onShow' config='popUpCheckWaveFilter.config' invokes='popUpCheckWaveFilter.invokes' delegates='popUpCheckWaveFilter.delegates'>
+</pop-up-check-wave-filter>

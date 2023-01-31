@@ -1,0 +1,110 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- <div class="modal fade modal-block" tabindex="-1" dp-modal on-show="onShow"> -->
+<div id="modal-form" class="modal" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto;width:50%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Charge</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-2 col-xs-12 kw-p-zero">
+                        <span><span style="color:red">*</span>{{ 'SERVICECHARHE' | translate}}</span>
+                    </div>
+                    <div class="col-lg-7 col-md-4 col-xs-12 kw-p-zero">
+                        <auto-comple ng-model="filterItemModel.serviceCharge_Index"
+                            id="filterItemModel.serviceCharge_Id" value="filterItemModel.serviceCharge_Name"
+                            sourceurl="autoComplete.ServiceCharge" api="url.BinBalance" key5="filterItemModel.rate" key4="filterItemModel.minimumrate" key2="filterItemModel.key2"></auto-comple>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-3 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'REMARK' | translate }}(Show 2 lines)</span>
+                    </div>
+                    <div class="col-lg-7 col-md-4 col-xs-12 kw-p-zero">
+                        <textarea rows="2" cols="50" class="form-control" ng-model="filterItemModel.Remark"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span><span style="color:red">*</span>{{ 'UNIT_CHARGE' | translate }}</span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <input ng-model="filterItemModel.unitCharge" id="filterItemModel.unitCharge"
+                            value="filterItemModel.unitCharge" sourceurl="" class="form-control"></input>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+
+                    <div class="col-lg-1 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'QTY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <input ng-model="filterItemModel.qty" id="filterItemModel.qty" value="filterItemModel.qty"
+                            sourceurl="" class="form-control" disabled></input>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'UNIT' | translate }}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'Rate' | translate }}</span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <input ng-model="filterItemModel.rate"
+                            sourceurl="" class="form-control" ></input>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'BAHT' | translate }}</span>
+                    </div>
+
+                    <div class="col-lg-1 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'WEIGHT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <input ng-model="filterItemModel.weight" id="filterItemModel.weight"
+                            value="filterItemModel.weight" sourceurl="" class="form-control" disabled></input>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'TL_KG' | translate }}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'TOTAL_AMOUNT' | translate }}</span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <input ng-model="filterItemModel.amount" id="filterItemModel.amount"
+                            value="filterItemModel.amount" sourceurl="" class="form-control" disabled></input>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'BAHT' | translate }}</span>
+                    </div>
+
+                    <div class="col-lg-1 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'VOLUME' | translate }}</span>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <input ng-model="filterItemModel.volume" id="filterItemModel.volume"
+                            value="filterItemModel.volume" sourceurl="" class="form-control" disabled></input>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 kw-p-zero">
+                        <span>{{ 'M3' | translate }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                    ng-click="addsItem(filterItemModel)">{{ 'ADD' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

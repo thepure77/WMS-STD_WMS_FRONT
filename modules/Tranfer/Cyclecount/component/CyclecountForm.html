@@ -1,0 +1,466 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="tabs" ng-show="$vm.isFilterTable">
+    <div class="tab-content">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a class="fa fa-caret-down" ng-click="ShowHeader()"></a>
+                </div>
+                <h2 class="panel-title">
+                    <div class="form-group">
+                        <div class="col-lg-11">
+                            <div class="row">
+                                <label class="col-lg-3 control-label kw-p-zero">{{ 'COUNT_NO' | translate }} : </label>
+
+                                <div class="col-lg-2 kw-p-zero">
+                                    <input type="text" class="form-control " ng-model="binModel.cycleCount_No" disabled />
+                                </div>
+
+                                <div class="col-lg-4 kw-p-zero"></div>
+
+                                <!-- <label class="col-lg-1 control-label kw-p-zero">{{ 'STATUS' | translate }} : </label>
+
+                                <div class="col-lg-2 kw-p-zero">
+                                    <input type="text" class="form-control " ng-model="filterModel.processStatus_Name"
+                                        disabled />
+                                </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </h2>
+            </header>
+
+
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'COUNT_NO' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="binModel.cycleCount_No" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span style="color:red">*</span>
+                            <span>{{ 'DATE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <dir-date-picker ng-model="binModel.cycleCount_Date"></dir-date-picker>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span style="color:red">*</span>
+                                <span>{{ 'CY_DOC_TYPE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select class='form-control' ng-model='dropdownDocumentType.model' ng-options="v.documentType_Name for v in dropdownDocumentType">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'REF_NO1' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <input type="text" ng-model="binModel.documentRef_No1" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span style="color:red">*</span>
+                            <span>{{ 'OWNER_ID' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="ownerModel.owner_Index" value="ownerModel.owner_Id" id="ownerModel.owner_Name" value1="ownerModel.ownerDocumentRef_No1"
+                                value2="ownerModel.ownerDocumentRef_No2" sourceurl="autoComplete.owner" api="url.Cyclecount">
+                            </auto-comple>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'OWNER_NAME' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <input type="text" class="form-control" ng-model="ownerModel.owner_Name" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <h4>{{ 'DATA_SEARCH' | translate }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span>{{ 'ZONE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <!-- <auto-comple ng-model="binModel.zone_Index" value="binModel.zone_Name" id="binModel.zone_Id"
+                                sourceurl="autoComplete.zone" api="url.Cyclecount"></auto-comple> -->
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.zone_Name">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupZoneCy.onClick()' class="btn btn-groub-Search" type="button" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'LOC_TYPE' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="binModel.locationType_Index" value="binModel.locationType_Name" id="binModel.locationType_Id" sourceurl="autoComplete.locationType"
+                                api="url.Cyclecount">
+                            </auto-comple>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span>{{ 'LOCATION' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="binModel.location_Index" value="binModel.location_Name" id="binModel.location_Id" sourceurl="autoComplete.location"
+                                api="url.Cyclecount">
+                            </auto-comple>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span>{{ 'COUNT_BY_PRODUCT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <label class="ios7-switch ios7-switch-md">
+                                <input type="checkbox" ng-model="sku.selected" ng-click="hide()">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:15px;;margin-left:30px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'MOVEMENT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <select ng-model="binModel.movement" class="form-control">
+                                <option value=""> {{ 'PLEASE_SELECTED' | translate }} </option>
+                                <option value="30"> 30 </option>
+                                <option value="60"> 60 </option>
+                                <option value="90"> 90 </option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero" ng-show="sku.chk">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'PRODUCT' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <!-- <auto-comple ng-model="binModel.product_Index" value="binModel.product_Name" id="binModel.product_Id" sourceurl="autoComplete.product"
+                                api="url.Cyclecount">
+                            </auto-comple> -->
+                            <div class="input-group" style="padding:0!important;">
+                                <input readonly type="text" class="form-control bgwrite" ng-model="filterModel.product_Name">
+                                <span class="input-group-btn">
+                                    <button ng-click='popupProductCy.onClick()' class="btn btn-groub-Search" type="button" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero" ng-show="sku.chk">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>{{ 'OWNER_ID' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <auto-comple ng-model="binModel.owner_Index" value="binModel.owner_Id" id="binModel.owner_Name" value1="binModel.ownerDocumentRef_No1"
+                                value2="binModel.ownerDocumentRef_No2" sourceurl="autoComplete.owner" api="url.Cyclecount" is-disabled="true">
+                            </auto-comple>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero" ng-show="sku.chk">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'OWNER_NAME' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <input type="text" class="form-control" ng-model="binModel.owner_Name" disabled />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                        <button id="table2" ng-if="click == 2" class="btn btn-success" ng-click="exportFile.ExportCycleCountDetail()">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"> {{ 'EXECEL' | translate }}</i>
+                        </button>
+
+                        <button ng-click="ClearSearch(binModel)" class="btn btn-danger">
+                            <i class="fa fa-repeat" aria-hidden="true"></i> {{ 'CLEAR_SEARCH' | translate }}</button>
+
+                        <button ng-click="SearchBin(binModel)" class="btn btn-primary">
+                            <i class="fa fa-search" aria-hidden="true"></i> {{ 'SEARCH' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="panel">
+            <div class="tabs">
+                <ul class="nav nav-tabs">
+
+                    <li class="active">
+                        <a data-target="#table1" data-toggle="tab" ng-click="clickTab(1)">{{ 'LOC' | translate }}</a>
+                    </li>
+                    <li>
+                        <a data-target="#table2" data-toggle="tab" ng-click="clickTab(2)">{{ 'DETAIL' | translate }}</a>
+                    </li>
+                    <li>
+                        <a data-target="#table3" data-toggle="tab" ng-show="round1.length >0" ng-click="clickTab(3)">{{ 'ROUND' | translate }} 1</a>
+                    </li>
+                    <li>
+                        <a data-target="#table4" data-toggle="tab" ng-show="round2.length >0" ng-click="clickTab(4)">{{ 'ROUND' | translate }} 2</a>
+                    </li>
+                    <li>
+                        <a data-target="#table5" data-toggle="tab" ng-show="round3.length > 0" ng-click="clickTab(5)">{{ 'ROUND' | translate }} 3</a>
+                    </li>
+
+                </ul>
+                <div class="tab-pane active">
+                    <div id="table1" class="table-responsive table-overflow" ng-if="click == 1">
+                        <table class="table table-striped fixed-header tableHeight-350">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="text-ceneter k100">
+                                        <input ng-change="detectCheckAll(checkAll)" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked
+                                        />
+                                        <label for="all_"></label>
+                                    </th>
+                                    <th class="k100"></th>
+                                    <th class="text-center k250">{{ 'LOCATION' | translate }}</th>
+                                    <th class="text-center k250">{{ 'ZONE' | translate }}</th>
+                                    <th class="text-center k150">{{ 'PRODUCTID' | translate }}</th>
+                                    <th class="k580">{{ 'PRODUCT_NAME' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in listBinLoc">
+                                    <td class="text-ceneter k100">
+                                        <div class="ig-control">
+                                            <input ng-model="data.selected" type="checkbox" id="check_{{$index}}" class="ig-control__cbx" checked />
+                                            <label for="check_{{$index}}"></label>
+                                        </div>
+                                    </td>
+                                    <td class="k100">
+                                        <a class="btn btn-danger" ng-click="deleteItem(listBinLoc, $index)" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                    <td class="text-center k250">{{data.location_Name}}</td>
+                                    <td class="text-center k250">{{data.zone_Name}}</td>
+                                    <td class="text-center k150">{{data.product_Id}}</td>
+                                    <td class="k580">{{data.product_Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="table2" class="table-responsive table-overflow" ng-if="click == 2">
+                        <table class="table table-striped fixed-header tableHeight-350">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="text-center k100">#</th>
+                                    <th class="text-center k150">{{ 'LOCATION' | translate }}</th>
+                                    <th class="text-center k150">{{ 'ZONE' | translate }}</th>
+                                    <th class="text-center k150">{{ 'PRODUCTID' | translate }}</th>
+                                    <th class="text-center k250">{{ 'PRODUCT_NAME' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_BAL' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_COUNT' | translate }}</th>
+                                    <th class="text-center k200">{{ 'QTY_DIFF' | translate }}</th>
+                                    <th class="text-center k200">{{ 'USER_COUNT' | translate }}</th>
+                                    <th class="text-center k100">{{ 'COUNT' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in listDetail">
+                                    <td class="text-center k100">{{$index+1}}</td>
+                                    <td class="text-center k150">{{data.location_Name}}</td>
+                                    <td class="text-center k150">{{data.zone_Name}}</td>
+                                    <td class="text-center k150">{{data.product_Id}}</td>
+                                    <td class="text-center k250">{{data.product_Name}}</td>
+                                    <td class="text-center k150">{{data.qty_Bal}}</td>
+                                    <td class="text-center k150">{{data.qty_Count}}</td>
+                                    <td class="text-center k200">{{data.qty_Diff}}</td>
+                                    <td class="text-center k200">{{data.create_By}}</td>
+                                    <td class="text-center k100">{{data.count}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div id="table3" class="table-responsive table-overflow" ng-if="click == 3">
+                        <table class="table table-striped fixed-header tableHeight-350">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="text-center k100">#</th>
+                                    <th class="text-center k150">{{ 'LOCATION' | translate }}</th>
+                                    <th class="text-center k150">{{ 'ZONE' | translate }}</th>
+                                    <th class="text-center k150">{{ 'PRODUCTID' | translate }}</th>
+                                    <th class="text-center k250">{{ 'PRODUCT_NAME' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_BAL' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_COUNT' | translate }}</th>
+                                    <th class="text-center k200">{{ 'QTY_DIFF' | translate }}</th>
+                                    <th class="text-center k200">{{ 'USER_COUNT' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in round1">
+                                    <td class="text-center k100">{{$index+1}}</td>
+                                    <td class="text-center k150">{{data.location_Name}}</td>
+                                    <td class="text-center k150">{{data.zone_Name}}</td>
+                                    <td class="text-center k150">{{data.product_Id}}</td>
+                                    <td class="text-center k250">{{data.product_Name}}</td>
+                                    <td class="text-center k150">{{data.qty_Bal}}</td>
+                                    <td class="text-center k150">{{data.qty_Count}}</td>
+                                    <td class="text-center k200">{{data.qty_Diff}}</td>
+                                    <td class="text-center k200">{{data.create_By}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div id="table4" class="table-responsive table-overflow" ng-if="click == 4">
+                        <table class="table table-striped fixed-header tableHeight-350">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="text-center k100">#</th>
+                                    <th class="text-center k150">{{ 'LOCATION' | translate }}</th>
+                                    <th class="text-center k150">{{ 'ZONE' | translate }}</th>
+                                    <th class="text-center k150">{{ 'PRODUCTID' | translate }}</th>
+                                    <th class="text-center k250">{{ 'PRODUCT_NAME' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_BAL' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_COUNT' | translate }}</th>
+                                    <th class="text-center k200">{{ 'QTY_DIFF' | translate }}</th>
+                                    <th class="text-center k200">{{ 'USER_COUNT' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in round2">
+                                    <td class="text-center k100">{{$index+1}}</td>
+                                    <td class="text-center k150">{{data.location_Name}}</td>
+                                    <td class="text-center k150">{{data.zone_Name}}</td>
+                                    <td class="text-center k150">{{data.product_Id}}</td>
+                                    <td class="text-center k250">{{data.product_Name}}</td>
+                                    <td class="text-center k150">{{data.qty_Bal}}</td>
+                                    <td class="text-center k150">{{data.qty_Count}}</td>
+                                    <td class="text-center k200">{{data.qty_Diff}}</td>
+                                    <td class="text-center k200">{{data.create_By}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div id="table5" class="table-responsive table-overflow" ng-if="click == 5">
+                        <table class="table table-striped fixed-header tableHeight-350">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="text-center k100">#</th>
+                                    <th class="text-center k150">{{ 'LOCATION' | translate }}</th>
+                                    <th class="text-center k150">{{ 'ZONE' | translate }}</th>
+                                    <th class="text-center k150">{{ 'PRODUCTID' | translate }}</th>
+                                    <th class="text-center k250">{{ 'PRODUCT_NAME' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_BAL' | translate }}</th>
+                                    <th class="text-center k150">{{ 'QTY_COUNT' | translate }}</th>
+                                    <th class="text-center k200">{{ 'QTY_DIFF' | translate }}</th>
+                                    <th class="text-center k200">{{ 'USER_COUNT' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in round3">
+                                    <td class="text-center k100">{{$index+1}}</td>
+                                    <td class="text-center k150">{{data.location_Name}}</td>
+                                    <td class="text-center k150">{{data.zone_Name}}</td>
+                                    <td class="text-center k150">{{data.product_Id}}</td>
+                                    <td class="text-center k250">{{data.product_Name}}</td>
+                                    <td class="text-center k150">{{data.qty_Bal}}</td>
+                                    <td class="text-center k150">{{data.qty_Count}}</td>
+                                    <td class="text-center k200">{{data.qty_Diff}}</td>
+                                    <td class="text-center k200">{{data.create_By}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <div class="footer-white" style="margin-top:10px;">
+        <ul class="pager">
+            <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;">
+                <i class="fa fa-angle-left" aria-hidden="true"></i> {{ 'BACK' | translate }}
+            </button>
+
+            <button type="button" class="btn btn-primary previous" ng-click="add(binModel,listBinLoc)" ng-disabled="binModel.document_Status == 1 || binModel.document_Status == -1 || binModel.document_Status == 2 || binModel.document_Status == 3 || binModel.document_Status == 4"
+                style="float: right;">
+                {{ 'SAVE' | translate }}
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+
+        </ul>
+    </div>
+    <!-- </div>
+</div> -->
+    <product-popup-cy on-show='popupProductCy.onShow' config='popupProductCy.config' invokes='popupProductCy.invokes' delegates='popupProductCy.delegates'>
+    </product-popup-cy>
+
+
+    <zone-popup-cy on-show='popupZoneCy.onShow' config='popupZoneCy.config' invokes='popupZoneCy.invokes' delegates='popupZoneCy.delegates'>
+    </zone-popup-cy>

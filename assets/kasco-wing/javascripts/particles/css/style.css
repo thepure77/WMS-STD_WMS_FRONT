@@ -1,0 +1,292 @@
+/* =============================================================================
+   HTML5 CSS Reset Minified - Eric Meyer
+   ========================================================================== */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent
+}
+
+body {
+    line-height: 1
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block
+}
+
+nav ul {
+    list-style: none
+}
+
+blockquote, q {
+    quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold
+}
+
+del {
+    text-decoration: line-through
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0
+}
+
+input, select {
+    vertical-align: middle
+}
+
+li {
+    list-style: none
+}
+
+/* =============================================================================
+   My CSS
+   ========================================================================== */
+
+/* ---- base ---- */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    /* font:normal 75% Helvetica; */
+    font-family: "Helvetica";
+    font-size: 12px;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+/* ---- stats.js ---- */
+
+.count-particles {
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.js-count-particles {
+    font-size: 1.1em;
+}
+
+#stats, .count-particles {
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles {
+    border-radius: 0 0 3px 3px;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.logintop {
+    position: absolute;
+    top: 0%;
+    height: 200px;
+}
+
+.loginbottom {
+    position: absolute;
+    top: 75%;
+    width: 100%;
+}
+
+.boxlogin {
+    min-width: 400px;
+    position: absolute;
+    top: 45%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    max-width: 90%;
+    padding: 2em 3em;
+    background: #fff;
+    border-radius: 10px;
+    /* text-shadow: 0px 0px 2px #131415; */
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #45556A;
+}
+
+.boxunderline {
+    border-bottom: solid 1px #CCCCCC;
+}
+
+input[type=text], input[type=password] {
+    height: 17px;
+    border: 0;
+    width: calc(100% - 2px);
+    margin-left: 1px;
+    border-bottom: solid 1px #CCCCCC;
+    /* box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb; */
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
+}
+
+.kasco-wing-login-header {
+    z-index: 1001;
+}
+
+.page-header-left {
+    background-color: #990000;
+    height: 36px;
+}
+
+.page-header-right::before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 36px;
+    left: -50px;
+    z-index: 1;
+    background: rgb(52, 55, 56);
+    border-left: 10px solid #fff;
+    transform-origin: bottom left;
+    -ms-transform: skew(-50deg, 0deg);
+    -webkit-transform: skew(-50deg, 0deg);
+    transform: skew(-50deg, 0deg);
+}
+
+.page-header-right {
+    background-color: rgb(52, 55, 56);
+    height: 36px;
+}
+
+.box-bottom {
+    display: table;
+    height: 100px;
+    padding: 0 5px 0 0px;
+}
+
+.box-bottom div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.box-text {
+    padding-left: 5px;
+    color: #404041;
+    border-left: solid 1px #ccc;
+    font-size: 10px;
+}
+
+.text-number {
+    text-align: right;
+    font-weight: bold;
+    color: #990000;
+    font-size: 13px;
+}
+
+.overlap-text {
+    position: relative;
+}
+
+.overlap-text a {
+    position: absolute;
+    /* top: 8px; */
+    right: 10px;
+    color: #990000;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.page-header-right .right-wrapper {
+    z-index: 99999;
+    position: absolute;
+    right: 20%;
+    top: 35%;
+    color: #ffffff;
+}
+
+.page-header-left .left-wrapper {
+    z-index: 99999;
+    position: absolute;
+    left: 10%;
+    top: 35%;
+    color: #999999;
+}

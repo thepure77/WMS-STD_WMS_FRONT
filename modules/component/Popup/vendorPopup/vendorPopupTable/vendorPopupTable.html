@@ -1,0 +1,38 @@
+<div class="table-responsive  kl-tbl-height table-overflow">
+    <table class="table table-striped table-bordeered table-width-100">
+        <thead>
+            <tr>
+                <th class="k100 text-center" ng-show="show.action">
+                    <div>{{ 'ACTION' | translate }}</div>
+                </th>
+                <th class="k150 text-center" >{{ 'SUPPLIER_ID' | translate }}</th>
+                <th class="k150 text-center" >{{ 'SUPPLIER_NAME' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items" ng-if="items.length != 0">
+                <td ng-show="show.action" class="k100 text-center">
+                    <input ng-model="data.selected" type="checkbox" id="check_({{$index}}-1)" class="ig-control__cbx" ng-change="checkSelect(data)" checked />
+                    <label for="check_({{$index}}-1)"></label>
+                </td>
+                <td class="k150 text-center" >{{data.vendor_Id}}</td>
+                <td class="k150 text-center" >{{data.vendor_Name}}</td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="11" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 " style="padding-top:20px" ng-show="show.pagination">
+        <select class='form-control' style='width:70px;display:inline;' ng-model='pagging.perPage' ng-options="v.value as v.value for v in pageOption"
+            ng-init='pagging.perPage = 8' ng-change='changeTableSize()'>
+        </select>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " style="padding:0px" ng-show="show.pagination">
+        <ul uib-pagination total-items="pagging.totalRow" ng-change="pagging.change()" items-per-page="pagging.perPage" num-pages="pagging.num"
+            ng-model="pagging.currentPage" max-size="pagging.maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+    </div>
+</div>

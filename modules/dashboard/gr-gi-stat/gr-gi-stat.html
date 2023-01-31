@@ -1,0 +1,78 @@
+<div class="kw-sizechart-dashboard">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-p-zero  kw-txtlabel" style="width: 90%;padding-top: 17px;">        
+        <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 12px;">Statistic of GR/GI</label>
+    </div>
+    <div class="kw-mg-dashboard">
+        <div class="innerbox-dashboard"></div>
+        <!-- <div style="margin-left: 10px;">
+            <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"
+                chart-options="options" chart-dataset-override="datasetOverride"></canvas>
+        </div> -->
+
+        <div class="col-md-12 kw-p-zero">          
+            <div  style="position: absolute;top: -17px;left: 12px;">
+                Qualtity
+            </div>
+            <div class="txt_process" style="position: absolute; top: 173px; left: 95%;font-size: 10px;">
+                Pro<br>cess
+            </div>
+            <div  class="col-lg-12 col-md-12 kw-p-zero" id="morrisStacked1" style="height: 225.67px;width: 100%;"></div>
+            <div>{{Graphdata}}</div>
+            <!-- <script type="text/javascript">
+                var morrisStackedData1 = [{
+                    x: 'Receip',
+                    a: 20
+                }, 
+                {
+                    x: 'Putaway',
+                    b: 40
+                }, 
+                {
+                    x: 'Picking',
+                    c: 60
+                }, 
+                {
+                    x: 'Issue',
+                    d: 30
+                }];
+            </script> -->
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-box-detail-dashboard" >
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="fa fa-square" style="color: #CCCCCC;"></div><span style="color: #999999;font-size: 14px;"> Receipt </span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="fa fa-square" style="color: #FFC400;"></div><span style="color: #999999;font-size: 14px;"> Put away </span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="fa fa-square" style="color: #991B1E;"></div><span style="color: #999999;font-size: 14px;"> Picking </span>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                <div class="fa fa-square" style="color: #555555;"></div><span style="color: #999999;font-size: 14px;"> Issue </span>
+            </div>
+        </div>
+
+    </div>
+    <!-- <a href="#" ng-click="$vm.getData('21513','65461')">get data</a>
+    <div>
+        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"
+            chart-options="options" chart-dataset-override="datasetOverride"></canvas>
+    </div> -->
+
+</div>
+
+<script>
+    $(function () {
+        $(".click").click(function () {
+            if ($(this).hasClass("Isactive")) {
+                $(this).removeClass("Isactive");
+            } else {
+                $(".click").removeClass("Isactive");
+                $(this).addClass("Isactive");
+            }
+        });
+       
+    });
+
+</script>

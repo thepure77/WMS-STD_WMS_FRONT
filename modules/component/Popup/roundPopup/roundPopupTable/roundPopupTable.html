@@ -1,0 +1,34 @@
+</style>
+<div class="table" style="overflow: auto">
+    <table class="kw-custom-table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th ng-show="show.checkBox">
+                    <div class="ig-control">
+                        <input type="checkbox" id="all" class="ig-control__cbx" checked />
+                        <label for="all">{{ 'ALL' | translate }}</label>
+                    </div>
+                </th>
+                <th>{{ 'ROUND_ID' | translate }}</th>
+                <th>{{ 'ROUND_NAME' | translate }}</th>
+                
+                <th ng-show="show.action">
+                    <div style="width: 5px;text-align: center">{{ 'ACTION' | translate }}</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items">
+                <td>{{data.roundId}}</td>
+                <td>{{data.roundName}}</td>
+                <td ng-show="show.action" class="hight">
+                    <div style="width: 5px">
+                        <a class="btn btn-filter" ng-click="selected(data)">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

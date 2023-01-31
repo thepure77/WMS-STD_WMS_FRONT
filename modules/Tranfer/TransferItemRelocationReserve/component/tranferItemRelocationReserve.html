@@ -1,0 +1,169 @@
+<style>
+    .responsive {
+        width: 100%;
+        height: auto;
+    }
+</style>
+<div class="row" ng-show="$vm.isFilter">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Owner</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.ownerName"
+                            value="filterModel.ownerIndex" placeholder="Owner">
+                        <span class="input-group-btn">
+                            <button ng-click='popupOwner.onClick()' class="btn btn-filter" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Warehouse</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <div class="input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="filterModel.warehouseName"
+                            value="filterModel.warehouseIndex">
+                        <span class="input-group-btn">
+                            <button ng-click='popupWarehouse.onClick()' class="btn btn-filter" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Barcode LPN</span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-9">
+                    <input type="text" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" class="form-control" id="focusScanLPN" ng-model="filterModel.lpnNo" ks-enter="ScanTagNoBarcode()">
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <button ng-click="$vm.tagNolist()" class="btn btn-success btn-block btn-md" type="button">
+                            <span> Stock </span>
+                        <!-- <span class="glyphicon glyphicon-ok"></span> -->
+                    </button>
+                </div>                  
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Location</span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-9">
+                    <input type="text" ng-model="$vm.filterModel.locationName" class="form-control" disabled>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-3">
+                    <button ng-click="$vm.locationlist()" class="btn btn-default btn-block btn-md" type="button">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>บาร์โค๊ดสินค้า</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" ng-model="filterModel.productConversionBarcode" class="form-control"
+                        placeholder="Scan Barcode Product" ks-enter="ScanProductBarcode()" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>รหัสสินค้า</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" ng-model="filterModel.productId" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>ชื่อสินค้า</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" ng-model="filterModel.productName" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>จำนวนในสต๊อก</span>
+                </div>
+                <div class="col-lg-4 col-md-5 col-xs-12">
+                    <input type="number" ng-model="filterModel.qty"  class="form-control" />
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-xs-12">
+                    <span>หน่วย</span>
+                </div>
+                <div class="col-lg-4 col-md-5 col-xs-12">
+                    <input type="text" ng-model="filterModel.productConversionName" class="form-control" disabled />
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <span>Barcode LPN ปลายทาง</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-xs-12">
+                    <input type="text" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" ng-model="filterModel.tagNoNew" id="focusScanNewLPN" class="form-control"
+                        placeholder="Scan LPN ปลายทาง" ks-enter="ScanTagNo()" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right" style="margin-bottom:15px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button ng-click="confirm()" class="btn btn-success hidden-xs">Confirm</button>
+                    <button ng-click="confirm()"
+                        class="btn btn-success btn-block btn-md visible-xs mt-lg">Confirm</button>
+                    <button ng-click="clearSearch()" class="btn btn-filter hidden-xs">Clear</button>
+                    <button ng-click="clearSearch()"
+                        class="btn btn-filter btn-block btn-md visible-xs mt-lg">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+</div>
+
+
+<tranfer-item-relocation-reserve-list is-loading="isLoading" is-check-balance="$vm.isCheckBalance" ng-hide="$vm.isFilter"></tranfer-item-relocation-reserve-list>
+<tranfer-item-check-balance is-loading="isLoading" is-check-balance="$vm.isCheckBalance" ng-hide="$vm.isFilter"></tranfer-item-check-balance>
+
+<owner-popup on-show='popupOwner.onShow' config='popupOwner.config' invokes='popupOwner.invokes'
+    delegates='popupOwner.delegates'>
+</owner-popup>
+<warehouse-popup on-show='popupWarehouse.onShow' config='popupWarehouse.config' invokes='popupWarehouse.invokes'
+    delegates='popupWarehouse.delegates'>
+</warehouse-popup>
+<product-conversion-popup on-show='popupProductConversion.onShow' config='popupProductConversion.config'
+    invokes='popupProductConversion.invokes' delegates='popupProductConversion.delegates'>
+</product-conversion-popup>
+
+<stock-adjustment-popup on-show='popupReasonCode.onShow' config='popupReasonCode.config'
+    invokes='popupReasonCode.invokes' delegates='popupReasonCode.delegates'>
+</stock-adjustment-popup>

@@ -1,0 +1,182 @@
+<div class="col-md-12 kw-mg-tb">
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-3 col-sm-3 col-xs-3 ">
+            <div class="col-lg-10 col-md-10 col-xs-10 kw-p-zero">
+                <label>{{ 'PlanGoodsIssue No' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                
+                <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.autoSuggestion"
+                    api="url.PlanGI"></auto-comple>
+            </div>
+        </div>
+
+        <!-- <div class="col-md-2 col-sm-2 col-xs-2 ">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                <label>{{ 'GoodsIssue No' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                <auto-comple ng-model="filterModel.GoodsIssue_Index" value="$vm.filterModel.GoodsIssue_No" sourceurl="autoComplete.GoodsIssue_No" api="url.GI"></auto-comple>
+            </div>
+
+        </div> -->
+
+        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+            <!-- <div class="col-lg-5 col-md-9 col-xs-9 padd" style="text-align: right;left: -7%;font-size: 11px">
+                {{'D_START'|translate}}
+            </div>
+            <div class="col-lg-1 col-md-1 col-xs-1 padd"></div>
+            <div class="col-lg-5 col-md-2 col-xs-2 padd" style="text-align: left;right: 13%;font-size: 11px">
+                {{'D_END'|translate}}
+            </div> -->
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                <label>{{ 'Start-Date End-Date' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                <div class="input-group">
+                    <input type="text" ng-model="filterModel.date" name="datefilter" class="form-control daterange text-center"
+                        value="">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 ">
+            <div class="col-lg-6 col-md-6 col-xs-6 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'STATUS_SENT_TO_SAP' | translate }}</label>
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-11  kw-p-zero">
+                    <status class="inline" multiple="true" order="true" ng-model="filterModel.statusgi"
+                            checked="row.display" options="row.display for row in status" change="sortBy(row.display)"
+                            style="width: 100%;">
+                    </status>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 col-md-6 col-xs-6 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'STATUS_RESPONSE_SAP' | translate }}</label>
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-11  kw-p-zero">
+                    <status class="inline" multiple="true" order="true" ng-model="filterModel.status_gi"
+                            checked="row.display" options="row.display for row in status_SAP" change="sortBy(row.display)"
+                            style="width: 100%;">
+                    </status>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- <div class="col-md-2 col-sm-2 col-xs-2 ">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                <label>{{ 'STATUS_RESPONSE_SAP' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                <status class="inline" multiple="true" order="true" ng-model="filterModel.status_gi"
+                        checked="row.display" options="row.display for row in status_SAP" change="sortBy(row.display)"
+                        style="width: 100%;">
+                </status>
+            </div>
+        </div> -->
+        
+        <div class="col-md-2 col-xs-2 ">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero" style="margin-top: 5px;">
+                <label>{{ ' ' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero" style="margin-top: 5px;">
+                <label>{{ ' ' | translate }}</label>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5  kw-p-zero">
+                <button class="btn btn-success" type="button" ng-click="exportFile.Export(filterModel)">
+                    {{ 'EXCEL' | translate }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+       
+<!-- <div class="col-md-12 kw-mg-tb">
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-2 col-sm-2 col-xs-2 ">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                <label>{{ 'STATUS_SENT_TO_SAP' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                <status class="inline" multiple="true" order="true" ng-model="filterModel.statusgi"
+                        checked="row.display" options="row.display for row in status" change="sortBy(row.display)"
+                        style="width: 100%;">
+                </status>
+            </div>
+        </div>
+        
+        
+        <div class="col-md-2 col-sm-2 col-xs-2 ">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                <label>{{ 'STATUS_RESPONSE_SAP' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                <status class="inline" multiple="true" order="true" ng-model="filterModel.status_gi"
+                        checked="row.display" options="row.display for row in status_SAP" change="sortBy(row.display)"
+                        style="width: 100%;">
+                </status>
+            </div>
+        </div>
+        
+        <div class="col-md-2 col-xs-2 ">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero" style="margin-top: 5px;">
+                <label>{{ ' ' | translate }}</label>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12  kw-p-zero">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero" style="margin-top: 5px;">
+                <label>{{ ' ' | translate }}</label>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5  kw-p-zero">
+                <button class="btn btn-success" type="button" ng-click="export()">
+                    {{ 'EXPORT' | translate }}
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div> -->
+
+
+<script>
+    $(function () {
+        function getTodayDeFault(chkdate = false) {
+            var today = new Date();
+            if (chkdate) {
+                today.setDate(today.getDate() - 0);
+            }
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getUTCFullYear();
+            var dd = today.getDate();
+
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            return dd.toString() + "/" + mm.toString() + "/" + yyyy.toString();
+        }
+        $('.daterange').daterangepicker({ startDate: getTodayDeFault(true), endDate: getTodayDeFault() });
+    });
+</script>

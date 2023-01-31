@@ -1,0 +1,41 @@
+<div class="table" style="overflow: auto">
+    <table class="kw-custom-table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="k50">{{ 'NO' | translate }}</th>
+                <th class="k150">{{ 'PRODUCT_ID' | translate }}</th>
+                <th class="k200">{{ 'PRODUCT_NAME' | translate }}</th>
+                <th class="k100">{{ 'LOT_NO' | translate }}</th>
+                <th class="k100">{{ 'QTY_REMAINING' | translate }}</th>
+                <th class="k100">{{ 'QTY_ASSIGN' | translate }}</th>
+                <th class="k100">{{ 'PACKAGE' | translate }}</th>
+                <th class="k100">{{ 'WEIGHT' | translate }}</th>
+                <th class="k100">{{ 'VOLUME' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="dataItem in items" ng-if="items.length != 0">
+                <td class="k50">{{$index + 1}}</td>
+                <td class="k150">{{dataItem.product_Id}}</td>
+                <td class="k200">{{dataItem.product_Name}}</td>
+                <td class="k100">{{dataItem.product_Lot}}</td>
+                <td class="k100">{{dataItem.remainQty}}</td>
+                <td class="k100">
+                    <input type="text" class="form-control" ng-model="dataItem.remainingQty" ng-change="" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
+                </td>
+                
+                <td class="k100">{{dataItem.productConversion_Name}}</td>
+                <td class="k100">{{dataItem.remainingWeight}}</td>
+                <td class="k100">{{dataItem.remainingVolume}}</td>
+
+                
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="11" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-right padding-m">
+        <button class="btn btn-primary" ng-click="selected(items)">{{ 'CONFIRM' | translate }}</button>
+    </div>
+</div>

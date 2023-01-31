@@ -1,0 +1,60 @@
+<div class="table-responsive table-overflow">
+    <span>
+        <h3>{{ 'FLAG_ORDER' | translate }}?</h3>
+    </span>
+
+    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+        {{ 'CUSTOMER' | translate }} :
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+        <div class="ig-control">
+            <input type="checkbox" ng-change="detectcheck('1')" ng-disabled="disable1" ng-model="filterModel.IsAccept" id="table_setting_1" class="ig-control__cbx"
+                checked />
+            <label for="table_setting_1">{{ 'ACCEPT_ORDER' | translate }}</label>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+        <div class="ig-control">
+            <input type="checkbox" ng-change="detectcheck('2')" ng-disabled="disable2" ng-model="filterModel.IsDissmiss" id="table_setting_2" class="ig-control__cbx"
+                checked />
+            <label for="table_setting_2">{{ 'DISMISS_ORDER' | translate }}</label>
+        </div>
+    </div>
+    <table class="table table-striped table-bordeered table-width-100">
+        <thead>
+            <tr>
+                <th></th>
+                <th>{{ 'ID' | translate }}</th>
+                <th>{{ 'NAME' | translate }}</th>
+                <!-- <th class="text-right" ng-show="show.action">
+                    <div>Action</div>
+                </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="datalist in items" ng-if="items.length != 0">
+                <td>
+                    <div class="ig-control">
+                        <input ng-model="datalist.check" ng-click="checkReason($index)" type="checkbox" id="Reason_{{$index}}" class="ig-control__cbx" checked />
+                        <label for="Reason_{{$index}}"></label>
+                    </div>
+                </td>
+                <td>{{datalist.reasonCodeId}}</td>
+                <td>{{datalist.reasonCodeName}}</td>
+                <!-- <td ng-show="show.action" class="hight text-right">
+                    <a class="btn btn-filter" ng-click="selected(data,filterModel)">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </a>
+                </td> -->
+                <div class="form-right padding-m">
+                    <button class="btn btn-filter" ng-click="selected(items,filterModel)">Save</button>
+                </div>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="11" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</div>

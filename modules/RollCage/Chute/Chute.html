@@ -1,0 +1,51 @@
+
+<meta http-equiv="Pragma" content="no-cache">
+
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+        <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'ROLLCAGE' | translate }} </h2>
+            <div class="navigationLabel"> <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+                {{ 'CHUTE' | translate }}</div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+
+<div  class="tabs"  style="margin-top:15px;">
+    <div class="tab-content">
+        <div class="row" >
+                <div class="form-group" style="margin-top:15px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-xs-12">
+                            <div class="col-lg-3 col-md-6 col-xs-12 kw-p-zero">
+                                <span>{{ 'CHUTE_ID' | translate }}:</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                                <select class='form-control' ng-model='dropdownchute.model' ng-options="v.chute_Name for v in dropdownchute">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero" style="margin-top:15px;">
+                                    <button type="button" class="btn btn-success" ng-click="LoginChute()">
+                                        {{ 'LOGIN' | translate }}
+                                    </button>
+                                    <button type="button" class="btn btn-danger" ng-click="CancelChute()">
+                                        {{ 'LOG_OUT' | translate }}
+                                    </button>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
+
+

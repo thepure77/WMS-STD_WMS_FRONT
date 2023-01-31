@@ -1,0 +1,42 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 kw-mg-tb">
+    <div class="form-group">
+        <div class="col-lg-9 col-md-9 col-xs-9">
+            <div class="col-lg-2 col-xs-2 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1'">
+                    <option value="1">{{ 'PRODUCT_ID' | translate }}</option>
+                    <option value="2">{{ 'PRODUCT_NAME' | translate }}</option>
+                </select>
+            </div>
+            <div ng-switch="actionPS">
+                <div class="input-group col-lg-3 col-xs-3" ng-switch-when="1" ng-init="filterModel.productName = ''">
+                    <input type="text" ng-model="filterModel.productId" class="form-control">
+                    <span class="input-group-btn">
+                        <button ng-click="filterSearch()" class="btn btn-groub-Search">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="input-group col-lg-3 col-xs-3" ng-switch-when="2" ng-init="filterModel.productId = ''">
+                    <input type="text" ng-model="filterModel.productName" class="form-control">
+                    <span class="input-group-btn">
+                        <button ng-click="filterSearch()" class="btn btn-groub-Search">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-3">
+        <button class="btn btn-success" ng-click="exportData()" style="float: right;background-color: #60b0ff">
+            <!-- <i class="glyphicon glyphicon-open" aria-hidden="true"></i>  -->
+            Export</button>
+        </div>
+    </div>
+    <!-- <div class="div-shadow">
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+        
+        <div class="col-md-12 col-md-offset-12" style="margin-top:20px;"></div>
+
+    </div> -->
+</div>

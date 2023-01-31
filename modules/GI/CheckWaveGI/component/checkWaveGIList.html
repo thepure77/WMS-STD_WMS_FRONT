@@ -1,0 +1,177 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- PC -->
+<div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;" ng-hide='checkbox.Show'>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-left" style="margin-bottom:15px;">
+    </div>
+</div>
+
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter"
+    style="margin-bottom:15px;height: 656px;">
+
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-target="#tab0" data-toggle="tab" style="background-color:{{colortab1}}"
+                    ng-click="clickTab(0)">{{ 'Wave Work In Process' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(1)">{{ 'Status Wave' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(2)">{{ 'Result Wave' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab3" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(3)">{{ 'Send Rollcage Wave' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab4" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(4)">{{ 'Location Partial' | translate }}</a>
+            </li>
+
+        </ul>
+    </div>
+    <table class="table table-striped fixed-header tableHeight-350" style="width: 1100px;">
+
+        <thead ng-if="click == 0">
+            <tr style="overflow-y: auto;">
+                <th class="text-center k50">#</th>
+                <th class="text-center k80">{{ 'WAVE' | translate }}</th>
+                <th class="text-center k100">{{ 'REMARK' | translate }}</th>
+                <th class="text-center k100">{{ '##' | translate }}</th>
+
+            </tr>
+        </thead>
+        
+        <thead ng-if="click == 1">
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">{{ 'ROW_NUMBER' | translate }}</th>
+                <th class="text-center k150">{{ 'header' | translate }}</th>
+                <th class="text-center k300">{{ 'Remaining' | translate }}</th>
+                <th class="text-center k300">{{ 'description' | translate }}</th>
+
+            </tr>
+        </thead>
+        <thead ng-if="click == 2">
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">{{ 'ROW_NUMBER' | translate }}</th>
+                <th class="text-center k150">{{ 'header' | translate }}</th>
+                <th class="text-center k300">{{ 'Remaining' | translate }}</th>
+                <th class="text-center k300">{{ 'description' | translate }}</th>
+
+            </tr>
+        </thead>
+        <thead ng-if="click == 3">
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">{{ 'ROW_NUMBER' | translate }}</th>
+                <th class="text-center k150">{{ 'Rollcage ID' | translate }}</th>
+                <th class="text-center k300">{{ 'Chute' | translate }}</th>
+                <th class="text-center k300">{{ 'Total Tag' | translate }}</th>
+
+            </tr>
+        </thead>
+        <thead ng-if="click == 4">
+            <tr style="overflow-y: auto;">
+                <th class="text-center k100">{{ 'ROW_NUMBER' | translate }}</th>
+                <th class="text-center k200">{{ 'PalletSuggestion' | translate }}</th>
+                <th class="text-center k100">{{ 'Location ID' | translate }}</th>
+                <th class="text-center k150">{{ 'Pallet ID' | translate }}</th>
+                <th class="text-center k150">{{ 'Product ID' | translate }}</th>
+                <th class="text-center k300">{{ 'Product Name' | translate }}</th>
+                <th class="text-center k150">{{ 'QtySaleUnit' | translate }}</th>
+                <th class="text-center k100">{{ 'UOM' | translate }}</th>
+                <th class="text-center k100">{{ 'ERP Location' | translate }}</th>
+                <!-- <th class="text-center k100">{{ 'ERP Location' | translate }}</th> -->
+                <th class="text-center k150">{{ 'WMS QTYBal' | translate }}</th>
+                <th class="text-center k150">{{ 'WMS QtyReserve' | translate }}</th>
+
+            </tr>
+        </thead>
+
+        <tbody ng-if="click == 0">
+            <tr>
+                <td class="text-center k50">
+                    <button type="button" class="btn btn-info btn-sm" ng-click="getWaveWIP()">
+                        <span class="glyphicon glyphicon-refresh"></span> Refresh
+                    </button>
+                </td>
+                <td class="text-center k80"><span><h4>{{filterModel.waveNo}}</h4></span></td>
+                <td class="text-center k100">
+                    <textarea ng-model="filterModel.remark" rows="4" cols="30" ng-show="WCS_waveno" style="font-size: 16px;">
+                        
+                    </textarea>
+                </td>
+                <td class="text-center k100">
+                    <button type="button" class="btn btn-success btn-sm" ng-show="WCS_waveno" ng-click="completeWave()">
+                        <span class="glyphicon glyphicon glyphicon-off"></span> Complete Wave
+                    </button>
+                </td>
+
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+
+        <tbody ng-if="click == 1">
+            <tr ng-repeat="data in $vm.searchResultModel.checkWaveWCS_respomodel">
+                <td class="text-center k100">{{$index+1}}</td>
+                <td class="k150">{{data.header}}</td>
+                <td class="text-center k300">{{data.remaining}}</td>
+                <td class="text-center k150">{{data.descip}}</td>
+
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+
+        <tbody ng-if="click == 2">
+            <tr ng-repeat="data in $vm.searchResultModel.checkWaveWCSmodel">
+                <td class="text-center k100">{{$index+1}}</td>
+                <td class="k150">{{data.header}}</td>
+                <td class="text-center k300">{{data.remaining}}</td>
+                <td class="text-center k150">{{data.descip}}</td>
+
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+
+        <tbody ng-if="click == 3">
+            <tr ng-repeat="data in $vm.searchResultModel.rollcage_data">
+                <td class="text-center k100">{{$index+1}}</td>
+                <td class="text-center k150">{{data.rollCage_ID}}</td>
+                <td class="text-center k300">{{data.chute}}</td>
+                <td class="text-center k150">{{data.countTag}}</td>
+
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 4">
+            <tr ng-repeat="data in $vm.searchResultModel.checklocation_PPmodel">
+                <td class="text-center k100">{{$index+1}}</td>
+                <td class="text-center k200">{{data.palletSuggestion}}</td>
+                <td class="text-center k100">{{data.location_ID}}</td>
+                <td class="text-center k150">{{data.palletID}}</td>
+                <td class="text-center k150">{{data.productID}}</td>
+                <td class="text-center k300">{{data.product_Name}}</td>
+                <td class="text-center k150">{{data.qtySaleUnit}}</td>
+                <td class="text-center k100">{{data.uom}}</td>
+                <td class="text-center k100">{{data.erP_Location}}</td>
+                <!-- <th class="text-center k100">{{data.erP_Location}}</th> -->
+                <td class="text-center k150">{{data.wmS_QTYBal}}</td>
+                <td class="text-center k150">{{data.wmS_QtyReserve}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="16" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

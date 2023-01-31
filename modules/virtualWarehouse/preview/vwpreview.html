@@ -1,0 +1,225 @@
+
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <div class="col-lg-2">
+        <label style="font-size: 12px; padding-top: 10px;">{{ 'WAREHOUSE' | translate }}</label>
+    </div>
+    <div class="col-lg-10">
+        <select class="form-control" ng-model="warehouse_Selected">
+            <option ng-repeat="(key, value) in $vm.warehouseList" value="{{value.warehouse_Index}}">
+                {{value.warehouse_Name}}</option>
+        </select>
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center" ng-model="$vm.searchMore"
+    ng-click="$vm.searchMore = !$vm.searchMore">
+    <a>{{$vm.searchMore ? "Hide Specification Search" : "Search More"}}</a>
+</div> 
+<div ng-show="$vm.searchMore">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <div class="col-lg-2">
+            {{ 'OWNER' | translate }}
+        </div>
+        <div class="col-lg-10">
+            <auto-complete api-func="$vm.ownerAutoCompleteFunc" selected-item="$vm.ownerItem" id="ownerId"
+                selected-value="$vm.ownerId" placeholder="owner" input-value="ownerId"></auto-complete>
+        </div> 
+
+        <div class="col-lg-2">
+            {{ 'PRODUCT' | translate }}
+        </div>
+        <div class="col-lg-10">
+            <auto-complete api-func="$vm.productAutoCompleteFunc" selected-item="$vm.productItem" id="productId"
+                selected-value="$vm.productId" placeholder="sku" input-value="productId"></auto-complete>
+        </div>
+    </div>
+     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 kw-p-zero">
+        <button ng-click="search()" class="btn kw-button-search">
+            <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span><label
+                class="kw-pos">Search</label></button>
+    </div>
+</div>
+
+<div class="row" style="color: red;">
+    <div class="col-md-12" style="text-align: center;margin-top: 10px;">
+        <label for="">{{statusLoadTop}}</label>
+    </div>
+</div>
+
+<hr class="col-xs-12">
+
+
+<div class="row">
+    <div style="width: 100%;">
+        <input class="form-control" placeholder="{{ 'TOP_VIEW' | translate }}"
+            style="text-align: center;"></input>
+    </div>
+    <div class="" style="width: 100%;">
+        <div id="gameTopViewContainer"></div>
+    </div>
+</div>
+
+
+<div class="col-lg-12">
+    <ul style="list-style: none;">
+        <label>{{ 'COLOR_MEANING' | translate }}</label>
+        <li>
+            <img src="assets/img/vwm/empty-remark.jpg"> 
+            {{ 'NO_ITEM' | translate }}
+        </li>
+        <li>
+            <img src="assets/img/vwm/mapping-remark.jpg"> {{ 'HAVE_ITEM' | translate }}
+        </li>
+        <li>
+            <img src="assets/img/vwm/block-remark.jpg"> {{ 'BLOCK' | translate }}
+        </li>
+
+        <li>
+            <img src="assets/img/vwm/close.png" style="width:25px;height: 25px;"> {{ 'CLOSE' | translate }}
+        </li>
+    </ul>
+</div>
+
+<div class="row" style="color: red;">
+    <div class="col-md-12" style="text-align: center;margin-top: 10px;">
+        <label for="">{{statusLoadSide}}</label>
+    </div>
+</div>
+
+<div class="col-lg-12 p-zero">
+    <input class="form-control" placeholder="{{ 'SIDE_VIEW' | translate }}"
+        style="text-align: center;"></input>
+</div>
+<div class="row" style="padding-bottom: 10px;">
+    <!-- detail -->
+    <div class="" style="width: 100%;">
+        <div id="gameSideViewContainer"></div>
+    </div>
+</div>
+
+<div class="row" >
+    <div>
+        <div class="col-lg-12" style="text-align: center;">
+            {{ 'LOCATION_DETAIL' | translate }}
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-p-zero">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 "
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'WAREHOUSE' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.warehouse" disabled class="form-control"></input>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 kw-p-zero-right"
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'ROOM' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.room" disabled class="form-control"></input>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4"
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'AISLE' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.aisle" disabled class="form-control"></input>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 kw-p-zero-right"
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'BAY' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.location_Bay_Desc" disabled class="form-control"></input>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4"
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'DEEP' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.deep" disabled class="form-control"></input>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 kw-p-zero-right"
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'LEVEL' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.location_Level_Desc" disabled class="form-control"></input>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 "
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'LOCATION' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.location_id" disabled class="form-control"></input>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 kw-p-zero-right"
+                    style="vertical-align:middle;line-height:30px;">
+                    {{ 'POSITION' | translate }} :
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 kw-p-zero">
+                    <input ng-model="item.location_Position_Desc" disabled class="form-control"></input>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <tr>
+                <th>{{ 'PRODUCTID' | translate }}</th>
+                <th>{{ 'ARTICLE' | translate }}</th>
+                <th>{{ 'QTY' | translate }}</th>
+                <th>{{ 'UNIT' | translate }}</th>
+                <th>{{ 'OWERNAME' | translate }}</th>
+            </tr>
+            <tr ng-repeat="e in item.product">
+                <td>{{e.product_Id}}</td>
+                <td>{{e.product_Name}}</td>
+                <td>{{e.qtyBal}}</td>
+                <td>{{e.goodsReceive_ProductConversion_Name}}</td>    
+                <td>{{e.owner_Name}}</td>       
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 100px;">
+    <!-- <div class="col-lg-12">
+        <table class="table">
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Qty</th>
+                <th>Unit</th>
+            </tr>
+            <tr ng-repeat="e in item.product">
+                <td>{{e.product_Id}}</td>
+                <td>{{e.product_Name}}</td>
+                <td>{{e.qtyBal}}</td>
+                <td>{{e.goodsReceive_ProductConversion_Name}}</td>          
+            </tr>
+        </table>
+    </div> -->
+</div>
+<button id="refresh" style="display: none;" ng-click="refreshRack()"></button>
+
+

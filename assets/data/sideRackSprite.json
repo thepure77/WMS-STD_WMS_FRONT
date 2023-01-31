@@ -1,0 +1,150 @@
+[
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 64,
+            "y": 273
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 128,
+            "y": 273
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 196,
+            "y": 273
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 260,
+            "y": 273
+        }
+    },
+
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 64,
+            "y": 305
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 128,
+            "y": 305
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 196,
+            "y": 305
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 260,
+            "y": 305
+        }
+    },
+
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 64,
+            "y": 337
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 128,
+            "y": 337
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 196,
+            "y": 337
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 260,
+            "y": 337
+        }
+    },
+
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 64,
+            "y": 369
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 128,
+            "y": 369
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 196,
+            "y": 369
+        }
+    },
+    {
+        "type": "rack-level-pillar",
+        "id": "",
+        "position": {
+            "x": 260,
+            "y": 369
+        }
+    },
+
+    {
+        "type": "rack-product-item",
+        "id": "",
+        "position": {
+            "x": 480,
+            "y": 367
+        }
+    },
+    {
+        "type": "rack-level-ground",
+        "id": "",
+        "position": {
+            "x": 480,
+            "y": 320
+        }
+    }
+]

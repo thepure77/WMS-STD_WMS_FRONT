@@ -1,0 +1,44 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <div class="row tab" id="step-1" ng-if="menu[0].active == 'active'">
+        <!-- GR -->
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'TRUCK_LOAD_NO' | translate }} :</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.shipment_no"
+                            ks-enter="scan_shipment()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 30px">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <button class="btn btn-filter" style="width: 100%" type="button"
+                            ng-click="savetracking()">{{ 'CONFIRM' | translate }}
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+</div>

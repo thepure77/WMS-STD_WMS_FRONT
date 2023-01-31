@@ -1,0 +1,187 @@
+<meta http-equiv="Pragma" content="no-cache">
+<!-- PC -->
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter"
+    style="margin-bottom:15px;">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-target="#table1" data-toggle="tab" style="background-color:{{colortable1}}"
+                ng-click="selectedTabTable(1)">สินค้าคงคลัง (แยกตามรหัสสินค้า)</a>
+        </li>
+        <li class="active">
+            <a data-target="#table2" data-toggle="tab" style="background-color:{{colortable12}}"
+                ng-click="selectedTabTable(2)">สินค้าคงคลัง (แยกตามตำแหน่งจัดเกบ)</a>
+        </li>
+    </ul>
+
+    <div class="table-overflow">
+        <!-- <div id="tab1" class="tab-pane active" ng-if="selected == 1"> -->
+        <table id="table1" class="table table-striped fixed-header tableHeight-350 tab-pane active" ng-if="selectedTable == 1">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th class="k100">{{ 'ROW_NUMBER' | translate }}</th>
+                    <th class="k150">{{ 'MATERIAL_NO' | translate }}</th>
+                    <th class="k150">{{ 'MATERIAL' | translate }}</th>
+                    <th class="k100">{{ 'STATUS' | translate }}</th>
+                    <th class="k100">{{ 'LOT' | translate }}</th>
+                    <th class="k100">{{ 'OWNER_ID' | translate }}</th>
+                    <th class="k150">{{ 'OWNER_NAME' | translate }}</th>
+                    <th class="k150">{{ 'QTY_BAL' | translate }}</th>
+                    <th class="k100">{{ 'QTY_RESERVE' | translate }}</th>
+                    <!-- <th class="k80">{{ 'UNIT' | translate }}</th> -->
+                    <th class="k100">{{ 'QTY_AMOUNT' | translate }}</th>
+                    <th class="k100">{{ 'SUB_UNIT' | translate }}</th>
+                    <th class="k100">{{ 'SALE_QTY' | translate }}</th>
+                    <th class="k100">{{ 'SALE_UNIT' | translate }}</th>
+                    <th class="k80">{{ 'WEIGHT' | translate }}</th>
+                    <th class="k150">{{ 'LOCATION_TYPE_NAME' | translate }}</th>
+                    <th class="k120">{{ 'ERP_LOCATION' | translate }}</th>
+                    <th class="k80">{{ 'CBM' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchResultModel">
+                    <td class="k100">{{data.row}}</td>
+                    <td class="k150">{{data.product_Id}}</td>
+                    <td class="k150">{{data.product_Name}}</td>
+                    <td class="k100">{{data.itemStatus_Name}}</td>
+                    <td class="k100">{{data.product_Lot}}</td>
+                    <td class="k100">{{data.owner_Id}}</td>
+                    <td class="k150">{{data.owner_Name}}</td>
+                    <td class="k150">{{data.binBalance_QtyBal}}</td>
+                    <td class="k100">{{data.binBalance_QtyReserve}}</td>
+                    <!-- <td class="k80">{{data.goodsReceive_ProductConversion_Name}}</td> -->
+                    <td class="k100">{{data.amount}}</td>
+                    <td class="k100">{{data.productConversion_Name}}</td>
+                    <td class="k100">{{data.sale_qty}}</td>
+                    <td class="k100">{{data.sale_unit}}</td>
+                    <td class="k80">{{data.binBalance_WeightBal}}</td>
+                    <td class="k150">{{data.locationType_Name}}</td>
+                    <td class="k120">{{data.erp_location}}</td>
+                    <td class="k80">{{data.cbm}}</td>
+                </tr>
+                <tr ng-if="$vm.searchResultModel.length == 0">
+                    <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- </div> -->
+
+        <!-- <div id="table1" class="tab-pane active" ng-if="selected == 2"> -->
+        <table id="table2" class="table table-striped fixed-header tableHeight-350 tab-pane active" ng-if="selectedTable == 2">
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th class="k100">{{ 'NO' | translate }}</th>
+                    <th class="k250">{{ 'TAG_NO' | translate }}</th>
+                    <th class="k100">{{ 'ZONE' | translate }}</th>
+                    <th class="k150">{{ 'LOCATION_NAME' | translate }}</th>
+                    <th class="k150">{{ 'MATERIAL' | translate }}</th>
+                    <th class="k150">{{ 'PRODUCT_TYPE' | translate }}</th>
+                    <th class="k100">{{ 'ITEM_STATUS' | translate }}</th>
+                    <th class="k100">{{ 'PRODUCT_LOT' | translate }}</th>
+                    <th class="k150">{{ 'QTY_BAL' | translate }}</th>
+                    <th class="k150">{{ 'QTY_RESERVE' | translate }}</th>
+                    <th class="k150">{{ 'QTY_AMOUNT' | translate }}</th>
+                    <th class="k80">{{ 'UNIT' | translate }}</th>
+                    <th class="k100">{{ 'SALE_QTY' | translate }}</th>
+                    <th class="k100">{{ 'SALE_UNIT' | translate }}</th>
+                    <th class="k100">{{ 'GR_NO' | translate }}</th>
+                    <th class="k100">{{ 'GR_DATE' | translate }}</th>
+                    <th class="k150">{{ 'MFG_DATE' | translate }}</th>
+                    <th class="k100">{{ 'EXP_DATE' | translate }}</th>
+                    <th class="k100">{{ 'SHELFLIFE' | translate }}</th>
+                    <th class="k100">{{ 'SHELFLIFE_D' | translate }}</th>
+                    <th class="k100">{{ 'SHELFLIFE_REMAINING' | translate }}</th>
+                    <th class="k150">{{ 'LOCATION_TYPE_NAME' | translate }}</th>
+                    <th class="k120">{{ 'ERP_LOCATION' | translate }}</th>
+                    <th class="k80">{{ 'CBM' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchDataLocation">
+                    <td class="k100">{{data.row}}</td>
+                    <td class="k250">{{data.tag_No}}</td>
+                    <td class="k100">{{data.zone_Name}}</td>
+                    <td class="k150">{{data.location_Name}}</td>
+                    <td class="k150">{{data.product_Name}}</td>
+                    <td class="k150">{{data.productType_Name}}</td>
+                    <td class="k100">{{data.itemStatus_Name}}</td>
+                    <td class="k100">{{data.product_Lot}}</td>
+                    <td class="k150">{{data.binBalance_QtyBal}}</td>
+                    <td class="k150">{{data.binBalance_QtyReserve}}</td>
+                    <td class="k150">{{data.amount}}</td>
+                    <td class="k80">{{data.productConversion_Name}}</td>
+                    <td class="k100">{{data.sale_qty}}</td>
+                    <td class="k100">{{data.sale_unit}}</td>
+                    <td class="k100">{{data.goodsReceive_No}}</td>
+                    <td class="k100">{{data.goodsReceive_Date|dateFormate}}</td>
+                    <td class="k150">{{data.goodsReceive_MFG_Date|dateFormate}}</td>
+                    <td class="k100">{{data.goodsReceive_EXP_Date|dateFormate}}</td>
+                    <td class="k100">{{data.dateDiffGetdate}}</td>
+                    <td class="k100">{{data.productShelfLife_D}}</td>
+                    <td class="k100">{{data.remainingShelfLife}}</td>
+                    <td class="k150">{{data.locationType_Name}}</td>
+                    <td class="k120">{{data.erp_location}}</td>
+                    <td class="k80">{{data.cbm}}</td>
+                </tr>
+                <tr ng-if="$vm.searchDataLocation.length == 0">
+                    <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- </div> -->
+
+    </div>
+
+    <div ng-if="selectedTable == 1" id="table1" class=" table-responsive table-overflow tab-pane active"
+        ng-show="$vm.isFilter" style="margin-bottom:15px;">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                    <button type="button " style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)"
+                        class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                        class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                    </button>
+                </div>
+                <ul style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow" uib-pagination
+                    total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                    items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                    ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right"
+                    boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="selectedTable == 2" id="table2" class=" table-responsive table-overflow tab-pane active"
+        ng-show="$vm.isFilter" style="margin-bottom:15px;">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                    <button type="button " style="background-color:{{colortab1}}" ng-click="changeTableSizeLo(50,1)"
+                        class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSizeLo(100,2)" style="background-color:{{colortab2}}"
+                        class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                    </button>
+                </div>
+                <ul style="margin:0px;" uib-pagination total-items="$vm.filterModelLo.totalRow"
+                    ng-change='changePageLo()' items-per-page="$vm.filterModelLo.perPage"
+                    num-pages="$vm.filterModelLo.num" ng-model="$vm.filterModelLo.currentPage" max-size="maxSize"
+                    class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+
+        </div>
+    </div>
+</div>

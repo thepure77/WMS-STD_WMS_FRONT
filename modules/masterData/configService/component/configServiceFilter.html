@@ -1,0 +1,44 @@
+<div class="col-md-12 kw-mg-tb" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-12 col-xs-12 padd">
+            <div class="col-md-2 col-xs-6 padd">{{ 'OWNER_ID' | translate }}</div>
+            <div class="col-md-3 col-xs-6 padd">{{ 'OWNER_NAME' | translate }}</div>
+            <div class="col-md-1 col-xs-6 padd"></div>
+            <div class="col-md-2 col-xs-6 padd"></div>
+            <div class="col-md-2 col-xs-6 padd"></div>
+
+        </div>
+
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Id" id="filterModel.owner_Name"
+                sourceurl="autoComplete.owner" api="url.Master">
+            </auto-comple>
+        </div>
+
+        <div class="col-md-3 col-xs-6 padd">
+            <input type="text" class="form-control" ng-model="filterModel.owner_Name" disabled /> 
+        </div>
+
+        <!-- <div class="col-md-1 col-xs-6 padd">
+
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+        </div> -->
+
+        <div class="col-md-1 padd">
+            <button ng-click="searchFilter(filterModel)" class="btn kw-button-search"> <span
+                    class="kw-icon-button icon-magnify" aria-hidden="true"></span>
+                <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+        </div>
+
+
+    </form>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

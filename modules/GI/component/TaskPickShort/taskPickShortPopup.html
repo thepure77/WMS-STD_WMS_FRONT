@@ -1,0 +1,46 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'TASK' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <!-- <div class="row" >
+                                <div class="col-lg-3 dropdown display-inline" style="margin-left:-15px;">
+                                    <select ng-model="actionPS" class="form-control" ng-init="actionPS = '1' ">
+                                        <option value="1">No</option>
+                                    </select>
+                                </div>
+                                <div ng-switch="actionPS">
+                                    <div class="input-group col-lg-4" ng-switch-when="1">
+                                        <input type="text" ng-model="pickTicket.Ref_Document_Index" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button ng-click="filterSearch()" class="btn btn-filter form-control" style="padding: 8.5px;">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <task-pick-short-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></task-pick-short-popup-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT BEGINS -->
+            </div>
+            <div class="modal-footer">
+
+                <!-- <button class="btn btn-filter" ng-click="onClose()">Close</button> -->
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CLOSE' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="table-responsive table-overflow div-shadow" style="margin-bottom:15px;" >
+    
+
+    <div class="table-overflow">
+
+        <table id="table2" class="table table-striped fixed-header tableHeight-350 tab-pane active" >
+            <thead>
+                <tr style="overflow-y: auto;">
+                    <th class="k100">{{ 'NO' | translate }}</th>
+                    <th class="k150">{{ 'TAG_NO' | translate }}</th>
+                    <th class="k100">{{ 'ZONE' | translate }}</th>
+                    <th class="k150">{{ 'LOCATION_NAME' | translate }}</th>
+                    <th class="k150">{{ 'MATERIAL' | translate }}</th>
+                    <th class="k150">{{ 'PRODUCT_TYPE' | translate }}</th>
+                    <th class="k100">{{ 'ITEM_STATUS' | translate }}</th>
+                    <th class="k100">{{ 'PRODUCT_LOT' | translate }}</th>
+                    <th class="k150">{{ 'QTY_BAL' | translate }}</th>
+                    <th class="k150">{{ 'QTY_RESERVE' | translate }}</th>
+                    <th class="k150">{{ 'QTY_AMOUNT' | translate }}</th>
+                    <th class="k80">{{ 'UNIT' | translate }}</th>
+                    <th class="k100">{{ 'SALE_QTY' | translate }}</th>
+                    <th class="k100">{{ 'SALE_UNIT' | translate }}</th>
+                    <th class="k100">{{ 'GR_NO' | translate }}</th>
+                    <th class="k100">{{ 'GR_DATE' | translate }}</th>
+                    <th class="k150">{{ 'MFG_DATE' | translate }}</th>
+                    <th class="k100">{{ 'EXP_DATE' | translate }}</th>
+                    <th class="k150">{{ 'LOCATION_TYPE_NAME' | translate }}</th>
+                    <th class="k120">{{ 'ERP_LOCATION' | translate }}</th>
+                    <th class="k80">{{ 'CBM' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in $vm.searchDataLocation">
+                    <td class="k100">{{data.row}}</td>
+                    <td class="k150">{{data.tag_No}}</td>
+                    <td class="k100">{{data.zone_Name}}</td>
+                    <td class="k150">{{data.location_Name}}</td>
+                    <td class="k150">{{data.product_Name}}</td>
+                    <td class="k150">{{data.productType_Name}}</td>
+                    <td class="k100">{{data.itemStatus_Name}}</td>
+                    <td class="k100">{{data.product_Lot}}</td>
+                    <td class="k150">{{data.binBalance_QtyBal}}</td>
+                    <td class="k150">{{data.binBalance_QtyReserve}}</td>
+                    <td class="k150">{{data.amount}}</td>
+                    <td class="k80">{{data.productConversion_Name}}</td>
+                    <td class="k100">{{data.sale_qty}}</td>
+                    <td class="k100">{{data.sale_unit}}</td>
+                    <td class="k100">{{data.goodsReceive_No}}</td>
+                    <td class="k100">{{data.goodsReceive_Date|dateFormate}}</td>
+                    <td class="k100">{{data.goodsReceive_MFG_Date|dateFormate}}</td>
+                    <td class="k100">{{data.goodsReceive_EXP_Date|dateFormate}}</td>
+                    <td class="k150">{{data.locationType_Name}}</td>
+                    <td class="k120">{{data.erp_location}}</td>
+                    <td class="k80">{{data.cbm}}</td>
+                </tr>
+                <tr ng-if="$vm.searchDataLocation.length == 0">
+                    <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</div>

@@ -1,0 +1,252 @@
+<div class="table-responsive  kl-tbl-height table-overflow">
+    <div>
+        <ul class="nav nav-tabs">
+
+            <li class="active">
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}"
+                    ng-click="clickTab(1)">{{ 'WCS_SORT_PLAN' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(2)">{{ 'WCS_ASRS' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab3" data-toggle="tab" style="background-color:{{colortab3}}"
+                    ng-click="clickTab(3)">{{ 'WCS_PARTIAL' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab4" data-toggle="tab" style="background-color:{{colortab4}}"
+                    ng-click="clickTab(4)">{{ 'WCS_PTL' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab5" data-toggle="tab" style="background-color:{{colortab5}}"
+                    ng-click="clickTab(5)">{{ 'WCS_SORTDEST' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+    <table class="table table-striped table-bordeered table-width-100">
+        <!-- <thead>
+            <tr>
+                <th class="text-center">{{ 'เลขที่ใยจัดส่งสินค้า' | translate }}</th>
+                <th class="text-center">{{ 'Rollcage_id' | translate }}</th>
+                <th class="text-center">{{ 'QR_CODE' | translate }}</th>
+                <th class="text-center">{{ 'PRODUCT_NAME' | translate }}</th>
+                <th class="text-center">{{ 'BOX_NO' | translate }}</th>
+            </tr>
+        </thead> -->
+        <tbody ng-if="click == 1">
+
+            <tr>
+                <th class="text-center">{{ 'Date' | translate }}</th>
+                <th class="text-center">{{ 'WaveNo' | translate }}</th>
+                <th class="text-center">{{ 'WaveNoOfTheDay' | translate }}</th>
+                <th class="text-center">{{ 'BranchCode' | translate }}</th>
+                <th class="text-center">{{ 'Quantity' | translate }}</th>
+                <th class="text-center">{{ 'Chute' | translate }}</th>
+                <th class="text-center">{{ 'Status' | translate }}</th>
+            </tr>
+
+            <tr ng-repeat="data in items | filter :{'flagScanIN':'X'}" ng-if="items.length != 0">
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="7" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+
+        <tbody ng-if="click == 2">
+
+            <tr>
+                <th class="text-center">{{ 'OrderType' | translate }}</th>
+                <th class="text-center">{{ 'WaveNo' | translate }}</th>
+                <th class="text-center">{{ 'TotalLineNo' | translate }}</th>
+                <th class="text-center">{{ 'LineNo' | translate }}</th>
+                <th class="text-center">{{ 'PalletID' | translate }}</th>
+                <th class="text-center">{{ 'Location' | translate }}</th>
+                <th class="text-center">{{ 'Status' | translate }}</th>
+                <th class="text-center">{{ 'Priority' | translate }}</th>
+                <th class="text-center">{{ 'SKU' | translate }}</th>
+                <th class="text-center">{{ 'RobotGroup' | translate }}</th>
+                <th class="text-center">{{ 'IssueQuantity' | translate }}</th>
+                <th class="text-center">{{ 'IsFullPalletOut' | translate }}</th>
+                <th class="text-center">{{ 'WCSErrorCode' | translate }}</th>
+                <th class="text-center">{{ 'RouteID' | translate }}</th>
+                <th class="text-center">{{ 'DeliveryDate' | translate }}</th>
+                <th class="text-center">{{ 'DeliveryRnd' | translate }}</th>
+                <th class="text-center">{{ 'IssueType' | translate }}</th>
+                <th class="text-center">{{ 'WMSDestStation' | translate }}</th>
+                <th class="text-center">{{ 'WCSTransactionID' | translate }}</th>
+            </tr>
+
+            <tr ng-repeat="data in items | filter :{'flagScanIN':'Y'}" ng-if="items.length != 0">
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="19" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+
+        <tbody ng-if="click == 3">
+
+            <tr>
+                <th class="text-center">{{ 'OrderType' | translate }}</th>
+                <th class="text-center">{{ 'WaveNo' | translate }}</th>
+                <th class="text-center">{{ 'TotalLineNo' | translate }}</th>
+                <th class="text-center">{{ 'LineNo' | translate }}</th>
+                <th class="text-center">{{ 'PalletID' | translate }}</th>
+                <th class="text-center">{{ 'Location' | translate }}</th>
+                <th class="text-center">{{ 'Status' | translate }}</th>
+                <th class="text-center">{{ 'Priority' | translate }}</th>
+                <th class="text-center">{{ 'SKU' | translate }}</th>
+                <th class="text-center">{{ 'RobotGroup' | translate }}</th>
+                <th class="text-center">{{ 'IssueQuantity' | translate }}</th>
+                <th class="text-center">{{ 'IsFullPalletOut' | translate }}</th>
+                <th class="text-center">{{ 'WCSErrorCode' | translate }}</th>
+                <th class="text-center">{{ 'RouteID' | translate }}</th>
+                <th class="text-center">{{ 'DeliveryDate' | translate }}</th>
+                <th class="text-center">{{ 'DeliveryRnd' | translate }}</th>
+                <th class="text-center">{{ 'IssueType' | translate }}</th>
+                <th class="text-center">{{ 'WMSDestStation' | translate }}</th>
+                <th class="text-center">{{ 'WCSTransactionID' | translate }}</th>
+            </tr>
+
+            <tr ng-repeat="data in items | filter :{'flagScanIN':'Y'}" ng-if="items.length != 0">
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="19" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+
+        <tbody ng-if="click == 4">
+
+            <tr>
+                <th class="text-center">{{ 'ToteID' | translate }}</th>
+                <th class="text-center">{{ 'TotalToteLineNo' | translate }}</th>
+                <th class="text-center">{{ 'ToteLineNo' | translate }}</th>
+                <th class="text-center">{{ 'CarouselPick' | translate }}</th>
+                <th class="text-center">{{ 'FlowRackPick' | translate }}</th>
+                <th class="text-center">{{ 'OrderType' | translate }}</th>
+                <th class="text-center">{{ 'WaveNo' | translate }}</th>
+                <th class="text-center">{{ 'Location' | translate }}</th>
+                <th class="text-center">{{ 'Status' | translate }}</th>
+                <th class="text-center">{{ 'Priority' | translate }}</th>
+                <th class="text-center">{{ 'SKU' | translate }}</th>
+                <th class="text-center">{{ 'LotNo' | translate }}</th>
+                <th class="text-center">{{ 'EXPDate' | translate }}</th>
+                <th class="text-center">{{ 'UOM' | translate }}</th>
+                <th class="text-center">{{ 'IssueQuantity' | translate }}</th>
+                <th class="text-center">{{ 'PickedQuantity' | translate }}</th>
+                <th class="text-center">{{ 'WCSErrorCode' | translate }}</th>
+
+            </tr>
+
+            <tr ng-repeat="data in items | filter :{'flagScanIN':'X'}" ng-if="items.length != 0">
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="17" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+
+        <tbody ng-if="click == 5">
+
+            <tr>
+                <th class="text-center">{{ 'PalletID' | translate }}</th>
+                <th class="text-center">{{ 'WaveNo' | translate }}</th>
+                <th class="text-center">{{ 'TotalBOX' | translate }}</th>
+                <th class="text-center">{{ 'BoxNo' | translate }}</th>
+                <th class="text-center">{{ 'QRCode' | translate }}</th>
+                <th class="text-center">{{ 'SKU' | translate }}</th>
+                <th class="text-center">{{ 'MobileNumber' | translate }}</th>
+                <th class="text-center">{{ 'BillID' | translate }}</th>
+                <th class="text-center">{{ 'City' | translate }}</th>
+                <th class="text-center">{{ 'Province' | translate }}</th>
+                <th class="text-center">{{ 'BranchCode' | translate }}</th>
+                <th class="text-center">{{ 'BranchName' | translate }}</th>
+                <th class="text-center">{{ 'DNNumber' | translate }}</th>
+                <th class="text-center">{{ 'Drop_seq' | translate }}</th>
+
+            </tr>
+
+            <tr ng-repeat="data in items | filter :{'flagScanIN':'X'}" ng-if="items.length != 0">
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="14" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+</div>

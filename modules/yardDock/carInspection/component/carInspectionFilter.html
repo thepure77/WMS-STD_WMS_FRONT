@@ -1,0 +1,91 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-lg-3 col-md-9 col-xs-9 padd" style="text-align: right;left: -22%;font-size: 11px">
+            {{ 'LICENSE' | translate }}</div>
+        <div class="col-lg-3 col-md-9 col-xs-9 padd" style="text-align: right;left: -28%;font-size: 11px">
+            {{ 'APPOINTMENT_NO' | translate }}</div>
+        <div class="col-lg-2 col-md-9 col-xs-9 padd" style="text-align: right;left: -27%;font-size: 11px">
+            {{ 'D_START' | translate }}</div>
+        <div class="col-lg-2 col-md-2 col-xs-2 padd" style="text-align: left;right: 26%;font-size: 11px">
+            {{ 'D_END' | translate }}</div>
+        <div class="col-lg-2 col-md-2 col-xs-2 padd" style="text-align: left;right: 33%;font-size: 11px">
+            {{ 'DOCK' | translate }}</div>
+    </form>
+
+    <div class="">
+        <div class="col-lg-2 col-md-6 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.name" value="filterModel.vehicle_No"
+                sourceurl="autoComplete.autoAppoinmentVehicle_no" api="url.YardDock"></auto-comple>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="col-lg-2 col-md-6 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.name" value="filterModel.appointment_id"
+                sourceurl="autoComplete.autoAppoinmentNo" api="url.YardDock"></auto-comple>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="col-lg-2 col-md-6 col-xs-6 padd">
+            <div class="input-group">
+                <input type="text" ng-model="filterModel.date" class="form-control daterange text-center">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-12 col-xs-12 padd">
+        <select class='form-control' ng-model='dropdowndock.model' ng-options="v.dockDoor_Name for v in dropdowndock">
+            <option value="">{{ 'โปรดเลือกรายการ' | translate }}</option>
+        </select>
+    </div>
+
+    <div class="col-lg-1 col-md-12 col-xs-12 padd">
+        <div class="col-lg-9 col-md-4 col-sm-4 col-xs-4 kw-pad-filter">
+            <status class="inline" multiple="true" order="true" ng-model="filterModel.status" checked="row.display"
+                options="row.display for row in status" change="sortBy(row.display)" 
+                style="width: 100%;">
+            </status>
+        </div>
+    </div>
+
+
+
+    <div class="">
+        <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 p-zero">
+            <div class="col-md-9 col-sm-2 col-xs-4 padd">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        function getTodayDeFault(chkdate = false) {
+            var today = new Date();
+            if (chkdate) {
+                today.setDate(today.getDate());
+            }
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getUTCFullYear();
+            var dd = today.getDate();
+
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            return dd.toString() + "/" + mm.toString() + "/" + yyyy.toString();
+        }
+        $('.daterange').daterangepicker({ startDate: getTodayDeFault(true), endDate: getTodayDeFault() });
+    });
+</script>

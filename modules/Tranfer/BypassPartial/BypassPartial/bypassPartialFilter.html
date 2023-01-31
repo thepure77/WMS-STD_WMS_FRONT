@@ -1,0 +1,33 @@
+<div class="col-md-12 kw-mg-tb">
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-lg-3 col-md-3 col-xs-3">
+            <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.product"
+                api="url.Master"></auto-comple>
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-3">
+            <select class='form-control' ng-model='filterModel.replenishmentLocation'>
+                <option value="">{{ 'REPLENISHMENTLOCATION' | translate }}</option>
+                <option value="Carton Flow">-- Carton Flow --</option>
+                <option value="Carousel">-- Carousel --</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-2 ">
+            <status class="inline hidden-sm hidden-xs" multiple="true" order="true" ng-model="filterModel.status"
+                checked="row.display" options="row.display for row in status" change="sortBy(row.display)"
+                ng-hide='header.advanceSearch' style="width: 100%;">
+            </status>
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-2">
+            <button class="btn btn-success" type="button" ng-click="export()">
+                {{ 'EXPORT' | translate }}
+            </button>
+        </div>
+        <div class="col-md-2 col-xs-2 ">
+            <button ng-click="searchFilter(filterModel)" class="btn kw-button-search"> <span class="kw-icon-button icon-magnify" aria-hidden="true"></span>
+            <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+        </div>
+    </form>
+</div>
+
+

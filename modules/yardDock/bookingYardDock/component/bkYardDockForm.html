@@ -1,0 +1,368 @@
+<style>
+    .form-holder {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .input-field input {
+        width: 100%;
+    }
+
+    .add,
+    .remove {
+        display: block;
+        cursor: pointer;
+    }
+
+    .add:hover {
+        background: #eee;
+    }
+
+    .remove {
+        display: none;
+    }
+
+    .form-holder-append .remove {
+        display: block;
+    }
+
+    .form-holder-append .form-holder .input-field .closeItems {
+        display: none;
+    }
+
+    .colordisabled {
+        background-color: #eee;
+    }
+
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+</style>
+<div id="page-content-wrapper">
+    <div class="tab-content">
+        <!--Step1 Select Date -->
+        <div id="w4-selectDate" class="tab-pane {{menu[0].active}} row">
+            <div class="tab-form  col-lg-12 col-md-12 col-xs-12 ">
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 padd" style="margin-bottom: 20px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                        <span>{{ 'SELECT_ACTIVITY' | translate }}</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 padd">
+                        <select class='form-control' ng-change="activityModel.model" ng-model='activityModel.model'
+                            ng-options="v.documentType_Name for v in activityModel">
+                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                        </select>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 padd" style="margin-bottom: 20px;">
+                    <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                        <span> {{ 'TYPE_CAR' | translate }}</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 padd">
+                        <select class='form-control' ng-model='dropdownTypeCar.model'
+                            ng-options="v.vehicleType_Name for v in dropdownTypeCar">
+                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6 padd">
+                    <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                        <span> {{ 'DATE' | translate }}</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 padd">
+                        <dir-date-picker type="text" ng-model="models.appointment_Date"></dir-date-picker>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 col-md-12 col-sm-6 col-xs-12 padd">
+                    <div class="col-lg-12 col-md-7 col-sm-12 col-xs-6 padd">
+                        <span> {{ 'TIME_START' | translate }}</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 padd">
+                        <input class="form-control" maxlength="5" ng-model="models.time_Start"></input>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-7 col-xs-12 padd">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 padd">
+                        <span> {{ 'TIME_END' | translate }}</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 padd">
+                        <input class="form-control" maxlength="5" ng-model="models.time_End"></input>
+                    </div>
+                </div> -->
+
+                <div class="col-lg-2 col-md-3 col-xs-12 padd pull-right">
+                    <div class="col-lg-12 col-md-12 col-xs-12 visibled-lg padd">
+                        <div class="vs-text padd">RRR</div>
+                    </div>
+                    <button ng-click="searchFilter()" class="btn kw-button-search">
+                        <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                        <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+                </div>
+            </div>
+            <div class="tab-form col-lg-12 col-md-12 col-xs-12" style="padding: 0 10px 0 10px;">
+                <div class="container" style="padding: 0px;width: 100%;">
+                    <ul class="nav nav-tabs">
+                        <li ng-repeat="data in dayOfWeek">
+                            <a href="#" ng-click="setTempItem(data)">{{data.appointment_Date | dateFormat}}</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content clearfix " style="min-height: 100px;" ng-if="showDocks">
+                        <div class="tab-pane active" role="tabpanel">
+                            <div ng-repeat-start="dock in docks" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 "
+                                style="margin-top: 13px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-p-zero box-dock">
+                                    <span>{{dock.dock_Name}}</span>
+                                </div>
+                            </div>
+                            <div ng-repeat-end class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-p-zero"
+                                style="margin: 10px 10px 10px 13px;">
+                                <div class=" col-lg-2 col-md-2 col-sm-12 col-xs-12 boxYard"
+                                    ng-repeat="xtime in dock.times track by $index"
+                                    ng-click="selectItem(xtime.dockQoutaInterval_Index, xtime.isEnable, $index , xtime.selected == userSelected[$index].datarow.selected  ?  userSelected[$index].datarow.checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', xtime, dock , appointmentDate)"
+                                    ng-class="xtime.selected == userSelected[$index].datarow.selected  ? userSelected[$index].datarow.checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'mousehover' : 'switchColorGrey'     :    $index%2 == 1  ? 'mousehover' : 'switchColorGrey'"
+                                    ng-style="{'background-color': (xtime.isEnable == false)? '#eee': '#FFF'}">
+                                    {{xtime.time}}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-xs-12 " style="margin-top: 15px;padding: 0px;">
+                    <button id="myBtn" type="button" ng-disabled="fromData.document_status ==1" class="btn btn-primary"
+                        ng-click='chooseItem()' style="float: right;margin-left: 6px;">
+                        {{ 'OK' | translate }}
+                    </button>
+                    <!-- <button id="myBtn" type="button" ng-disabled="fromData.document_status ==1" class="btn btn-primary"
+                        ng-click='chooseItem()' style="float: right;margin-left: 6px;">
+                        {{ 'OK' | translate }}
+                    </button> -->
+                    <button type="button" class="btn btn-success" ng-click="clearItem()" style="float: right;">
+                        {{ 'CLEAR' | translate }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="tab-form col-lg-12 col-md-12 col-xs-12 p-zero">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float: left;">
+                    <label style="margin-top: 15px;font-weight: bold;">{{ 'BOOKING_ORDER' | translate }} </label>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="float: left;">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 kw-p-zero "
+                        style="margin-top: 10px;margin-bottom: 10px;">
+                        <label style="font-weight: bold;">{{ 'APPOINTMENT_NO' | translate }} : </label>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-5 col-xs-7 " style="margin-top: 8px;">
+                        <label style="display: inline-block;font-size: 18px;font-weight: normal;" type="text" disabled>
+                            {{ fromData.appointment_Id}}</label>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="float: left;">
+                    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5 kw-p-zero "
+                        style="margin-top: 10px;margin-bottom: 10px;">
+                        <label style="font-weight: bold;">{{ 'ACTIVITY_TYPE' | translate }} : </label>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-5 col-xs-7 " style="margin-top: 8px;">
+                        <label style="display: inline-block;font-size: 18px;font-weight: normal;" type="text" disabled>
+                            {{ fromData.documentType_Name}}</label>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="table-responsive table-overflow div-shadow">
+                        <table class="table table-striped table-fixed">
+                            <thead>
+                                <tr style="overflow-y: auto;">
+                                    <th class="text-center  k100">{{ 'ACTION' | translate }}</th>
+                                    <th class="k100">{{ 'BOOKING_DATE' | translate }}</th>
+                                    <th class="k100">{{ 'LIST_DOCK' | translate }}</th>
+                                    <th class="k100">{{ 'TIME' | translate }}</th>
+                                    <th class="k100">{{ 'DOCUMENT_NO' | translate }}</th>
+                                    <th class="k150">{{ 'CUSTOMER_NAME' | translate }}</th>
+                                    <th class="k150">{{ 'CONTACT_PERSON' | translate }}</th>
+                                    <th class="k250">{{ 'REMARK' | translate }}</th>
+                                    <th class="k100">{{ 'USER_CREATE_Date' | translate }}</th>
+                                    <th class="k100">{{ 'CREATE_BY' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in appointmentItem track by $index"
+                                    ng-click="selectItem2(data, $index , $index == userSelected2[$index].index  ?  userSelected2[$index].checked == 'checking'  ? 'noCheck' : 'checking' : 'checking', data)"
+                                    ng-class="$index == userSelected2[$index].index  ?  userSelected2[$index].checked == 'checking'  ? 'checking' :  $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'     :    $index%2 == 1  ? 'switchColorWhite' : 'switchColorGrey'  ">
+                                    <td class="actions">
+                                        <div class="text-center k100" style="margin:0px">
+                                            <button class="btn btn-success" ng-click="editItem(data)"
+                                                data-toggle="tooltip" title="Edit" data-placement="bottom">
+                                                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-groub-Search" ng-click="deleteItem(data)"
+                                                ng-disabled="fromData.document_status ==1" data-toggle="tooltip"
+                                                title="Delete" data-placement="bottom">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="k100">{{data.appointment_Date |dateFormat}}</td>
+                                    <td class="k100">{{data.dock_Name}}</td>
+                                    <td class="k100">{{data.appointment_Time}}</td>
+                                    <td class="k100">{{data.ref_Document_No}}</td>
+                                    <td class="k150">{{data.owner_Name}}</td>
+                                    <td class="k150">{{data.contactPerson_Name}}</td>
+                                    <td class="k250">{{data.remark}}</td>
+                                    <td class="k100">{{data.create_Date |dateFormat}}</td>
+                                    <td class="k100">{{data.create_By |dateFormat}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xs-12  kw-mg-top p-zero" style="min-height: 90px;">
+            <button type="button" class="btn btn-step-back" ng-click="back()" style="float: left;">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+            </button>
+            <button type="button" class="btn btn-step-back" ng-if="menu[0].active != 'active'" ng-click="previous()">
+                <i class="fa fa-angle-left" aria-hidden="true"></i> {{ 'BACK' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- 
+<div id="myModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content col-lg-offset-4 col-md-offset-4" style="width: 40%;">
+            <div class="modal-body" style="min-height: 300px;">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-mg-bot">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  kw-p-zero">
+                                <span>{{ 'SELECT_ITEMS' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  kw-p-zero">
+                                <select class='form-control' ng-change="selectItems(activityModel.selectItem)"
+                                    ng-model='activityModel.selectItem'>
+                                    <option value="">{{ '1 รายการ' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-mg-bot">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  kw-p-zero">
+                                <span>{{ 'SELECT_ACTIVITY' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  kw-p-zero">
+                                <select class='form-control' ng-change="selectAC(activityModel.model)"
+                                    ng-model='activityModel.model'
+                                    ng-options="v.documentType_Name for v in activityModel">
+                                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-xs-4 col-md-4 col-lg-4 kw-p-zero">
+                        <button type="button" class="btn btn-danger close" ng-click="sentItems()" data-dismiss="modal"
+                            style="color: #ffffff; padding: 4px 15px !important;float: left;opacity: unset;">
+                            {{ 'CANCEL' | translate }}
+                        </button>
+                    </div>
+                    <div class="col-md-8 col-md-8 col-lg-8 kw-p-zero">
+                        <button type="button" class="btn btn-primary saveOk" ng-click="sentItems(activityModel)"
+                            style="float: right; color: #ffffff; padding: 4px 15px !important;opacity: unset;">
+                            {{ 'SAVE' | translate }}
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<style>
+    .saveOk {
+        float: right;
+        font-size: 21px;
+        font-weight: bold;
+        line-height: 1;
+        cursor: pointer;
+        color: #000000;
+        text-shadow: 0 1px 0 #ffffff;
+        opacity: 0.2;
+        filter: alpha(opacity=20);
+    }
+
+    .boxYard {
+        display: block;
+        height: 40px;
+        padding: 9px 0px;
+        text-align: center;
+        width: 13%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin: 4px 4px 0 3px;
+    }
+
+    body .btn-primary:hover {
+        border-color: #0c1fd0 !important;
+        background-color: #0c1fd0;
+
+    }
+</style>
+<booking-popup on-show='itemModels.onShow' config='itemModels.config' invokes='itemModels.invokes'
+    delegates='itemModels.delegates'>
+</booking-popup>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+    // Cloning Form
+    var id_count = 1;
+    $('.add').on('click', function () {
+        var source = $('.form-holder:first'), clone = source.clone();
+        clone.find(':input').attr('id', function (i, val) {
+            return val + id_count;
+        });
+        clone.appendTo('.form-holder-append');
+        id_count++;
+    });
+
+    // Removing Form Field
+    $('body').on('click', '.remove', function () {
+        var closest = $(this).closest('.form-holder').remove();
+    });
+</script>
+
+<script>
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var spanOK = document.getElementsByClassName("saveOk")[0];
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    spanOK.onclick = function () {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

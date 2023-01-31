@@ -1,0 +1,55 @@
+<div class="kw-sizechart-dashboard">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 kw-p-zero kw-txtlabel"  style="width: 95%;padding-top: 17px;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 kw-p-zero">
+            <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Statistic of GI</label>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 kw-p-zero col-lg-offset-2" style="position: relative;top: -10px;">
+            <div class="input-group">
+                <input type="text" ng-model="date" ng-change="convertDate(date)" class="form-control daterange text-center"
+                    value="01/01/2019 - 01/31/2019">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="kw-mg-dashboard">
+        <div class="innerbox-dashboard"></div>
+        <div class="col-md-11 kw-p-zero">
+            <div style="position: absolute;top: -17px;left: 12px;">
+                Qualitity of GI
+            </div>
+            <div class="txt_date" style="position: absolute; top: 173px; left: 105%;">
+                Date
+            </div>
+            <div id="morrisArea" style="height: 225.67px;width: 100%;margin-left: 32px;"></div>
+            <!-- <script type="text/javascript">
+
+            </script> -->
+        </div>
+        <div class="col-lg-12 col-md-12 kw-box-detail-dashboard">
+            <div class="fa fa-square" style="color: #991B1E;"></div><span style="color: #999999;font-size: 14px;">
+                Current GI Per Day </span>
+            <br>
+        </div>
+    </div>
+    <!-- <canvas class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-colors="chartColors"
+        chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
+    </canvas> -->
+</div>
+
+<!-- a คือ range ของ Qualitity of GI , y คือ range ของวันที่ -->
+<script>
+
+    $(function () {
+        $(".click").click(function () {
+            if ($(this).hasClass("Isactive")) {
+                $(this).removeClass("Isactive");
+            } else {
+                $(".click").removeClass("Isactive");
+                $(this).addClass("Isactive");
+            }
+        });
+    });
+</script>

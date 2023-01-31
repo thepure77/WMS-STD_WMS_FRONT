@@ -1,0 +1,176 @@
+<style>
+    .add,
+    .remove {
+        display: block;
+        cursor: pointer;
+    }
+
+    .add:hover {
+        background: #eee;
+    }
+
+    .remove {
+        display: none;
+    }
+
+    .modal-backdrop {
+        z-index: 10;
+    }
+
+    .box-absolute {
+        position: absolute;
+        z-index: 10;
+        left: 180px;
+    }
+
+    .border-line {
+        border-left: 1px dashed black;
+        width: 1px;
+        height: 720px;
+        position: absolute;
+        top: 380px;
+        left: 405px;
+    }
+
+
+    /* Hide the browser's default checkbox */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 23px;
+        left: 7px;
+        height: 30px;
+        width: 30px;
+        background-color: #eee;
+        border: 1px solid;
+
+        border-radius: 15px;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input~.checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input:checked~.checkmark {
+        background-color: #FFF;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input:checked~.checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+        left: 11px;
+        top: 6px;
+        width: 8px;
+        height: 15px;
+        border: 1px solid #555;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+</style>
+<!-- <div data-target="modal-form" class="modal" dp-modal on-show="onShow" on-hide="onHide" data-toggle="modal" data-backdrop="static" data-keyboard="false"> -->
+<div id="modal-form" class="modal" dp-modal on-show="onShow" on-hide="onHide" data-toggle="modal"
+    data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="overflow: auto;border: 1px solid;margin-top: 15%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4>{{ 'CHECKIN' | translate}}</h4>
+            </div>
+            <!--? Flagment 2 -->
+            <div class="modal-body" style="min-height: 300px;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-bot">
+                        <div class="col-lg-3 col-md-3 col-xs-12 padd">
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <span class="required">* {{ 'APPOINTMENT_NO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <input class="form-control text-upper" ng-model="bkItem.appointment_Id">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12 padd">
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                {{ 'DOCUMENT_NO' | translate }}
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <input class="form-control text-upper" type="text" ng-model="bkItem.ref_Document_No"
+                                    disabled></input>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-6 padd">
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <span class="required">* {{ 'DATE_OFPRODUCT' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <input id="item-code" ng-model="bkItem.checkIn_Date"
+                                    class="form-control text-upper" placeholder="Search" ng-disabled=""></input>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-6 padd">
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <span class="required">* {{ 'TIME_OFPRODUCT' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <input id="item-code" ng-model="bkItem.checkIn_Time"
+                                    class="form-control text-upper" placeholder="Search" ng-disabled=""></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-bot">
+                        <div class="col-lg-3 col-md-3 col-xs-12 padd">
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <span class="required">* {{ 'ACTIVITY' | translate }}</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-xs-12  kw-p-zero">
+                                <input class="form-control text-upper" ng-model="bkItem.documentType_Name" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4 col-md-4 col-lg-4 text-left">
+                        <!-- <button type="button" class="btn btn-danger" ng-click="onClose()" data-dismiss="modal"
+                            style="color: #ffffff; padding: 4px 15px !important;">
+                            {{ 'CANCEL' | translate }}
+                        </button> -->
+                    </div>
+                    <div class="col-md-8 col-md-8 col-lg-8 text-right">
+                        <button type="button" class="btn btn-primary" ng-click="next()"
+                            style="float: right; color: #ffffff; padding: 4px 15px !important;">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script>
+    $('#modal-form').modal({backdrop: 'static', keyboard: false})  
+</script> -->

@@ -1,0 +1,149 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div>
+        <ul class="nav nav-tabs">
+
+            <li class="active">
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}"
+                    ng-click="clickTab(1)">{{ 'InBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(2)">{{ 'OutBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(3)">{{ 'Frozen' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <th class="k200 text-center">{{ 'ACTION' | translate }}</th>
+                <th class="k150 text-center">{{ 'NO' | translate }}</th>
+                <th class="k150 text-center">{{ 'SEQUENCE' | translate }}</th>
+                <th class="k150 text-center">{{ 'LICENSE' | translate }}</th>
+                <th class="k200 text-center">{{ 'LIST_DOCK' | translate }}</th>
+                <th class="k200 text-center">{{ 'TIME' | translate }}</th>
+                <th class="w250 text-center">{{ 'APPOINTMENT_NO' | translate }}</th>
+                <th class="k200 text-center">{{ 'BOOKING_DATE' | translate }}</th>
+                <th class="k200 text-center">{{ 'STATUS' | translate }}</th>
+
+            </tr>
+        </thead>
+        <tbody ng-if="click == 1">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'7f139afb-b712-4562-911e-0ed654c6f7af'}">
+                <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <button class="btn btn-blue" ng-click="printOutQ(data)" data-toggle="tooltip"
+                            title="Print" data-placement="bottom">
+                            <i class="fa fa-print"></i>
+                        </button>
+                        <button class="btn btn-groub-Search" ng-click="masterRequirePopup.onClick(data)" data-toggle="tooltip"
+                            title="Approve" data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.remark == 'Calling'">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </td>
+                <td class="k150 text-center">{{$index+1}}</td>
+                <td class="k150 text-center">{{data.runing_Q}}</td>
+                <td class="k150 text-center">{{data.vehicle_No}}</td>
+                <td class="k200 text-center">{{data.dock_Name}}</td>
+                <td class="k200 text-center">{{data.appointment_Time}}</td>
+                <td class="w250 text-center">{{data.appointment_Id}}</td>
+                <td class="k200 text-center">{{data.appointment_Date | dateFormat}}</td>
+                <td class="k200 text-center">{{data.remark}}</td>
+
+
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 2">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'c392d865-8e69-4985-b72f-2421ebe8bcdb'}">
+                <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <button class="btn btn-blue" ng-click="printOutQ(data)" data-toggle="tooltip"
+                            title="Print" data-placement="bottom">
+                            <i class="fa fa-print"></i>
+                        </button>
+                        <button class="btn btn-groub-Search" ng-click="masterRequirePopup.onClick(data)" data-toggle="tooltip"
+                            title="Approve" data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.remark == 'Calling'">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </td>
+                <td class="k150 text-center">{{$index+1}}</td>
+                <td class="k150 text-center">{{data.runing_Q}}</td>
+                <td class="k150 text-center">{{data.vehicle_No}}</td>
+                <td class="k200 text-center">{{data.dock_Name}}</td>
+                <td class="k200 text-center">{{data.appointment_Time}}</td>
+                <td class="w250 text-center">{{data.appointment_Id}}</td>
+                <td class="k200 text-center">{{data.appointment_Date | dateFormat}}</td>
+                <td class="k200 text-center">{{data.remark}}</td>
+
+
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 3">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'13091631-5829-4341-bcb4-272b0ed854d7'}">
+                <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <button class="btn btn-blue" ng-click="printOutQ(data)" data-toggle="tooltip"
+                            title="Print" data-placement="bottom">
+                            <i class="fa fa-print"></i>
+                        </button>
+                        <button class="btn btn-groub-Search" ng-click="masterRequirePopup.onClick(data)" data-toggle="tooltip"
+                            title="Approve" data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.remark == 'Calling'">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </td>
+                <td class="k150 text-center">{{$index+1}}</td>
+                <td class="k150 text-center">{{data.runing_Q}}</td>
+                <td class="k150 text-center">{{data.vehicle_No}}</td>
+                <td class="k200 text-center">{{data.dock_Name}}</td>
+                <td class="k200 text-center">{{data.appointment_Time}}</td>
+                <td class="w250 text-center">{{data.appointment_Id}}</td>
+                <td class="k200 text-center">{{data.appointment_Date | dateFormat}}</td>
+                <td class="k200 text-center">{{data.remark}}</td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<!-- <div class=" table-responsive table-overflow " ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div class="panel-body">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                    <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                        ng-click="changeTableSize(50,1)" class="btn btn-back">
+                        <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                    </button>
+
+                    <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                        class="btn btn-back">
+                        <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                    </button>
+                </div>
+                <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow"
+                    uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                    items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                    ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right"
+                    boundary-link-numbers="true" rotate="false"></ul>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+<dockconfirm-popup on-show='masterRequirePopup.onShow' config='masterRequirePopup.config' invokes='masterRequirePopup.invokes'
+    delegates='masterRequirePopup.delegates'>
+</dockconfirm-popup>
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes'
+    delegates='popupReport.delegates'>
+</report-popup>

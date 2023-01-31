@@ -1,0 +1,69 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <div class="row tab" id="step-1" ng-if="menu[0].active == 'active'">
+        <!-- GR -->
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'Pallet_ID' | translate }} :</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.tag_no"
+                            ks-enter="scantag_no()" />
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'PRODUCT_ID' | translate }} :</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.product_id" disabled />
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <span>{{ 'PRODUCT_NAME' | translate }} :</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.product_name" disabled />
+                    </div>
+                    <div class="col-lg-12 col-md-2 col-xs-12">
+                        <label> {{ 'Station' | translate }} :</label>
+                    </div>
+                    <div class="col-lg-10 col-md-3 col-sm-3 col-xs-8" style="padding-left: 16px;">
+                        <select class='form-control' ng-model='filterModel.value'>
+                            <option value="">{{ 'SELECT' | translate }}</option>
+                            <option value="30">-- 30 --</option>
+                            <option value="31">-- 31 --</option>
+                            <option value="32">-- 32 --</option>
+                            <option value="33">-- 33 --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 30px">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <button class="btn btn-filter" style="width: 100%" type="button"
+                            ng-click="savetag_cutting()">{{ 'CONFIRM' | translate }}
+                        </button>
+                        <button ng-click="back()"
+                            class="btn btn-primary btn-block btn-lg  mt-lg">{{ 'BACK' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,194 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'SIGNER' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isRepresentative" type="checkbox" id="1"
+                                        class="ig-control__cbx" checked />
+                                    <label for="1"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'REPRESENTATIVE' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recipent_Name" /> -->
+                                    <auto-comple ng-model="items.representative" value="items.representative_Name"
+                                        id="items.representative_Id" value1="items.representative_first_Name"
+                                        value2="items.representative_last_Name" value3="items.representative_user_Name"
+                                        value4="items.representative_position_Code"
+                                        value5="items.representative_user_Index" value6="items.representative_user_Id"
+                                        value7="items.representative_pos_Name" 
+                                        code="2" sourceurl="autoComplete.username" api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <!-- <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                            <span>{{ 'RANK' | translate }}</span>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                            <input type="text" class="form-control" ng-model="items.demand_Payment_pos_Name" disabled/>
+                                        </div> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isEndorser" type="checkbox" id="2" class="ig-control__cbx"
+                                        checked />
+                                    <label for="2"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'ENDORSER' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recipent_Name" /> -->
+                                    <auto-comple ng-model="items.endorser" value="items.endorser_Name"
+                                        id="items.endorser_Id" value1="items.endorser_first_Name"
+                                        value2="items.endorser_last_Name" value3="items.endorser_user_Name"
+                                        value4="items.endorser_position_Code" value5="items.endorser_user_Index"
+                                        value6="items.endorser_user_Id" value7="items.endorser_pos_Name"
+                                        code="2" sourceurl="autoComplete.username"
+                                        api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.endorser_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isTransferor" type="checkbox" id="3" class="ig-control__cbx"
+                                        checked />
+                                    <label for="3"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'TRANSFEROR' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recorder_Name" /> -->
+                                    <auto-comple ng-model="items.transferor" value="items.transferor_Name"
+                                        id="items.transferor_Id" value1="items.transferor_first_Name"
+                                        value2="items.transferor_last_Name" value3="items.transferor_user_Name"
+                                        value4="items.transferor_position_Code" value5="items.transferor_user_Index"
+                                        value6="items.transferor_user_Id" value7="items.transferor_pos_Name"
+                                         code="2" sourceurl="autoComplete.username"
+                                        api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.transferor_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isTransfer_Approver" type="checkbox" id="4"
+                                        class="ig-control__cbx" checked />
+                                    <label for="4"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'TRANSFER_APPROVER' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recipent_Name" /> -->
+                                    <auto-comple ng-model="items.transfer_Approver" value="items.transfer_Approver_Name"
+                                        id="items.transfer_Approver_Id" value1="items.transfer_Approver_first_Name"
+                                        value2="items.transfer_Approver_last_Name" value3="items.transfer_Approver_user_Name"
+                                        value4="items.transfer_Approver_position_Code" value5="items.transfer_Approver_user_Index"
+                                        value6="items.transfer_Approver_user_Id" value7="items.transfer_Approver_pos_Name"
+                                        code="2"
+                                        sourceurl="autoComplete.username" api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.transfer_Approver_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isRecorder" type="checkbox" id="5" class="ig-control__cbx"
+                                        checked />
+                                    <label for="5"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RECORDER' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recorder_Name" /> -->
+                                    <auto-comple ng-model="items.recorder" value="items.recorder_Name"
+                                        id="items.recorder_Id" value1="items.recorder_first_Name"
+                                        value2="items.recorder_last_Name" value3="items.recorder_user_Name"
+                                        value4="items.recorder_position_Code" value5="items.recorder_user_Index"
+                                        value6="items.recorder_user_Id" value7="items.recorder_pos_Name"
+                                        code="2" sourceurl="autoComplete.username"
+                                        api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.recorder_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" ng-click="Yes()">{{ 'YES' | translate }}</button>
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CANCEL' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

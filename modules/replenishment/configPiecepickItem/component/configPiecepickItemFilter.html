@@ -1,0 +1,71 @@
+<div class="col-md-12 kw-mg-bot-filter" ng-hide='header.advanceSearch'>
+    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-top kw-p-zero">
+        <div class="col-lg-6 col-md-12 col-xs-12 kw-p-zero">
+            <div class="col-lg-3 col-md-6 col-xs-12 padd" style="width: 260px;">
+                <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                    <span> {{ 'Product ID / Location Name' | translate }}</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                    <input type="text" ng-model="filterModel.replenishment_Id" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 padd" style="width: 260px;">
+                <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                    <span> {{ 'LOCATION_TYPE' | translate }}</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                    <div class="dropdown">
+                        <select ng-model="filterModel.location_Type" class="form-control">
+                            <option value=""> -- {{ 'SELECT' | translate }} -- </option>
+                            <option value="01">Carton Flow</option>
+                            <option value="02">Carousel</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 padd" style="width: 260px;">
+                <div class="col-lg-6 col-md-7 col-sx12 padd" style="margin-top: 25px;">
+                    <button class="btn btn-success" type="button" ng-click="export()">
+                        {{ 'EXPORT' | translate }}
+                    </button>
+                </div> 
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 padd" style="width: 260px;">
+                
+            </div>
+        </div>
+        <!-- <div class="col-lg-2 col-md-4 col-xs-4 padd">
+                            
+        </div> -->
+        <div class="col-lg-6 col-md-12 col-xs-12 padd" style="margin-top: 25px;">
+            <div class="col-lg-3 col-md-2 col-xs-2 padd"></div>
+            <div class="col-lg-3 col-md-3 col-xs-3 padd"></div>
+            <div class="col-lg-3 col-md-2 col-xs-2 padd">
+                <button ng-click="searchFilter()" class="btn kw-button-search">
+                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label>
+                </button>
+            </div>
+            <div class="col-md-1 col-xs-2 padd">
+                <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()">
+                    <i class="kw-icon-button icon-add_24px_outlined" aria-hidden="true"></i>
+                </button>
+            </div>
+            <!-- <div class="col-lg-2 col-md-4 col-xs-4 padd">
+                <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                    <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                    {{ 'Export' | translate }}</button>
+            </div> -->
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

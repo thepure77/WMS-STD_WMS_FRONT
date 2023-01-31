@@ -1,0 +1,56 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'DOCK' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                  
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'DOCK' | translate }}</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <input type="text" class="form-control" ng-model="filterModel.dock_Name"  disabled/>
+                            </div>
+                        </div> 
+                        <!-- <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'DOCK_TO' | translate }}</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <input type="text" class="form-control" ng-model="filterModel.dock_Name_to" />
+                            </div>
+                        </div>  -->
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:15px;">
+                            <div class="col-lg-3 col-md-3 col-xs-12">
+                                <span>{{ 'DOCK' | translate }}</span>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-xs-12">
+                                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 padd">
+                                    <select class='form-control' ng-model='dropdownnewdock.model'
+                                        ng-options="v.dock_Name for v in dropdownnewdock">
+                                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center padding-m">
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <button ng-click="selected()" class="btn btn-primary display-inline" style="margin:5px;">
+                                    {{ 'CONFIRM' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'close | translate }}</button>
+            </div> -->
+        </div>
+    </div>
+</div>

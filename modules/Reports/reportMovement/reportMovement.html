@@ -1,0 +1,365 @@
+<header class="page-header">
+
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'REPORT' | translate }} </h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a ui-sref="wms.index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'REPORT' | translate }}</span>
+                </li>
+                <li>
+                    <span>{{ 'Report_Movement' | translate }}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label"> {{ 'Report_Movement' | translate }}</label>
+</div>
+
+<!-- แถวแรก -->
+<div class="col-md-12" style="margin-bottom: 1%; margin-top: 20px;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+
+        <div class = " col-md-9 ">
+
+            <div class = "col-md-2">
+                <div class="col-md-12 col-xs-12 padd"><span style="color: red">* </span>{{ 'WAREHOUSE' | translate }}</div>
+                <div class="col-md-12 col-xs-12 padd">
+                    <div class="dropdown">
+                        <select ng-model="filterModel.warehouse_Type" class="form-control">
+                            <option style="text-align:center" left value=""> -- {{ 'SELECT' | translate }} -- </option>
+                            <option value="01">Ambient</option>
+                            <option value="02">ห้องเย็น</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class = "col-md-2">
+                <div class="col-lg-12 col-md-12 col-sm-12padd">
+                    <label><span style="color: red">* </span>{{ 'BUSINESS_UNIT' | translate }}</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                    <select class='form-control' ng-model='filterModel.businessUnitList'
+                        ng-options="v.businessUnit_Name for v in dropdownBusinessUnit">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class = "col-md-2">
+                <div class="col-md-12 col-xs-12 padd">
+                    <span>{{ 'PRODUCT_ID' | translate }}</span>
+                </div>
+                <div class="col-md-12 col-xs-12 padd">
+                    <auto-comple ng-model="filterModel.product_Index" id="filterModel.product_Name"value="filterModel.product_Id" 
+                    sourceurl="autoComplete.autoSku" api="url.Master" >
+                    </auto-comple>
+                </div>
+            </div>
+
+            <div class = "col-md-3">
+                <div class="col-md-12 col-xs-12 padd">
+                    <span>{{ 'PRODUCT_NAME' | translate }}</span>
+                </div>
+                <div class="col-md-12 col-xs-12 padd">
+                    <input type="text" class="form-control" ng-model="filterModel.product_Name" id="filterModel.product_Name_Name" disabled />
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="col-lg-12 col-md-12 col-sm-12padd">
+                    <label>{{ 'GoodsReceive_Date_' | translate }}</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 padd">
+                    <div class="input-group">
+                        <input type="text" ng-model="filterModel.goodsReceive_Date_" class="form-control daterange text-center">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+            <!-- ปุ่ม -->
+        <div class = "col-md-3">
+            <div class="col-md-4 padd">
+                <button ng-click="searchReport(filterModel)" class="btn kw-button-search">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    {{ 'SEARCH' | translate }}</button>
+            </div>
+            <div class="col-md-5 padd">
+                <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    <span class="fa fa-star-o" aria-hidden="true"></span>{{ 'ADVANCE_SEARCH' | translate }}
+                </button>
+            </div>
+            <div class="col-md-3 padd">
+                <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                    <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                    {{ 'EXECEL' | translate }}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<!-- ตัวจัดการ advance search -->
+<div ng-show='header.advanceSearch'>
+    <div class="col-md-12 kw-mg-bot">
+        <div class="col-lg-2 col-md-2 col-xs-12 p-zero pull-right">
+            <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                <span class="fa fa-star-o" aria-hidden="true"></span>{{ 'ADVANCE_SEARCH' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <div class="col-md-12 kw-mg-tb" style="margin-bottom: 1%;">
+                
+        <!-- advance แถวแรก -->
+        <div class="col-md-12" style="margin-bottom: 1%; " >
+            <form class="form-horizontal form-bordered" method="get">
+
+                <div class = " col-md-10 p-1">
+                    
+                    <div class = "col-md-2">
+                        <div class="col-md-12 col-xs-12 padd"><span style="color: red">* </span>{{ 'WAREHOUSE' | translate }}</div>
+                        <div class="col-md-12 col-xs-12 padd">
+                            <div class="dropdown">
+                                <select ng-model="filterModel.warehouse_Type" class="form-control">
+                                    <option style="text-align:center" left value=""> -- {{ 'SELECT' | translate }} -- </option>
+                                    <option value="01">Ambient</option>
+                                    <option value="02">ห้องเย็น</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "col-md-2">
+                        <div class="col-lg-12 col-md-12 col-sm-12padd">
+                            <label><span style="color: red">* </span>{{ 'BUSINESS_UNIT' | translate }}</label>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                            <select class='form-control' ng-model='filterModel.businessUnitList'
+                                ng-options="v.businessUnit_Name for v in dropdownBusinessUnit">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class = "col-md-2">
+                        <div class="col-md-12 col-xs-12 padd">
+                            <span>{{ 'PRODUCT_ID' | translate }}</span>
+                        </div>
+                        <div class="col-md-12 col-xs-12 padd">
+                            <auto-comple ng-model="filterModel.product_Index" id="filterModel.product_Name"value="filterModel.product_Id" 
+                            sourceurl="autoComplete.autoSku" api="url.Master" >
+                    </auto-comple>
+                        </div>
+                    </div>
+        
+                    <div class = "col-md-3">
+                        <div class="col-md-12 col-xs-12 padd">
+                            <span>{{ 'PRODUCT_NAME' | translate }}</span>
+                        </div>
+                        <div class="col-md-12 col-xs-12 padd">
+                            <input type="text" class="form-control" ng-model="filterModel.product_Name" id="filterModel.product_Name_Name" disabled />
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <div class="col-lg-12 col-md-12 col-sm-12padd">
+                            <label>{{ 'GoodsReceive_Date_' | translate }}</label>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 padd">
+                            <div class="input-group">
+                                <input type="text" ng-model="filterModel.goodsReceive_Date_" class="form-control daterange text-center">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                
+                
+                <!-- ปุ่ม -->
+                <div class="">
+                    <div class="col-md-1 p-5" style="margin-top: 20px;">
+                        <div class="col-md-12 padd">
+                            <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                                <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                                {{ 'EXECEL' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- advance แถว 2 -->
+        <div class="col-md-12" style="margin-bottom: 1%;" >
+            <form class="form-horizontal form-bordered" method="get">
+
+                <div class = " col-md-10 p-1">
+                    
+                    <div class = "col-md-2">
+
+                        <div class="col-md-12 col-xs-12 padd" >{{ 'Pallet_ID' | translate }}</div>
+                        <div class="col-md-12 col-xs-12 padd">
+                            <input type="text"class="form-control" ng-model="filterModel.tag_No"/>
+                        </div>
+
+                    </div>
+
+                    <div class = "col-md-2">
+                        <div class="col-lg-12 col-md-12 col-xs-12 padd">{{ 'Batch / Lot' | translate }}</div>
+                        <div class="col-md-12 col-xs-12 padd">
+                            <input type="text"class="form-control" ng-model="filterModel.product_Lot"/>
+                        </div>
+                    </div>
+
+                    <!-- ช่วงวันที่ EXP Date -->
+                    <div class="col-md-2">
+                        <div class="col-lg-12 col-md-12 col-sm-12padd">
+                            <label>{{ 'MFG_DATE_' | translate }}</label>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 padd">
+                            <div class="input-group">
+                                <input type="text" ng-model="filterModel.goodsReceive_MFG_Date_" class="form-control daterange text-center" ng-disabled="filterModel.useDate_1 == 1">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-7 col-sm-9 padd">
+                        <div class="col-md-12 padd" >
+                            <div class="ig-control_2">
+                                <input type="checkbox" ng-model="filterModel.useDate_1"  ng-change="changeSet_1()"
+                                    ng-checked="getuseDate" ng-true-value="1"
+                                    ng-false-value="0" id="useDate_1" class="ig-control__cbx" />
+                                    <label for="useDate_1">
+                                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" >
+                                        </div>{{'NO_MFG_DATE'| translate}}
+                                    </label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- ช่วงวันที่ MFG Date -->
+                    <div class="col-md-2">
+                        <div class="col-lg-12 col-md-12 col-sm-12padd">
+                            <label>{{ 'EXP_DATE' | translate }}</label>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 padd">
+                            <div class="input-group">
+                                <input type="text" ng-model="filterModel.goodsReceive_EXP_Date_" class="form-control daterange text-center" ng-disabled="filterModel.useDate_2 == 1">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="col-md-12 padd" >
+                            <div class="ig-control_1" style="margin-top:25px;">
+                                <input type="checkbox" ng-model="filterModel.useDate_2"  ng-change="changeSet_2()"
+                                    ng-checked="getuseDate" ng-true-value="1"
+                                    ng-false-value="0" id="useDate_2" class="ig-control__cbx" />
+                                    <label for="useDate_2">
+                                        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" >
+                                        </div>{{'NO_EXP_DATE'| translate}}
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+
+            </form>
+        </div>
+
+
+                <div class="col-lg-12 col-md-12 p-zero" style="margin-top:10px;">
+                    <!-- ปุ่ม -->
+                    <div class="col-lg-6 col-md-6 pull-right p-zero">
+                        <div class="col-md-3 padd"></div>
+                        <div class="col-md-3 padd"></div>
+                        <div class="col-md-3 padd">
+                            <button class="btn kw-bt-search-GR  btn-md" ng-click="searchReport(filterModel)" ng-show='header.advanceSearch'>
+                                <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                        </div>
+                        <div class="col-md-3 padd">
+                            <button class="btn kw-button-clearSearch  btn-md" ng-click="clearSearch()" ng-show='header.advanceSearch'>
+                                {{ 'CLEAR_SEARCH' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+    </div>
+        <div class = " col-md-1"></div>
+</div>
+
+
+<!-- Report PDF -->
+<div style="display: block;" ng-show="isShow">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </center>
+        </div>
+    </div>
+</div>
+
+<!-- <report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes' delegates='popupReport.delegates'>
+</report-popup> -->
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+
+        $('input[name="datefilter"] , input[name="datefilterAdv"] ,input[name="datefilterAdvMFG"], input[name="datefilterAdvEXP"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"],input[name="datefilterAdvMFG"], input[name="datefilterAdvEXP"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"],input[name="datefilterAdvMFG"], input[name="datefilterAdvEXP"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    });
+</script>
+
+
+

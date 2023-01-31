@@ -1,0 +1,92 @@
+﻿<div id="page-content-wrapper">
+    <h4 class="row">{{ 'WAREHOUSE' | translate }}</h4>
+
+    <div class="row div-shadow" style="margin-top:10px; padding:15px 0px;">
+        <div class="col-md-6">
+            <span class="col-md-4">{{ 'PRODUCT' | translate }}:</span>
+            <div class="col-md-8">
+                <div class="col-md-12 input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="formData.product">
+                    <span class="input-group-btn">
+                        <!--
+                        <button ng-click='showProductList()' class="btn btn-filter" style="padding: 8px 12px;" type="button">
+                            -->
+                        <button ng-click='popupProduct.onClick()' class="btn btn-filter" style="padding: 8px 12px;" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="margin-top:10px;">
+            <span class="col-md-4">{{ 'GRADE' | translate }}:</span>
+            <div class="col-md-8" style="">
+                <div class="col-md-12 input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="formData.grade">
+                    <span class="input-group-btn">
+                                               <!-- <button ng-click='showGradeList()' class="btn btn-filter" style="padding: 8px 12px;" type="button">-->
+                                                <button ng-click='popupGrade.onClick()' class="btn btn-filter" style="padding: 8px 12px;" type="button">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="margin-top:10px;">
+            <span class="col-md-4">{{ 'LOT_NUMBER' | translate }}:</span>
+            <div class="col-md-8" style="">
+                <div class="col-md-12 input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="formData.lotNo">
+                    <span class="input-group-btn">
+                                                <!-- <button ng-click='showLotList()' class="btn btn-filter" style="padding: 8px 12px;" type="button"> -->
+                                                <button ng-click='popupLotNo.onClick()' class="btn btn-filter" style="padding: 8px 12px;" type="button">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                    </button>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="margin-top:10px;">
+            <span class="col-md-4">{{ 'QUATITY' | translate }}:</span>
+            <div class="col-md-8" style="">
+                <div class="col-md-12" style="padding:0!important;">
+                    <input type="number" class="form-control" ng-model="formData.qty" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="margin-top:10px;">
+            <span class="col-md-4">{{ 'UOM' | translate }}:</span>
+            <div class="col-md-8" style="">
+                <div class="col-md-12" style="padding:0!important;">
+                    <select class="form-control" ng-model="formData.uom">
+                                    <option value="value">KGS</option>
+                                    <option value="value">EACH</option>
+                                    <option value="value">BAG</option>
+                                </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="margin-top:10px;">
+            <span class="col-md-4">{{ 'DATE' | translate }}:</span>
+            <div class="col-md-8 no-padding">
+                <mydatepicker class="col-md-12" ng-model="formData.date" date-options="dateOptions" opened="opened" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row pull-right" style="margin-top: 15px;">
+        <button ng-click='delegate.add()' class="ks-btn primary">{{ 'CREATE' | translate }}</button>
+        <button ng-click='delegate.cancel()' class="ks-btn red">{{ 'CANCEL' | translate }}</button>
+    </div>
+</div>
+
+<!-- All Popup -->
+<popup-product on-show='popupProduct.onShow' config='popupProduct.config' invokes='popupProduct.invokes' delegates='popupProduct.delegates'>
+</popup-product>
+
+<popup-lot-no on-show='popupLotNo.onShow' config='popupLotNo.config' invokes='popupLotNo.invokes' delegates='popupLotNo.delegates'>
+</popup-lot-no>
+
+<popup-grade on-show='popupGrade.onShow' config='popupGrade.config' invokes='popupGrade.invokes' delegates='popupGrade.delegates'>
+</popup-grade>

@@ -1,0 +1,16 @@
+<header class="page-header">
+    <h2>{{ 'WORK_ORDER' | translate }}</h2>
+</header>
+
+<div>
+    <gi-filter filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        ng-show="isFilter">
+        <br>
+    </gi-filter>
+</div>
+
+<div>
+    <gi-table-list filter-model="filterModel" search-result-model="searchResultModel" trigger-search="callSearch" trigger-create="create"
+        is-filter="isFilter">
+    </gi-table-list>
+</div>

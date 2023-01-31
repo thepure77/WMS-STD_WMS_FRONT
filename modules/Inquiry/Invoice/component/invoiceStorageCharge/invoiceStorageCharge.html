@@ -1,0 +1,143 @@
+<div ng-show="isLoading">
+    <section class="panel">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <span>{{ 'Invoice_Date' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <dir-date-picker ng-model="filterModel.doc_Date" disabled="filterModel.dateDoc== 1"></dir-date-picker>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <span>{{ 'to' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <dir-date-picker ng-model="filterModel.doc_DateTo" disabled="filterModel.dateDoc== 1"></dir-date-picker>
+                    </div>
+                </div>
+
+
+
+                <!-- <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <span>{{ 'Stock At' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <dir-date-picker ng-model="filterModel.planGoodsReceive_Date"></dir-date-picker>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <span>{{ 'OWNER_ID' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <input type="text" class="form-control" ng-model="filterModel.owner_Id" disabled />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <span>{{ 'OWNER_NAME' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                        <input type="text" class="form-control" ng-model="filterModel.owner_Name" disabled />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                    <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                        <span>{{ 'SERVICECHARHE_NAME' | translate }}</span>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                        <select class='form-control' ng-model='dropDownStorageCharge.model'
+                            ng-options="v.serviceCharge_Name for v in dropDownStorageCharge">
+                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                        </select> 
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero" style="margin-top:20px;">
+                    <button class="mb-xs mt-xs mr-xs btn btn-success" ng-click="LoadTrasaction()">
+                        {{ 'LoadTrasaction' | translate }}</button>
+
+                        <button class="mb-xs mt-xs mr-xs btn btn-success" ng-click="calServiceCharge()">
+                            {{ 'คิดเงิน' | translate }}</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- <div class="form-group" style="margin-top:15px;">
+            <div class="col-md-12 kw-mg-tb hidden-xs">
+                <div class="col-lg-12 col-md-12  kw-p-zero" style="margin-top:10px;">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                        <button class="mb-xs mt-xs mr-xs btn btn-success" ng-click="LoadTrasaction()">
+                            {{ 'LoadTrasaction' | translate }}</button>
+                        <button class="mb-xs mt-xs mr-xs btn btn-success" ng-click="calServiceCharge()">
+                            {{ 'คิดเงิน' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 table-responsive " style="padding:0px; margin-top:15px;">
+
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped fixed-header tableHeight-350">
+                    <thead>
+                        <tr>
+                            <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                            <th class="k100 text-center">{{ 'Charge Date' | translate }}</th>
+                            <th class="k150 text-center">{{ 'LOCATION_NAME' | translate }}</th>
+                            <th class="k150 text-center">{{ 'QTY' | translate }}</th>
+                            <th class="k150 text-center">{{ 'WEIGHT' | translate }}</th>
+                            <th class="k150 text-center">{{ 'VOL' | translate }}</th>
+                            <th class="k150 text-center">{{ 'RT' | translate }}</th>
+                            <th class="k100 text-center">{{ 'คิดโดย' | translate }}</th>
+                            <th class="k150 text-center">{{ 'Rate' | translate }}</th>
+                            <th class="k150 text-center">{{ 'amount' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in filterModel.listBinBalanceServiceCharge">
+                            <td class="k50 text-center">{{$index+1}}</td>
+                            <td class="k100 text-center">{{data.doc_Date|dateFormate}}</td>
+                            <td class="k150 text-center">{{data.location_Name}}</td>
+                            <td class="k150 text-center">{{data.binBalance_QtyBal}}</td>
+                            <td class="k150 text-center">{{data.binBalance_WeightBal}}</td>
+                            <td class="k150 text-center">{{data.binBalance_VolumeBal}}</td>
+                            <td class="k150 text-center">{{data.rT}}</td>
+                            <td class="k100 text-center">{{data.unitCharge_Name}}</td>
+                            <td class="k150 text-center">{{data.rate}}</td>
+                            <td class="k150 text-center">{{data.amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="footer-white" style="margin-top:10px;">
+        <ul class="pager">
+            <button type="button" class="btn btn-step-back" ng-click="back()">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+            </button>
+
+            <button type="button"style="float: right;" class="mb-xs mt-xs mr-xs btn btn-success" ng-click="confirm()"
+            >{{ 'confirm' | translate }}
+        </button>
+
+        </ul>
+    </div>
+</div>

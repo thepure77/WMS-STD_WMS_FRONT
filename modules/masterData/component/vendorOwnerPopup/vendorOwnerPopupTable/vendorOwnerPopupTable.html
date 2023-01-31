@@ -1,0 +1,36 @@
+<div class="table-responsive table-overflow">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <!-- <td>#</td> -->
+                <th class="k50 text-center">
+                                    <!-- <input ng-change="detectCheckAll(checkAll)" ng-model="checkAll" type="checkbox" id="all_" class="ig-control__cbx" checked
+                                    />
+                                    <label for="all_"></label> -->
+                                </th>
+                <th class="k150 text-center">{{ 'SUPPLIER_ID' | translate }}</th>
+                <th class="k150 text-center">{{ 'SUPPLIER_NAME' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items">
+                
+                <!-- <td>{{$index+1}}</td> -->
+                <td class="k50 text-center">
+                    <div class="ig-control">
+                        <input ng-model="data.selected" type="checkbox" id="checkxx_{{$index}}" class="ig-control__cbx" checked/>
+                        <label for="checkxx_{{$index}}"></label>
+                    </div>
+                </td>
+                <td class="k150 text-center">{{data.vendor_Id}}</td>
+                <td class="k150 ">{{data.vendor_Name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="margin-top:10px;">
+    <button class="btn btn-primary pull-right" ng-click="add()">{{ 'CONFIRM' | translate }}</button>
+</div>
+
+
+

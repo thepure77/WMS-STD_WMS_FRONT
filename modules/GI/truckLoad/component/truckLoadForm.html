@@ -1,0 +1,335 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+        <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'INBOUND' | translate }} </h2>
+            <div class="navigationLabel_mainPage" ng-click="back()">
+                <i class="kw-size-icon-mainpage fa fa-play" aria-hidden="true"></i>
+                <span class="nagivationSelect">{{ 'PRE_RECEIVING' | translate }}</span>
+            </div>
+            <div class="navigationLabel">
+                <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+                <span>{{ 'CREATE_PRE_RECEIVING' | translate }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+
+<div class="tabs" ng-show="$vm.isFilterTable">
+
+    <div class="tab-content">
+        <!-- Header -->
+
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a class="fa fa-caret-down" ng-click="ShowHeader()"></a>
+                </div>
+                <h2 class="panel-title">
+                    <div class="form-group">
+                        <div class="col-lg-11">
+                            <div class="row">
+                                <label class="col-lg-2 control-label kw-p-zero">{{ 'TL_TRUCKLOAD_NO' | translate }} :
+                                </label>
+
+                                <div class="col-lg-2 kw-p-zero">
+                                    <input type="text" class="form-control " ng-model="filterModel.truckLoad_No" disabled />
+                                </div>
+
+                                <div class="col-lg-5 kw-p-zero"></div>
+
+                                <label class="col-lg-1 control-label kw-p-zero">{{ 'STATUS' | translate }} : </label>
+
+                                <div class="col-lg-2 kw-p-zero">
+                                    <input type="text" class="form-control " ng-model="filterModel.processStatus_Name" disabled />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </h2>
+            </header>
+
+            <div class="panel-body" ng-show='header.show'>
+                <div class="row">
+
+                    <div class="tab-pane active">
+                        <div class="form-group" style="margin-top:15px;">
+                            <div class="col-lg-12 col-md-12 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <span>{{ 'TL_TRUCKLOAD_NO' | translate }}</span>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <input type="text" ng-model="filterModel.truckLoad_No" class="form-control" disabled />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <span style="color:red">*</span>{{ 'TL_TRUCKLOAD_DATE' | translate }}</span>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <dir-date-picker ng-model="filterModel.truckLoad_Date"></dir-date-picker>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <span>{{ 'TL_VEHICLE_REGISTRATION' | translate }}</span>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <input type="text" ng-model="filterModel.vehicle_Registration" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <span>{{ 'VEHICLE_TYPE' | translate }}</span>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                        <select class='form-control' ng-model='dropdownVehicleType.model' ng-options="v.vehicleType_Name for v in dropdownVehicleType">
+                                            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                            <!-- <span><span style="color:red">*</span> {{ 'OWNER' | translate }}</span> -->
+                                            <span>{{ 'TL_START_LOAD' | translate }}</span>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                            <input type="text" ng-model="filterModel.start_load" class="form-control" disabled />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                            <span>{{ 'TL_END_LOAD' | translate }}</span>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                            <input type="text" ng-model="filterModel.end_load" class="form-control" disabled />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                            <span>{{ 'TL_DRIVER' | translate }}</span>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                                            <input type="text" ng-model="filterModel.documentRef_No1" class="form-control" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-lg-12 col-md-12 col-xs-12">
+
+                                    <div class="col-lg-6 col-md-6 col-xs-12  kw-p-zero">
+                                        <div class="col-lg-10 col-md-10 col-xs-12">
+                                            <span>{{ 'REMARK' | translate }}</span>
+                                        </div>
+                                        <div class="col-lg-11 col-md-11 col-xs-12 kw-p-zero">
+                                            <textarea rows="3" cols="50" class="form-control" ng-model="filterModel.document_Remark"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+        </section>
+
+
+        <!-- ItemTable -->
+        <section class="panel">
+
+            <div class="panel-body" ng-show='item.show'>
+                <div class="row">
+                    <h2>รายการสินค้า</h2>
+
+                    <div class="form-group">
+                        <div class="col-lg-12 col-md-12 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'PLAN_GI_NO' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <auto-comple ng-model="filterItemModel.planGoodsIssue_Index" value="filterItemModel.planGoodsIssue_No" sourceurl="autoComplete.planGoodsIssue_No"
+                                        api="url.TL"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'PLAN_GI_DATE' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <dir-date-picker ng-model="filterItemModel.planGoodsIssue_Date" disabled>
+                                    </dir-date-picker>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'TL_DOC_TYPE' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <input type="text" ng-model="filterItemModel.documentType_Name" class="form-control" disabled />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <span>{{ 'STATUS' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                                    <input type="text" ng-model="filterItemModel.processStatus_Name" class="form-control" disabled />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+                        จำนวนข้อมูล {{filterModel.listTruckLoadItemViewModel.length}}
+                        <button class="modal-with-form btn btn-success" type="button" ng-click="addsItem(filterItemModel)">
+                            {{ 'ADD' | translate }} </button>
+                    </div>
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+
+                        <div class="panel-body" ng-show='header.show'>
+                            <div class="row">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}" ng-click="clickTab(1)">{{ 'TRUCKLOAD_TAB1' | translate }}</a>
+                                    </li>
+                                    <li>
+                                        <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}" ng-click="clickTab(2)">{{ 'TRUCKLOAD_TAB2' | translate }}</a>
+                                    </li>
+                                </ul>
+
+                                <div id="tab1" class="table-responsive table-overflow" ng-if="click == 1">
+                                    <table class="table table-width-100 tableHeight-350">
+                                        <thead>
+                                            <tr>
+                                                <th class="k100 text-center" style="width:80px"></th>
+                                                <th class="text-center k100" style="width:50px">{{ 'ROW_NUMBER' | translate }}</th>
+                                                <th class="k100">{{ 'PLAN_GI_NO' | translate }}</th>
+                                                <th class="k100" >{{ 'DOCUMENT_TYPE' | translate }}</th>
+                                                <th class="k100" style="width:100px">{{ 'QTY' | translate }}</th>
+                                                <th class="k100" style="width:100px">{{ 'TL_UPDATE_BY' | translate }}</th>
+                                                <th class="k100">{{ 'SHIPTO_NAME' | translate }}</th>
+                                                <th class="k100" style="width:100px">{{ 'TL_CREATE_BY' | translate }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in filterModel.listTruckLoadItemViewModel">
+                                                <td class="k100" style="width:80px">
+                                                    <div>
+                                                        <a class="btn btn-danger" ng-click="deleteItem(filterModel.listTruckLoadItemViewModel, $index)" ng-disabled="filterModel.document_Status==1 || filterModel.document_Status==2 || filterModel.document_Status==-1 || filterModel.document_Status==3">
+                                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center k100" style="width:50px">{{$index+1}}</td>
+                                                <td class="k100" >{{data.planGoodsIssue_No}}</td>
+                                                <td class="k100">{{data.documentType_Name}}</td>
+                                                <td class="k100" style="width:100px">{{data.qty}}</td>
+                                                <td class="k100" style="width:100px">{{data.update_By}}</td>
+                                                <td class="k100">{{data.shipTo_Name}}</td>
+                                                <td class="k100" style="width:100px">{{data.create_By}}</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="tab2" class="table-responsive table-overflow" ng-if="click == 2">
+                                    <table class="table table-width-100 tableHeight-350">
+                                        <thead>
+                                            <tr>
+                                                <th class="k100">{{ 'PLAN_GI_NO' | translate }}</th>
+                                                <th class="k100">{{ 'Pallet_ID' | translate }}</th>
+                                                <th class="k100">{{ 'SIZE' | translate }}</th>
+                                                <th class="k100">{{ 'QTY' | translate }}</th>
+                                                <th class="k100">{{ 'PRODUCT_ID' | translate }}</th>
+                                                <th class="k100">{{ 'PRODUCT_NAME' | translate }}</th>
+                                                <th class="k100">{{ 'PRODUCT_CONVERSION' | translate }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="data in filterModel.listTruckLoadItemDetailViewModel">
+                                                <td class="k100">{{data.planGoodsIssue_No}}</td>
+                                                <td class="k100">{{data.tagOut_No}}</td>
+                                                <td class="k100">{{data.product_Size}}</td>
+                                                <td class="k100">{{data.qty}}</td>
+                                                <td class="k100">{{data.product_Id}}</td>
+                                                <td class="k100">{{data.product_Name}}</td>
+                                                <td class="k100">{{data.productConversion_Name}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+
+                <button type="button" class="btn btn-blue previous" ng-show="buttons.add" ng-click="add()" style="float: right;background-color: #60b0ff">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+                <button type="button" class="btn btn-blue previous" ng-show="buttons.update" ng-click="edit()" style="float: right;background-color: #60b0ff">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+            </ul>
+        </div>
+
+        </div>
+        </div>
+
+        <plan-item on-show='addDetailItem.onShow' config='addDetailItem.config' invokes='addDetailItem.invokes' delegates='addDetailItem.delegates'>
+        </plan-item>
+
+        <forwarder-popup on-show='forwarderPopup.onShow' config='forwarderPopup.config' invokes='forwarderPopup.invokes' delegates='forwarderPopup.delegates'>
+        </forwarder-popup>
+
+        <vendor-popup-plan on-show='vendorPopupPlan.onShow' config='vendorPopupPlan.config' invokes='vendorPopupPlan.invokes' delegates='vendorPopupPlan.delegates'>
+        </vendor-popup-plan>
+
+
+        <script>
+            $(function () {
+                $('.daterange').daterangepicker();
+            });
+        </script>

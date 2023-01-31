@@ -1,0 +1,82 @@
+<div id="top-floor-modal-form" class="modal fade" tabindex="-1">
+    <div class="modal-dialog" style="overflow:auto;width:35%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">Floor Property</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <label for="Warehouse" class="col-md-5 control-label">Warehouse Name:</label>
+                    <div class="col-md-7">
+                        <input id="Warehouse" class="form-control" ng-model="$vm.model.warehouseName" readonly=readonly/>
+                    </div>
+                    <label for="room" class="col-md-5 control-label">Room:</label>
+                  
+                    <div class="col-md-7">
+                        <select class="form-control" id="room" ng-model="$vm.model.roomIndex">
+                            <option ng-repeat="(key, value) in $vm.roomList" value="{{value.room_Index}}">
+                                {{value.room_Name}}</option>
+                        </select>
+                    </div>
+                    <label for="zone" class="col-md-5 control-label">Zone:</label>
+                    <div class="col-md-7">
+                        <select class="form-control" id="zone" ng-model="$vm.model.zoneIndex">
+                            <option ng-repeat="(key, value) in $vm.zoneList" value="{{value.zone_Index}}">
+                                {{value.zone_Name}}</option>
+                        </select>
+                    </div>
+                    <label for="locationType" class="col-md-5 control-label">Location Type:</label>
+
+                    <div class="col-md-7">
+
+                        <select class="form-control" id="locationType" ng-model="$vm.model.locationTypeIndex">
+                            <option ng-repeat="(key, value) in $vm.locationTypeList"
+                                value="{{value.locationType_Index}}">
+                                {{value.locationType_Name}}</option>
+                        </select>
+                    </div>
+
+                    <label for="Aisle" class="col-md-5 control-label">Aisle Name:</label>
+                    <div class="col-md-7">
+                        <!-- <input id="Aisle" class="form-control" ng-model="$vm.model.aisle" /> -->
+                      
+                        <auto-complete api-func="$vm.locationAisleAutoCompleteFunc" selected-item="$vm.locationAisleItem" 
+                                id="locationlockId"
+                                input-value="$vm.model.aisle"
+                                selected-value="$vm.locationlockId"></auto-complete>
+                    </div>
+
+                    <label for="width" class="col-md-5 control-label">width:</label>
+                    <div class="col-md-7">
+                        <input id="width" type="number" class="form-control" ng-model="$vm.model.width" />
+                    </div>
+                    <label for="height" class="col-md-5 control-label">Height:</label>
+                    <div class="col-md-7">
+                        <input id="height" type="number" class="form-control" ng-model="$vm.model.height" />
+                    </div>
+                    <label for="angle" class="col-md-5 control-label">Angle:</label>
+                    <div class="col-md-7">
+                        <input id="angle" type="number" class="form-control" ng-model="$vm.model.angle" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-9 col-md-offset-3">
+                    <div class="col-md-6" >
+                        <button class="btn btn-primary btn-block" ng-click="$vm.save()"
+                        style="background-color: #008CBA;">Save</button>
+                    </div>
+                    <div class="col-md-6" >
+                        <button class="btn btn-primary btn-block" ng-click="$vm.delete()" ng-show="$vm.model.status"
+                        style="background-color: #008CBA;">Delete</button>
+                    </div>
+                    <button id="refreshTopRack" ng-click="refreshTopFloor" style="display: none;"></button>
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="refreshTopFloor" style="display: none;"></button>

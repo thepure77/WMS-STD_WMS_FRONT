@@ -1,0 +1,448 @@
+<style>
+    .ex3 {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <div class="row tab" id="step-1" ng-if="menu[0].active == 'active'">
+        <div id="tab1" class="tab-pane active">
+            <div class="form-group" style="margin-top:70px;">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                            <span>{{ 'SCAN_LOCATION' | translate }}:</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-7">
+                            <input type="text" class="form-control bgwrite" ng-model="filterModel.location"
+                                ks-enter="ScanLocation(filterModel)" id="scanLocation"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                            <span>{{ 'TRUCK_LOAD_NO' | translate }}:</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-7">
+                            <input type="text" class="form-control" ng-model="filterModel.shipment_no"
+                                ks-enter="ScanShipment(filterModel)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                            
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-xs-7">
+                            <button type="button" class="btn btn-primary" ng-click="ClearAll()">
+                                {{ 'CLEAR' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr style="overflow-y: auto;">
+                            <!-- <th class="text-center tr100">{{ 'NO' | translate}}</th> -->
+                            <th class="text-center tr100">{{ 'R/C ID' | translate}}</th>
+                            <th class="text-center tr50">{{ 'CHUTE' | translate}}</th>
+                            <th class="text-center tr100">{{ 'LOCATION' | translate}}</th>
+                            <th class="text-center tr100">{{ 'จำนวน' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in listfilterModel" ng-click="select(data)"
+                            style="background-color: {{chkIsuse(data)}}">
+                            <!-- <td class="text-center tr100">{{$index+1}}</td> -->
+                            <td class="text-center tr100">{{data.rollcage_id}}</td>
+                            <td class="text-center tr50">{{data.chute_no}}</td>
+                            <td class="text-center tr100">{{data.location_rollcage_Name}}</td>
+                            <td class="text-center tr100">{{data.carton}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-right padding-m" style="margin-bottom:15px;">
+
+            <!-- <button ng-click="callroll()" class="btn btn-primary hidden-xs"
+                ng-disabled="header.buttoncall">{{ 'CALL_ROLL_CAGE' | translate }}</button>
+            <button ng-click="callroll()" class="btn btn-primary btn-block btn-lg visible-xs mt-lg"
+                ng-disabled="header.buttoncall">{{ 'CALL_ROLL_CAGE' | translate }}</button> -->
+
+            <button class="btn btn-primary hidden-xs" ng-click="callroll(listfilterModel)"
+                ng-disabled="!nextfrist || isSelect == false || isSelect == undefined">{{ 'CALL_ROLL_CAGE' | translate }}</button>
+            <button class="btn btn-primary btn-block btn-lg visible-xs mt-lg" ng-click="callroll(listfilterModel)"
+                ng-disabled="!nextfrist || isSelect == false || isSelect == undefined">{{ 'CALL_ROLL_CAGE' | translate }}</button>
+
+            <button ng-click="next()" class="btn btn-primary hidden-xs" ng-disabled="filterModel.rollCage_Id == undefined || filterModel.rollCage_Id == ''"
+                ng-show="!header.buttoncall">{{ 'SCAN_IN' | translate }}</button>
+            <button ng-click="next()" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" ng-disabled="filterModel.rollCage_Id == undefined || filterModel.rollCage_Id == ''|| isSelect == false"
+                ng-show="!header.buttoncall">{{ 'SCAN_IN' | translate }}</button>
+        </div>
+    </div>
+
+    <div class="row tab" id="step-2" ng-if="menu[1].active == 'active'">
+
+        <div class="form-group" style="margin-top:70px;margin-bottom: 0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'SCAN_R/C_ID' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.rollcage_id"
+                            ng-disabled="block" ks-enter="scanrollcage(filterModel)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <!-- <button ng-click="confirmrollcage()" ng-disabled="block"
+                            class="btn btn-primary btn-block btn-lg visible-xs mt-lg">{{ 'START' | translate }}</button> -->
+                        <button ng-click="confirmrollcage()" class="btn btn-primary hidden-xs"
+                            ng-disabled="block || !Ismatch">{{ 'START' | translate }}</button>
+                        <button ng-click="confirmrollcage()" class="btn btn-primary btn-block btn-lg visible-xs mt-lg"
+                            ng-disabled="block || !Ismatch">{{ 'START' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'NUMBEROFBOXES' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7" style="text-align: center;">
+                        <span>{{ 'TOTEBOX' | translate }}:</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-6">
+                        <input class="form-control" ng-model="filterModelscan.qty_tagBox" disabled />
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-6">
+                        <input class="form-control" ng-model="filterModelscan.qty_tagTote" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: center;">
+                        <span>{{ 'QR_CODE' | translate }}:</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.tagout_no"
+                            ng-disabled="!block" ks-enter="Scantagout(filterModel)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'BILL_ID' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModelscan.planGoodsIssue_No"
+                            disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'TRUCK_LOAD_NO' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModelscan.shipment_no"
+                            disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'PATH' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModelscan.route_Name"
+                            disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'BRANCH_CODE' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModelscan.branch_Code"
+                            disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'NUMBEROFBOXES' | translate }}</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7" style="text-align: center;">
+                        <span>{{ 'TOTEBOX' | translate }}:</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-6">
+                        <input class="form-control" ng-model="filterModelscan.qty_tagBox" disabled />
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-6">
+                        <input class="form-control" ng-model="filterModelscan.qty_tagTote" disabled />
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="text-right padding-m" style="margin-bottom:15px;">
+            <button ng-click="next()" class="btn btn-primary hidden-xs"
+                ng-disabled="!confirmalltag">{{ 'CONFIRM' | translate }}</button>
+            <button ng-click="next()" class="btn btn-primary btn-block btn-lg visible-xs mt-lg"
+                ng-disabled="!confirmalltag">{{ 'CONFIRM' | translate }}</button>
+        </div>
+    </div>
+
+    <div class="row tab" id="step-3" ng-if="menu[2].active == 'active'">
+
+        <div class="form-group" style="margin-top:70px;margin-bottom: 15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'SCAN_R/C_ID' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.rollcage_id" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;margin-bottom: 15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'LOCATION' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ks-enter="scanEmptyLocation(filterModel)"
+                            ng-model="filterModel.location" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right padding-m" style="margin-bottom:15px;">
+            <button ng-click="movePallet()" ng-disabled="!confirmEmptyDock"
+                class="btn btn-primary hidden-xs">{{ 'CONFIRM' | translate }}</button>
+            <button ng-click="movePallet()" ng-disabled="!confirmEmptyDock"
+                class="btn btn-primary btn-block btn-lg visible-xs mt-lg">{{ 'CONFIRM' | translate }}</button>
+        </div>
+    </div>
+
+    <div class="row tab" id="step-4" ng-if="menu[3].active == 'active'">
+
+        <div class="form-group" style="margin-top:70px;margin-bottom: 15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'TRUCK_LOAD_NO' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.location"
+                            ks-enter="ScanLocation(filterModel)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'LICENSE' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control" ng-model="filterModel.shipment_no" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'DOCK' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control" ng-model="filterModel.shipment_no" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: right;">
+                        <span>{{ 'BILL_AMOUNT' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-xs-7">
+                        <input type="text" class="form-control" ng-model="filterModel.shipment_no" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-5" style="text-align: center;">
+                        <span>{{ 'QR_CODE' | translate }}:</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:0px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-9 col-md-9 col-xs-12">
+                        <input type="text" class="form-control bgwrite" ng-model="filterModel.location"
+                            ks-enter="ScanLocation(filterModel)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="padding:0px; margin-top:15px;">
+            <div class="table-responsive table-overflow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr style="overflow-y: auto;">
+                            <th class="tr100">{{ 'STATUS' | translate}}</th>
+                            <th class="tr100">{{ 'R/C ID' | translate}}</th>
+                            <th class="tr100">{{ 'CARTON' | translate}}</th>
+                            <th class="tr100">{{ 'TOTEBOX' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in listfilterModel">
+                            <td class="tr100">{{$index+1}}</td>
+                            <td class="tr100">{{data.product_Id}}</td>
+                            <td class="tr100">{{data.product_Name}}</td>
+                            <td class="tr100">{{data.qty}}</td>
+                            <td class="tr100">{{data.qtyPer}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="text-right padding-m" style="margin-bottom:15px;">
+            <button ng-click="next()" class="btn btn-primary hidden-xs">{{ 'CLOSE' | translate }}</button>
+            <button ng-click="next()"
+                class="btn btn-primary btn-block btn-lg visible-xs mt-lg">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+<div ng-show='header.callroll'>
+    <div class="col-md-12 kw-mg-tb">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-5 col-md-9 col-xs-5" style="padding-left: 0px;padding-right: 0px;">
+                        <input type="number" class="form-control" ng-model="filterModel.qty" disabled />
+                    </div>
+                    <div class="col-lg-4 col-md-3 col-xs-4" style="text-align: right;">
+                        <span>{{ 'R/C ID' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-3 col-md-9 col-xs-3" style="padding-left: 0px;padding-right: 0px;">
+                        <input type="number" class="form-control" ng-model="filterModel.qty" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="text-align: right;">
+                        <span>{{ 'FROM' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-3 col-md-9 col-xs-3" style="padding-left: 0px;padding-right: 0px;">
+                        <input type="number" class="form-control" ng-model="filterModel.qty" disabled />
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-3" style="text-align: right;">
+                        <span>{{ 'TO' | translate }}:</span>
+                    </div>
+                    <div class="col-lg-3 col-md-9 col-xs-3" style="padding-left: 0px;padding-right: 0px;">
+                        <input type="number" class="form-control" ng-model="filterModel.qty" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<master-require on-show='masterRequirePopup.onShow' config='masterRequirePopup.config'
+    invokes='masterRequirePopup.invokes' delegates='masterRequirePopup.delegates'>
+</master-require>
+
+<select-scan-popup on-show='scanselect.onShow' config='scanselect.config' invokes='scanselect.invokes'
+    delegates='scanselect.delegates'>
+</select-scan-popup>

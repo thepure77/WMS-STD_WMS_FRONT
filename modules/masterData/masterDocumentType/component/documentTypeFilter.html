@@ -1,0 +1,135 @@
+<div class="col-md-12 kw-mg-tb" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="">
+            <div class="col-md-4 col-xs-6 padd">
+                <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.documentType"
+                    api="url.Master"></auto-comple>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-4 col-xs-6 padd">
+            </div>
+        </div>
+
+        <div class="">
+            <div class="col-md-4 p-zero">
+                <div class="col-md-3 padd">
+                    <button class="btn kw-button-search" ng-click="searchFilter(filterModel)">
+                        <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                        <label class="kw-pos">Search</label></button>
+                </div>
+                <div class="col-md-2 padd">
+                    <button ng-click="clearFilter()" class="btn kw-button-filter"><span
+                            class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+                        Filter</button>
+                </div>
+                <div class="col-md-4 padd">
+                    <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()" data-toggle="collapse"
+                        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <span class="kw-icon-button icon-star_border_24px_outlined" aria-hidden="true"></span><label
+                            class="kw-pos">{{ 'ADVANCE_SEARCH' | translate }}</label>
+                    </button>
+                </div>
+                <div class="col-md-2 col-xs-2 padd">
+                    <button class="btn btn-success" type="button" ng-click="export()">
+                        {{ 'EXPORT' | translate }}
+                    </button>
+                </div>
+                <div class="col-md-1 col-xs-2 padd">
+                    <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()"> <i
+                            class="kw-icon-button icon-add_24px_outlined" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- style="background-color: #45556A !important; width: 100%; -->
+<div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero" ng-show='header.advanceSearch'>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-zero kw-mg-tb">
+        <div class="col-md-2 pull-right">
+            <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()" data-toggle="collapse"
+                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <span class="kw-icon-button icon-star_border_24px_outlined" aria-hidden="true"></span><label
+                    class="kw-pos">{{ 'ADVANCE_SEARCH' | translate }}</label>
+            </button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#multiselectItem').multiselect({
+                includeSelectAllOption: true,
+                enableFiltering: true
+            });
+        });
+        $(document).ready(function () {
+            $('#multiselectItem2').multiselect({
+                includeSelectAllOption: true,
+                enableFiltering: true
+            });
+        });
+        $(document).ready(function () {
+            $('#multiselectItem3').multiselect({
+                includeSelectAllOption: true,
+                enableFiltering: true
+            });
+        });
+    </script>
+    <div class="col-md-12">
+        <div class="col-md-8" style="margin: 11px 0;padding: 0px;">
+            <div class="col-md-4 kw-multiselect padd">
+                <select id="multiselectItem" multiple="multiple1" data-plugin-multiselect
+                    data-plugin-options='{ "enableCaseInsensitiveFiltering": true }'>
+                    <optgroup label="Truck Type Select">
+                        <option value="analysis">Wait</option>
+                        <option value="algebra">Create</option>
+                        <option value="discrete">Finish</option>
+                    </optgroup>
+                    <optgroup label="Computer Science">
+                        <option value="programming">Introduction to Programming</option>
+                        <option value="automata">Automata Theory</option>
+                        <option value="complexity">Complexity Theory</option>
+                        <option value="software">Software Engineering</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-md-4 kw-multiselect padd">
+                <select id="multiselectItem2" multiple="multiple1" data-plugin-multiselect
+                    data-plugin-options='{ "enableCaseInsensitiveFiltering": true }'>
+                    <optgroup label="Truck Type Select">
+                        <option value="analysis">Wait</option>
+                        <option value="algebra">Create</option>
+                        <option value="discrete">Finish</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-md-4 kw-multiselect padd" style="padding: 2px 0px 2px 2px;">
+                <select id="multiselectItem3" multiple="multiple1" data-plugin-multiselect
+                    data-plugin-options='{ "enableCaseInsensitiveFiltering": true }'>
+                    <optgroup label="Truck Type Select">
+                        <option value="analysis">Wait</option>
+                        <option value="algebra">Create</option>
+                        <option value="discrete">Finish</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin: 12px 0;padding: 0px;">
+            <div class="col-md-12 pull-right" style="padding: 0px 0px 0px 2px;">
+                <div class="input-group">
+                    <input type="text" class="form-control daterange text-center" value="01/01/2019 - 01/31/2019">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

@@ -1,0 +1,17 @@
+﻿<div data-ng-init="init()" class="input-group div-datepicker"   style="width:100%;" >
+    <input type="text" chars="date" class="form-control"  ng-change="myChangeFunction()"
+           uib-datepicker-popup="{{format}}"
+           ng-model="dt"
+           is-open="status.opened"
+           on-open-focus="false"
+           show-weeks="false"
+           ng-disabled="disabled"
+           datepicker-options="dateOptions"  ng-required="required" 
+           show-button-bar="showButtonBar" close-text="Close" ng-click="open($event)"  valuesd="valuesd"/>
+
+           <!-- ลบ name="name" ออก ทำให้ auto complete หาย -->
+
+    <span  class="input-group-addon" style="cursor:pointer" ng-click="open($event)">
+        <i class="fa fa-calendar bigger-110"></i>
+    </span>
+</div>

@@ -1,0 +1,23 @@
+[
+    {
+        "type": "rack-bar-tool",
+        "position": {
+            "x": 25,
+            "y": 22
+        }
+    },
+    {
+        "type": "floor-area-tool",
+        "position": {
+            "x": 25,
+            "y": 66
+        }
+    },
+    {
+        "type": "label-text-tool",
+        "position": {
+            "x": 25,
+            "y": 104
+        }
+    }
+]

@@ -1,0 +1,39 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow:auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'BOM' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-3  display-inline">
+                                    <label>{{ 'BOM_NO' | translate }}</label>
+
+                                </div>
+                                <div class="col-lg-3  display-inline">
+                                    <input type="text" ng-model="bomModel.BOM_No" class="form-control">
+
+                                </div>
+                                <div class="col-lg-3  display-inline" style="float: right;">
+                                    <button class="btn btn-primary " ng-click="filter(bomModel)">
+                                        <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                                </div>
+                            </div>
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <bom-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></bom-popup-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="confirm()">{{ 'CONFIRM' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

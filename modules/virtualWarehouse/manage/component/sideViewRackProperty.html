@@ -1,0 +1,89 @@
+<div id="side-siderack-modal-form" class="modal" tabindex="-1">
+    <div class="modal-dialog" style="overflow: auto; width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger"> {{popupObj.head}} Property SideView Rack</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    From DB
+                </div>
+                <div class="col-md-4">
+                    From UI
+                </div>
+                <div class="col-md-4">
+                    Location Name :
+                </div>
+                <div class="col-md-8">
+                    <auto-complete api-func="$vm.locationAutoCompleteFunc" selected-item="$vm.dbModel"
+                        selected-value="$vm.selectedLocationName"></auto-complete>
+                </div>
+                <div class="col-md-4">
+                    location_Id :
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.dbModel.location_Id" readonly />
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.model.sprite_Index" readonly />
+                </div>
+                <div class="col-md-4">
+                    Level :
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.dbModel.location_Level" readonly />
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.model.location_Level" readonly />
+                </div>
+                <div class="col-md-4">
+                    Bay :
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.dbModel.location_Bay" readonly />
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.model.location_Bay" readonly />
+                </div>
+                <div class="col-md-4">
+                    Deep :
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.dbModel.location_Depth" readonly />
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.model.location_Depth" readonly />
+                </div>
+                <div class="col-md-4">
+                    Aisle :
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.dbModel.aisle" readonly />
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" ng-model="$vm.model.aisle" readonly />
+                </div>
+                <div class="col-md-4">
+                    Use :
+                </div>
+                <div class="col-md-4">
+                    <input type="radio" ng-model="$vm.model.use" value="1">
+                    <label for="use" style="padding-left: 3px;">Use</label>
+                    <input type="radio" ng-model="$vm.model.use" value="0">
+                    <label for="notuse"  style="padding-left: 3px;">Not use</label>
+                </div>
+                <div class="col-md-4">
+                   
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary text-center" ng-click="$vm.save()"
+                    style="background-color: #008CBA;width: 200px;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

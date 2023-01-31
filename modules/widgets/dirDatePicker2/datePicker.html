@@ -1,0 +1,9 @@
+<div data-ng-init="init()" class="input-group div-datepicker" style="width:100%;">
+    <input type="text" class="form-control" ng-change="myChangeFunction()" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened"
+        on-open-focus="false" show-weeks="false" datepicker-options="dateOptions" name="name" ng-required="required" show-button-bar="showButtonBar"
+        close-text="Close" ng-click="open($event)" />
+
+    <span class="input-group-addon" style="cursor:pointer" ng-click="open($event)">
+        <i class="fa fa-calendar bigger-110"></i>
+    </span>
+</div>

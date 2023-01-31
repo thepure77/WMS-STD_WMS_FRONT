@@ -1,0 +1,8 @@
+﻿<div class="row" ng-repeat="itme in langItems">
+
+    {{langItems}}
+    <div class="col-sm-2">
+        <button ng-click="changeLang("en") class="btn" ng-class="{'btn-primary': !showInfo[$index], 'btn-success': showInfo[$index]}">EN</button>
+        <button ng-click="changeLang("th") class="btn" ng-class="{'btn-primary': !showInfo[$index], 'btn-success': showInfo[$index]}">TH</button>
+    </div>
+</div>

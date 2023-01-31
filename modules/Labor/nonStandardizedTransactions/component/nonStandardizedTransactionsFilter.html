@@ -1,0 +1,76 @@
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-4 col-xs-9 padd" style="text-align: center;font-size: 11px">วันที่เริ่มต้น - สิ้นสุด</div>
+        <div class="col-md-3 col-xs-9 padd" style="text-align: left;font-size: 11px"></div>
+        <div class="col-md-2 col-xs-9 padd" style="text-align: left;font-size: 11px"></div>
+        <div class="col-md-2 col-xs-1 padd" style="text-align: center;font-size: 11px"></div>
+        <div class="col-md-1 col-xs-1 padd" style="text-align: left;min-height: 26px;"></div>
+        <div class="">
+            <div class="col-md-4 col-xs-6 padd">
+                <div class="input-group">
+                    <input type="text" ng-model="filterModel.date" class="form-control daterange text-center">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-3 col-xs-6 padd">
+                <div class="col-md-6 padd">
+                    <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        {{ 'SEARCH' | translate }}</button>
+                </div>
+                <div class="col-md-3 padd">
+                    <!-- <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                        <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                        {{ 'EXECEL' | translate }}</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                
+            </div>
+        </div>
+
+        <div class="">
+            <div class="col-md-1 p-zero">
+                
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+<!-- <script>
+    $(function () {
+        $('.daterange').daterangepicker();
+
+        $('input[name="datefilter"] , input[name="datefilterAdv"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    });
+</script> -->

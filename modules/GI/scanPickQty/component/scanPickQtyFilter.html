@@ -1,0 +1,41 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div>
+    <div class="row" style="margin-top:30px;">
+        <div class="col-lg-5 col-md-5 col-xs-12" style="margin-left: 15px">
+            <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                <span>Printer</span>
+            </div>
+            <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                <select class='form-control' ng-disabled="isConfirmPrinter" ng-model='dropdownPrinter.model' ng-options="v.printer_Name for v in dropdownPrinter" style="margin-bottom: 6px;" >
+                    <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-xs-12" style="margin-bottom: 6px;">
+            <div class="form-group" >
+                <div class="col-lg-12 col-md-5 col-xs-5">
+                    <button class="btn btn-success btn-block" ng-disabled="isConfirmPrinter"  ng-click="confirmPrinter()">
+                        {{ 'Select' | translate }}</button>
+                </div>
+                <div class="col-lg-12 col-md-5 col-xs-5">
+                    <button class="btn btn-primary btn-block" ng-disabled="!isConfirmPrinter" ng-click="canclePrinter()">
+                        {{ 'Cancle' | translate }}</button>
+                </div>
+            </div>
+           
+        </div>
+        <div class="col-lg-5 col-md-5 col-xs-12" style="margin-left: 15px">
+            <div class="input-group" style="padding:0!important;">
+                <input type="text" class="form-control" ng-model="$vm.filterModel.task_No">
+                <span class="input-group-btn">
+                    <button ng-click='$vm.triggerSearch()' class="btn btn-groub-Search" type="button">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-7  col-xs-12" style="margin-top:10px;">
+        </div>
+    </div>
+</div>

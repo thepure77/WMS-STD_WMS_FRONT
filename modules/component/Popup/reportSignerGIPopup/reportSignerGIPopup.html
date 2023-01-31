@@ -1,0 +1,157 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">{{ 'SIGNER' | translate }}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isDemand_Payment" type="checkbox" id="1"
+                                        class="ig-control__cbx" checked />
+                                    <label for="1"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'DEMAND_PAYMENT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recipent_Name" /> -->
+                                    <auto-comple ng-model="items.demand_Payment" value="items.demand_Payment_Name"
+                                        id="items.demand_Payment_Id" value1="items.demand_first_Name"
+                                        value2="items.demand_last_Name" value3="items.demand_user_Name"
+                                        value4="items.demand_position_Code" value5="items.demand_user_Index"
+                                        value6="items.demand_user_Id" value7="items.demand_Payment_pos_Name" code="2"
+                                        sourceurl="autoComplete.username" api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.demand_Payment_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isPayment" type="checkbox" id="2" class="ig-control__cbx"
+                                        checked />
+                                    <label for="2"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'PAYMENT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recorder_Name" /> -->
+                                    <auto-comple ng-model="items.payment" value="items.payment_Name"
+                                        id="items.payment_Id" value1="items.payment_first_Name"
+                                        value2="items.payment_last_Name" value3="items.payment_user_Name"
+                                        value4="items.payment_position_Code" value5="items.payment_user_Index"
+                                        value6="items.payment_user_Id" value7="items.payment_pos_Name" code="2"
+                                        sourceurl="autoComplete.username" api="url.master">
+                                    </auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.payment_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isRecorder" type="checkbox" id="3" class="ig-control__cbx"
+                                        checked />
+                                    <label for="3"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RECORDER' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recorder_Name" /> -->
+                                    <auto-comple ng-model="items.recorder" value="items.recorder_Name"
+                                        value1="items.recorder_first_Name" value2="items.recorder_last_Name"
+                                        value3="items.recorder_user_Name" value4="items.recorder_position_Code"
+                                        value5="items.recorder_user_Index" value6="items.recorder_user_Id"
+                                        value7="items.recorder_pos_Name" id="items.recorder_Id" code="2"
+                                        sourceurl="autoComplete.username" api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.recorder_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-2 col-md-2 col-xs-2">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input ng-model="items.isRecipent" type="checkbox" id="4" class="ig-control__cbx"
+                                        checked />
+                                    <label for="4"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RECIPIENT' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <!-- <input type="text" class="form-control" ng-model="items.recipent_Name" /> -->
+                                    <auto-comple ng-model="items.recipent" value="items.recipent_Name"
+                                        id="items.recipent_Id" value1="items.recipent_first_Name"
+                                        value2="items.recipent_last_Name" value3="items.recipent_user_Name"
+                                        value4="items.recipent_position_Code" value5="items.recipent_user_Index"
+                                        value6="items.recipent_user_Id" value7="items.recipent_pos_Name" code="2"
+                                        sourceurl="autoComplete.username" api="url.master"></auto-comple>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-xs-5  ">
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <span>{{ 'RANK' | translate }}</span>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-xs-12  ">
+                                    <input type="text" class="form-control" ng-model="items.recipent_pos_Name"
+                                        disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" ng-click="Yes()">{{ 'YES' | translate }}</button>
+                <button class="btn btn-primary" ng-click="onClose()">{{ 'CANCEL' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

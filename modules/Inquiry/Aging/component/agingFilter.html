@@ -1,0 +1,75 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="col-lg-2 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionOwner" class="form-control" ng-init="actionOwner = '1' ">
+                    <option value="1">{{ 'OWNER_ID' | translate }}</option>
+                    <option value="2">{{ 'OWNER_NAME' | translate }}</option>
+                </select>
+            </div>
+            <div ng-switch="actionOwner" class="col-lg-3">
+                <div class="input-group" ng-switch-when="1">
+                    <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Id" id="filterModel.owner_Name" sourceurl="autoComplete.ownerId"
+                        api="url.BinBalance"></auto-comple>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter(filterModel)" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="input-group" ng-switch-when="2">
+                    <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Name" id="filterModel.owner_Id" sourceurl="autoComplete.ownerName"
+                        api="url.BinBalance"></auto-comple>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter(filterModel)" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-2">
+                <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()">
+                    <span class="fa fa-star-o" aria-hidden="true"></span>{{ 'ADVANCE_SEARCH' | translate }}
+                </button>
+            </div> -->
+
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:10px;">
+
+            <div class="col-lg-2 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionProduct" class="form-control" ng-init="actionProduct = '1' ">
+                    <option value="1">{{ 'PRODUCT_ID' | translate }}</option>
+                    <option value="2">{{ 'PRODUCT_NAME' | translate }}</option>
+                </select>
+            </div>
+            <div ng-switch="actionProduct" class="col-lg-3">
+                <div class="input-group " ng-switch-when="1">
+                    <auto-comple ng-model="filterModel.product_Index" ng-change="a()" value="filterModel.product_Id" id="filterModel.product_Name"
+                        sourceurl="autoComplete.sku" api="url.BinBalance"></auto-comple>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter(filterModel)" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="input-group" ng-switch-when="2">
+                    <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Name" id="filterModel.product_Id" sourceurl="autoComplete.product"
+                        api="url.BinBalance"></auto-comple>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter(filterModel)" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

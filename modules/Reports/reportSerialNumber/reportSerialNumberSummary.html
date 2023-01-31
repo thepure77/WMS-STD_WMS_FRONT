@@ -1,0 +1,183 @@
+<header class="page-header">
+
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'REPORT' | translate }} </h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a ui-sref="wms.index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'REPORT' | translate }}</span>
+                </li>
+                <li>
+                    <span>{{ 'Report Serial Number' | translate }}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label"> {{ 'Report Serial Number' | translate }}</label>
+</div>
+
+<!-- แถวแรก -->
+<div class="col-md-12" style="margin-bottom: 1%; margin-top: 20px;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+
+        <div class = " col-md-8 p-1">
+
+            <div class = "col-md-4">
+                <div class="col-md-12 col-xs-12 padd" style="text-align: left;font-size: 11px"><span style="color: red">* </span>คลัง :</div>
+                <div class="col-md-12 col-xs-12 padd">
+                    <div class="dropdown">
+                        <select ng-model="filterModel.ambientRoom" class="form-control">
+                            <option style="text-align:center" left value=""> -- {{ 'SELECT' | translate }} -- </option>
+                            <option value="01">Ambient</option>
+                            <option value="02">ห้องเย็น</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "col-md-4">
+
+                <div class="col-md-12 col-xs-12 padd" style="text-align: left;font-size: 11px">Material No. :</div>
+                <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                    <auto-comple ng-model="filterModel.product_Index" value="filterModel.Product_Id" id="filterModel.product_Name" sourceurl="autoComplete.autoSku" api="url.Master"></auto-comple></div>
+                
+            </div>
+           
+            <div class="col-md-4">
+                <div class="col-lg-12 col-md-12 col-xs-12 padd" style="text-align: left;font-size: 11px">Order Number :</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 padd">
+                    <auto-comple ng-model="filterModel.planGoodsIssue_Index" value="filterModel.PlanGoodsIssue_No" sourceurl="autoComplete.autoSuggestion"
+                    api="url.PlanGI"></auto-comple>
+                </div>
+            </div>         
+            
+        </div>
+        
+        
+        <!-- ปุ่ม -->
+        <div class="">
+            <div class="col-md-4 p-5" style="margin-top: 20px;">
+
+                <div class="col-md-3 padd">
+                    <button ng-click="searchReport(filterModel)" class="btn kw-button-search">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        {{ 'SEARCH' | translate }}</button>
+                </div>
+                <div class="col-md-4 padd">
+                    <button ng-click="exportFile.ExportExcel()" class="btn btn-success">
+                        <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                        {{ 'EXECEL' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- แถว 2 -->
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+
+        <div class = " col-md-8 p-1">
+
+            <div class = "col-md-4">
+                <div class="col-lg-12 col-md-12 col-xs-12 padd" style="text-align: left;font-size: 11px">Tag no</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 padd">
+                    <input type="text" ng-model="filterModel.Tag_No" class="form-control"/>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="col-md-12 col-xs-12 padd" style="text-align: left;font-size: 11px">GI Number :</div>
+                <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                    <auto-comple ng-model="filterModel.goodsIssue_Index" value="filterModel.GoodsIssue_No" sourceurl="autoComplete.autoGoodsIssue_No"api="url.GI"></auto-comple>
+                </div>
+            </div>
+
+            <div class = "col-md-4">
+                <div class="col-md-12 col-xs-12 padd" style="text-align: left;font-size: 11px">ช่วงวันที่ GI:</div>
+                <div class="col-md-12 col-xs-12 padd">
+                    <div class="input-group">
+                        <input type="text" name="datefilter_GI" ng-model="filterModel.date_GI"
+                            class="form-control daterange text-center">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div> 
+
+            
+        </div>
+        <div class="">
+            <div class="col-md-4 p-5" style="margin-top: 20px;">
+
+                <div class="col-md-6 padd" style="margin-top: 5px;">
+                    <div class="ig-control_1">
+                        <input type="checkbox" ng-model="filterModel.useDate_1"  ng-change="changeSet_1()"
+                            ng-checked="getuseDate" ng-true-value="1"
+                            ng-false-value="0" id="useDate_1" class="ig-control__cbx" />
+                            <label for="useDate_1">
+                                <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="margin-top:3px;">
+                                </div>{{'ไม่ระบุวันที่ GI'}}
+                            </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+<!-- Report PDF -->
+<div style="display: block;" ng-show="isShow">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </center>
+        </div>
+    </div>
+</div>
+
+<!-- <report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes' delegates='popupReport.delegates'>
+</report-popup> -->
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+
+        $('input[name="datefilter_GI"] , input[name="datefilter_Load"], input[name="datefilterAdv_GI"], input[name="datefilterAdv_Load"], input[name="datefilterAdv_MFG"], input[name="datefilterAdv_EXP"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datefilter_GI"] , input[name="datefilter_Load"], input[name="datefilterAdv_GI"], input[name="datefilterAdv_Load"], input[name="datefilterAdv_MFG"], input[name="datefilterAdv_EXP"]').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datefilter_GI"] , input[name="datefilter_Load"], input[name="datefilterAdv_GI"], input[name="datefilterAdv_Load"], input[name="datefilterAdv_MFG"], input[name="datefilterAdv_EXP"]').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+    });
+</script>

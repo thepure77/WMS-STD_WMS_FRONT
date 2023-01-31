@@ -1,0 +1,98 @@
+<div class="panel-body" ng-show="onShow">
+    <div class="col-lg-12 col-md-12 col-xs-12 kw-mg-tb">
+        <div class="form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  padd">
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                        <span class="required">* <label>{{ 'APPOINTMENT_NO' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                        <input type="text" ng-model="filterModel.appointment_Id" class="form-control" disabled/>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 padd">
+                        <label>{{ 'DOCUMENT_NO' | translate }}</label>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                        <input type="text" ng-model="filterModel.ref_Document_No" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero" ng-if="gatecheckin == true">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'DATE_OFPRODUCT' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'TIME_OFPRODUCT' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <dir-date-picker type="text" ng-model="filterModel.checkIn_Date" disabled="disabled == 1"/>
+                        </dir-date-picker>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.checkIn_Time" class="form-control" disabled/>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero" ng-if="gatecheckin == false">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'DATE_OFPRODUCT' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'TIME_OFPRODUCT' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <dir-date-picker type="text" ng-model="filterModel.checkOut_Date" disabled="disabled == 1"/>
+                        </dir-date-picker>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.checkOut_Time" class="form-control" disabled/>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 kw-p-zero">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'LICENSE' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <span class="required">* <label>{{ 'GATE' | translate }}</label></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.license" class="form-control" disabled/>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 padd">
+                        <input type="text" ng-model="filterModel.gate_Name" class="form-control" disabled/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padd">
+                <div class="col-lg-4 col-md-4 col-xs-12 padd">
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        {{ 'REMARK' | translate }} :
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12  padd">
+                        <textarea rows="3" ng-model="filterModel.remark" class="form-control text-upper"
+                            placeholder="Search"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-white" style="margin-top:10px;">
+            <ul class="pager">
+                <button type="button" class="btn btn-info previous" ng-show="showCheckIn" ng-click="add()" ng-if="gatecheckin == true"
+                    style="float: none;">
+                    {{ 'CHECKIN' | translate }}
+                </button>
+                <button type="button" class="btn btn-info previous" ng-show="!showCheckIn" ng-click="addout()" ng-if="gatecheckin == false"
+                    style="float: none;">
+                    {{ 'CHECKOUT' | translate }}
+                </button>
+            </ul>
+           
+            <ul class="pager">
+                <button type="button" class="btn btn-step-back" ng-click="back()" style="float: none;">
+                    {{ 'BACK' | translate }}
+                </button>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<header class="page-header">
+
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'REPORT' | translate }} </h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a ui-sref="wms.index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'REPORT' | translate }}</span>
+                </li>
+                <li>
+                    <span>{{ 'Labor Utilization' | translate }}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label"> {{ 'Labor Utilization' | translate }}</label>
+</div>
+
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="col-lg-2 col-md-7 col-sm-9 padd">
+                <div class="col-lg-12 col-md-12 col-sm-12padd">
+                    <label>{{ 'วันที่เริ่มต้น-สิ้นสุด' | translate }}</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 padd">
+                    <div class="input-group">
+                        <input type="text" ng-model="filterModel.date" class="form-control daterange text-center">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-md-7 col-sm-9 padd">
+                <div class="col-lg-12 col-md-12 col-sm-12padd">
+                    <label>{{ 'รหัสพนักงาน' | translate }}</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 kw-p-zero">
+                    <input type="text" ng-model="filterModel.id" class="form-control"/> 
+                </div>
+            </div>
+            <div class="col-md-2 col-md-7 col-sm-9 padd">
+                <div class="col-lg-12 col-md-12 col-sm-12padd">
+                    <label>{{ 'ชื่อ' | translate }}</label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 kw-p-zero">
+                    <input type="text" ng-model="filterModel.name" class="form-control"/> 
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-7 col-sm-9 padd" style="margin-top: 25px;">
+                <button ng-click="searchReport(filterModel)" class="btn kw-button-search">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    {{ 'SEARCH' | translate }}</button>
+            </div>
+            <div class="col-lg-1 col-md-7 col-sx12 padd" style="margin-top: 25px;">
+                <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                    <i class="fa fa-file-excel-o"></i>{{ 'EXECEL' | translate }}
+            </div>
+            <div class="col-md-2 col-md-7 col-sm-9 padd">
+               
+            </div>
+            <div class="col-md-2 col-md-7 col-sm-9 padd">
+                
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+<div style="display: block;" ng-show="isShow">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </center>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

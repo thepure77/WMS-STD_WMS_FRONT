@@ -1,0 +1,111 @@
+<header class="page-header">
+
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'REPORT' | translate }} </h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a ui-sref="wms.index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'REPORT' | translate }}</span>
+                </li>
+                <li>
+                    <span>{{ 'REPORT_SPACE_UTILIZATION' | translate }}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label"> {{ 'REPORT_SPACE_UTILIZATION' | translate }}</label>
+</div>
+
+<div class="col-md-12" style="margin-bottom: 1%;">
+    <div class="col-md-1" style="text-align: center;font-size: 11px">
+        {{ 'WAREHOUSE' | translate }}
+        <select ng-model="filterModel.ambientRoom" class="form-control">
+            <option value=""> -- {{ 'SELECT' | translate }} -- </option>
+            <option value="01">ambient</option>
+            <option value="02">ห้องเย็น</option>
+        </select>
+    </div>
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        {{ 'LOCATION_TYPE' | translate }}
+        <select class='form-control' ng-model='filterModel.locationTypeList'
+            ng-options="v.locationType_Name for v in dropdownLocationTypeList">
+            <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+        </select>
+    </div>
+    
+   
+    <!-- <div class="col-md-1" style="text-align: center;font-size: 11px">
+        <span style="color: red">* </span>{{ 'DATA_OF_MONTH' | translate }}
+        <select ng-model="filterModel.month" class="form-control">
+            <option value="">  {{ 'SELECT' | translate }}  </option>
+            <option value="01">{{ 'JANUARY' | translate }}</option>
+            <option value="02">{{ 'FEBRUARY' | translate }}</option>
+            <option value="03">{{ 'MARCH' | translate }}</option>
+            <option value="04">{{ 'APRIL' | translate }}</option>
+            <option value="05">{{ 'MAY' | translate }}</option>
+            <option value="06">{{ 'JUNE' | translate }}</option>
+            <option value="07">{{ 'JULY' | translate }}</option>
+            <option value="08">{{ 'AUGUST' | translate }}</option>
+            <option value="09">{{ 'SEPTEMBER' | translate }}</option>
+            <option value="10">{{ 'OCTOBER' | translate }}</option>
+            <option value="11">{{ 'NOVEMBER' | translate }}</option>
+            <option value="12">{{ 'DECEMBER' | translate }}</option>
+        </select>
+    </div>
+    <div class="col-md-1" style="text-align: center;font-size: 11px">
+        <span style="color: red">* </span>{{ 'DATA_OF_YEAR' | translate }}
+        <select ng-model="filterModel.year" class="form-control">
+            <option value="">  {{ 'SELECT' | translate }}  </option>
+            <option ng-repeat="year in years">{{year}}</option>
+        </select>
+    </div> -->
+    <div class="col-md-2" style="text-align: center;font-size: 11px">
+        <span style="color: red">* </span>{{ 'ข้อมูล ณ วันที่' | translate }}
+        <div class="input-group">
+            <input type="text" ng-model="filterModel.date" class="form-control daterange text-center"
+                >
+            <span class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-2" style="margin-top: 15px;">
+        <div class="col-md-6 padd">
+            <button ng-click="validate('pdf')" class="btn kw-button-search" >
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                {{ 'SEARCH' | translate }}</button>
+        </div>      
+        <div class="col-md-6 padd">
+            <button ng-click="validate('excel')" class="btn btn-success"  style="width: 100%;">
+                <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                {{ 'EXECEL' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+<div style="display: block;" ng-show="isShow">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </center>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

@@ -1,0 +1,57 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow" on-hide="onHide">
+    <div class="modal-dialog" style="overflow: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger">DockDoor</h4>
+            </div>
+            <div class="modal-body">
+                <!-- PAGE CONTENT BEGINS -->
+                <div id="page-content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row" >
+                                <div class="col-lg-3 dropdown display-inline" style="margin-left:-15px;">
+                                    <select ng-model="actionPS" class="form-control">
+                                        <option value="1">ID</option>
+                                        <option value="2">Name</option>
+                                    </select>
+                                </div>
+                                <div ng-switch="actionPS">
+                                    <div class="input-group col-lg-4" ng-switch-when="1">
+                                        <input type="text" ng-model="dockDoor.dockDoorId" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button ng-click="filterSearch()" class="btn btn-filter">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div class="input-group col-lg-4" ng-switch-when="2">
+                                        <input type="text" ng-model="dockDoor.dockDoorName" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button ng-click="filterSearch()" class="btn btn-filter">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="div-shadow" style="margin-top: 10px;">
+                                <dock-door-popup-table invokes='datalist.invokes' delegates='datalist.delegates' config='datalist.config'></dock-door-popup-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PAGE CONTENT BEGINS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-filter" ng-click="onClose()">Close</button>
+                <!--
+         <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PAGE CONTENT ENDS -->

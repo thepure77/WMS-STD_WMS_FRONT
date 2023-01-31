@@ -1,0 +1,212 @@
+<header class="page-header">
+    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-9  page-header-left">
+        <div class="col-md-12 col-xs-12 col-sm-12 kw-p-zero">
+            <h2>{{ 'MASTERDATA' | translate }} </h2>
+            <div class="navigationLabel_mainPage" ng-click="back()"> <i class="kw-size-icon-mainpage fa fa-play"
+                    aria-hidden="true"></i>
+                <span class="nagivationSelect">{{ 'DOCUMENT_TYPE' | translate }}</span>
+            </div>
+            <div class="navigationLabel"> <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+                <span>{{ 'CREATE_DOCUMENT_TYPE' | translate }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-3 col-xs-3 page-header-right">
+        <div class="right-wrapper">
+        </div>
+    </div>
+</header>
+<div id="page-content-wrapper" ng-show="onShow">
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                {{ 'DOCUMENT_TYPE_ID' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.documentType_Id" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                <span style="color:red">*</span>{{ 'PROCESS' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="input-group" style="padding:0!important;">
+                    <input type="text" class="form-control" ng-model="filterModel.key" value="filterModel.process_Index">
+                    <span class="input-group-btn">
+                        <button ng-click='popupProcess.onClick()' class="btn btn-filter" 
+                            type="button">
+                            <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                <span style="color:red">*</span>{{ 'DOCUMENT_TYPE_NAME' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.documentType_Name" type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                <span style="color:red">*</span>{{ 'FORMAT_TEXT' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input ng-model="filterModel.format_Text" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                {{ 'DATE' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="dropdown">
+                    <select ng-click="selectFormat()" ng-model="actionFormat" class="form-control" ng-init="actionFormat = '1' ">
+                        <option value="1"> -- {{ 'SELECT_YOUR_FORMAT' | translate }} -- </option>
+                        <option value="yy">yy </option>
+                        <option value="yyMM">yyMM </option>
+                        <option value="yyMMdd">yyMMdd</option>
+                        <option value="yyyy">yyyy</option>
+                        <option value="yyyyMM">yyyyMM</option>
+                        <option value="yyyyMMdd">yyyyMMdd</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+               {{ 'RUNNING' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="dropdown">
+                    <select ng-click="selectFormatRunning()" ng-model="actionFormatRunning" class="form-control"
+                        ng-init="actionFormatRunning = '0' ">
+                        <option value="0"> -- {{ 'SELECT_YOUR_RUNNING' | translate }} -- </option>
+                        <option value="x">Running: 1 </option>
+                        <option value="xx">Running: 2</option>
+                        <option value="xxx">Running: 3</option>
+                        <option value="xxxx">Running: 4</option>
+                        <option value="xxxxx">Running: 5</option>
+                        <option value="xxxxxx">Running: 6</option>
+                        <option value="xxxxxxx">Running: 7</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                <span style="color:red">*</span>{{ 'FORMAT_DOCUMENT' | translate }} : 
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="dropdown">
+                    <select ng-click="selectFormatDoc1()" ng-model="actionFormatDoc1" class="form-control" ng-init="actionFormatDoc1 = '0' ">
+                        <option value="0">-- {{ 'SELECT_FORMAT_DOC' | translate }} --</option>
+                        <option ng-show="s1" value="[Format_Text]">{{ 'TEXT' | translate }}</option>
+                        <option ng-show="s2" value="[Format_Date]">{{ 'DATE' | translate }}</option>
+                        <option ng-show="s3" value="[Format_Running]">{{ 'RUNNING' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <select ng-click="selectFormatDoc2()" ng-model="actionFormatDoc2" class="form-control" ng-init="actionFormatDoc2 = '0' ">
+                    <option value="0">-- {{ 'SELECT_FORMAT_DOC' | translate }} --</option>
+                    <option ng-show="s1" value="[Format_Text]">{{ 'TEXT' | translate }}</option>
+                    <option ng-show="s2" value="[Format_Date]">{{ 'DATE' | translate }}</option>
+                    <option ng-show="s3" value="[Format_Running]">{{ 'RUNNING' | translate }}</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <select ng-click="selectFormatDoc3()" ng-model="actionFormatDoc3" class="form-control" ng-init="actionFormatDoc3 = '0' ">
+                    <option value="0">-- {{ 'SELECT_FORMAT_DOC' | translate }} --</option>
+                    <option ng-show="s1" value="[Format_Text]">{{ 'TEXT' | translate }}</option>
+                    <option ng-show="s2" value="[Format_Date]">{{ 'DATE' | translate }}</option>
+                    <option ng-show="s3" value="[Format_Running]">{{ 'RUNNING' | translate }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                <span style="color:red">*</span>{{ 'RESET_BY' | translate }} : 
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                <div class="ig-control">
+                    <input type="checkbox" ng-change="detectcheck('1')" ng-model="filterModel.isResetByYear" id="table_setting_1"
+                        class="ig-control__cbx" ng-disabled="disable1" checked />
+                    <label for="table_setting_1">{{ 'YEAR' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                <div class="ig-control">
+                    <input type="checkbox" ng-change="detectcheck('2')" ng-model="filterModel.isResetByMonth" id="table_setting_2"
+                        class="ig-control__cbx" ng-disabled="disable2" checked />
+                    <label for="table_setting_2">{{ 'MONTH' | translate }}</label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-6">
+                <div class="ig-control">
+                    <input type="checkbox" ng-change="detectcheck('3')" ng-model="filterModel.isResetByDay" id="table_setting_3"
+                        class="ig-control__cbx" ng-disabled="disable3" checked />
+                    <label for="table_setting_3">{{ 'DAY' | translate }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:20px;">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top:10px;">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="vertical-align:middle;line-height:30px;">
+                {{ 'ISACTIVE' | translate }} :
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <input type="checkbox" ng-model="filterModel.isActive" ng-checked="getCheck" ng-true-value="1"
+                    ng-false-value="0" id="is_active" class="ig-control__cbx" />
+                <label for="is_active"></label>
+            </div>
+        </div>
+        <br><br><br>
+    </div>
+    
+    <div class="col-lg-12 col-md-12 col-xs-12">
+        <ul class="pager">
+            <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+            <button type="button" class="btn btn-primary previous" ng-show="create" ng-click="add()" style="float: right;">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+
+            <button type="button" class="btn btn-success" ng-show="update" ng-click="add()" style="float: right;">
+                    {{ 'UPDATE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+        </ul>
+    </divdiv>
+    <!-- .button -->
+    <!-- <div ng-show="Cancel">
+        <button ng-click="back()" class="ks-btn red pull-right" >Cancel</button>
+    </div>
+    <div ng-show="update" >
+        <button ng-click="edit()" class="ks-btn pull-right" style="margin-right: 5px">
+            Update</button>
+    </div>
+    <div ng-show="create">
+        <button ng-click="add()" class="ks-btn primary pull-right" style="margin-right: 5px">
+            Create</button>
+    </div> -->
+    <!-- /.button -->
+</div>
+<process-popup-v2 on-show='popupProcess.onShow' config='popupProcess.config' invokes='popupProcess.invokes' delegates='popupProcess.delegates'>
+</process-popup-v2>

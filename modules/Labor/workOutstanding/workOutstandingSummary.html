@@ -1,0 +1,148 @@
+<header class="page-header">
+
+    <div class="col-md-8 col-xs-12 col-sm-8 page-header-left">
+        <h2>{{ 'LABOR_MANAGEMENT' | translate }} </h2>
+    </div>
+    <div class="col-md-4 col-sm-3 page-header-right">
+        <div class="right-wrapper">
+            <ol class="breadcrumbs">
+                <li>
+                    <a ui-sref="wms.index">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li>
+                    <span>{{ 'LABOR_MANAGEMENT' | translate }}</span>
+                </li>
+                <li>
+                    <span>{{ 'WORKOUTSTANDING' | translate }}</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</header>
+<div class="kw-text-subMenu kw-style-subMenu">
+    <i class="kw-size-icon fa fa-play" aria-hidden="true"></i>
+    <label class="kw-label"> {{ 'WORKOUTSTANDING' | translate }}</label>
+</div>
+
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-4 col-xs-9 padd" style="text-align: center;font-size: 11px">วันที่เริ่มต้น - สิ้นสุด</div>
+        <div class="col-md-3 col-xs-9 padd" style="text-align: left;font-size: 11px"></div>
+        <div class="col-md-2 col-xs-9 padd" style="text-align: left;font-size: 11px"></div>
+        <div class="col-md-2 col-xs-1 padd" style="text-align: center;font-size: 11px"></div>
+        <div class="col-md-1 col-xs-1 padd" style="text-align: left;min-height: 26px;"></div>
+        <div class="">
+            <div class="col-md-4 col-xs-6 padd">
+                <div class="input-group">
+                    <input type="text" ng-model="filterModel.date" class="form-control daterange text-center">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-3 col-xs-6 padd">
+                <div class="col-md-6 padd">
+                    <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        {{ 'SEARCH' | translate }}</button>
+                </div>
+                <div class="col-md-3 padd">
+                    <!-- <button ng-click="exportFile.ExportExcel(filterModel)" class="btn btn-success">
+                        <span class="fa fa-file-excel-o" aria-hidden="true"></span>
+                        {{ 'EXECEL' | translate }}</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-2 col-xs-6 padd">
+                
+            </div>
+        </div>
+
+        <div class="">
+            <div class="col-md-1 p-zero">
+                
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="hidden-xs hidden-sm  table-responsive table-overflow div-shadow" 
+    style="margin-bottom:15px;">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="k100 text-center">{{ 'NO' | translate }}</th>
+                <th class="k200 text-center">{{ 'DATE' | translate }}</th>
+                <th class="k150 text-center">{{ 'กิจกรรมหลัก' | translate }}</th>
+                <th class="k150 text-center">{{ 'กิจกรรมย่อย' | translate }}</th>
+                <th class="k150 text-center">{{ 'จำนวน Task' | translate }}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in $vm.searchResultModel">
+                <td class="k100 text-center">
+                    {{($index + 1) + ($vm.filterModel.perPage * ($vm.filterModel.currentPage - 1))}}</td>
+                <td class="k200 text-center">{{data.firstName}}</td>
+                <td class="k150 text-center">{{data.lastName}}</td>
+                <td class="k150 text-center">{{data.matdoc}}</td>
+                <td class="k150 text-center">{{data.truckLoad_No}}</td>
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="15" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class=" table-responsive table-overflow "  style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow"
+                uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+<div style="display: block;" ng-show="isShow">
+    <div class="form-group">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <center>
+                <iframe style="width:100%;height:600px;" src="{{expdf}}"></iframe>
+            </center>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

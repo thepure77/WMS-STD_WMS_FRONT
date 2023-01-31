@@ -1,0 +1,39 @@
+<div class="table-responsive table-overflow">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr>
+                <!-- <td>#</td> -->
+                <th class="k150 text-center">{{ 'RULE_CONDITION_FIELD' | translate }}</th>
+                <th class="k150 text-center">{{ 'PROCESS' | translate }}</th>
+                <th class="k150 text-center">{{ 'SORT' | translate }}</th>
+                <th class="k150 text-center">{{ 'SEARCH' | translate }}</th>
+                <th class="k120 text-center">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items">
+                <!-- <td>{{$index+1}}</td> -->
+                <td class="k150 text-center">{{data.ruleConditionField_Name}}</td>
+                <td class="k150 text-center">{{data.process_Name}}</td>
+                <td class="k150 text-center">{{data.isSort}}</td>
+                <td class="k150 text-center">{{data.isSearch}}</td>
+                <td class="k120 text-center">
+                    <a class="btn btn-primary" ng-click="selected(data)">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </a>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- <div class="form-left" ng-show="show.pagination">
+    <select class='form-control' style='width:70px;display:inline;' ng-model='model.numPerPage' ng-options="v.value as v.value for v in pageOption"
+        ng-init='model.numPerPage = 10' ng-change='changeTableSize()'>
+    </select>
+</div>
+<div class="form-right" ng-show="show.pagination">
+    <ul uib-pagination total-items="pagging.totalRow" ng-change="pagging.change()" items-per-page="pagging.perPage" num-pages="pagging.num"
+        ng-model="pagging.currentPage" max-size="pagging.maxSize" class="pull-right" boundary-link-numbers="true" rotate="false"></ul>
+</div> -->

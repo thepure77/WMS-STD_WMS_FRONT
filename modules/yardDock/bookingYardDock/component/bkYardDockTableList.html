@@ -1,0 +1,201 @@
+<div class="table-responsive table-overflow  div-shadow" ng-show="$vm.isFilter" style="margin-bottom:15px;">
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}}"
+                    ng-click="clickTab(1)">{{ 'InBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(2)">{{ 'OutBound' | translate }}</a>
+            </li>
+            <li>
+                <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}}"
+                    ng-click="clickTab(3)">{{ 'Frozen' | translate }}</a>
+            </li>
+        </ul>
+    </div>
+    <table class="table table-striped fixed-header tableHeight-350" >
+        <thead>
+            <tr>
+                <th class="k200 text-center">{{ 'ACTION' | translate }}</th>
+                <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                <th class="k100 text-center">{{ 'LIST_DOCK' | translate }}</th>
+                <th class="k150 text-center">{{ 'TIME' | translate }}</th>
+                <th class="w200 text-center">{{ 'APPOINTMENT_NO' | translate }}</th>
+                <th class="k200 text-center">{{ 'DOCUMENT_NO' | translate }}</th>
+                <th class="k100 text-center">{{ 'BOOKING_DATE' | translate }}</th>
+                
+                <th class="k100 text-center">{{ 'ACTIVITY' | translate }}</th>
+                <th class="k150 text-center">{{ 'STATUS_APPOINT' | translate }}</th>
+                <th class="k150 text-center">{{ 'STATUS_PROCESS' | translate }}</th>
+                <th class="k150 text-center">{{ 'LICENSE' | translate }}</th>
+                <th class="k200 text-center">{{ 'TYPE_CAR' | translate }}</th>
+                <th class="k150 text-center">{{ 'CREATE_DATE' | translate }}</th>
+                <th class="k100 text-center">{{ 'UPDATE_DATE' | translate }}</th>
+                <th class="k100 text-center">{{ 'USER_Name' | translate }}</th>
+                <th class="k100 text-center">{{ 'USER_UPDATE' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody ng-if="click == 1">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'7f139afb-b712-4562-911e-0ed654c6f7af'} ">
+                <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <button class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
+                            data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-groub-Search" ng-click="approve(data)" data-toggle="tooltip"
+                            title="Approve" data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-blue" ng-click="printOutAppointment(data)" data-toggle="tooltip"
+                            title="Print" data-placement="bottom" ng-disabled="data.document_status == -1">
+                            <i class="fa fa-print"></i>
+                        </button>
+                        <button class="btn btn-danger" ng-click="delete(data)" data-toggle="tooltip" title="Delete"
+                            data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-dark" ng-click="masterRequirePopup.onClick(data)" data-toggle="tooltip"
+                            title="ReAssign" data-placement="bottom" ng-disabled="data.document_status == -1 || data.is_reassign == 1">
+                            <span class="fa fa-refresh" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </td>
+                <td class="k50 text-center">{{$index+1}}</td>
+                <td class="k100 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="w200 text-center">{{data.appointment_Id}}</td>
+                <td class="k200 text-center">{{data.ref_Document_No}}</td>
+                <td class="k100 text-center">{{data.appointment_Date | dateFormat}}</td>
+                
+                <td class="k100 text-center">{{data.documentType_Name}}</td>
+                <td class="k150 text-center">{{data.document_status == -1 ? 'ยกเลิก' : 'จอง'}}</td>
+                <td class="k150 text-center">{{data.confirm_status}}</td>
+                <td class="k150 text-center">{{data.vehicleType_No}}</td>
+                <td class="k200 text-center">{{data.vehicleType_Name}}</td>
+                <td class="k150 text-center">{{data.create_Date | dateFormat}}</td>
+                <td class="k100 text-center">{{data.update_Date | dateFormat}}</td>
+                <td class="k100 text-center">{{data.create_By}}</td>
+                <td class="k100 text-center">{{data.update_By}}</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 2">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'c392d865-8e69-4985-b72f-2421ebe8bcdb'} ">
+                <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <button class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
+                            data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-groub-Search" ng-click="approve(data)" data-toggle="tooltip"
+                            title="Approve" data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-blue" ng-click="printOutAppointment(data)" data-toggle="tooltip"
+                            title="Print" data-placement="bottom" ng-disabled="data.document_status == -1">
+                            <i class="fa fa-print"></i>
+                        </button>
+                        <button class="btn btn-danger" ng-click="delete(data)" data-toggle="tooltip" title="Delete"
+                            data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-dark" ng-click="masterRequirePopup.onClick(data)" data-toggle="tooltip"
+                            title="ReAssign" data-placement="bottom" ng-disabled="data.document_status == -1 || data.is_reassign == 1">
+                            <span class="fa fa-refresh" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </td>
+                <td class="k50 text-center">{{$index+1}}</td>
+                <td class="k100 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="w200 text-center">{{data.appointment_Id}}</td>
+                <td class="k200 text-center">{{data.ref_Document_No}}</td>
+                <td class="k100 text-center">{{data.appointment_Date | dateFormat}}</td>
+                
+                <td class="k100 text-center">{{data.documentType_Name}}</td>
+                <td class="k150 text-center">{{data.document_status == -1 ? 'ยกเลิก' : 'จอง'}}</td>
+                <td class="k150 text-center">{{data.confirm_status}}</td>
+                <td class="k150 text-center">{{data.vehicleType_No}}</td>
+                <td class="k200 text-center">{{data.vehicleType_Name}}</td>
+                <td class="k150 text-center">{{data.create_Date | dateFormat}}</td>
+                <td class="k100 text-center">{{data.update_Date | dateFormat}}</td>
+                <td class="k100 text-center">{{data.create_By}}</td>
+                <td class="k100 text-center">{{data.update_By}}</td>
+            </tr>
+        </tbody>
+        <tbody ng-if="click == 3">
+            <tr ng-repeat="data in $vm.searchResultModel | filter :{'documentType_Index':'13091631-5829-4341-bcb4-272b0ed854d7'} ">
+                <td class="k200 actions">
+                    <div class="text-center" style="margin:0px">
+                        <button class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
+                            data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-groub-Search" ng-click="approve(data)" data-toggle="tooltip"
+                            title="Approve" data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-blue" ng-click="printOutAppointment(data)" data-toggle="tooltip"
+                            title="Print" data-placement="bottom" ng-disabled="data.document_status == -1">
+                            <i class="fa fa-print"></i>
+                        </button>
+                        <button class="btn btn-danger" ng-click="delete(data)" data-toggle="tooltip" title="Delete"
+                            data-placement="bottom"
+                            ng-disabled="data.document_status == 2 || data.document_status == 1 || data.document_status == 5 || data.document_status == -1">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-dark" ng-click="masterRequirePopup.onClick(data)" data-toggle="tooltip"
+                            title="ReAssign" data-placement="bottom" ng-disabled="data.document_status == -1 || data.is_reassign == 1">
+                            <span class="fa fa-refresh" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </td>
+                
+                <td class="k50 text-center">{{$index+1}}</td>
+                <td class="k100 text-center">{{data.dock_Name}}</td>
+                <td class="k150 text-center">{{data.appointment_Time}}</td>
+                <td class="w200 text-center">{{data.appointment_Id}}</td>
+                <td class="k200 text-center">{{data.ref_Document_No}}</td>
+                <td class="k100 text-center">{{data.appointment_Date | dateFormat}}</td>
+                
+                <td class="k100 text-center">{{data.documentType_Name}}</td>
+                <td class="k150 text-center">{{data.document_status == -1 ? 'ยกเลิก' : 'จอง'}}</td>
+                <td class="k150 text-center">{{data.confirm_status}}</td>
+                <td class="k150 text-center">{{data.vehicleType_No}}</td>
+                <td class="k200 text-center">{{data.vehicleType_Name}}</td>
+                <td class="k150 text-center">{{data.create_Date | dateFormat}}</td>
+                <td class="k100 text-center">{{data.update_Date | dateFormat}}</td>
+                <td class="k100 text-center">{{data.create_By}}</td>
+                <td class="k100 text-center">{{data.update_By}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+
+
+
+<bk-yard-dock-form on-show="onShow" ng-hide="$vm.isFilter"></bk-yard-dock-form>
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes'
+    delegates='popupReport.delegates'>
+</report-popup>
+<print-popup on-show='itemModels.onShow' config='itemModels.config' invokes='itemModels.invokes'
+    delegates='itemModels.delegates'>
+</print-popup>
+<popup-assign-popup on-show='masterRequirePopup.onShow' config='masterRequirePopup.config'
+    invokes='masterRequirePopup.invokes' delegates='masterRequirePopup.delegates'>
+</popup-assign-popup>

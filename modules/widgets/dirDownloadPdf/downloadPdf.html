@@ -1,0 +1,7 @@
+﻿<button class="btn btn-filter" ng-click="pdfPreview = true">Confirm form</button>
+<modal visible="pdfPreview" backdrop="static">
+    <modal-header title="PDF PREVIEW"></modal-header>
+    <modal-body>
+        <object type="application/pdf" data="{{pdfUrl}}" width="100%" height="500">No Support</object>
+    </modal-body>
+</modal>

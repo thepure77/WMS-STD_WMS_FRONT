@@ -1,0 +1,55 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-5 col-xs-9 padd" style="text-align: right;left: -7%;font-size: 11px">{{ 'TL_START_DATE' | translate }}</div>
+        <div class="col-md-1 col-xs-1 padd"></div>
+        <div class="col-md-5 col-xs-2 padd" style="text-align: left;right: 13%;font-size: 11px">{{ 'TL_END_DATE' | translate }}</div>
+    </form>
+    <div class="">
+        <div class="col-md-3 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.autoSuggestion" api="url.PlanGI"></auto-comple>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="col-md-3 col-xs-6 padd">
+            <div class="input-group">
+                <input type="button" name="datefilter" ng-model="filterModel.date" class="form-control daterange text-center" value="">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-zero">
+            <div class="col-md-3 col-sm-3 col-xs-3 padd">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <span class="kw-icon-button icon-magnify kw-pos-left" aria-hidden="true"></span>
+                    <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <status class="inline" multiple="true" order="true"
+                    ng-model="filterModel.status" checked="row.display" options="row.display for row in status"
+                    change="sortBy(row.display)" ng-hide='header.advanceSearch' style="width: 100%;">
+                </status>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <sorting ng-hide='header.advanceSearch' class="inline" multiple="true"
+                    order="true" ng-model="filterModel.sort" checked="row.display"
+                    options="row.display for row in selectSort" change="sortBy(row.display)" style="width: 100%;">
+                </sorting>
+            </div>
+         
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

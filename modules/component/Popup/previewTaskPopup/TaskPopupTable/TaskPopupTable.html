@@ -1,0 +1,29 @@
+<div class="table-responsive table-overflow">
+    <table class="kw-custom-table table-striped table-fixed">
+        <thead>
+            <tr>
+                <th class="k50 text-center">{{ 'NO' | translate }}</th>
+                <th class="k150 text-center">{{ 'GI_NO' | translate }}</th>
+                <th class="k100 text-center">{{ 'GI_DATE' | translate }}</th>
+                <th class="k100 text-center">{{ 'OWNER' | translate }}</th>
+                <th class="k100 text-center">{{ 'REMARK' | translate }}</th>
+                <th class="k100 text-center">{{ 'STATUS' | translate }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in items" ng-if="items.length != 0">
+                <td class="k50 text-center">
+                    {{$index+1}}
+                </td>
+                <td class="k150 text-center">{{data.goodsIssue_No}}</td>
+                <td class="k100 text-center">{{data.goodsIssue_Date|dateFormate}}</td>
+                <td class="k100 text-center">{{data.owner_Name}}</td>
+                <td class="k100 text-center">{{data.document_Remark}}</td>
+                <td class="k100 text-center">{{data.processStatus_Name}}</td>
+            </tr>
+            <tr ng-if="items.length == 0">
+                <td colspan="11" class="text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

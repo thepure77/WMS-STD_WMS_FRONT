@@ -1,0 +1,100 @@
+<!-- PC -->
+<!-- <div class="col-lg-12 col-md-12 col-xs-12" style="margin-bottom: 1%;">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-zero">
+        <div class="col-md-3 padd">
+            <button ng-click="exportFile.ExportExcel($vm.searchResultModel)" class="btn btn-success">
+                <i class="fa fa-file-excel-o"></i>{{ 'EXECEL' | translate }}
+        </div>
+    </div>
+</div>
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a data-target="#tab1" data-toggle="tab" style="background-color:{{colortab1}};"
+            ng-click="clickTab(1)">{{ 'MatDoc' | translate }}({{$vm.filterModel.countAll}})</a>
+    </li>
+    <li>
+        <a data-target="#tab2" data-toggle="tab" style="background-color:{{colortab2}};"
+        ng-click="clickTab(2)">{{ 'Summary Production' | translate }}({{$vm.filterModel.count2}})</a>
+    </li>
+</ul> -->
+
+<div class="table-responsive table-overflow div-shadow" ng-show=" $vm.isFilter" style="margin-bottom:15px;">
+    <table class="table table-striped fixed-header tableHeight-350">
+        <thead>
+            <tr style="overflow-y: auto;">
+                <th class="k50 text-center">{{ 'ลำดับ' | translate }}</th>
+                <th class="k50 text-center">{{ 'วันที่' | translate }}</th>
+                <th class="k100 text-center">{{ 'รหัสพนักงาน' | translate }}</th>
+                <th class="k100 text-center">{{ 'ชื่อ' | translate }}</th>
+                <th class="k100 text-center">{{ 'นามสกุล' | translate }}</th>
+                <th class="k100 text-center">{{ 'กิจกรรมหลัก' | translate }}</th>
+                <th class="k100 text-center">{{ 'กิจกรรมย่อย' | translate }}</th>
+                <th class="k50 text-center">{{ 'จำนวน Task' | translate }}</th>
+                <th class="k50 text-center">{{ 'เวลารวม' | translate }}</th>
+                <th class="k200 text-center">{{ 'Operations' | translate }}</th>
+                <th class="k200 text-center">{{ 'Ref Document No' | translate }}</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat-start="data in $vm.searchResultModel">
+                <td class="k50 text-center">{{($index + 1) + ($vm.filterModel.perPage * ($vm.filterModel.currentPage - 1))}}</td>
+                <td class="k50 text-center">{{data.create_Date|dateFormate}}</td>
+                <td class="k50 text-center">{{data.user_Id}}</td>
+                <td class="k100 text-center">{{data.first_Name}}</td>
+                <td class="k100 text-center">{{data.last_Name}}</td>
+                <td class="k100 text-center">{{data.menu_Name}}</td>
+                <td class="k100 text-center">{{data.sub_Menu_Name}}</td>
+                <td class="k50 text-center">{{data.count_Task}}</td>
+                <td class="k50 text-center">{{data.sum_Time}}</td>
+                <td class="k200 text-center">{{data.operations}}</td>
+                <td class="k200 text-center">{{data.ref_Document_No}}</td>
+            </tr>
+            <tr ng-show="data.showHistory">
+                <td colspan="13">
+                    
+                </td>
+            </tr>
+            <tr ng-repeat-end="" ng-hide="true">
+
+            </tr>
+            <tr ng-if="$vm.searchResultModel.length == 0">
+                <td colspan="9" class="k1000 text-center">{{ 'NO_DATA' | translate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class=" table-responsive table-overflow "  style="margin-bottom:15px;">
+    <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+        <div class="form-group">
+
+            <div class="btn-group" style="padding-top:0px; padding-left:0px;" ng-show="show.pagination">
+                <button type="button " ng-init="colortab1 = '#ec7229'" style="background-color:{{colortab1}}"
+                    ng-click="changeTableSize(50,1)" class="btn btn-back">
+                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                </button>
+
+                <button type="button" ng-click="changeTableSize(100,2)" style="background-color:{{colortab2}}"
+                    class="btn btn-back">
+                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                </button>
+            </div>
+            <ul ng-show="show.pagination" style="margin:0px;" uib-pagination total-items="$vm.filterModel.totalRow"
+                uib-pagination total-items="$vm.filterModel.totalRow" ng-change='changePage()'
+                items-per-page="$vm.filterModel.perPage" num-pages="$vm.filterModel.num"
+                ng-model="$vm.filterModel.currentPage" max-size="maxSize" class="pull-right"
+                boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+<lineProduction-form on-show="onShow" ng-hide="$vm.isFilter"></lineProduction-form>
+<report-popup on-show='popupReport.onShow' config='popupReport.config' invokes='popupReport.invokes'
+    delegates='popupReport.delegates'>
+</report-popup>

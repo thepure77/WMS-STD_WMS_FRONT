@@ -1,0 +1,309 @@
+<meta http-equiv="Pragma" content="no-cache">
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="col-lg-2 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionOwner" class="form-control" ng-init="actionOwner = '1' ">
+                    <option value="1">{{ 'OWNER_ID' | translate }}</option>
+                    <option value="2">{{ 'OWNER_NAME' | translate }}</option>
+                </select>
+            </div>
+            <div ng-switch="actionOwner" class="col-lg-3">
+                <div class="input-group" ng-switch-when="1">
+                    <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Id" id="filterModel.owner_Name" sourceurl="autoComplete.ownerId"
+                        api="url.BinBalance"></auto-comple>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter()" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="input-group" ng-switch-when="2">
+                    <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Name" id="filterModel.owner_Id" sourceurl="autoComplete.ownerName"
+                        api="url.BinBalance"></auto-comple>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter()" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()">
+                    <span class="fa fa-star-o" aria-hidden="true"></span>{{ 'ADVANCE_SEARCH' | translate }}
+                </button>
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:10px;">
+
+            <div class="col-lg-2 dropdown display-inline" style="margin-left:-15px;">
+                <select ng-model="actionProduct" class="form-control" ng-init="actionProduct = '1' ">
+                    <option value="1">{{ 'PRODUCT_ID' | translate }}</option>
+                    <option value="2">{{ 'PRODUCT_NAME' | translate }}</option>
+                </select>
+            </div>
+            <div ng-switch="actionProduct" class="col-lg-3">
+                <div class="input-group " ng-switch-when="1">
+                    <auto-comple-id ng-model="filterModel.product_Index" ng-change="a()" value="filterModel.product_Id" id="filterModel.product_Name"
+                        sourceurl="autoComplete.sku" api="url.BinBalance"></auto-comple-id>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter()" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="input-group" ng-switch-when="2">
+                    <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Name" id="filterModel.product_Id" sourceurl="autoComplete.product"
+                        api="url.BinBalance"></auto-comple>
+                    <span class="input-group-btn">
+                        <button ng-click="searchFilter()" class="btn btn-filter ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                </div>
+
+                
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-success" ng-click="exportDataByProduct()" style="float: left;background-color: #60b0ff">
+                    <!-- <i class="glyphicon glyphicon-open" aria-hidden="true"></i>  -->
+                    Export by product</button>
+                
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-success" ng-click="exportDataByLocation()" style="float: left;background-color: #60b0ff">
+                    <!-- <i class="glyphicon glyphicon-open" aria-hidden="true"></i>  -->
+                    Export by location</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="col-md-12 col-xs-12" ng-show='header.advanceSearch'>
+
+    <div class="" ng-show='header.advanceSearch'>
+        <div class="col-md-3 col-xs-6 padd">
+        </div>
+    </div>
+
+    <div class="" ng-show='header.advanceSearch'>
+        <div class="col-md-3 col-xs-6 padd">
+        </div>
+    </div>
+
+    <div class="" ng-show='header.advanceSearch'>
+        <div class="col-md-6 p-zero">
+            <div class="col-md-3 padd">
+            </div>
+            <div class="col-md-2 padd">
+            </div>
+            <div class="col-md-2 padd">
+            </div>
+            <div class="col-md-4 padd">
+                <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()">
+                    <i class="fa fa-star-o"></i>{{ 'ADVANCE_SEARCH' | translate }}
+                </button>
+            </div>
+            <div class="col-md-1 col-xs-12 text-center" style="padding: 3px 1px  2px 2px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show='header.advanceSearch'>
+    <div class="col-md-12 kw-mg-tb">
+
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'OWNER' | translate }}</label>
+                </div>
+
+                <div class="col-lg-10 col-md-10 col-sm-10 kw-p-zero">
+                    <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Name" id="filterModel.owner_Id" sourceurl="autoComplete.ownerName"
+                        api="url.BinBalance"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'GR_DATE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <div class="input-group">
+                        <input type="text" class="form-control daterange text-center" ng-model="filterModel.date">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'MFG_DATE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <div class="input-group">
+                        <input type="text" class="form-control daterange text-center" ng-model="filterModel.Mfgdate">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'EXP_DATE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <div class="input-group">
+                        <input type="text" class="form-control daterange text-center" ng-model="filterModel.Expdate">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'PRODUCT_NAME' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.product_Index" value="filterModel.product_Name" id="filterModel.product_Id" sourceurl="autoComplete.product"
+                        api="url.BinBalance"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'PRODUCT_TYPE' | translate }} </label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <!-- <select class='form-control' ng-model='dropdownProductType.model' ng-options="v.productType_Name for v in dropdownProductType">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select> -->
+                    <auto-comple ng-model="filterModel.productType_Index" value="filterModel.productType_Name" id="filterModel.productType_Id" sourceurl="autoComplete.productType"
+                    api="url.BinBalance"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'STATUS' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <!-- <select class='form-control' ng-model='dropdownItemStatus.model' ng-options="v.itemStatus_Name for v in dropdownItemStatus">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select> -->
+                    <auto-comple ng-model="filterModel.itemStatus_Index" value="filterModel.itemStatu_Name" id="filterModel.itemStatu_Id" sourceurl="autoComplete.itemStatu"
+                    api="url.BinBalance"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'ZONE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.zone_Index" value="filterModel.zone_Name" id="filterModel.zone_Id" sourceurl="autoComplete.zone"
+                    api="url.BinBalance"></auto-comple>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'LOCATION' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.location_Index" value="filterModel.location_Name" id="filterModel.location_Id" sourceurl="autoComplete.location"
+                    api="url.BinBalance">
+                </auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'LOT' | translate }} </label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <input type="text" class="form-control" ng-model="filterModel.product_Lot">
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'GR_NO' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.goodsReceive_Index" value="filterModel.goodsReceive_No" sourceurl="autoComplete.GR"
+                        api="url.BinBalance"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'TAG' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.tag_Index" value="filterModel.tag_No" sourceurl="autoComplete.Tag"
+                        api="url.BinBalance"></auto-comple>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 kw-mg-tb hidden-xs">
+                <div class="col-lg-12 col-md-12" style="margin-top:10px;">
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <button class="btn kw-bt-search-GR  btn-md" ng-click="searchFilter()" ng-show='header.advanceSearch'>
+                                <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <button class="btn kw-button-clearSearch  btn-md" ng-click="clearSearch()" ng-show='header.advanceSearch'>
+                                {{ 'CLEAR_SEARCH' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-xs-12 pull-right p-zero visible-xs">
+                <div class="col-xs-12 padd visible-xs">
+                    <button class="btn kw-bt-search-GR  btn-md " ng-click="searchFilter()" ng-show='header.advanceSearch'>
+                        <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                </div>
+                <div class="col-xs-12 padd visible-xs">
+                    <button class="btn kw-button-clearSearch  btn-md" ng-click="clearSearch()" ng-show='header.advanceSearch'>
+                        {{ 'CLEAR_SEARCH' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>

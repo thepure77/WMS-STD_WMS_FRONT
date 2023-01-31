@@ -1,0 +1,102 @@
+<div class="row" ng-show="$vm.isLoading">
+    <div class="div-shadow" style="margin-top:20px;margin-left:15px;margin-right:15px;margin-bottom:15px;">
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-3">
+                    <span>LPN</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-9">
+                    <input type="text" ng-model="filterModel.tag_No" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:15px;">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-xs-3">
+                    <span>Location</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-xs-9">
+                    <input type="text" ng-model="filterModel.locationName" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-shadow" style="margin-top:15px;margin-left:15px;margin-right:15px;">
+            <div class="table-responsive kl-tbl-height table-overflow div-shadow">
+                <table class="table table-striped table-width-100 table-bordeered">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>QTY</th>
+                            <th>UOM</th>
+                            <th>Expire Date</th>
+                            <th>UDF 1</th>
+                            <th>UDF 2</th>
+                            <th>UDF 3</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in $vm.searchResultModel" ng-if="$vm.searchResultModel.length != 0">
+                            <td>{{data.productId}}</td>
+                            <td>{{data.productName}}</td>
+                            <td>{{data.binBalanceQtyBal}}</td>
+                            <td>{{data.productConversionName}}</td>
+                            <td>{{data.expireDate}}</td>
+                            <td>{{data.udf1}}</td>
+                            <td>{{data.udf2}}</td>
+                            <td>{{data.udf3}}</td>
+                        </tr>
+                        <tr ng-if="$vm.searchResultModel.length == 0">
+                            <td colspan="11" class="text-center">No Data</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="align-right">
+            <div style="margin-top:15px;margin-left:15px;margin-right:15px;">
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="col-lg-4 col-md-4 col-xs-4">สินค้า</th>
+                                <th class="col-lg-4 col-md-4 col-xs-4">รวม</th>
+                                <th class="col-lg-4 col-md-4 col-xs-4">หน่วย</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in SumModel" ng-if="SumModel.length != 0">
+                                <td>
+                                    <div class="col-lg-8 col-md-8 col-xs-12" style="margin-top:5px;">
+                                        <input type="text" class="form-control" ng-model="data.productName" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-lg-8 col-md-8 col-xs-12" style="margin-top:10px;">
+                                        <input type="text" class="form-control" ng-model="data.binBalanceQtyBal"
+                                            disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="col-lg-8 col-md-8 col-xs-12" style="margin-top:10px;">
+                                        <input type="text" class="form-control" ng-model="data.productConversionName"
+                                            disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="text-right padding-m">
+                <button ng-click="back()" class="btn btn-filter hidden-xs">Back</button>
+                <button ng-click="back()" class="btn btn-filter btn-block btn-md visible-xs mt-lg">Back</button>
+            </div>
+        </div>
+    </div>

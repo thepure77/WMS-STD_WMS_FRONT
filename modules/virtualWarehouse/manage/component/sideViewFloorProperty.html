@@ -1,0 +1,41 @@
+<div id="side-sidefloor-modal-form" class="modal" tabindex="-1">
+    <div class="modal-dialog" style="overflow: auto; width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="onClose()">&times;</button>
+                <h4 class="blue bigger"> {{popupObj.head}} Property SideView Floor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-8">
+                    <auto-complete api-func="$vm.locationAutoCompleteFunc" selected-item="$vm.dbModel"
+                        selected-value="$vm.selectedLocationName"></auto-complete>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary text-center" ng-click="$vm.Add()"
+                        style="background-color: #008CBA;width: 200px;">Add</button>
+                </div>
+                
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th style="text-align: center;">Location_Index</th>
+                            <th style="text-align: center;">Location_Id</th>                           
+                          </tr>
+                        </thead>
+                        <tbody ng-repeat="o in $vm.location">
+                          <tr>
+                            <td>{{o.location_Index}}</td>
+                            <td>{{o.location_Id}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary text-center" ng-click="$vm.save()"
+                    style="background-color: #008CBA;width: 200px;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

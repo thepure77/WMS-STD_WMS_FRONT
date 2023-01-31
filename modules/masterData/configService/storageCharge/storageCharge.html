@@ -1,0 +1,490 @@
+<div ng-show="onStorage">
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a class="fa fa-caret-down" ng-click="ShowHeader()"></a>
+            </div>
+            <h2 class="panel-title">
+                <div class="form-group">
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <label>{{ 'OWNER_NAME' | translate }}</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                            <input type="text" class="form-control " ng-model="filterModel.owner_Name" disabled />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <label>{{ 'SERVICECHARHE_NAME' | translate }}</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                            <input type="text" class="form-control " ng-model="filterModel.serviceCharge_Name"
+                                disabled /></div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                        <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                            <label>{{ 'CURRENCY' | translate }}</label>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                            <select class='form-control' ng-model='dropdownCurrency.model'
+                                ng-options="v.currency_Name for v in dropdownCurrency">
+                                <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </h2>
+        </header>
+
+        <div class="panel-body" ng-show='header.show'>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'WAREHOUSE' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <auto-comple ng-model="filterModel.warehouse_Index" value="filterModel.warehouse_Id"
+                                    id="filterModel.warehouse_Name" sourceurl="autoComplete.warehouse" api="url.Master">
+                                </auto-comple>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'ROOM' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <auto-comple ng-model="filterModel.room_Index" value="filterModel.room_Id"
+                                    id="filterModel.room_Name" sourceurl="autoComplete.autoRoomWH" api="url.Master">
+                                </auto-comple>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                            <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                                <label>{{ 'LOCATION_AISLE' | translate }}</label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                                <auto-comple ng-model="filterModel.locationAisle_Index"
+                                    value="filterModel.locationLock_Id" id="filterModel.locationLock_Name"
+                                    sourceurl="autoComplete.autoLocationAisle" api="url.Master">
+                                </auto-comple>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-12 kw-p-zero" style="margin-top:24px;">
+                            <button ng-click="searchWRL(filterModel)" class="btn kw-button-search">
+                                <span class="kw-icon-button icon-magnify" aria-hidden="true"></span>
+                                <label class="kw-pos">{{ 'SEARCH' | translate }}</label></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group"> -->
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-lg-5 col-md-5 col-sm-12">
+                            <div class="table-responsive table-overflow div-shadow" style="margin-top:15px;">
+                                <table class="table table-striped fixed-header tableHeight-350">
+                                    <thead>
+                                        <tr>
+                                            <th class="k150 text-center" ng-click="chkAll()">
+                                                <div>
+                                                    {{ 'SELECT_ALL' | translate }}
+                                                </div>
+                                                <div>
+                                                    <input ng-model="checkAll" type="checkbox" id="allCheck_1"
+                                                        class="ig-control__cbx" checked />
+                                                    <label for="allCheck_1"></label>
+                                                </div>
+                                            </th>
+                                            <th class="k300">{{ 'LOCATION' | translate }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in listServiceWRLSearch">
+                                            <td class="k150 text-center">
+                                                <div class="ig-control">
+                                                    <input ng-model="data.selected" type="checkbox"
+                                                        id="checkxx_{{$index}}" class="ig-control__cbx" checked />
+                                                    <label for="checkxx_{{$index}}"></label>
+                                                </div>
+                                            </td>
+                                            <td class="k300">{{data.location_Name}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-12" style="padding-left:15px;padding-right:15px;margin-top:10px">
+                                    <div class="form-group">
+                                        <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                                            <button type="button " ng-init="colortab1 = '#ec7229'"
+                                                style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)"
+                                                class="btn btn-back">
+                                                <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                                            </button>
+
+                                            <button type="button" ng-click="changeTableSize(100,2)"
+                                                style="background-color:{{colortab2}}" class="btn btn-back">
+                                                <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                                            </button>
+                                        </div>
+                                        <ul style="margin:0px;" uib-pagination total-items="filterModel.totalRow"
+                                            uib-pagination total-items="filterModel.totalRow" ng-change='changePage()'
+                                            items-per-page="filterModel.perPage" num-pages="filterModel.num"
+                                            ng-model="filterModel.currentPage" max-size="maxSize" class="pull-right"
+                                            boundary-link-numbers="true" rotate="false"></ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2" style="margin-top:150px;">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <button class="btn kw-button-clearSearch  btn-md" ng-click="selectAllTo()">
+                                    {{ 'SELECT_ALL' | translate }} >></button>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:15px;">
+                                <button class="btn kw-button-clearSearch  btn-md" ng-click="selectTo()">
+                                    >></button>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:15px;">
+                                <button class="btn kw-button-clearSearch  btn-md" ng-click="selectFrom()">
+                                    << </button>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:15px;">
+                                <button class="btn kw-button-clearSearch  btn-md" ng-click="selectAllFrom()">
+                                    <<    {{ 'SELECT_ALL' | translate }}   </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-md-5 col-sm-12">
+                            <div class="table-responsive table-overflow div-shadow" style="margin-top:15px;">
+                                <table class="table table-striped fixed-header tableHeight-350">
+                                    <thead>
+                                        <tr>
+                                            <th class="k150 text-center" ng-click="chkAll2()">
+                                                <div>
+                                                    {{ 'SELECT_ALL' | translate }}
+                                                </div>
+                                                <div>
+                                                    <input ng-model="checkAll2" type="checkbox" id="allCheck_2"
+                                                        class="ig-control__cbx" checked />
+                                                    <label for="allCheck_2"></label>
+                                                </div>
+                                            </th>
+                                            <th class="k300">{{ 'LOCATION' | translate }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="data in listServiceWRL">
+                                            <td class="k150 text-center">
+                                                <div class="ig-control">
+                                                    <input ng-model="data.selected" type="checkbox"
+                                                        id="check2_{{$index}}" class="ig-control__cbx" checked />
+                                                    <label for="check2_{{$index}}"></label>
+                                                </div>
+                                            </td>
+                                            <td class="k300">{{data.location_Name}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- </div> -->
+
+
+            </div>
+
+            <!-- <div class="form-group">
+                    <div class="col-lg-12" style="padding-left:15px;padding-right:15px;margin-top:10px">
+                        <div class="form-group">
+                            <div class="btn-group" style="padding-top:0px; padding-left:0px;">
+                                <button type="button " ng-init="colortab1 = '#ec7229'"
+                                    style="background-color:{{colortab1}}" ng-click="changeTableSize(50,1)"
+                                    class="btn btn-back">
+                                    <span class="frontColor-white" style="color:{{fronttab1}}">50</span>
+                                </button>
+
+                                <button type="button" ng-click="changeTableSize(100,2)"
+                                    style="background-color:{{colortab2}}" class="btn btn-back">
+                                    <span class="frontColor-primary" style="color:{{fronttab2}}">100</span>
+                                </button>
+                            </div>
+                            <ul style="margin:0px;" uib-pagination total-items="filterModel.totalRow" uib-pagination
+                                total-items="filterModel.totalRow" ng-change='changePage()'
+                                items-per-page="filterModel.perPage" num-pages="filterModel.num"
+                                ng-model="filterModel.currentPage" max-size="maxSize" class="pull-right"
+                                boundary-link-numbers="true" rotate="false"></ul>
+                        </div>
+
+                    </div>
+                </div> -->
+        </div>
+</div>
+</section>
+
+<section class="panel"  ng-show="onStorage">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <a class="fa fa-caret-down" ng-click="ShowItem()"></a>
+        </div>
+        <h2 class="panel-title">
+            {{ 'อัตราค่าบริการ' | translate }}
+        </h2>
+    </header>
+
+    <div class="panel-body" ng-show='item.show'>
+        <div class="row">
+
+            <div class="form-group">
+
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <h4>{{ 'อัตราส่วนต่างนอกเหนือจากที่ระบุพื้นที่จัดเก็บ' | translate }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                    <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                        <label>{{ 'อัตราส่วนต่างตามปริมาณสินค้า' | translate }}</label>
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                        <label class="ios7-switch ios7-switch-md">
+                            <input type="checkbox" ng-model="rate1.selected" ng-click="rate1Hide()">
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group" ng-show="rate1.chk">
+
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <h4>{{ 'อัตราค่าบริการตามช่วงปริมาณสินค้า' | translate }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="rate1.chk">
+                <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                            <span>{{ 'QTY' | translate }}</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="padding-left:0px;">
+                            <input id="qty" type="number" class="form-control" ng-model="storageModel.qtyStart" />
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-xs-12" style="padding-right:0px;" ng-show="end.chk">
+                            <input type="number" class="form-control" ng-model="storageModel.qtyEnd" />
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12" ng-show="rate1.chk">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span>{{ 'end' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <label class="ios7-switch ios7-switch-md">
+                                <input type="checkbox" ng-model="end.selected" ng-click="hide()">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                    <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero" style="margin-top:20px;">
+                            <select id="unitCharge_Name" ng-model="storageModel.unitCharge_Name" class="form-control">
+                                <option value="QTY"> QTY </option>
+                                <option value="Weight"> Weight </option>
+                                <option value="Vol"> Vol </option>
+                                <option value="RT"> RT </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero" style="margin-top:20px;">
+                        <span> ขึ้นไป </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                    <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                        <span>{{ 'rate' | translate }}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <input id="rate" type="number" class="form-control" ng-model="storageModel.rate" />
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero" style="margin-top:20px;">
+                        <span> {{filterModel.currency_Name}} /วัน</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                    <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                        <span>{{ 'minimumrate' | translate }}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <input id="minimumrate" type="number" class="form-control"
+                            ng-model="storageModel.minimumrate" />
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero" style="margin-top:20px;">
+                        <span> {{filterModel.currency_Name}} </span>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="form-group" ng-show="rate1.chk">
+
+                    <div class="col-lg-3 col-md-3 col-xs-12  kw-p-zero">
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <span>
+                                <span>{{ 'end' | translate }}</span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-xs-12  kw-p-zero">
+                            <label class="ios7-switch ios7-switch-md">
+                                <input type="checkbox" ng-model="end.selected" ng-click="hide()">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+
+            <div class="form-group" ng-show="rate1.chk">
+
+                <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                    <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                        <span>{{ 'storageDay' | translate }}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <input id="storageDay" type="number" class="form-control" ng-model="storageModel.storageDay" />
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero" style="margin-top:20px;">
+                        <span> วัน</span>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                    <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                        <span>{{ 'Free Day' | translate }}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero">
+                        <input id="freeDay" type="number" class="form-control" ng-model="storageModel.freeDay" />
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero" style="margin-top:20px;">
+                        <span> วัน</span>
+                    </div>
+                </div>
+
+
+                <!-- <div class="col-lg-3 col-md-3 col-xs-12 kw-p-zero">
+                        <div class="col-lg-8 col-md-8 col-xs-12 kw-p-zero">
+                            <span></span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 kw-p-zero" style="margin-top:20px;">
+                            <button type="button" class="modal-with-form btn btn-default"
+                                ng-click="addStorage(storageModel)" style="float: left;">
+                                {{ 'ADD' | translate }}
+                            </button>
+                        </div>
+                    </div> -->
+
+            </div>
+
+            <div class="form-group" ng-show="rate1.chk">
+                <div class="col-lg-11 col-md-11 col-sm-12 kw-p-zero"></div>
+                <div class="col-lg-1 col-md-1 col-sm-12 kw-p-zero">
+                    <button type="button" class="modal-with-form btn btn-default" ng-click="addStorage(storageModel)"
+                        style="float: right;">
+                        {{ 'ADD' | translate }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="rate1.chk">
+
+                <div class="table-responsive table-overflow div-shadow" style="margin-top:15px;">
+                    <table class="table table-striped fixed-header tableHeight-350">
+                        <thead>
+                            <tr>
+                                <th class="k100">{{ 'ACTION' | translate }}</th>
+                                <th class="k200">{{ 'จำนวน(เริ่ม)' | translate }}</th>
+                                <th class="k200">{{ 'จำนวน(ถึง)' | translate }}</th>
+                                <th class="k200">{{ 'หน่วย' | translate }}</th>
+                                <th class="k200">{{ 'ราคา/วัน' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in filterModel.listStorage">
+                                <td class="k100">
+                                    <div>
+                                        <a class="btn btn-danger"
+                                            ng-click="deleteItem(filterModel.listStorage, $index)">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="k200">{{data.qtyStart}}</td>
+                                <td class="k200">{{data.qtyEnd}}</td>
+                                <td class="k200">{{data.unitCharge_Name}}</td>
+                                <td class="k200">{{data.rate}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="col-lg-12 col-md-12 col-xs-12"  ng-show="onStorage">
+    <ul class="pager">
+        <div class="col-lg-12" style="padding-left:5px;padding-right:5px;">
+            <div class="form-group">
+
+                <button type="button" class="btn btn-danger" ng-click="back()" style="float: left;">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>{{ 'BACK' | translate }}
+                </button>
+
+                <button type="button" class="btn btn-blue previous" ng-click="saveStorage()"
+                    style="float: right;background-color: #60b0ff">
+                    {{ 'SAVE' | translate }}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </ul>
+</div>

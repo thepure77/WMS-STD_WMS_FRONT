@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="assets/kasco-wing/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/kasco-wing/javascripts/particles/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div class="logintop col-lg-12 col-md-12 col-sm-12"
+        style="padding-left: 0px !important; padding-right: 0px !important;">
+        <a href="javascript:void(0)" class="logo">
+            <img src="assets/kasco-wing/images/logo_tms.png" alt="JSOFT Admin" style="width: 80px; margin-left: 2em;" />
+        </a>
+        <div class="row">
+            <div class="kasco-wing-login-header" style="width: 100%;">
+                <div class="col-md-5 col-xs-5 col-sm-5 page-header-left" style="left: auto;">
+                    <div class="left-wrapper">
+                        <span>KASCO WING SERIES</span>
+                    </div>
+                </div>
+                <div class="col-md-7 col-xs-7 col-sm-7 page-header-right">
+                    <div class="right-wrapper">
+                        <span>www.kascoit.net</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boxlogin">
+        <div class="boxunderline">
+            <span>Welcome</span>
+            <h1>LOGIN</h1>
+            <h1>KASCO TMS</h1>
+        </div>
+        <div style="padding-top: 60px;">
+            <div>
+                <input ng-model="loginData.User" placeholder="Login Name" type="text" value="" />
+            </div>
+            <div class="overlap-text" style="padding: 25px 0;">
+                <input ng-model="loginData.Password" type="password" placeholder="Password" class="input-2"
+                    pc-enter="login(loginData.User,loginData.Password)" />
+                <a href="#">Forgot Password?</a>
+            </div>
+            <!-- <div >
+                <input placeholder="Password" type="password" value="" />
+            </div> -->
+            <div>
+                <button class="btn btn-block" style="background-color: #990000;"
+                    ng-click="login(loginData.User,loginData.Password)"><span style="float: right;color: white;">Sign in</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="loginbottom">
+        <div class="col-md-4 box-bottom" style="text-align: center;">
+            <div>
+                <p style="font-size: 11px;">Copyright &copy; Kasco It Co.,Ltd</p>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <div class="col-md-1 col-xs-1 box-bottom">
+                <div>
+                    <p class="text-number">01</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-1 box-bottom box-text">
+                <div>
+                    <p>STANDARD</p>
+                    <p>EXPRESS</p>
+                </div>
+            </div>
+            <div class="col-md-1 col-xs-1 box-bottom">
+                <div>
+                    <p class="text-number">02</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-1 box-bottom box-text">
+                <div>
+                    <p>CROSS DOCKING</p>
+                    <p>DISTRIBUTING</p>
+                    <p>CENTER</p>
+                </div>
+            </div>
+            <div class="col-md-1 col-xs-1 box-bottom">
+                <div>
+                    <p class="text-number">03</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-1 box-bottom box-text">
+                <div>
+                    <p>TRANSIT</p>
+                    <p>CROSS BORDER</p>
+                    <p>LOGISTICS</p>
+                </div>
+            </div>
+            <div class="col-md-1 col-xs-1 box-bottom">
+                <div>
+                    <p class="text-number">04</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-1 box-bottom box-text">
+                <div>
+                    <p>INTERSTATE</p>
+                    <p>MUTIMODEL</p>
+                    <p>TRANSPORT</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scripts -->
+
+    <script src="assets/kasco-wing/styles/js/jquery.js"></script>
+    <script src="assets/kasco-wing/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/kasco-wing/javascripts/particles/js/particles.js"></script>
+    <script src="assets/kasco-wing/javascripts/particles/js/app.js"></script>
+
+</body>
+
+</html>

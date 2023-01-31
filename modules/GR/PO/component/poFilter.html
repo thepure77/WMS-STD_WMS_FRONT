@@ -1,0 +1,263 @@
+<meta http-equiv="Pragma" content="no-cache">
+
+<div class="col-md-12" style="margin-bottom: 1%;" ng-hide='header.advanceSearch'>
+    <form class="form-horizontal form-bordered" method="get">
+        <div class="col-md-12 col-xs-12 padd">
+            <div class="col-md-2 col-xs-6 padd">{{ 'PO_NO' | translate }} :</div>
+            <div class="col-md-2 col-xs-6 padd">{{ 'OWNER_ID' | translate }} :</div>
+            <div class="col-md-2 col-xs-6 padd text-center" style="font-size: 11px">{{ 'D_START' | translate }} -
+                {{ 'D_END' | translate }}</div>
+            <div class="col-md-6 col-xs-6 padd"></div>
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.name" value="filterModel.key" sourceurl="autoComplete.autoPoV2"
+                api="url.PO"></auto-comple>
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Id" id="filterModel.owner_Name"
+                value1="filterModel.ownerDocumentRef_No1" value2="filterModel.ownerDocumentRef_No2"
+                value3="filterModel.ownerDocumentRef_No3" sourceurl="autoComplete.owner" api="url.PO">
+            </auto-comple>
+        </div>
+        <div class="col-md-2 col-xs-6 padd">
+            <div class="input-group">
+                <input type="button" name="datefilter" ng-model="filterModel.date"
+                    class="form-control daterange text-center">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- <div class=""> -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-zero">
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <button ng-click="filterSearch(filterModel)" class="btn kw-button-search">
+                    <i class="fa fa-search"></i>{{ 'SEARCH' | translate }}
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <status class="inline hidden-sm hidden-xs" multiple="true" order="true" ng-model="filterModel.status"
+                    checked="row.display" options="row.display for row in status" change="sortBy(row.display)"
+                    ng-hide='header.advanceSearch' style="width: 100%;">
+                </status>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 padd">
+                <sorting ng-hide='header.advanceSearch' class="inline hidden-sm hidden-xs" multiple="true" order="true"
+                    ng-model="filterModel.sort" checked="row.display" options="row.display for row in selectSort"
+                    change="sortBy(row.display)" style="width: 100%;">
+                </sorting>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-3 padd">
+                <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()">
+                    <i class="fa fa-star-o"></i>{{ 'ADVANCE_SEARCH' | translate }}
+                </button>
+            </div>
+            <!-- <div class="col-md-2 col-xs-2 padd">
+                    <button class="btn btn-success" type="button" ng-click="import()">
+                        {{ 'IMPORTFILE' | translate }}
+                    </button>
+                </div> -->
+            <div class="col-md-2 col-xs-2 padd">
+            </div>
+            <div class="col-md-1 col-xs-1 padd">
+                <button class="kw-icon-Plus" ng-click="$vm.triggerCreate()">
+                    <i class="kw-icon-button icon-add_24px_outlined " aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <!-- </div> -->
+    </form>
+</div>
+
+<div class="col-md-12 col-xs-12" ng-show='header.advanceSearch'>
+
+    <div class="" ng-show='header.advanceSearch'>
+        <div class="col-md-3 col-xs-6 padd">
+        </div>
+    </div>
+
+    <div class="" ng-show='header.advanceSearch'>
+        <div class="col-md-3 col-xs-6 padd">
+        </div>
+    </div>
+
+    <div class="" ng-show='header.advanceSearch'>
+        <div class="col-md-6 p-zero">
+            <div class="col-md-3 padd">
+            </div>
+            <div class="col-md-2 padd">
+            </div>
+            <div class="col-md-2 padd">
+            </div>
+            <div class="col-md-4 padd">
+                <button class="btn kw-button-advanceSearch" type="button" ng-click="hide()">
+                    <i class="fa fa-star-o"></i>{{ 'ADVANCE_SEARCH' | translate }}
+                </button>
+            </div>
+            <div class="col-md-1 col-xs-12 text-center" style="padding: 3px 1px  2px 2px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show='header.advanceSearch'>
+    <div class="col-md-12 kw-mg-tb">
+        <div class="form-group">
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'PO_NO' | translate }}</label>
+                </div>
+
+                <div class="col-lg-10 col-md-10 col-sm-10 kw-p-zero">
+                    <auto-comple ng-model="filterModel.purchaseOrder_Index" value="filterModel.purchaseOrder_No"
+                        sourceurl="autoComplete.purchaseOrder_No" api="url.PO"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-12 col-md-12 col-xs-12 kw-p-zero">
+                    <label>{{ 'PO_DATE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <div class="input-group">
+                        <input type="text" name="datefilter" class="form-control daterange text-center"
+                            ng-model="filterModel.date">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'USER' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.User_Name" value="filterModel.create_By"
+                        sourceurl="autoComplete.user" api="url.PO"></auto-comple>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'DOCUMENT_TYPE' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <select class='form-control' ng-model='dropdownDocumentType.model'
+                        ng-options="v.documentType_Name for v in dropdownDocumentType">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'STATUS' | translate }} </label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <select class='form-control' ng-model='dropdownStatus.model'
+                        ng-options="v.processStatus_Name for v in dropdownStatus">
+                        <option value="">{{ 'PLEASE_SELECTED' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'OWNER' | translate }}</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple ng-model="filterModel.owner_Index" value="filterModel.owner_Name"
+                        id="filterModel.owner_Id" sourceurl="autoComplete.ownerName" api="url.PO"></auto-comple>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                <div class="col-lg-10 col-md-10 col-xs-12 kw-p-zero">
+                    <label>{{ 'REF' | translate }} DN</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10  kw-p-zero">
+                    <auto-comple value="filterModel.documentRef_No1" sourceurl="autoComplete.documentRef"
+                        api="url.PO"></auto-comple>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 kw-mg-tb hidden-xs">
+                <div class="col-lg-12 col-md-12" style="margin-top:10px;">
+
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 kw-p-zero">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <button class="btn kw-bt-search-GR  btn-md" ng-click="filterSearch()"
+                                ng-show='header.advanceSearch'>
+                                <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <button class="btn kw-button-clearSearch  btn-md" ng-click="clearSearch()"
+                                ng-show='header.advanceSearch'>
+                                {{ 'CLEAR_SEARCH' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-xs-12 pull-right p-zero visible-xs">
+                <div class="col-xs-12 padd visible-xs">
+                    <button class="btn kw-bt-search-GR  btn-md " ng-click="filterSearch()"
+                        ng-show='header.advanceSearch'>
+                        <i class="fa fa-search"></i> {{ 'SEARCH' | translate }}</button>
+                </div>
+                <div class="col-xs-12 padd visible-xs">
+                    <button class="btn kw-button-clearSearch  btn-md" ng-click="clearSearch()"
+                        ng-show='header.advanceSearch'>
+                        {{ 'CLEAR_SEARCH' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+    });
+</script>
+
+<script>
+    $(function () {
+        $('.daterange').daterangepicker();
+
+        $('input[name="datefilter"] , input[name="datefilterAdv"]').daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
+            }
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+        });
+
+        $('input[name="datefilter"], input[name="datefilterAdv"]').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+    });
+</script>

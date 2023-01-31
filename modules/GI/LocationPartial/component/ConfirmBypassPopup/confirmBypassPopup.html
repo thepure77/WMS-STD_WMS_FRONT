@@ -1,0 +1,59 @@
+<div id="modal-form" class="modal" tabindex="-1" dp-modal on-show="onShow">
+    <div class="modal-dialog" style="overflow:auto;width:96%;">
+        <div class="modal-content">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a class="fa fa-times" data-dismiss="modal" ng-click="Close(filterModel)"></a>
+                    </div>
+                    <h2 class="panel-title">{{ 'Bypass Partial' | translate }}</h2>
+                </header>
+            </section>
+            <div class="modal-body">
+                <div ng-repeat="data in filterModel">
+                    <div class="form-group">
+                        <div class="col-lg-3 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'Product Id' | translate }}</span>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'Product Name' | translate }}</span>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'From' | translate }}</span>
+                        </div>
+                        <div class="col-lg-3 col-md-2 col-xs-6 kw-p-zero">
+                            <span>{{ 'To' | translate }}</span>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-12 col-xs-5 padd">
+                            <input type="text" rows="2" cols="50" class="form-control" ng-model="data.product_Id"
+                                disabled></input>
+                            <div class="col-lg-1 col-md-4 col-xs-1 kw-p-zero"></div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-xs-5 padd">
+                            <input type="text" rows="2" cols="50" class="form-control" ng-model="data.product_Name"
+                                disabled></input>
+                            <div class="col-lg-1 col-md-4 col-xs-1 kw-p-zero"></div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-xs-5 padd">
+                            <input type="text" rows="2" cols="50" class="form-control" ng-model="data.location_ID_X"
+                                disabled></input>
+                            <div class="col-lg-1 col-md-4 col-xs-1 kw-p-zero"></div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-xs-5 padd">
+                            <input type="text" rows="2" cols="50" class="form-control"
+                                ng-model="data.location_Name_To" disabled></input>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                    ng-click="addsItem(filterModel)">{{ 'ADD' | translate }}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

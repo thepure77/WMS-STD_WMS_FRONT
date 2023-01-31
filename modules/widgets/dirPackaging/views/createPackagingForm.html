@@ -1,0 +1,38 @@
+﻿<div id="page-content-wrapper">
+    <h3>{{ 'PACKAGING' | translate }}</h3>
+    <div class="div-shadow" style="margin-top:10px; padding-bottom:15px;">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4">{{ 'ITEM' | translate }}:</span>
+                <div class="col-md-8">
+                    <div class="col-md-12 input-group" style="padding:0!important;">
+                        <input type="text" class="form-control" ng-model="packagingForm.item">
+                        <span class="input-group-btn">
+                            <button ng-click='popupPackging.onClick()' class="btn btn-filter" style="padding: 8px 12px;" type="button">
+                                <!-- <button ng-click='showProductList()' class="btn btn-filter" style="padding: 8px 12px;" type="button"> -->
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top:10px;">
+                <span class="col-md-4">{{ 'QUATITY' | translate }}:</span>
+                <div class="col-md-8" style="">
+                    <div class="col-md-12" style="padding:0!important;">
+                        <input type="number" class="form-control" ng-model="packagingForm.qty" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pull-right">
+        <button ng-click='add()' class="ks-btn primary">{{ 'CREATE' | translate }}</button>
+        <button ng-click='back()' class="ks-btn red">{{ 'CANCEL' | translate }}</button>
+    </div>
+</div>
+<popup-packging on-show='popupPackging.onShow' config='popupPackging.config' invokes='popupPackging.invokes' delegates='popupPackging.delegates'>
+    </popup-packging>

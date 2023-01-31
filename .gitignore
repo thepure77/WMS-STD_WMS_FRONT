@@ -1,0 +1,5 @@
+# Kasco IT AngularJS Package .gitignore
+
+node_modules/
+.vscode
+dist/
