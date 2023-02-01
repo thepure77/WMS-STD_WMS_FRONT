@@ -29,8 +29,8 @@ body {
 }
 
 .kw-icon-Plus {
-    background-color: #990000;
-    border-color: #990000;
+    background-color: #97bee7;
+    border-color: #97bee7;
     border-radius: 25px;
     border-width: inherit;
     width: 40px;
@@ -100,7 +100,7 @@ body {
 }
 
 .kw-button-advanceSearch {
-    background-color: #990000 !important;
+    background-color: #97bee7 !important;
     width: 100%
 }
 
@@ -516,7 +516,7 @@ button.kw-icon-Plus i {
 }
 
 .modal-header {
-    background-color: #990000;
+    background-color: #97bee7;
     color: #ffffff;
 }
 
@@ -530,7 +530,7 @@ button.kw-icon-Plus i {
 .navigationLabel {
     font-size: 16px;
     line-height: 47.6px;
-    color: #FFFFFF;
+    color: #0077f6;
     float: left;
 }
 
@@ -652,7 +652,7 @@ input:checked+.sliderNew:after {
 .kw-size-icon {
     font-size: 10px !important;
     cursor: pointer;
-    color: #FFF;
+    color: rgb(0, 0, 0);
     /* padding: 0 3px 0 21.68px; */
     padding: 0 3px 0 10.68px;
 }
