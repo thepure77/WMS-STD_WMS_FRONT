@@ -17,7 +17,7 @@
 </g>
 <g id="block" display="none">
 	<rect display="inline" fill="#BBD988" stroke="#CCCBCB" stroke-miterlimit="10" width="22" height="20"/>
-	<rect display="inline" fill="#990000" stroke="#CCCBCB" stroke-miterlimit="10" width="22" height="20"/>
+	<rect display="inline" fill="#97bee7" stroke="#CCCBCB" stroke-miterlimit="10" width="22" height="20"/>
 	<path display="inline" fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.77,10.27l2.184-2.182
 		c0.143-0.145,0.143-0.377,0-0.521c-0.145-0.145-0.377-0.145-0.521,0L11.25,9.75L9.208,7.709c-0.145-0.145-0.379-0.145-0.522,0
 		c-0.144,0.143-0.144,0.377,0,0.52l2.043,2.041l-2.183,2.181c-0.145,0.145-0.145,0.377,0,0.521c0.071,0.071,0.166,0.106,0.262,0.106

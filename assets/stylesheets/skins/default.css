@@ -473,13 +473,13 @@ html .pagination > li.active a:focus,
 html.dark .pagination > li.active a:focus,
 html .pagination > li.active span:focus,
 html.dark .pagination > li.active span:focus {
-	background-color: #990000;
-	border-color: #990000;
+	background-color: #97bee7;
+	border-color: #97bee7;
 }
 
 html .pagination > li.active a,
 html.dark .pagination > li.active a {
-	background-color: #990000;
+	background-color: #97bee7;
 }
 /* Fullcalendar */
 .fc .fc-widget-header {

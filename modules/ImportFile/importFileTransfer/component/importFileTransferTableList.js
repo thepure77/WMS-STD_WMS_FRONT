@@ -227,17 +227,17 @@ app.component('importFileTransferTableList', {
             $scope.colortable1 = "#999999";
             $scope.colortable2 = "#e5e5e5";
 
-            $scope.colortab1 = "#990000";
+            $scope.colortab1 = "#97bee7";
             $scope.colortab2 = "#FFFFFF";
 
             $scope.fronttab1 = "#FFFFFF";
-            $scope.fronttab2 = "#990000";
+            $scope.fronttab2 = "#97bee7";
 
-            $scope.colortab3 = "#990000";
+            $scope.colortab3 = "#97bee7";
             $scope.colortab4 = "#FFFFFF";
 
             $scope.fronttab3 = "#FFFFFF";
-            $scope.fronttab4 = "#990000";
+            $scope.fronttab4 = "#97bee7";
         };
         init();
 
@@ -361,18 +361,18 @@ app.component('importFileTransferTableList', {
 
         $scope.changeTableSize = function(qty,tab){
             if (tab == 1) {
-                $scope.colortab1 = "#990000";
+                $scope.colortab1 = "#97bee7";
                 $scope.colortab2 = "#FFFFFF";
 
                 $scope.fronttab1 = "#FFFFFF";
-                $scope.fronttab2 = "#990000";
+                $scope.fronttab2 = "#97bee7";
                 $vm.filterModel.perPage = qty;
                 $vm.filterModel.currentPage = 1;
             } else if (tab == 2) {
                 $scope.colortab1 = "#FFFFFF";
-                $scope.colortab2 = "#990000";
+                $scope.colortab2 = "#97bee7";
 
-                $scope.fronttab1 = "#990000";
+                $scope.fronttab1 = "#97bee7";
                 $scope.fronttab2 = "#FFFFFF";
                 $vm.filterModel.perPage = qty;
                 $vm.filterModel.currentPage = 1;
@@ -388,18 +388,18 @@ app.component('importFileTransferTableList', {
 
         $scope.changeTableSize2 = function(qty,tab){
             if (tab == 1) {
-                $scope.colortab3 = "#990000";
+                $scope.colortab3 = "#97bee7";
                 $scope.colortab4 = "#FFFFFF";
 
                 $scope.fronttab3 = "#FFFFFF";
-                $scope.fronttab4 = "#990000";
+                $scope.fronttab4 = "#97bee7";
                 $vm.filterModel.perPage2 = qty;
                 $vm.filterModel.currentPage2 = 1;
             } else if (tab == 2) {
                 $scope.colortab3 = "#FFFFFF";
-                $scope.colortab4 = "#990000";
+                $scope.colortab4 = "#97bee7";
 
-                $scope.fronttab3 = "#990000";
+                $scope.fronttab3 = "#97bee7";
                 $scope.fronttab4 = "#FFFFFF";
                 $vm.filterModel.perPage2 = qty;
                 $vm.filterModel.currentPage2 = 1;
