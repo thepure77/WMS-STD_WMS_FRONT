@@ -51,45 +51,6 @@
                 $scope.filterModel = {};
             }
 
-            $scope.confirmPrinter = function () {
-                if ($scope.dropdownPrinter.model == undefined) {
-                    dpMessageBox.alert({
-                        ok: 'Close',
-                        title: 'แจ้งเตือน',
-                        message: "กรุณาเลือก Printer"
-                    })
-                } else {
-                    $scope.isConfirmPrinter = true;
-                    $window.localStorage['isPrinter'] = JSON.stringify($scope.dropdownPrinter.model);
-                    dpMessageBox.alert({
-                        ok: 'Close',
-                        title: 'แจ้งเตือน',
-                        message: "Login Printer"
-                    })
-                }
-
-            }
-
-            $scope.canclePrinter = function () {
-                if ($window.localStorage['isPrinter'] == undefined) {
-                    dpMessageBox.alert({
-                        ok: 'Close',
-                        title: 'แจ้งเตือน',
-                        message: "Cancle Error"
-                    })
-                } else {
-                    $scope.isConfirmPrinter = false;
-                    $scope.dropdownPrinter.model = undefined
-                    $window.localStorage['isPrinter'] = JSON.stringify(undefined);
-                    dpMessageBox.alert({
-                        ok: 'Close',
-                        title: 'แจ้งเตือน',
-                        message: "Cancle Printer"
-                    })
-                }
-
-            }
-
             // ----------------------------------------------------
             // This local function
             $vm.setDateFormate = function (v) {
@@ -99,12 +60,6 @@
                     return "-";
                 }
             }
-
-            $scope.dropdownPrinter = function () {
-                viewModel.dropdown_printer().then(function (res) {
-                    $scope.dropdownPrinter = res.data;
-                });
-            };
 
             function getToday() {
                 var today = new Date();
@@ -119,28 +74,8 @@
                 return yyyy.toString() + mm.toString() + dd.toString();
             }
 
-            $scope.$watch("dropdownPrinter", function () {
-                debugger
-                if ($window.localStorage['isPrinter'] != undefined) {
-                    var printer = $scope.dropdownPrinter
-                    const resultprinter = printer.filter((printer) => {
-                        return printer.printer_Index == $scope.printer.printer_Index;
-                    })
-                    $scope.dropdownPrinter.model = resultprinter[0]
-                }
-            });
-
             this.$onInit = function () {
                 $scope.filterModel = {};
-                $scope.dropdownPrinter();
-                $scope.printer = {};
-                debugger
-                if ($window.localStorage['isPrinter'] == undefined) {
-                    $scope.isConfirmPrinter = false;
-                } else {
-                    $scope.printer = angular.fromJson($window.localStorage['isPrinter'])
-                    $scope.isConfirmPrinter = true;
-                }
                 $scope.userName = localStorageService.get('userTokenStorage');
             };
 

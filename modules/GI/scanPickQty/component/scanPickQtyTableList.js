@@ -30,7 +30,6 @@ app.component('scanPickQtyTableList', {
         };
 
         $scope.accepted = function () {
-            debugger
             let data = $vm.searchResultModel.find(c => c.isUse);
             if (!data) {
                 return dpMessageBox.alert(
@@ -38,16 +37,6 @@ app.component('scanPickQtyTableList', {
                         ok: 'Close',
                         title: 'Error',
                         message: "กรุณา เลือก Task"
-                    }
-                )
-            }
-            var xx = $window.localStorage['isPrinter']
-            if ($window.localStorage['isPrinter'] == 'undefined') {
-                return dpMessageBox.alert(
-                    {
-                        ok: 'Close',
-                        title: 'Error',
-                        message: "กรุณา เลือก Printer"
                     }
                 )
             }

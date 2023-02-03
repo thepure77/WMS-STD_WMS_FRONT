@@ -24,8 +24,8 @@
                 Update_Round: function (model) {
                     var urlRequest = this.urlGI + "/Update_Round";
 
-                    var resultModel = logsRequest(model.operations,urlRequest,model);
-                    clientService.post(this.urlLogsRequest, resultModel);
+                    // var resultModel = logsRequest(model.operations,urlRequest,model);
+                    // clientService.post(this.urlLogsRequest, resultModel);
 
                     return clientService.post(urlRequest, model);
                 },

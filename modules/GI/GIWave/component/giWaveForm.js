@@ -923,7 +923,9 @@
                     pageLoading.show();
                     $scope.mess = 'Processing';
                     $scope.filterModel.create_By = localStorageService.get('userTokenStorage');
+                    debugger
                     viewModel.RunWaveByRound($scope.filterModel).then(function (res) {
+                        debugger
                         pageLoading.hide()
                         $scope.mess = 'Done';
                         $scope.filterSearch();
