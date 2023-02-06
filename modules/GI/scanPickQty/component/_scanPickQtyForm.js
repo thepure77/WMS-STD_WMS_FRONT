@@ -13,7 +13,7 @@
             triggerCreate: '=?',
             isFilter: '=?',
         },
-        controller: function ($scope, $q, $filter, $http, $location, $anchorScroll, /*ngAuthSettings,*/ $state, /*authService*/ pageLoading, $window, commonService, localStorageService, $timeout, $translate, dpMessageBox, scanPickQtyFactory, scanPickQtyItemFactory, webServiceAPI) {
+        controller: function ($scope, $q, $filter, $http,$location,$anchorScroll, /*ngAuthSettings,*/ $state, /*authService*/ pageLoading, $window, commonService, localStorageService, $timeout, $translate, dpMessageBox, scanPickQtyFactory, scanPickQtyItemFactory, webServiceAPI) {
             var $vm = this;
             var defer = {};
             var viewModel = scanPickQtyFactory;
@@ -84,7 +84,7 @@
                             $scope.filterModel.pick_ProductConversion_Id = res.data.itemsDetail[0].pick_ProductConversion_Id;
                             $scope.filterModel.pick_ProductConversion_Name = res.data.itemsDetail[0].pick_ProductConversion_Name;
                             $scope.filterModel.pick_ProductConversion_Ratio = res.data.itemsDetail[0].pick_ProductConversion_Ratio;
-                            
+                            debugger
                             $scope.filterModel.pick_Qty = $scope.filterModel.qty;
                             document.getElementById("tagOut_No").focus();
                             $scope.filterModel.isCarton = true;
@@ -279,10 +279,8 @@
 
             //confirmPick
             $scope.confirmPick = function () {
-                $scope.isBlock = true;
-                pageLoading.show()
+                debugger
                 if (!$scope.filterModel.confirmlocation_Index) {
-                    $scope.isBlock = false;
                     return dpMessageBox.alert(
                         {
                             ok: 'Close',
@@ -292,7 +290,6 @@
                     )
                 }
                 if (!$scope.filterModel.pick_ProductConversion_Index) {
-                    $scope.isBlock = false;
                     return dpMessageBox.alert(
                         {
                             ok: 'Close',
@@ -301,9 +298,16 @@
                         }
                     )
                 }
-
+                // if (!$scope.filterModel.tagOut_Index) {
+                //     return dpMessageBox.alert(
+                //         {
+                //             ok: 'Close',
+                //             title: 'แจ้งเตือน',
+                //             message: 'กรุณายืนยัน Carton ใหม่อีกครั้ง !'
+                //         }
+                //     )
+                // }
                 if ($scope.filterModel.pick_Qty == undefined || $scope.filterModel.pick_Qty == null) {
-                    $scope.isBlock = false;
                     return dpMessageBox.alert(
                         {
                             ok: 'Close',
@@ -312,90 +316,67 @@
                         }
                     )
                 }
-                // else if (($scope.filterModel.pick_Qty * $scope.filterModel.pick_ProductConversion_Ratio) > $scope.filterModel.totalQty) {
-                //     return dpMessageBox.alert(
-                //         {
-                //             ok: 'Close',
-                //             title: 'แจ้งเตือน',
-                //             message: 'กรอกยืนยันจำนวนเกินจำนวนที่รับ '
-                //         }
-                //     )
-                // }
-                else {
-                    
-                    // pageLoading.show()
-                    $scope.filterModel.operations = "SCAN_CONFIRM";
-                    
-                    if ($scope.filterModel.isSerial == true) {
-                        $scope.isBlock = false;
-                        pageLoading.hide()
-                        $scope.remarkPopup.onClick($scope.filterModel);
-                    } else {
-                        $scope.saveConfirm();
-                    }
+                else if (($scope.filterModel.pick_Qty * $scope.filterModel.pick_ProductConversion_Ratio) > $scope.filterModel.totalQty) {
+                    return dpMessageBox.alert(
+                        {
+                            ok: 'Close',
+                            title: 'แจ้งเตือน',
+                            message: 'กรอกยืนยันจำนวนเกินจำนวนที่รับ '
+                        }
+                    )
                 }
-            }
+                // else if (($scope.filterModel.pick_Qty * $scope.filterModel.pick_ProductConversion_Ratio) < $scope.filterModel.totalQty) {
+                //     $vm.isFilterTable = false;
+                //     $scope.isShortPick = true;
+                //     if ($scope.formData != null) {
+                //         $scope.formData = {};
+                //     }
 
-            $scope.remarkPopup = {
-                onShow: false,
-                delegates: {},
-                onClick: function (param) {
-                    
-                    $scope.remarkPopup.onShow = !$scope.remarkPopup.onShow;
-                    $scope.remarkPopup.delegates(param);
-                },
-                config: {
-                    title: ""
-                },
-                invokes: {
-                    add: function () { },
-                    edit: function () { },
-                    selected: function (param) {
-                        
-                        if (param.length == parseInt($scope.filterModel.pick_Qty)) {
-                            $scope.filterModel.serailnumber =(param);
-                            $scope.saveConfirm();
-                        }else{
+                //     viewModel.GetReasonCode({}).then(function (res) {
+                //         pageLoading.hide()
+                //         if (res.data.length > 0) {
+                //             $scope.reasonCodeAllItem = res.data;
+                //         }
+                //     },
+                //         function error(response) {
+                //             dpMessageBox.alert(
+                //                 {
+                //                     ok: 'Close',
+                //                     title: 'แจ้งเตือน',
+                //                     message: 'Save Error'
+                //                 }
+                //             )
+                //         })
+                // } 
+                else {
+                    pageLoading.show()
+                    $scope.filterModel.operations = "SCAN_CONFIRM";
+                    viewModel.ScanConfirm($scope.filterModel).then(function (res) {
+                        pageLoading.hide()
+                        if (res.data.resultIsUse) {
+                            search(res.config.data);
+                        }
+                        else {
                             return dpMessageBox.alert(
                                 {
                                     ok: 'Close',
                                     title: 'แจ้งเตือน',
-                                    message: 'กรุณากรอก Serial ตามจำนวนที่หยิบ'
+                                    message: res.data.resultMsg
                                 }
                             )
                         }
-                        
-                    }
-                }
-            };
+                    },
+                        function error(response) {
 
-            $scope.saveConfirm = function () {
-                viewModel.ScanConfirm($scope.filterModel).then(function (res) {
-                    pageLoading.hide()
-                    if (res.data.resultIsUse) {
-                        search(res.config.data);
-                    }
-                    else {
-                        $scope.isBlock = false;
-                        return dpMessageBox.alert(
-                            {
-                                ok: 'Close',
-                                title: 'แจ้งเตือน',
-                                message: res.data.resultMsg
-                            }
-                        )
-                    }
-                },
-                    function error(response) {
-                        $scope.isBlock = false;
-                        dpMessageBox.alert(
-                            {
-                                ok: 'Close',
-                                title: 'แจ้งเตือน',
-                                message: 'Error'
-                            }
-                        )
-                    })
+                            dpMessageBox.alert(
+                                {
+                                    ok: 'Close',
+                                    title: 'แจ้งเตือน',
+                                    message: 'Error'
+                                }
+                            )
+                        })
+                }
             }
 
             //clearPick
@@ -456,10 +437,10 @@
 
             $scope.scanLocationConfrim = function () {
                 pageLoading.show()
-                
+                debugger
                 viewModel.ScanLocaton($scope.filterModel).then(function (res) {
                     pageLoading.hide()
-                    
+                    debugger
                     if (res.data.length > 0) {
                         $scope.filterModel.confirm_location_Index = res.data[0].location_Index;
                         $scope.filterModel.confirm_location_Id = res.data[0].location_Id;
@@ -629,13 +610,12 @@
                 $scope.filterModel2 = {};
                 pageLoading.show()
                 let whereconfirmlocation = angular.copy(param);
-
+                
                 viewModelItem.GetDataScanTaskItem(param).then(function (res) {
                     pageLoading.hide()
-                    $scope.isBlock = false;
                     if (res.data.resultIsUse) {
                         if (res.data.itemsDetail.length > 0) {
-                            
+                            debugger
                             $scope.filterModel = res.data.itemsDetail[0];
                             $scope.filterModelplan = $scope.filterModel.plangoodsissue;
                             $scope.filterModel.qty = $scope.filterModel.qty.toFixed(3);
@@ -643,7 +623,7 @@
                             $scope.initialData = angular.copy($scope.filterModel)
                             document.getElementById("confirmlocation_Name").focus();
                             $scope.getTagOutAuto();
-                        }
+                        } 
                         else {
                             $scope.filterModel = {};
                             dpMessageBox.alert(
@@ -854,7 +834,6 @@
 
 
             var init = function () {
-                $scope.isBlock = false;
                 $scope.userName = localStorageService.get('userTokenStorage');
             };
             init();

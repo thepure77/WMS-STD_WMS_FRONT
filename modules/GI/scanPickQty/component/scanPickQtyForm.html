@@ -166,12 +166,9 @@
                     <button type="button" class="btn btn-success" ng-click="confirmPick()" ng-disabled="isBlock"
                         style="float: right;margin-left: 5px">
                         {{ 'CONFIRM' | translate }}</button>
-                    <button type="button" class="btn btn-groub-Search" ng-click="printtag()" ng-disabled="isPrint" style="float: right;">
-                        {{ 'Print' | translate }}
+                    <button type="button" class="btn btn-groub-Search" ng-click="clear()" style="float: right;">
+                        {{ 'CLEAR' | translate }}
                     </button>
-                    <!-- <button type="button" class="btn btn-groub-Search" ng-click="clear()" style="float: right;">
-                        {{ 'Print' | translate }}
-                    </button> -->
 
                 </div>
             </div>
@@ -214,13 +211,6 @@
                             
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="form-group visible-xs" style="margin-top:-10px;">
-                <div class="col-lg-12 col-md-12 col-xs-12">
-                    <button class="btn btn-success btn-block btn-md visible-xs mt-lg" ng-disabled="isPrint" ng-click="printtag()">
-                        {{ 'Print' | translate }}</button>
                 </div>
             </div>
 

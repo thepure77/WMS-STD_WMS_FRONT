@@ -16,8 +16,8 @@
                 ScanBarcode: function (model) {
                     var urlRequest = this.url + "/Scantag";
 
-                    // var resultModel = logsRequest(model.operations,urlRequest,model);
-                    // clientService.post(this.urlLogsRequest, resultModel);
+                    var resultModel = logsRequest(model.operations,urlRequest,model);
+                    clientService.post(this.urlLogsRequest, resultModel);
 
                     return clientService.post(urlRequest, model);
                 },
@@ -48,18 +48,14 @@
                 },
                 ScanConfirmLocaton: function (model) {
                     var urlRequest = this.url + "/ScanConfirmLocaton";
-                    return clientService.post(urlRequest, model);
-                },
-                ScanQty_print_tag: function (model) {
-                    var urlRequest = this.url + "/ScanQty_print_tag";
+
+                    var resultModel = logsRequest(model.operations,urlRequest,model);
+                    clientService.post(this.urlLogsRequest, resultModel);
+
                     return clientService.post(urlRequest, model);
                 },
                 GetReasonCode: function (model) {
                     var urlRequest = this.url + "/GetReasonCode";
-                    return clientService.post(urlRequest, model);
-                },
-                dropdown_printer: function (model) {
-                    var urlRequest = this.url + "/dropdown_printer";
                     return clientService.post(urlRequest, model);
                 },
             }
@@ -82,26 +78,13 @@
             //logs.menuType_Index
             //logs.menu_Id
             logs.menu_Name = "จัดการสินค้า ขาออก";
-            logs.sub_Menu_Index = "DBBCDA67-35FB-45C3-ADF4-DEFB84696DF7"
+            logs.sub_Menu_Index = "3E8CAFD1-E87B-410E-AFAA-100F2454BC26"
             //logs.sub_MenuType_Index
             //logs.sub_Menu_Id
-            logs.sub_Menu_Name = "Scan Pick Qty";
+            logs.sub_Menu_Name = "การหยิบสินค้า";
             logs.operations = operations;
             //logs.ref_Document_Index
             //logs.ref_Document_No
-            logs.udf_1 = "Labor";
-            if(model.log_udf_2 != undefined){
-                logs.udf_2 = model.log_udf_2;
-            }
-            if(model.log_udf_3 != undefined){
-                logs.udf_3 = model.log_udf_3;
-            }
-            if(model.log_udf_4 != undefined){
-                logs.udf_4 = model.log_udf_4;
-            }
-            if(model.log_udf_5 != undefined){
-                logs.udf_5 = model.log_udf_5;
-            }
             logs.request_URL = urlRequest;
             logs.request_Body = JSON.stringify(model);
             //logs.isActive
