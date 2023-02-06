@@ -42,6 +42,7 @@
                             <th class="k50 text-center">{{ 'NO' | translate }}</th>
                             <th class="k100 text-center">{{ 'GR_NO' | translate }}</th>
                             <th class="k100 text-center">{{ 'TASK_NO' | translate }}</th>
+                            <th class="k100 text-center">{{ 'TAG_NO' | translate }}</th>
                             <th class="k100 text-center">{{ 'TASK_DATE' | translate }}</th>
                         </tr>
                     </thead>
@@ -53,6 +54,7 @@
                             </td>
                             <td class="k100 text-center">{{data.ref_Document_No}}</td>
                             <td class="k100 text-center">{{data.taskGR_No}}</td>
+                            <td class="k100 text-center">{{data.tag_No}}</td>
                             <td class="k100 text-center">{{data.create_Date|dateFormate}}</td>
                         </tr>
                         <tr ng-if="searchResultModel.length == 0">
