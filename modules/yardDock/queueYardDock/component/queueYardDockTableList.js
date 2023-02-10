@@ -347,6 +347,10 @@ app.component('queueYardDockTableList', {
                                 message: messagebox.success
                             }
                         )
+
+                        // window.open.href="https://www.google.com";
+                        window.open("http://203.154.39.126/Dashboard/#/Monitor_Queue")
+
                     }else{
                         dpMessageBox.alert(
                             {
