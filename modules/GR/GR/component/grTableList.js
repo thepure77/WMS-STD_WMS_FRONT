@@ -508,7 +508,7 @@ app.component('grTableList', {
             if (param.document_Status == 0)
                 dpMessageBox.confirm({
                     title: 'ยืนยันสถานะ',
-                    message: 'คุณต้องการยืนยันเอกสารใช่หรือไม่ ?'
+                    message: 'ยืนยันการรับสินค้าเข้าใช่หรือไม่ ?'
                 }).then(function success() {
                     param.create_Date = null;
                     param.update_Date = null;
