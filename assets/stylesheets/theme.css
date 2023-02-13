@@ -192,11 +192,11 @@ a:active {
 	}
 	/* Layout Fixed - Inner Wrapper */
 	html.fixed .inner-wrapper {
-		padding-top: 92px;
+		padding-top: -26px;
 	}
 	/* Layout Fixed - Content Body */
 	html.fixed .content-body {
-		margin-left: 250px;
+		margin-left: 0px;
 		padding: 5px;
 		min-height: 600px;
 	}
@@ -205,11 +205,11 @@ a:active {
 	}
 	/* Layout Fixed - Page header */
 	html.fixed .page-header {
-		left: 250px;
+		left: 6px;
 		margin: 0;
 		position: fixed;
 		right: 0;
-		top: 86px;
+		top: 2px;
 	}
 	/* Layout Fixed - Sidebar Left */
 	html.fixed .sidebar-left {
