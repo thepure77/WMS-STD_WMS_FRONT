@@ -101,7 +101,7 @@ a:active {
 /* Layout Base - Sidebar Left */
 
 .sidebar-left {
-	background: #ffffff;
+	background: #ffffff; /*PURE UPDATE สีพื้นหลังของเมนู*/
 	/* box-shadow: -5px 0 0 #2f3139 inset; */
 	box-shadow: -5px 0 0 #ffffff inset;
 	color: #ffffff;
@@ -123,7 +123,7 @@ a:active {
 /* Layout Base - Sidebar Right */
 
 .sidebar-right {
-	background: #171717;
+	background: #000000; /*PURE UPDATE สีของ sidebar เมนู*/
 	bottom: 0;
 	margin-right: -300px;
 	min-height: 100vh;
@@ -1237,7 +1237,7 @@ html.dark .header .input-search .input-group-btn .btn-default, html.header-dark 
 }
 
 .sidebar-left .sidebar-header .sidebar-toggle i {
-	color: #0077f6;
+	color: #000000; /*PURE UPDATE สีของเบอเกอร์ยุบย่อเมนู*/
 	position: absolute;
 	font-size: 24px;
 	line-height: 45px;
@@ -1370,8 +1370,8 @@ html.dark .header .input-search .input-group-btn .btn-default, html.header-dark 
 		padding-left: 15px;
 	}
 	html.sidebar-left-collapsed.fixed .sidebar-left .nano {
-		background: #a8a8a7;
-		box-shadow: -5px 0 0 #a8a8a7 inset;
+		background: #ffffff;  /*PURE UPDATE สีพื้นหลังเวลาย่อเมนู*/
+		box-shadow: -5px 0 0 #ffffff inset; /*PURE UPDATE สีพื้นหลังเวลาย่อเมนู*/
 	}
 	html.sidebar-left-collapsed.fixed .sidebar-left .nano:hover {
 		width: 300px;
@@ -1916,33 +1916,31 @@ ul.nav-main>li>a {
 }
 
 ul.nav-main>li>a:hover, ul.nav-main>li>a:focus {
-	background-color: #dadada;
+	background-color: #9bd4df;
 }
 
 ul.nav-main>li.nav-active>a {
-	box-shadow: 2px 0 0 #dadada inset;
+	box-shadow: 2px 0 0 #9ad4de inset;
 }
 
 ul.nav-main>li.nav-active>a:hover {
-	/* color: #abb4be; */
 	color: #FFFFFF;
 }
 
 ul.nav-main>li.nav-active>i {
-	color: #dadada;
+	color: #9ad4de;
 }
 
 ul.nav-main>li.nav-expanded>a {
 	/* background: #343738; */
 	/* background: #6c6c6d; */
-	background-color: #ededed;
+	background-color: #9ad4de;   /*PURE UPDATE สีเวลากดเลือกเมนูแล้ว*/
 }
 
 ul.nav-main li a {
 	font-size: 14px;
 	height: 30px;
-	/* color: #abb4be; */
-	color: #0077f6;
+	color: #000000; /*PURE UPDATE สีตัวอักษรเมนู*/
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: 300;
@@ -2021,7 +2019,7 @@ ul.nav-main li .nav-children li a {
 
 ul.nav-main li .nav-children li a:hover, ul.nav-main li .nav-children li a:focus {
 	/* background: #191c21; */
-	background: #dadada;
+	background: #9ad4de; /*PURE UPDATE สีพื้นเวลาเลือกเมนู*/
 }
 
 ul.nav-main li .nav-children li a:after {
@@ -2081,7 +2079,7 @@ ul.nav-main li .nav-children .nav-children .nav-children li a {
 }
 
 .page-header .breadcrumbs li {
-	color: #c3c3c3;
+	color: #9ad4de;
 	display: inline-block;
 	font-weight: 300;
 }
@@ -2119,7 +2117,7 @@ ul.nav-main li .nav-children .nav-children .nav-children li a {
 
 .page-header .sidebar-right-toggle {
 	cursor: pointer;
-	color: #c3c3c3;
+	color: #9ad4de;
 	display: inline-block;
 	font-size: 17px;
 	margin: 0 0 0 10px;
@@ -3811,7 +3809,7 @@ html.no-overflowscrolling .nano>.nano-pane {
 }
 
 html.no-overflowscrolling .nano>.nano-pane>.nano-slider {
-	background: #7babdd !important;
+	background: #34393d !important;
 	margin: 0;
 	position: relative;
 	visibility: hidden;
@@ -15827,7 +15825,7 @@ body .btn:focus, body .btn:active:focus, body .btn.active:focus {
 	height: 46px;
 	left: -55px;
 	z-index: 1;
-	background: #97bee7;
+	background: #404041; /*PURE UPDATE สีแถบข้างบนอันเล็ก*/
 	border-left: 10px solid #fff;
 	transform-origin: bottom left;
 	-ms-transform: skew(-50deg, 0deg);

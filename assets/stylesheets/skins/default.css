@@ -410,6 +410,8 @@ p.drop-caps.colored.secundary:first-child:first-letter {
 /* Page Header */
 .page-header h2 {
 	border-bottom-color: #0088cc;
+	font-size: 20px;
+	font-family: "Prompt-Regular", sans-serif;
 }
 
 .page-header .sidebar-right-toggle:hover {

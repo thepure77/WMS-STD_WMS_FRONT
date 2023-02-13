@@ -56,7 +56,7 @@
         PlanGR:      'http://203.154.39.126/DEMO/backEnd/WMS_PlanGRAPI/api/',
         GR:          'http://203.154.39.126/DEMO/backEnd/WMS_GRAPI/api/',
         Putaway:     'http://203.154.39.126/DEMO/backEnd/WMS_PutawayAPI/api/',
-        PO:          'http://203.154.39.126/DEMO/backEnd/WMS_PO/api/',
+        PO:          'http://203.154.39.126/DEMO/backEnd/WMS_POAPI/api/',
         PlanGI:      'http://203.154.39.126/DEMO/backEnd/WMS_PlanGIAPI/api/',
         GI:          'http://203.154.39.126/DEMO/backEnd/WMS_GIAPI/api/',
         Load:        'http://203.154.39.126/DEMO/backEnd/WMS_LoadAPI/api/',

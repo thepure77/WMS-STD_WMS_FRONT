@@ -605,11 +605,11 @@ if (typeof jQuery === 'undefined') {
     this.$element
       .removeClass('collapse')
       .addClass('collapsing')[dimension](0)
-      .attr('aria-expanded', true)
+      // .attr('aria-expanded', true)
 
     this.$trigger
       .removeClass('collapsed')
-      .attr('aria-expanded', true)
+      // .attr('aria-expanded', true)
 
     this.transitioning = 1
 
@@ -831,7 +831,7 @@ if (typeof jQuery === 'undefined') {
 
       $this
         .trigger('focus')
-        .attr('aria-expanded', 'true')
+        // .attr('aria-expanded', 'true')
 
       $parent
         .toggleClass('open')
