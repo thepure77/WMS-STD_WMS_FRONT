@@ -2,7 +2,8 @@ body {
     font-size: 14px;
     color: #414142;
     /* font-family: "Open Sans", Arial, sans-serif, Helvetica; */
-    font-family: "Open Sans", Arial;
+    /* font-family: "Open Sans", Arial; */
+    font-family: "Prompt-Regular", sans-serif;
 }
 
 .bg-color {
@@ -65,7 +66,7 @@ body {
 }
 
 .kw-button-search {
-    background-color: #45556a !important;
+    background-color: #ff6433 !important;
     width: 100%
 }
 
@@ -73,7 +74,7 @@ body {
     background-color: #343738 !important;
     width: 100%
 }
-
+ 
 .kw-button-clearSearch {
     background-color: #404041 !important;
     width: 100%
