@@ -768,7 +768,7 @@
 				<li>Thanks to btburnett3 for the original hover functionality and Anthony Aragues for the modification that makes it compatable with excanvas, this was a huge help!</li>
 				<li>Added a new option (highlight opacity) to modify the highlight created when mousing over a slice. Currently this just uses a white overlay, but an option to change the hightlight color will be added when the appropriate functionality becomes available.
 				<li>I had a major setback that required me to practically rebuild the hover/click events from scratch one piece at a time (I discovered that it only worked with a single pie on a page at a time), but the end result ended up being virtually identical to the original, so I'm not quite sure what exactly made it work.</li>
-				<li><span style="color: #7babdd;">Warning:</span> There are some minor issues with using this functionality in conjuction with some of the other more advanced features (tilt and donut). When using a donut hole, the inner portion still triggers the events even though that portion of the pie is no longer visible. When tilted, the interactive portions still use the original, untilted version of the pie when determining mouse position (this is because the isPointInPath function apparently doesn't work with transformations), however hover and click both work this way, so the appropriate slice is still highlighted when clicking, and it isn't as noticable of a problem.</li>
+				<li><span style="color: #991B1E;">Warning:</span> There are some minor issues with using this functionality in conjuction with some of the other more advanced features (tilt and donut). When using a donut hole, the inner portion still triggers the events even though that portion of the pie is no longer visible. When tilted, the interactive portions still use the original, untilted version of the pie when determining mouse position (this is because the isPointInPath function apparently doesn't work with transformations), however hover and click both work this way, so the appropriate slice is still highlighted when clicking, and it isn't as noticable of a problem.</li>
 			</ul></li>
 			<li>Included a bug fix submitted by Xavi Ivars to fix array issues when other javascript libraries are included in addition to jQuery</li>
 			<br/>
@@ -794,7 +794,7 @@
 			<li>Restructured and combined some of the options. It should be much easier to deal with now.</li>
 			<li>Added the ability to change the starting point of the pie (still defaults to the top).</li>
 			<li>Modified the default options to show the labels to compensate for the lack of a legend.</li>
-			<li>Modified this page to use a random dataset. <span style="color: #7babdd">Note: you may need to refresh the page to see the effects of some of the examples.</span></li>
+			<li>Modified this page to use a random dataset. <span style="color: #991B1E">Note: you may need to refresh the page to see the effects of some of the examples.</span></li>
 			<br/>
 			<li style="list-style: none;"><i>May 21st, 2009 - Brian Medendorp</i></li>
 			<li>Merged original pie modifications by Sergey Nosenko into the latest SVN version <i>(as of May 15th, 2009)</i> so that it will work with ie8.</li>
