@@ -13,7 +13,7 @@
 </g>
 <g id="block">
 	<rect fill="#BBD988" stroke="#CCCBCB" stroke-miterlimit="10" width="22" height="20"/>
-	<rect fill="#97bee7" stroke="#CCCBCB" stroke-miterlimit="10" width="22" height="20"/>
+	<rect fill="#990000" stroke="#CCCBCB" stroke-miterlimit="10" width="22" height="20"/>
 	<path fill="#FFFFFF" stroke="#FFFFFF" stroke-miterlimit="10" d="M12.082,9.112l2.184-2.182c0.143-0.145,0.143-0.377,0-0.521
 		c-0.144-0.145-0.377-0.145-0.521,0l-2.182,2.184L9.52,6.552c-0.145-0.145-0.379-0.145-0.522,0c-0.144,0.143-0.144,0.377,0,0.52
 		l2.043,2.041l-2.183,2.182c-0.145,0.144-0.145,0.377,0,0.521c0.071,0.072,0.166,0.108,0.262,0.108c0.094,0,0.188-0.037,0.26-0.108

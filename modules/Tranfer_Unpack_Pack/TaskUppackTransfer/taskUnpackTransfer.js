@@ -171,18 +171,18 @@ app.component('taskUppackTransfer', {
 
         $scope.changeTableSize = function (perPage, tab) {
             if (tab == 1) {
-                $scope.colortab1 = "#97bee7";
+                $scope.colortab1 = "#990000";
                 $scope.colortab2 = "#FFFFFF";
 
                 $scope.fronttab1 = "#FFFFFF";
-                $scope.fronttab2 = "#97bee7";
+                $scope.fronttab2 = "#990000";
 
             }
             else if (tab == 2) {
                 $scope.colortab1 = "#FFFFFF";
-                $scope.colortab2 = "#97bee7";
+                $scope.colortab2 = "#990000";
 
-                $scope.fronttab1 = "#97bee7";
+                $scope.fronttab1 = "#990000";
                 $scope.fronttab2 = "#FFFFFF";
             }
 

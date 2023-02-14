@@ -58,12 +58,12 @@
             $scope.clickTab = function (tab) {
 
                 if (tab == 1) {
-                    $scope.colortab1 = "#97bee7";
+                    $scope.colortab1 = "#990000";
                     $scope.colortab2 = "#D3D3D3";
                 }
                 else if (tab == 2) {
                     $scope.colortab1 = "#D3D3D3";
-                    $scope.colortab2 = "#97bee7";
+                    $scope.colortab2 = "#990000";
                 }
                 $scope.click = tab;
             }
@@ -1783,7 +1783,7 @@
                 $scope.dropdownDocumentPriority();
                 $scope.dropdownUnloadingType();
 
-                $scope.colortab1 = "#97bee7";
+                $scope.colortab1 = "#990000";
                 $scope.colortab2 = "#D3D3D3";
                 $scope.click = 1;
                 // $scope.formYard();

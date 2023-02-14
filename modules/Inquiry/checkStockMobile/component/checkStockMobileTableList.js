@@ -125,7 +125,7 @@ app.component('checkStockMobileTableList', {
         var init = function () {
             $scope.selected = 1;
             // $scope.changeTableSize(50,1)
-            $scope.colortab1 = "#97bee7";
+            $scope.colortab1 = "#990000";
             $scope.colortab2 = "#FFFFFF";
             $scope.colortable1 = "#ec7229";
             $scope.colortable2 = "#D3D3D3";

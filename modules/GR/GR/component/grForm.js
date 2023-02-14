@@ -32,11 +32,11 @@
             $scope.clickTab = function (tab) {
 
                 if (tab == 1) {
-                    $scope.colortab1 = "#97bee7";
+                    $scope.colortab1 = "#990000";
                     $scope.colortab2 = "#D3D3D3";
                 } else if (tab == 2) {
                     $scope.colortab1 = "#D3D3D3";
-                    $scope.colortab2 = "#97bee7";
+                    $scope.colortab2 = "#990000";
                 }
                 $scope.click = tab;
             }
@@ -44,11 +44,11 @@
             $scope.clickTabTable = function (tabtable) {
 
                 if (tabtable == 1) {
-                    $scope.colortabtable1 = "#97bee7";
+                    $scope.colortabtable1 = "#990000";
                     $scope.colortabtable2 = "#D3D3D3";
                 } else if (tabtable == 2) {
                     $scope.colortabtable1 = "#D3D3D3";
-                    $scope.colortabtable2 = "#97bee7";
+                    $scope.colortabtable2 = "#990000";
                 }
                 $scope.clicktable = tabtable;
             }
@@ -1154,7 +1154,7 @@
                 $scope.userName = localStorageService.get('userTokenStorage');
                 $scope.filterModel.goodsReceive_Date = getToday();
                 $scope.filterModel.goodsReceive_Due_Date = getToday()
-                $scope.colortab1 = "#97bee7";
+                $scope.colortab1 = "#990000";
                 $scope.colortab2 = "#D3D3D3";
                 $scope.click = 1;
                 $scope.clicktable = 1;

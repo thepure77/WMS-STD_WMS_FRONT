@@ -1213,7 +1213,7 @@ html.dark .header .input-search .input-group-btn .btn-default, html.header-dark 
 .sidebar-left .sidebar-header {
 	position: relative;
 	height: 46px;
-	background: #97bee7;
+	background: #990000;
 }
 
 .sidebar-left .sidebar-header .sidebar-title {
@@ -1916,7 +1916,7 @@ ul.nav-main>li>a {
 }
 
 ul.nav-main>li>a:hover, ul.nav-main>li>a:focus {
-	background-color: #97bee7;
+	background-color: #990000;
 }
 
 ul.nav-main>li.nav-active>a {
@@ -1935,7 +1935,7 @@ ul.nav-main>li.nav-active>i {
 ul.nav-main>li.nav-expanded>a {
 	/* background: #343738; */
 	/* background: #6c6c6d; */
-	background-color: #97bee7;
+	background-color: #990000;
 }
 
 ul.nav-main li a {
@@ -2021,7 +2021,7 @@ ul.nav-main li .nav-children li a {
 
 ul.nav-main li .nav-children li a:hover, ul.nav-main li .nav-children li a:focus {
 	/* background: #191c21; */
-	background: #97bee7;
+	background: #990000;
 }
 
 ul.nav-main li .nav-children li a:after {
@@ -15804,7 +15804,7 @@ body .btn:focus, body .btn:active:focus, body .btn.active:focus {
 }
 
 .page-header-left {
-	background-color: #97bee7;
+	background-color: #990000;
 	height: 46px;
 	padding: 0px;
 }

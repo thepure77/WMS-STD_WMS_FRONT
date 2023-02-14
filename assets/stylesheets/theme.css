@@ -5543,10 +5543,10 @@ html .panel .panel-heading-transparent+.panel-body {
 }
 
 .nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
-	background: #97bee7;
+	background: #990000;
 	/* border-left-color: #eeeeee; */
 	/* border-right-color: #eeeeee; */
-	border-top: 2px solid #97bee7;
+	border-top: 2px solid #990000;
 	color: #FFF;
 	margin: 0px;
 	text-align: center;

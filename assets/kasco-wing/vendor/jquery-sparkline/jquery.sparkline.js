@@ -359,8 +359,8 @@
             'visibility: hidden;' +
             'background: rgb(0, 0, 0) transparent;' +
             'background-color: rgba(0,0,0,0.6);' +
-            'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#97bee700, endColorstr=#97bee700);' +
-            '-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#97bee700, endColorstr=#97bee700)";' +
+            'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);' +
+            '-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";' +
             'color: white;' +
             'font: 10px arial, san serif;' +
             'text-align: left;' +
