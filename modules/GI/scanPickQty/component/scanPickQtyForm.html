@@ -33,13 +33,13 @@
             </div>
 
             <div class="form-group hidden-xs">
-                <div class="col-lg-5 col-md-5 col-xs-5">
+                <!-- <div class="col-lg-5 col-md-5 col-xs-5">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                         <img ng-src="{{filterModel.imageUri}}" width="82%" height="200">
                     </div>
-                </div>
+                </div> -->
 
-                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 10px">
+                <div class="col-lg-5 col-md-5 col-xs-5">
                     <div class="col-lg-3 col-md-3 col-xs-12">
                         <b style="font-size: 22px">{{ 'QTY' | translate }}</b>
                     </div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 15px">
+                <div class="col-lg-5 col-md-5 col-xs-5" >
                     <div class="col-lg-3 col-md-3 col-xs-12">
                         <b style="font-size: 22px">{{ 'STATUS' | translate }}</b>
                     </div>
@@ -67,7 +67,13 @@
                     </div>
                 </div>
 
-                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 15px">
+               
+            </div>
+
+            <div class="form-group hidden-xs">
+             
+
+                <div class="col-lg-5 col-md-5 col-xs-5" >
                     <div class="col-lg-3 col-md-3 col-xs-12">
                         <b style="font-size: 22px">{{ 'LOCATION' | translate }}</b>
                     </div>
@@ -76,7 +82,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left: -120px;margin-top: 15px">
+                <div class="col-lg-5 col-md-5 col-xs-5" >
                     <div class="col-lg-3 col-md-3 col-xs-12">
                         <b style="font-size: 22px">{{ 'Confirm Old Location' | translate }}</b>
                     </div>
@@ -130,23 +136,6 @@
                 </div>
             </div>
 
-            <!-- <div class="form-group hidden-xs" style="margin-top: -15px">
-                <div class="col-lg-5 col-md-5 col-xs-5">
-                    <div class="col-lg-3 col-md-3 col-xs-3">
-                        <b style="font-size: 22px">{{ 'CARTON_NO' | translate }}</b>
-                    </div>
-                    <div class="col-lg-7 col-md-7 col-xs-7">
-                        <div class="input-group" style="padding:0!important;">
-                            <input type="text" class="form-control" ng-model="filterModel.tagOut_No" ks-enter="ScanCartonPick()" ng-disabled="!filterModel.isCarton">
-                            <span class="input-group-btn">
-                                <button ng-click='getTagOut()' class="btn btn-success" type="button" ng-disabled="!filterModel.isCarton">
-                                    GEN
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
 
             <div class="form-group hidden-xs" style="margin-top:-10px;">
                 <div class="col-lg-12 col-md-12 col-xs-12">
@@ -198,7 +187,7 @@
             <div class="form-group visible-xs" style="margin-top:-10px;">
                 <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:18px;margin-left: -15px">
                     <div class="col-lg-12 col-md-12 col-xs-12" style="padding-right: 0px;">
-                        <!-- <img ng-src="{{filterModel.imageUri}}" width="120%" height="150"> -->
+                       
                         <div ng-repeat="data in filterModel.plangoodsissue" style="margin-top:10px;">
                             <div class="form-group">
                                 <div class="col-lg-12 col-md-12 col-xs-8">
