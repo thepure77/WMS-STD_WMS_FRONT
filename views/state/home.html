@@ -193,6 +193,30 @@
                 </a>
               </li>
 
+              <li ng-class="selected == 'Dashboard ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="fa fa-repeat" aria-hidden="true"></i>
+                  <span>{{ 'Dashboard' | translate }}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li>
+                    <a ng-click="selectedMenu('Dashboard')" href="http://203.154.39.126/Dashboard/#/dashboard_wms_inbound_performance">
+                      {{ 'Inbound Performance' | translate }}
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Dashboard')" href="http://203.154.39.126/Dashboard/#/dashboard_wms_outbound_performance">
+                      {{ 'Outbound Performance & Outbound Tracking' | translate }}
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Dashboard')" href="http://203.154.39.126/Dashboard/#/dashboard_wms_dc_performance_overview">
+                      {{ 'DC Performance' | translate }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
               <li ng-show="m3n7[0].isActive" ng-class="selected == 'Inbound' ? 'nav-active' : ''" class="nav-parent">
                 <a>
                   <i class="fa fa-repeat" aria-hidden="true"></i>
@@ -2142,6 +2166,30 @@
                   <i class="fa fa-home" aria-hidden="true"></i>
                   <span>{{ 'HOME' | translate }}</span>
                 </a>
+              </li>
+
+              <li ng-class="selected == 'Dashboard ? 'nav-active' : ''" class="nav-parent">
+                <a>
+                  <i class="fa fa-repeat" aria-hidden="true"></i>
+                  <span>{{ 'Dashboard' | translate }}</span>
+                </a>
+                <ul class="nav nav-children">
+                  <li>
+                    <a ng-click="selectedMenu('Dashboard')" href="http://203.154.39.126/Dashboard/#/dashboard_wms_inbound_performance">
+                      {{ 'Inbound Performance' | translate }}
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Dashboard')" href="http://203.154.39.126/Dashboard/#/dashboard_wms_outbound_performance">
+                      {{ 'Outbound Performance & Outbound Tracking' | translate }}
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="selectedMenu('Dashboard')" href="http://203.154.39.126/Dashboard/#/dashboard_wms_dc_performance_overview">
+                      {{ 'DC Performance' | translate }}
+                    </a>
+                  </li>
+                </ul>
               </li>
 
               <li ng-show="m3n7[0].isActive" ng-class="selected == 'Inbound' ? 'nav-active' : ''" class="nav-parent">
