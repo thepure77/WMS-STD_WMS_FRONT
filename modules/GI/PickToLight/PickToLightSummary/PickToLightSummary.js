@@ -13,34 +13,8 @@
             var $vm = this;
             var defer = {};
             var viewModel = PickToLightFactory;
-            $scope.url = {
-                GR: webServiceAPI.GR,
-            };
+
             $scope.filterModel = {};
-
-            $scope.clickTab = function (tab) {
-                $scope.click = tab;
-            }
-
-            $scope.select = function (param) {
-
-                // let data = $scope.listfilterModel.find(c => c.isUser);
-                // if (data) {
-                //     data.isUser = false;
-                // }
-                // param.isUser = true;
-                if (param.isUser == undefined || param.isUser == false) {
-                    param.isUser = true;
-                } else if (param.isUser != undefined && param.isUser == true) {
-                    param.isUser = false;
-                }
-            }
-
-            $scope.chkIsuse = function (param) {
-                if (param.isUser) {
-                    return "#99FF66"
-                }
-            }
 
             $scope.scantag_no = function () {
                 var deferred = $q.defer();
@@ -55,10 +29,6 @@
                                 title: 'ALERT',
                                 message: res.data.resultMsg
                             })
-
-                            $scope.size = undefined;
-                            $scope.total_qty = undefined;
-                            $scope.filterModel.tagOut_No = undefined;
                             $scope.listfilterModel = [];
                         } else {
                             $scope.filterModel.tagOut_Index = res.data.resultMsg;
@@ -66,10 +36,20 @@
                             viewModel.DetailScanPicktolight(res.data).then(
                                 function success(res) {
 
-                                    if (res.data.length > 0) {
-                                        $scope.listfilterModel = res.data;
-                                        $scope.size = res.data[0].size
-                                        $scope.total_qty = res.data[0].total_qty
+                                    if (!res.data.resultIsUse) {
+                                        return dpMessageBox.alert(
+                                            {
+                                                ok: 'Close',
+                                                title: 'ALERT',
+                                                message: res.data.resultMsg
+                                            }
+                                        )
+                                    }
+                                    $scope.listTagOut_CheckViewModel = res.data.listTagOut_CheckViewModel;
+                                    $scope.listTagOut_UnCheckViewModel = res.data.listTagOut_UnCheckViewModel;
+                                    $scope.filterModel.soldto = res.data.soldto;
+                                    if ($scope.listTagOut_UnCheckViewModel.length <= 0) {
+                                        $scope.block = false;
                                     }
                                 },
                                 function error(response) {
@@ -102,6 +82,7 @@
             $scope.scanBarcode_no = function () {
                 var deferred = $q.defer();
                 pageLoading.show();
+                $scope.filterModel.update_By = localStorageService.get('userTokenStorage');
                 viewModel.scanBarcode_no($scope.filterModel).then(
                     function success(res) {
                         pageLoading.hide();
@@ -112,7 +93,11 @@
                                 message: res.data.resultMsg
                             })
                         } else {
-                            $scope.filterModel.tagOutItem_Index = res.data.resultMsg;
+                            $scope.filterModel.pickQty = 1;
+                            $scope.filterModel.product_barcode = undefined;
+                            $scope.scantag_no();
+                            // $scope.listTagOut_CheckViewModel = res.data.listTagOut_CheckViewModel;
+                            // $scope.listTagOut_UnCheckViewModel = res.data.listTagOut_UnCheckViewModel;
                         }
                     },
                     function error(response) {
@@ -126,26 +111,6 @@
                 return deferred.promise;
             }
 
-            $scope.incompletePopup = {
-                onShow: false,
-                delegates: {},
-                onClick: function (param) {
-                    $scope.incompletePopup.onShow = !$scope.incompletePopup.onShow;
-                    $scope.incompletePopup.delegates(param);
-                },
-                config: {
-                    title: ""
-                },
-                invokes: {
-                    add: function (param) { },
-                    edit: function (param) { },
-                    selected: function (param) {
-                        $scope.approve(param);
-                    }
-                }
-            };
-
-
             $scope.confirmPicktoLight = function () {
                 $scope.block = true;
                 if ($scope.filterModel.tagOut_No == undefined || $scope.filterModel.tagOut_No == "") {
@@ -158,16 +123,6 @@
                 }
 
 
-                let data = $scope.listfilterModel.filter(c => c.isUser);
-                if (data.length != $scope.listfilterModel.length) {
-                    $scope.block = false;
-                    return dpMessageBox.alert({
-                        ok: 'Close',
-                        title: 'ALERT',
-                        message: "กรุณาเลือก ทุก item เพื่อยืนยัน"
-                    })
-                }
-
                 dpMessageBox.confirm({
                     ok: 'OK',
                     cancel: 'Close',
@@ -177,7 +132,7 @@
                     $scope.filterModel.create_By = localStorageService.get('userTokenStorage');
                     viewModel.confirmPicktoLight($scope.filterModel).then(
                         function success(res) {
-                            
+                            $scope.block = false;
                             if (!res.data.resultIsUse) {
                                 $scope.block = false;
                                 $scope.listfilterModel = res.data.models;
@@ -188,35 +143,10 @@
                                 })
 
                             } else {
-                                viewModel.DetailScanPicktolight(res.data).then(
-                                    function success(res) {
-                                        $scope.block = false;
-                                        if (res.data.length > 0) {
-                                            $scope.filterModel = {};
-                                            if (res.data[0].resultCheckSorter) {
-                                                dpMessageBox.alert(
-                                                    {
-                                                        ok: 'Close',
-                                                        title: 'ALERT',
-                                                        message: 'ห้ามนำ Tote นี้ขึ้น Sorter'
-                                                    }
-                                                )
-                                            }
-                                        }
-                                    },
-                                    function error(response) {
-                                        $scope.block = false;
-                                        dpMessageBox.alert(
-                                            {
-                                                ok: 'Close',
-                                                title: 'ALERT',
-                                                message: 'MSG_Save_error'
-                                            }
-                                        )
-                                    });
-                                $scope.listfilterModel = undefined;
-                                $scope.size = undefined;
-                                $scope.total_qty = undefined;
+                                $scope.filterModel.pickQty = 1;
+                                $scope.listTagOut_CheckViewModel = undefined;
+                                $scope.listTagOut_UnCheckViewModel = undefined;
+                                $scope.filterModel.product_barcode = undefined;
                                 $scope.filterModel.tagOut_No = undefined;
                                 dpMessageBox.alert({
                                     ok: 'Close',
@@ -244,10 +174,8 @@
             $vm.$onInit = function () {
                 $vm = this;
                 $scope.userName = localStorageService.get('userTokenStorage');
-                $scope.click = 1;
-                $scope.size = {};
-                $scope.total_qty = {};
-                $scope.block = false;
+                $scope.block = true;
+                $scope.filterModel.pickQty = 1;
                 setTimeout(() => {
                     var focusElem = jQuery('input[ng-model="filterModel.tagOut_No"]');
                     focusElem[0].focus();
