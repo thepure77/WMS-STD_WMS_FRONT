@@ -1504,6 +1504,7 @@
     "UPDATE_DATE_TIME" : "วันที่/เวลาเเก้ไข",
     "CANCLE_BY" : "ยกเลิกโดย",
     "CANCLE_DATE_TIME" : "วันที่/เวลายกเลิก",
-    "UNUSED_PALLETS_INCLUDED" : "รวมพาเลทที่ใช้งานไม่ได้"
-
+    "UNUSED_PALLETS_INCLUDED" : "รวมพาเลทที่ใช้งานไม่ได้",
+    "PICK_TO_LIGHT":"แพ็ค",
+    "TAGOUT":"ป้าย"
 }

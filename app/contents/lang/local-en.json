@@ -1517,6 +1517,8 @@
     "UPDATE_DATE_TIME" : "Upate Date / Time",
     "CANCLE_BY" : "Cancle By",
     "CANCLE_DATE_TIME" : "Cancle Date / Time",
-    "UNUSED_PALLETS_INCLUDED" : "Unused Pallets Included"
+    "UNUSED_PALLETS_INCLUDED" : "Unused Pallets Included",
+    "PICK_TO_LIGHT":"Pack",
+    "TAGOUT":"Tag out"
     
 }  

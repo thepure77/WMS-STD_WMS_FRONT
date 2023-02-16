@@ -342,6 +342,16 @@
                       {{ 'SCAN_PICK_TO_DOCK' | translate }}
                     </a>
                   </li>
+                  <li ng-show="m3n7[171].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.tag_out">
+                      {{ 'TAGOUT' | translate }}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[172].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.pick_to_light">
+                      {{ 'PICK_TO_LIGHT' | translate }}
+                    </a>
+                  </li>
                   <li ng-show="m3n7[176].isActive">
                     <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.tracking_loading">
                       {{ 'TRACKING_LOADING' | translate }}
@@ -377,19 +387,10 @@
                       {{ 'RETURN_TO_WB' | translate }}
                     </a>
                   </li>
-                  <li ng-show="m3n7[171].isActive">
-                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.tag_out">
-                      {{ 'TAGOUT' | translate }}
-                    </a>
-                  </li>
+                  
                   <li ng-show="m3n7[13].isActive">
                     <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.check_stock_summary">
-                      {{ 'Check Stock' | translate }}
-                    </a>
-                  </li>
-                  <li ng-show="m3n7[172].isActive">
-                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.pick_to_light">
-                      {{ 'Pick to Light' | translate }}
+                      {{ 'CHECK_STOCK' | translate }}
                     </a>
                   </li>
                   <li ng-show="m3n7[173].isActive">
@@ -2198,11 +2199,11 @@
                   <span>{{ 'INBOUND' | translate }}</span>
                 </a>
                 <ul class="nav nav-children">
-                  <li ng-show="m3n7[1].isActive">
+                  <!-- <li ng-show="m3n7[1].isActive">
                     <a ng-click="selectedMenu('Inbound')" data-ui-sref="wms.po_summary" href="wms.po_summary">
                       {{ 'PO' | translate }}
                     </a>
-                  </li>
+                  </li> -->
                   <li ng-show="m3n7[1].isActive">
                     <a ng-click="selectedMenu('Inbound')" data-ui-sref="wms.plan_summary" href="wms.plan_summary">
                       {{ 'PRE_RECEIVING' | translate }}
@@ -2327,6 +2328,16 @@
                       {{ 'SCAN_PICK_TO_DOCK' | translate }}
                     </a>
                   </li>
+                  <li ng-show="m3n7[171].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.tag_out">
+                      {{ 'TAGOUT' | translate }}
+                    </a>
+                  </li>
+                  <li ng-show="m3n7[172].isActive">
+                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.pick_to_light">
+                      {{ 'PICK_TO_LIGHT' | translate }}
+                    </a>
+                  </li>
                   <li ng-show="m3n7[176].isActive">
                     <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.tracking_loading">
                       {{ 'TRACKING_LOADING' | translate }}
@@ -2362,19 +2373,10 @@
                       {{ 'RETURN_TO_WB' | translate }}
                     </a>
                   </li>
-                  <li ng-show="m3n7[171].isActive">
-                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.tag_out">
-                      {{ 'TAGOUT' | translate }}
-                    </a>
-                  </li>
+                  
                   <li ng-show="m3n7[13].isActive">
                     <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.check_stock_summary">
-                      {{ 'Check Stock' | translate }}
-                    </a>
-                  </li>
-                  <li ng-show="m3n7[172].isActive">
-                    <a ng-click="selectedMenu('Outbound')" data-ui-sref="wms.pick_to_light">
-                      {{ 'Pick to Light' | translate }}
+                      {{ 'CHECK_STOCK' | translate }}
                     </a>
                   </li>
                   <li ng-show="m3n7[173].isActive">
