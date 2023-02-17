@@ -78,8 +78,8 @@
                 $scope.menu_width = (i + 1) * 100; //กำหนดความกว้างของเส้นเชื่อม
                 $scope.click = 1;
                 $scope.isSave = true;
-                $scope.filterModel.log_udf_2 =getToday();
-                $scope.filterModel.log_udf_3 =getTime();
+                $scope.filterModel.log_udf_2 = getToday();
+                $scope.filterModel.log_udf_3 = getTime();
                 if ($scope.menu[1].active == "active") {
                     $scope.filterModel2 = angular.copy($scope.filterModel);
                 }
@@ -142,21 +142,21 @@
                             //     return documentType.documentType_Index == res.data.item[0].documentType_Index;
                             // })
                             //$scope.dropdownDocumentType.model = resultsDocumentType[0];
-                            if(res.data.item[0].documentType_Index == '774cf194-b35b-45e7-b873-3e8453e257fd')
-                            {
+                            if (res.data.item[0].documentType_Index == '774cf194-b35b-45e7-b873-3e8453e257fd') {
                                 $scope.dropdownDocumentType.model = $scope.dropdownDocumentType[2];
-                            }else{
-                            $scope.dropdownDocumentType.model = $scope.dropdownDocumentType[6];
+                            } else {
+                                $scope.dropdownDocumentType.model = $scope.dropdownDocumentType[6];
                             }
 
-                            if (res.data.item[0].erP_location != undefined && res.data.item[0].erP_location != '') {
+                            var erp_locaion = $scope.dropdownStorageLoc
+                            const resultserp_locaion = erp_locaion.filter((erp_locaion) => {
+                                return erp_locaion.storageLoc_Name == 'AB01';
+                            })
+                            $scope.dropdownStorageLoc.model = resultserp_locaion[0];
+                            // if (res.data.item[0].erP_location != undefined && res.data.item[0].erP_location != '') {
 
-                                var erp_locaion = $scope.dropdownStorageLoc
-                                const resultserp_locaion = erp_locaion.filter((erp_locaion) => {
-                                    return erp_locaion.storageLoc_Name == res.data.item[0].erP_location;
-                                })
-                                $scope.dropdownStorageLoc.model = resultserp_locaion[0];
-                            }
+
+                            // }
                         }
                         $scope.filterGRItem();
                     },
@@ -237,7 +237,7 @@
                 viewModel.scanUPC(model).then(
                     function success(res) {
                         pageLoading.hide();
-                        
+
                         if (res.data.msg != null) {
 
                             if (res.data.item != null) {
@@ -301,16 +301,15 @@
                             $scope.productCon_Index = res.data.item[0].productConversion_Index;
                             $scope.filterModel.mFG_DateShow = undefined;
                             $scope.filterModel.eXP_DateShow = undefined;
-                            if($scope.filterModel.documentType_Index == '774cf194-b35b-45e7-b873-3e8453e257fd')
-                            {
+                            if ($scope.filterModel.documentType_Index == '774cf194-b35b-45e7-b873-3e8453e257fd') {
                                 $scope.filterModel.product_Lot = res.data.item[0].product_Lot;
                                 $scope.filterModel.defaultdate = res.data.item[0].mFG_Date;
                             }
-                            else{ 
+                            else {
                                 $scope.filterModel.product_Lot = undefined;
                                 $scope.filterModel.defaultdate = undefined;
                             }
-                            
+
                             if (res.data.item[0].isExpDate != 0 || res.data.item[0].isMfgDate != 0 || res.data.item[0].isLot != 0) {
                                 $scope.masterRequirePopup.onClick($scope.filterModel);
                             }
@@ -321,8 +320,7 @@
                             })
                             $scope.dropdownItemStatus.model = resultsItemStatus[0];
 
-                            if($scope.filterModel.documentType_Index == '774cf194-b35b-45e7-b873-3e8453e257fd')
-                            {
+                            if ($scope.filterModel.documentType_Index == '774cf194-b35b-45e7-b873-3e8453e257fd') {
                                 $scope.dropdownStorageLoc.model = $scope.dropdownStorageLoc[0];
                             }
                         }
@@ -356,11 +354,11 @@
                         model = param;
                         model.productConversionBarcode = $scope.filterModel.productConversionBarcode;
                         model.planGoodsReceive_No = $scope.filterModel.planGoodsReceive_No;
-                        
+
                         viewModel.scanUPC(model).then(
                             function success(res) {
                                 pageLoading.hide();
-                                
+
                                 if (res.data.msg != null) {
 
                                     if (res.data.item != null) {
@@ -427,7 +425,7 @@
                                     // $scope.filterModel.productConversionWLH = $scope.filterModel.productConversion_Width
                                     // + "*" + $scope.filterModel.productConversion_Length
                                     // + "*" + $scope.filterModel.productConversion_Height;
-                                    
+
                                     if (res.data.item[0].isExpDate != 0 || res.data.item[0].isMfgDate != 0 || res.data.item[0].isLot != 0) {
                                         $scope.masterRequirePopup.onClick($scope.filterModel);
                                     }
@@ -464,8 +462,8 @@
 
             $scope.saveReceive = function () {
                 $scope.filterModel.operations = "Save Receive";
-                $scope.filterModel.log_udf_4 =getToday();
-                $scope.filterModel.log_udf_5 =getTime();
+                $scope.filterModel.log_udf_4 = getToday();
+                $scope.filterModel.log_udf_5 = getTime();
 
                 if ($scope.filterModel.qty <= 0 || $scope.filterModel.qty == undefined) {
                     dpMessageBox.alert(
@@ -555,7 +553,8 @@
                     message: 'MSG_Confirm_Save'
                 }).then(function () {
                     viewModel.saveReceive($scope.filterModel).then(
-                        function success(res) {debugger
+                        function success(res) {
+                            debugger
                             if (res.data.goodsReceive_No == "false") {
                                 dpMessageBox.alert({
                                     ok: 'Close',
@@ -564,14 +563,15 @@
                                 })
                             }
                             else {
-                                if (res.data.message == true) {debugger
+                                if (res.data.message == true) {
+                                    debugger
                                     dpMessageBox.alert({
                                         ok: 'Close',
                                         title: 'MSG_Save_success',
                                         message: res.data.goodsReceive_No
                                     })
 
-                                    $scope.filterModel.operations = $scope.filterModel.operations+" "+res.data.goodsReceive_No;
+                                    $scope.filterModel.operations = $scope.filterModel.operations + " " + res.data.goodsReceive_No;
                                     viewModel.savelogsRequest($scope.filterModel).then(function () {
                                     });
 
@@ -593,14 +593,14 @@
                                     $scope.filterModel.mFG_Date = "";
                                     $scope.filterModel.eXP_Date = "";
                                     $scope.filterModel.product_Lot = "";
-                                    
+
                                 } else {
                                     if (res.data.checkqtyPO) {
                                         dpMessageBox.alert({
                                             title: 'ALERT',
                                             message: 'ไม่สามารถรับสินค้าเกินกว่าที่ระบุใน PO ได้'
                                         })
-                                    }else{
+                                    } else {
                                         dpMessageBox.alert({
                                             title: 'ALERT',
                                             message: 'ไม่สามารถรับสินค้าเกินกว่าที่ระบุใน Delivery Note ได้'
@@ -641,11 +641,11 @@
                 viewModel.deleteItem($scope.filterModel).then(
                     function success(res) {
                         debugger
-                        if(res.data.Message){
+                        if (res.data.Message) {
                             list.splice(index, 1);
                             pageLoading.hide();
                         }
-                        
+
                     },
                     function error(response) {
                         dpMessageBox.alert({
@@ -684,7 +684,7 @@
             };
 
             $scope.$watch("filterModel.product_Name", function () {
-                
+
                 if ($scope.filterModel.product_Id == "" || $scope.filterModel.product_Name == ""
                     || $scope.filterModel.product_Id == undefined || $scope.filterModel.product_Name == undefined) {
                     $scope.filterModel.volume_Index = "";
@@ -695,15 +695,15 @@
                 }
                 else {
                     viewModel.dropdownProductconversion($scope.filterModel).then(function (res) {
-                        
+
                         $scope.dropdownProductconversion = res.data;
 
                         var conversionDrop = $scope.dropdownProductconversion
-                        
+
                         var filterConversion = conversionDrop.filter((conversionDrop) => {
-                        return conversionDrop.productConversion_Index == $scope.productCon_Index;
+                            return conversionDrop.productConversion_Index == $scope.productCon_Index;
                         })
-                        
+
                         $scope.dropdownProductconversion.model = filterConversion[0];
                         $scope.filterModel.productConversionWLH = filterConversion[0].productConversion_Width
                             + "*" + filterConversion[0].productConversion_Length
@@ -711,7 +711,7 @@
                     });
                 }
             });
-            
+
 
             $scope.$watch("dropdownProductconversion.model", function () {
                 debugger
@@ -741,7 +741,7 @@
             });
 
             $scope.$watch("productCon_Index", function () {
-                
+
                 if ($scope.filterModel.product_Id == "" || $scope.filterModel.product_Name == ""
                     || $scope.filterModel.product_Id == undefined || $scope.filterModel.product_Name == undefined) {
                     $scope.filterModel.volume_Index = "";
@@ -752,15 +752,15 @@
                 }
                 else {
                     viewModel.dropdownProductconversion($scope.filterModel).then(function (res) {
-                        
+
                         $scope.dropdownProductconversion = res.data;
 
                         var conversionDrop = $scope.dropdownProductconversion
-                        
+
                         var filterConversion = conversionDrop.filter((conversionDrop) => {
-                        return conversionDrop.productConversion_Index == $scope.productCon_Index;
+                            return conversionDrop.productConversion_Index == $scope.productCon_Index;
                         })
-                        
+
                         $scope.dropdownProductconversion.model = filterConversion[0];
                         $scope.filterModel.productConversionWLH = filterConversion[0].productConversion_Width
                             + "*" + filterConversion[0].productConversion_Length
@@ -799,12 +799,12 @@
                         $scope.filterModel.mFG_DateShow = angular.copy(param.mFG_Date);
                         $scope.filterModel.eXP_DateShow = angular.copy(param.eXP_Date);
 
-                        if ($scope.filterModel.mFG_DateShow != undefined && $scope.filterModel.mFG_DateShow != null && $scope.filterModel.mFG_DateShow != "" ) {
+                        if ($scope.filterModel.mFG_DateShow != undefined && $scope.filterModel.mFG_DateShow != null && $scope.filterModel.mFG_DateShow != "") {
                             var date = $scope.filterModel.mFG_DateShow;
                             $scope.filterModel.mFG_DateShow = formatDate(date);
                         }
 
-                        if ($scope.filterModel.eXP_DateShow != undefined && $scope.filterModel.eXP_DateShow != null && $scope.filterModel.eXP_DateShow != "" ) {
+                        if ($scope.filterModel.eXP_DateShow != undefined && $scope.filterModel.eXP_DateShow != null && $scope.filterModel.eXP_DateShow != "") {
                             var date = $scope.filterModel.eXP_DateShow;
                             $scope.filterModel.eXP_DateShow = formatDate(date);
                         }

@@ -16,6 +16,7 @@
 
             $scope.filterModel = {};
 
+            //#region scantag_no
             $scope.scantag_no = function () {
                 var deferred = $q.defer();
                 pageLoading.show();
@@ -27,7 +28,7 @@
                             dpMessageBox.alert({
                                 ok: 'Close',
                                 title: 'ALERT',
-                                message: res.data.resultMsg
+                                message: res.data.resultMsgremain == 0
                             })
                             $scope.listfilterModel = [];
                         } else {
@@ -48,8 +49,20 @@
                                     $scope.listTagOut_CheckViewModel = res.data.listTagOut_CheckViewModel;
                                     $scope.listTagOut_UnCheckViewModel = res.data.listTagOut_UnCheckViewModel;
                                     $scope.filterModel.soldto = res.data.soldto;
+
+                                    $scope.filterModel.sizebox = res.data.size;
                                     if ($scope.listTagOut_UnCheckViewModel.length <= 0) {
                                         $scope.block = false;
+                                    }
+
+                                    debugger
+                                    if ($scope.listTagOut_UnCheckViewModel.length > 0) {
+                                        $scope.listTagOut_UnCheckViewModel.forEach(e => {
+                                            if (e.remain == 0) {
+                                                e.isUser = true;
+                                            }
+
+                                        });
                                     }
                                 },
                                 function error(response) {
@@ -78,7 +91,9 @@
                     });
                 return deferred.promise;
             }
+            //#endregion
 
+            //#region scanBarcode_no
             $scope.scanBarcode_no = function () {
                 var deferred = $q.defer();
                 pageLoading.show();
@@ -110,7 +125,9 @@
                     });
                 return deferred.promise;
             }
+            //#endregion
 
+            //#region  confirmPicktoLight
             $scope.confirmPicktoLight = function () {
                 $scope.block = true;
                 if ($scope.filterModel.tagOut_No == undefined || $scope.filterModel.tagOut_No == "") {
@@ -170,7 +187,17 @@
                     function error(param) {
                     });
             };
+            //#endregion
 
+            //#region  chkIsuse
+            $scope.chkIsuse = function (param) {
+                if (param.isUser) {
+                    return "#858585"
+                }
+            }
+            //#endregion 
+
+            //#region onInit
             $vm.$onInit = function () {
                 $vm = this;
                 $scope.userName = localStorageService.get('userTokenStorage');
@@ -182,12 +209,7 @@
 
                 }, 200);
             }
-
-
-
-
-
-
+            //#endregion
 
         }
     })

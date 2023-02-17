@@ -12,7 +12,7 @@
             triggerCreate: '=?',
             searchDataRow: '=?'
         },
-        controller: function ($scope, $q, $http, $filter, $state, $window, $element, $timeout, $translate, pageLoading, dpMessageBox, localStorageService, commonService, planGoodsReceiveFactory, webServiceAPI,importFileFactory) {
+        controller: function ($scope, $q, $http, $filter, $state, $window, $element, $timeout, $translate, pageLoading, dpMessageBox, localStorageService, commonService, planGoodsReceiveFactory, webServiceAPI, importFileFactory) {
             var $vm = this;
 
             // ----------------------------------------------------
@@ -141,20 +141,17 @@
 
 
             $scope.searchFilter = function (param) {
-                if(!param.advanceSearch)
-                {
-                    if($('input[name="datefilter"]').val().length > 0)
-                    {
+                if (!param.advanceSearch) {
+                    if ($('input[name="datefilter"]').val().length > 0) {
                         $scope.filterModel.date = $('input[name="datefilter"]').val();
                     }
                 } else {
-                    if($('input[name="datefilterAdv"]').val().length > 0)
-                    {
+                    if ($('input[name="datefilterAdv"]').val().length > 0) {
                         $scope.filterModel.date = $('input[name="datefilterAdv"]').val();
                     }
                 }
                 var deferred = $q.defer();
-                
+
                 if ($scope.filterModel.date != null || $scope.filterModel.dateDue != null) {
                     $scope.convertDate();
                 }
@@ -280,7 +277,7 @@
                 if (dd < 10) dd = '0' + dd;
                 if (mm < 10) mm = '0' + mm;
 
-                return dd.toString() +"/"+ mm.toString() + "/"+ yyyy.toString() +  " - " + dd.toString() +"/"+ mm.toString() + "/"+ yyyy.toString();;
+                return dd.toString() + "/" + mm.toString() + "/" + yyyy.toString() + " - " + dd.toString() + "/" + mm.toString() + "/" + yyyy.toString();;
             }
 
             function getToday() {
@@ -329,7 +326,7 @@
                 ownerName: "AutoPlanGoodsReceive/AutoOwnerfilterName",
                 autoPoV3: "Autocomplete/autobasicSuggestionPO",
 
-                
+
             };
 
             $scope.url = {
@@ -337,7 +334,7 @@
                 PO: webServiceAPI.PO,
             };
 
-            $scope.import = function(){
+            $scope.import = function () {
                 importFileFactory.set("PlanGoodsReceive");
                 $state.go('wms.import_file_summary');
             }
@@ -369,32 +366,39 @@
                     var createXLSLFormatObj = [];
 
                     /* XLS Head Columns */
-                    var xlsHeader = ["No.", "Product Number", "Product", "Status", "Lot", "Vendor ID", "Vendor Name", "Qty Bal", "Qty Reserve","Unit","Qty Amount","Base Unit","Sale Qty","Sale Unit","Weight","Location Type Name","ERP Location","CBM"];
+                    var xlsHeader = [
+                        "No.",
+                        "Date",
+                        "ASN No",
+                        "Owner Id",
+                        "Owner Name",
+                        "Vendor Id",
+                        "Vendor Name",
+                        "DocumentType",
+                        "Product Id",
+                        "Product Name",
+                        "Qty",
+                        "ProductConversion Name"
+                    ];
 
                     /* XLS Rows Data */
                     var xlsRows = [];
                     var number = 1;
                     res.data.itemsPlanGR.forEach(e => {
                         xlsRows.push({
-                            "No.": number
-                            , "Product Number": e.product_Id
-                            , "Product": e.product_Name.replace('"', "''")
-                            , "Status": e.itemStatus_Name
-                            , "Lot": (e.product_Lot == null) ? "" : e.product_Lot
-                            , "Vendor ID": e.owner_Id
-                            , "Vendor Name": e.owner_Name
-                            , "Qty Bal": e.binBalance_QtyBal
-                            , "Qty Reserve": e.binBalance_QtyReserve
-                            , "Unit": e.goodsReceive_ProductConversion_Name
-                            , "Qty Amount": e.amount
-                            , "Base Unit": e.productConversion_Name
-                            , "Sale Qty": e.sale_qty
-                            , "Sale Unit": e.sale_unit
-                            , "Weight": e.binBalance_WeightBal
-                            , "Location Type Name": e.locationType_Name
-                            , "ERP Location": (e.erp_location == null) ? "" :  e.erp_location
-                            , "CBM": e.cbm
-                            
+                            "No.": e.row_Index
+                            , "Date": e.planGoodsReceive_date
+                            , "ASN No": e.planGoodsReceive_No
+                            , "Owner Id": e.owner_Id
+                            , "Owner Name": e.owner_Name
+                            , "Vendor Id": e.vendor_Id
+                            , "Vendor Name": e.vendor_Name
+                            , "DocumentType": e.documentType_Name
+                            , "Product Id": e.product_Id
+                            , "Product Name": e.product_Name
+                            , "Qty": e.qty
+                            , "ProductConversion Name": e.productConversion_Name
+
                         });
                         number++
                     });
@@ -422,8 +426,73 @@
                         createXLSLFormatObj.push(innerRowData);
                     });
                     pageLoading.hide();
-                    JSONToCSVConvertor(createXLSLFormatObj,"StockByProduct");
-                }, function error(res) { pageLoading.hide();});
+                    JSONToCSVConvertor(createXLSLFormatObj, "StockByProduct");
+                }, function error(res) { pageLoading.hide(); });
+            }
+
+            function JSONToCSVConvertor(JSONData, ShowLabel) {
+                //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+                var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+
+                var CSV = '';
+
+                //1st loop is to extract each row
+                for (var i = 0; i < arrData.length; i++) {
+                    var row = "";
+
+                    //2nd loop will extract each column and convert it in string comma-seprated
+                    for (var index in arrData[i]) {
+                        row += '"' + arrData[i][index] + '",';
+                    }
+
+                    row.slice(0, row.length - 1);
+
+                    //add a line break after each row
+                    CSV += row + '\r\n';
+                }
+
+                if (CSV == '') {
+                    alert("Invalid data");
+                    return;
+                }
+
+                var today = new Date();
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getUTCFullYear();
+                var dd = today.getDate();
+                var Minute = today.getMinutes();
+                var Hour = today.getHours();
+
+                if (Minute < 10) Minute = '0' + Minute;
+
+                if (dd < 10) dd = '0' + dd;
+                if (mm < 10) mm = '0' + mm;
+
+                var datetime = yyyy.toString() + mm.toString() + dd.toString() + Hour.toString() + Minute.toString();
+                //Generate a file name
+                var fileName = ShowLabel + "_" + datetime;
+                //this will remove the blank-spaces from the title and replace it with an underscore
+
+                //Initialize file format you want csv or xls
+                var uri = 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURIComponent(CSV);
+
+                // Now the little tricky part.
+                // you can use either>> window.open(uri);
+                // but this will not work in some browsers
+                // or you will not get the correct file extension    
+
+                //this trick will generate a temp <a /> tag
+                var link = document.createElement("a");
+                link.href = uri;
+
+                //set the visibility hidden so it will not effect on your web-layout
+                link.style = "visibility:hidden";
+                link.download = fileName + ".csv";
+
+                //this part will append the anchor tag and remove it after automatic click
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }
         }
     });
