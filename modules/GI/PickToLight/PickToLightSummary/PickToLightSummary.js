@@ -23,7 +23,7 @@
 
                 viewModel.scantag_no($scope.filterModel).then(
                     function success(res) {
-                        pageLoading.hide();
+                        
                         if (!res.data.resultIsUse) {
                             dpMessageBox.alert({
                                 ok: 'Close',
@@ -36,7 +36,7 @@
 
                             viewModel.DetailScanPicktolight(res.data).then(
                                 function success(res) {
-
+                                    pageLoading.hide();
                                     if (!res.data.resultIsUse) {
                                         return dpMessageBox.alert(
                                             {
@@ -129,7 +129,7 @@
 
             //#region  confirmPicktoLight
             $scope.confirmPicktoLight = function () {
-                $scope.block = true;
+                
                 if ($scope.filterModel.tagOut_No == undefined || $scope.filterModel.tagOut_No == "") {
                     $scope.block = false;
                     return dpMessageBox.alert({
@@ -146,6 +146,7 @@
                     title: 'MSG_SURE_data',
                     message: 'MSG_Confirm_Save'
                 }).then(function () {
+                    $scope.block = true;
                     $scope.filterModel.create_By = localStorageService.get('userTokenStorage');
                     viewModel.confirmPicktoLight($scope.filterModel).then(
                         function success(res) {

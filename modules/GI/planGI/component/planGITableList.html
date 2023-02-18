@@ -32,6 +32,7 @@
                 <th class="text-center k250" style="width:200px;">{{ 'ACTION' | translate }}</th>
                 <th class="k100 text-center">{{ 'NO' | translate }}</th>
                 <th class="k200 text-center">{{ 'PLAN_GI_NO' | translate }}</th>
+                <th class="k200 text-center">{{ 'Pre Order' | translate }}</th>
                 <th class="k150 text-center">{{ 'BILLING_NO' | translate }}</th>
                 <th class="k150 text-center">{{ 'MATDOC' | translate }}</th>
                 <th class="k150 text-center">{{ 'TL_TRUCKLOAD_NO' | translate }}</th>
@@ -314,6 +315,7 @@
                 <td class="k100 text-center">
                     {{($index + 1) + ($vm.filterModel.perPage * ($vm.filterModel.currentPage - 1))}}</td>
                 <td class="k200 text-center">{{data.planGoodsIssue_No}}</td>
+                <td class="k200 text-center">{{data.pre_Order == 1 ? 'Yes' : 'No'}}</td>
                 <td class="k150 text-center">{{data.billing_no}}</td>
                 <td class="k150 text-center">{{data.matdoc}}</td>
                 <td class="k150 text-center">{{data.truckLoad_No}}</td>
