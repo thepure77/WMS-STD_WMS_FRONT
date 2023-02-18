@@ -23,10 +23,11 @@
                         <label for="all_"></label>
                     </div>
                 </th>
-                <th class="text-center k250" style="width:200px;">{{ 'ACTION' | translate }}</th>
+                <th class="text-center k200" style="width:200px;">{{ 'ACTION' | translate }}</th>
                 <th class="k50">{{ 'NO' | translate }}</th>
                 <th class="k150">{{ 'PLAN_NO' | translate }}</th>
-                <th class="k150">{{ 'REF_PO_NO_XX' | translate }}</th>
+                <th class="k100">{{ 'REF_PO_NO_XX' | translate }}</th>
+                <th class="k100">{{ 'Pre Order' | translate }}</th>
                 <th class="k150">{{ 'PLAN_DATE' | translate }}</th>
                 <th class="k150">{{ 'OWNER_NAME' | translate }}</th>
                 <th class="k150">{{ 'DOCUMENT_TYPE' | translate }}</th>
@@ -48,7 +49,7 @@
                         class="ig-control__cbx" checked />
                     <label for="check_{{$index}}"></label>
                 </td>
-                <td class="k250 tr-height" ng-if="data.row == $vm.searchDataRow">
+                <td class="k200 tr-height" ng-if="data.row == $vm.searchDataRow">
                     <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
                         data-placement="bottom">
                         <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
@@ -87,7 +88,7 @@
                         </ul>
                     </div>
                 </td>
-                <td class="k250" ng-if="data.row != $vm.searchDataRow">
+                <td class="k200" ng-if="data.row != $vm.searchDataRow">
                     <a class="btn btn-success" ng-click="editItem(data)" data-toggle="tooltip" title="Edit"
                         data-placement="bottom">
                         <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
@@ -128,7 +129,8 @@
                 </td>
                 <td class="k50">{{data.row}}</td>
                 <td class="k150">{{data.planGoodsReceive_No}}</td>
-                <td class="k150">{{data.documentRef_No1}}</td>
+                <td class="k100">{{data.documentRef_No1}}</td>
+                <td class="k100">{{data.preorder}}</td>
                 <td class="k150">{{data.planGoodsReceive_date|dateFormate}}</td>
                 <td class="k150">{{data.owner_Name}}</td>
                 <td class="k150">{{data.documentType_Name}}</td>
