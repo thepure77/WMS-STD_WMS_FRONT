@@ -23,7 +23,7 @@
 
                 viewModel.scantag_no($scope.filterModel).then(
                     function success(res) {
-                        
+
                         if (!res.data.resultIsUse) {
                             dpMessageBox.alert({
                                 ok: 'Close',
@@ -51,11 +51,9 @@
                                     $scope.filterModel.soldto = res.data.soldto;
 
                                     $scope.filterModel.sizebox = res.data.size;
-                                    if ($scope.listTagOut_UnCheckViewModel.length <= 0) {
-                                        $scope.block = false;
-                                    }
 
-                                    debugger
+
+                                    
                                     if ($scope.listTagOut_UnCheckViewModel.length > 0) {
                                         $scope.listTagOut_UnCheckViewModel.forEach(e => {
                                             if (e.remain == 0) {
@@ -63,6 +61,12 @@
                                             }
 
                                         });
+                                    }
+                                    
+
+                                    var checkkk = $scope.listTagOut_UnCheckViewModel.filter(c => c.isUser);
+                                    if (checkkk.length == $scope.listTagOut_UnCheckViewModel.length) {
+                                        $scope.block = false;
                                     }
                                 },
                                 function error(response) {
@@ -129,7 +133,7 @@
 
             //#region  confirmPicktoLight
             $scope.confirmPicktoLight = function () {
-                
+
                 if ($scope.filterModel.tagOut_No == undefined || $scope.filterModel.tagOut_No == "") {
                     $scope.block = false;
                     return dpMessageBox.alert({
@@ -166,6 +170,7 @@
                                 $scope.listTagOut_UnCheckViewModel = undefined;
                                 $scope.filterModel.product_barcode = undefined;
                                 $scope.filterModel.tagOut_No = undefined;
+                                $scope.filterModel.soldto = undefined;
                                 dpMessageBox.alert({
                                     ok: 'Close',
                                     title: 'ALERT',
